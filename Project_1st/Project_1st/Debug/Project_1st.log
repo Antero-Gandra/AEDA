@@ -1,0 +1,9 @@
+﻿  SecondFase.cpp
+c:\users\margarida silva\documents\github\aeda\project\audition.h(26): error C2143: syntax error: missing ';' before '*'
+c:\users\margarida silva\documents\github\aeda\project\audition.h(26): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\margarida silva\documents\github\aeda\project\audition.h(26): error C2238: unexpected token(s) preceding ';'
+  FirstFase.cpp
+c:\users\margarida silva\documents\github\aeda\project\audition.h(25): error C2143: syntax error: missing ';' before '*'
+c:\users\margarida silva\documents\github\aeda\project\audition.h(25): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\margarida silva\documents\github\aeda\project\audition.h(25): error C2238: unexpected token(s) preceding ';'
+  Generating Code...

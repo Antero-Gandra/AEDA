@@ -11,8 +11,9 @@
 
 
 class FirstFase: public Fase {
+	unsigned int auditionId;
 public: 
-    Audition 1;
+	FirstFase(unsigned int auditionId);
 };
 
 #endif //_FIRSTFASE_H

@@ -10,9 +10,10 @@
 #include "Audition.h"
 
 
-class SecondFase: public Fase {
-public: 
-    Audition 1;
+class SecondFase: public Fase { 
+	unsigned int auditionId;
+public:
+	SecondFase(unsigned int auditionId);
 };
 
 #endif //_SECONDFASE_H

@@ -13,6 +13,9 @@ class Judge: public Person {
 private: 
     unsigned int id;
     vector<unsigned int> participation;
+public:
+	Judge() {}
+	Judge(unsigned int id, vector<unsigned int> participation);
 };
 
 #endif //_JUDGE_H
