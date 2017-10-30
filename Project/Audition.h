@@ -14,10 +14,10 @@
 
 class Audition {
 public: 
-    Judge 2;
-    Judge 1;
-    FirstFase 1;
-    SecondFase 1;
+    Judge evaluators;
+    Judge leader;
+    FirstFase f1;
+    SecondFase f2;
 private: 
     unsigned int id;
     unsigned int date;
