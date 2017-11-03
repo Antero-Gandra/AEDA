@@ -4,10 +4,11 @@
 /**
  * Time implementation
  */
-std::vector<int> daysOfMonth= { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+std::vector<unsigned int> daysOfMonth= { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 using namespace std;
 
 //Constructor
+Time::Time() { year = 0; month = 1; day = 1; hour = 0; minute = 0; }
 Time::Time(unsigned int year, unsigned int month, unsigned int day, unsigned int hour, unsigned int minute) {
 	this->year = year;
 	this->month = month;
@@ -29,19 +30,35 @@ void Time::setHour(unsigned int hour) { this->hour = hour; }
 void Time::setMinute(unsigned int minute) { this->minute = minute; }
 
 //Operator Overloading
-//operator + incomplete
-Time & Time::operator+(Time & time1) {
-	unsigned int aux;
-	minute = (minute + time1.minute) % 60;
-	aux = ((hour + time1.hour) / 24 + day + time1.day);
-	hour = ((minute + time1.minute) / 60 + (hour + time1.hour)) % 24;
-	while ( aux >= daysOfMonth[month - 1]) {
-		aux -= daysOfMonth[month-1];
-		month++;
+Time & Time::operator+(Time & time1) 
+{
+	unsigned int minutes, hours, days, months, years;
+	//Setting the minutes
+	minutes = minute + time1.minute;
+	minute = minutes % 60;
+	//Setting the hours
+	hours = (minute + time1.minute) / 60 + (hour + time1.hour);
+	hour = hours % 24;
+	//Setting the days, months and years
+	days = day + time1.day + hours / 24;
+	months = month + time1.month;
+	years = year + time1.year;
+	if (years % 4 == 0 && (years % 400 == 0 || years % 100 != 0))
+		daysOfMonth[1] = 29;
+	else daysOfMonth[1] = 28;
+	while (days > daysOfMonth[(months%12)-1])
+	{
+		days -= daysOfMonth[(months%12)-1];
+		if (months++ > 12) {
+			months -= 12; years++;
+		}
+		if (years % 4 == 0 && (years % 400 == 0 || years % 100 != 0))
+			daysOfMonth[1] = 29;
+		else daysOfMonth[1] = 28;
 	}
-	day = aux;
-	month = (month + time1.month) % 12;
-	year = (month + time1.month) / 12 + (year + time1.year);
+	day = days;
+	month = months;
+	year = years;
 	return *this;
 }
 bool Time::operator==(Time & time1)
@@ -64,4 +81,10 @@ bool Time::operator<(Time & time1)
 	//equal year, month, day and hour
 	else if (minute >= time1.hour) return false;
 	else return true;
+}
+//Other Methods
+bool Time::isValidDate() {
+	if (month >= 1 && month <= 12) //so that we can search the maximum days of that month without range problems
+		return (minute <= 59 && hour <= 23 && day >= 1 && day <= daysOfMonth[month - 1]);
+	else return false;
 }

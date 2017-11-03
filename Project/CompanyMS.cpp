@@ -14,8 +14,8 @@ using namespace std;
 
  int main()
  {
-	 Time time1(2000, 12, 31, 0, 0);
-	 Time time2(2000, 3, 2, 0, 0);
+	 Time time1(2016, 2, 28, 0, 0);
+	 Time time2(0, 0, 1, 0, 0);
 	 time1 = time1 + time2;
 	 if (time2 < time1) {
 		 cout << time1.getYear() << endl;

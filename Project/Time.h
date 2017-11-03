@@ -14,7 +14,7 @@ class Time {
 	unsigned int minute;
 public:
 	//Constructor
-	Time() {}
+	Time();
 	Time(unsigned int year, unsigned int month, unsigned int day, unsigned int hour, unsigned int minute);
 	//Get Methods
 	unsigned int getYear() const;
@@ -32,6 +32,8 @@ public:
 	Time & operator+(Time & time1);
 	bool operator==(Time & time1);
 	bool operator<(Time & time1);
+	//Other Methods
+	bool isValidDate();
 };
 
 #endif //_TIME_H
