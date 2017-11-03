@@ -20,10 +20,10 @@ private:
     unsigned int id;
     unsigned int date;
     string specialty;
-	vector<Judge*> evaluators;
-	Judge* leader;
-	FirstFase * f1;
-	SecondFase * f2;
+	vector<Judge *> evaluators;
+	Judge * leader;
+	//FirstFase * f1;
+	//SecondFase * f2;
 public:
 	Audition(string specialty);
 	Audition(unsigned int id, unsigned int date, string specialty, vector<Judge *> evaluators, Judge * leader);

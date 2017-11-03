@@ -11,8 +11,8 @@
 
 
 class FirstFase: public Fase {
-	unsigned int auditionId;
 public: 
+	FirstFase() {}
 	FirstFase(unsigned int auditionId);
 };
 

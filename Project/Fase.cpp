@@ -8,3 +8,7 @@
 /**
  * Fase implementation
  */
+
+Fase::Fase(unsigned int auditionId) {
+	this->auditionId = auditionId;
+}

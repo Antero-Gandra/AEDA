@@ -8,6 +8,5 @@
 /**
  * SecondFase implementation
  */
-SecondFase::SecondFase(unsigned int auditionId) :Fase() {
-	this->auditionId = auditionId;
+SecondFase::SecondFase(unsigned int auditionId) :Fase(auditionId) {
 }

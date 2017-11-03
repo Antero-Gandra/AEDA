@@ -9,6 +9,5 @@
  * FirstFase implementation
  */
 
-FirstFase::FirstFase(unsigned int auditionId) : Fase(){
-	this->auditionId = auditionId;
+FirstFase::FirstFase(unsigned int auditionId) : Fase(auditionId){
 }

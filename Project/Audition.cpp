@@ -20,6 +20,6 @@ Audition::Audition(unsigned int id, unsigned int date, string specialty, vector<
 	this->specialty = specialty;
 	this->evaluators = evaluators;
 	this->leader = leader;
-	this->f1 = 0;
-	this->f2 = 0;
+	//this->f1 = 0;
+	//this->f2 = 0;
 }
