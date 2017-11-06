@@ -4,6 +4,7 @@
 
 
 #include "CompanyMS.h"
+#include "Company.h"
 #include "Time.h"
 #include <iostream>
 
@@ -16,8 +17,15 @@ using namespace std;
  }
 
  void CompanyMS::run() {
-	 mainMenu();
+	 do
+	 {
+		 system("CLS");
+		 mainMenu(); //invokes the menu displayer 
+	 } while (!std::cin.eof()); 
 
+ }
+ CompanyMS::CompanyMS(Company &company) {
+	 this->company = company;
  }
  void CompanyMS::mainMenu() {
 	 std::cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
