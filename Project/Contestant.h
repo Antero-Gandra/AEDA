@@ -8,11 +8,16 @@
 
 #include "Person.h"
 
+struct participation {
+	unsigned int auditionId;
+	unsigned int place;
+	unsigned int leaderGrade;
+};
 
 class Contestant: public Person {
 private: 
     unsigned int id;
-    vector<unsigned int> participation;
+    vector<participation*> participations;
 };
 
 #endif //_CONTESTANT_H

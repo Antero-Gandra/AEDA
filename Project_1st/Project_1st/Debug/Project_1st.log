@@ -1,3 +1,16 @@
-﻿  Time.cpp
+﻿  Person.cpp
+c:\users\margarida silva\documents\github\aeda\project\person.cpp(34): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Judge.cpp
+  Fase.cpp
+  CompanyMS.cpp
+  Generating Code...
+  Compiling...
+  SecondFase.cpp
+  FirstFase.cpp
+  Contestant.cpp
+  Audition.cpp
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  Company.cpp
   Project_1st.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\Project_1st\Debug\Project_1st.exe
   Project_1st.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\Project_1st\Debug\Project_1st.pdb (Partial PDB)
