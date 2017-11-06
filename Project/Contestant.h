@@ -15,6 +15,8 @@ struct participation {
 };
 
 class Contestant: public Person {
+public:
+	Contestant(string textLine);
 private: 
     unsigned int id;
     vector<participation*> participations;
