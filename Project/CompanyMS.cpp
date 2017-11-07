@@ -8,8 +8,6 @@
 #include "Time.h"
 #include <iostream>
 
-using namespace std;
-
 
  int main()
  {
@@ -19,7 +17,6 @@ using namespace std;
  void CompanyMS::run() {
 	 do
 	 {
-		 system("CLS");
 		 mainMenu(); //invokes the menu displayer
 	 } while (!std::cin.eof());
 
@@ -39,21 +36,24 @@ using namespace std;
    cout << "0. EXIT" << endl;
 
 
-   while(op >3 && op <0){
+
+ 	 while ( !(cin >> op) && op >3 && op <0) {
        cout << "Option "<< op << "is not valid. Please try again." << endl;
-       cin.clear();
-       cin.ignore( 1000, '\n' );
-   }
+        cin >> op;
+        cin.clear();
+        cin.ignore( 1000, '\n' );
+    }
 
    switch(op) {
-     case 1: CompanyMS::constestantMenu(); break;
+     case 1: CompanyMS::contestantMenu(); break;
      case 2: CompanyMS::judgeMenu(); break;
      case 3: CompanyMS::auditionMenu(); break;
      case 0: exit(-1); break;
+     default: CompanyMS::mainMenu(); break;
    }
  }
 
- void CompanyMS::constestantMenu() {
+ void CompanyMS::contestantMenu() {
 
    cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
    cout << "\t\t::::::::: CONTESTANT ::::::::: \n";
@@ -88,6 +88,10 @@ using namespace std;
        cout << "3. Disassemble an audition" << endl;
        cout << "4. Print current list of auditions" << endl;
    }
-
-
-    void CompanyMS::constestantMenu() {}
+void CompanyMS::clearScreen() {
+     #ifdef _WIN32
+     system("cls");
+     #else
+     cout << string(40, '\n');
+     #endif
+   }

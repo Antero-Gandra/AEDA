@@ -1,11 +1,10 @@
 #include "Time.h"
-#include <vector>
 
 /**
  * Time implementation
  */
-std::vector<unsigned int> daysOfMonth= { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-using namespace std;
+
+vector<unsigned int> daysOfMonth= { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
 //Constructor
 Time::Time() { year = 0; month = 1; day = 1; hour = 0; minute = 0; }
@@ -30,7 +29,7 @@ void Time::setHour(unsigned int hour) { this->hour = hour; }
 void Time::setMinute(unsigned int minute) { this->minute = minute; }
 
 //Operator Overloading
-Time & Time::operator+(Time & time1) 
+Time & Time::operator+(Time & time1)
 {
 	unsigned int minutes, hours, days, months, years;
 	//Setting the minutes

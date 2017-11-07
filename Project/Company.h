@@ -7,6 +7,10 @@
 #define _COMPANY_H
 
 class Company {
+public:
+  
+
 };
+
 
 #endif //_COMPANY_H

@@ -1,6 +1,4 @@
 #include "Person.h"
-#include <cstdlib>
-#include <ctime>     
 
 /**
  * Person implementation
