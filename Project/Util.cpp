@@ -1,6 +1,6 @@
 #include "Util.h"
 
-void stringPrep(std::string &string)
+void removeSpaces(std::string &string)
 {
 	for (size_t i = 0; i < string.length() - 1; i++)
 	{

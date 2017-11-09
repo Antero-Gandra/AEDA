@@ -3,4 +3,4 @@
 
 using namespace std;
 
-void stringPrep(string &string);
+void removeSpaces(string &string);

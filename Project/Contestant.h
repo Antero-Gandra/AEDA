@@ -8,7 +8,6 @@
 
 #include "Person.h"
 
-
 extern const std::streamsize max;
 
 struct participation {
@@ -17,18 +16,19 @@ struct participation {
 	unsigned int leaderGrade;
 };
 
-class Contestant: public Person {
-public:
+class Contestant : public Person {
+	unsigned int id;
+	vector<participation*> participations;
+	
 
+public:
+	//Constructors
+	Contestant(unsigned int id, string name, string address, unsigned int mobile, Time dob, string specialty, std::vector<unsigned int> participation);
 	Contestant(string textLine);
 
-private: 
-
-  Contestant(unsigned int id, string name, string address, unsigned int mobile, unsigned int dob, string specialty, std::vector<unsigned int> participation);
-private:
-
-    unsigned int id;
-    vector<participation*> participations;
+	//Operator overloading
+	bool operator<(Contestant & contestant1);
+	bool operator==(Contestant & contestant1);
 };
 
 #endif //_CONTESTANT_H

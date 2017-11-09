@@ -10,7 +10,7 @@ private:
     vector<unsigned int> participation;
 public:
 	Judge() {}
-	Judge(unsigned int id, string name, string address, unsigned int mobile, unsigned int dob, string specialty, std::vector<unsigned int> participation);
+	Judge(unsigned int id, string name, string address, unsigned int mobile, Time dob, string specialty, vector<unsigned int> participation);
 	//Get Methods
 	unsigned int getId() const;
 	vector<unsigned int> getParticipation() const;

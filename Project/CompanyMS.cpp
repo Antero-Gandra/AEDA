@@ -11,12 +11,15 @@
 
  int main()
  {
+	 Company company;
+	 company.readContestantsFile("contestants");
  	 return 0;
  }
 
  void CompanyMS::run() {
 	 do
 	 {
+		 clearScreen();
 		 mainMenu(); //invokes the menu displayer
 	 } while (!std::cin.eof());
 

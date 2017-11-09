@@ -85,6 +85,8 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Project\contestants.dat" />
+    <None Include="contestants.dat">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -7,7 +7,7 @@
 vector<unsigned int> daysOfMonth= { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
 //Constructor
-Time::Time() { year = 0; month = 1; day = 1; hour = 0; minute = 0; }
+Time::Time() { year = 0; month = 0; day = 0; hour = 0; minute = 0; }
 Time::Time(unsigned int year, unsigned int month, unsigned int day, unsigned int hour, unsigned int minute) {
 	this->year = year;
 	this->month = month;
@@ -15,6 +15,7 @@ Time::Time(unsigned int year, unsigned int month, unsigned int day, unsigned int
 	this->hour = hour;
 	this->minute = minute;
 }
+
 //Get Methods
 unsigned int Time::getYear() const { return year; }
 unsigned int Time::getMonth() const { return month; }

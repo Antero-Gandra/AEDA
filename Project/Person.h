@@ -9,31 +9,32 @@
 #include <string>
 #include <vector>
 #include <stdlib.h>
+#include "Time.h"
 
 using namespace std;
 
 class Person {
-private: 
+protected: 
     string name;
     string address;
     unsigned int mobile;
-    unsigned int dob;
+    Time dob;
     string specialty;
 public:
 	//Constructor
 	Person() {};
-	Person(string name, string address, unsigned int mobile, unsigned int dob, string specialty);
+	Person(string name, string address, unsigned int mobile, Time dob, string specialty);
 	//Get Methods
     string getName() const;
 	string getAddress() const;
 	unsigned int getMobile() const;
-	unsigned int getDob() const;
+	Time getDob() const;
 	string getSpeciality() const;
 	//Set Methods
 	void setName(string name);
 	void setAddress(string address);
 	void setMobile(unsigned int mobile);
-	void setDob(unsigned int dob);
+	void setDob(Time dob);
 	void setSpeciality(string specialty);
 	//Other Methods
 	unsigned int mobileGenerator();

@@ -3,11 +3,12 @@
  */
 
 #include <sstream>
+#include <iostream>
 #include "Contestant.h"
 #include "Util.h"
 
 const std::streamsize max = std::numeric_limits<std::streamsize>::max();
-
+//Constructors
 Contestant::Contestant(string textLine) {
 	istringstream contestantLine;
 	contestantLine.str(textLine);
@@ -16,7 +17,11 @@ Contestant::Contestant(string textLine) {
 	string name;
 	string address;
 	unsigned int mobile;
-	unsigned int dob;
+	Time dob;
+	unsigned int year;
+	unsigned int month;
+	unsigned int day;
+
 	string specialty;
 	vector<participation*> participations;
 
@@ -25,37 +30,53 @@ Contestant::Contestant(string textLine) {
 	contestantLine.ignore(max, ';');
 
 	//get name
-	getline(fileDriver, name, ';');
-	testReadingFail(fileDriver);
-	eliminateSpaces(name);
+	getline(contestantLine, name, ';');
+	removeSpaces(name);
 
-	//get maxHours
-	fileDriver >> maxHours;
-	testReadingFail(fileDriver);
-	fileDriver.ignore(max, ';');
-	this->maxHours = Time(maxHours, 0);
+	//get mobile
+	contestantLine >> mobile;
+	contestantLine.ignore(max, ';');
 
-	//get maxWeekWorkingTime
-	fileDriver >> maxWeekWorkingTime;
-	testReadingFail(fileDriver);
-	fileDriver.ignore(max, ';');
-	this->maxWeekWorkingTime = Time(maxWeekWorkingTime, 0);
+	//get address
+	getline(contestantLine, address, ';');
+	removeSpaces(address);
 
-	//get minRestTime
-	fileDriver >> minRestTime;
-	testReadingFail(fileDriver);
-	this->minRestTime = Time(minRestTime, 0);
+	//get dob
+	contestantLine >> year;
+	contestantLine.ignore(max, '/');
+	contestantLine >> month;
+	contestantLine.ignore(max, '/');
+	contestantLine >> day;
+	contestantLine.ignore(max, ';');
+	dob.setYear(year);
+	dob.setMonth(month);
+	dob.setDay(day);
 
-	//new shifts
-	shifts = { {},{},{},{},{},{},{} };
+	//get specialty
+	getline(contestantLine, specialty, ';');
 
-	//set week working time
-	weekWorkingTime = Time(maxWeekWorkingTime, 0);
+	//set attributes
+	this->id = id;
+	this->name = name;
+	this->mobile = mobile;
+	this->address = address;
+	this->dob = dob;
+	this->specialty = specialty;
+	this->participations = participations;
+
 }
-/**
- * Contestant implementationsssss
- */
 
-Contestant::Contestant(unsigned int id, string name, string address, unsigned int mobile, unsigned int dob, string specialty, std::vector<unsigned int> participation): Person(name, address, mobile, dob, specialty), id(id), participation(participation) {
-
+Contestant::Contestant(unsigned int id, string name, string address, unsigned int mobile, Time dob, string specialty, std::vector<unsigned int> participation): Person(name, address, mobile, dob, specialty) {
+	this->id = id;
+	this->participations = participations;
 }
+
+
+//Operator overloading
+bool Contestant::operator<(Contestant & contestant1) {
+	return (id < contestant1.id);
+}
+bool Contestant::operator==(Contestant & contestant1) {
+	return 0;
+}
+
