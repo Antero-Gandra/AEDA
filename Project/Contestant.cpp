@@ -4,8 +4,10 @@
 
 #include <sstream>
 #include "Contestant.h"
+#include "Util.h"
 
-<<<<<<< HEAD
+const std::streamsize max = std::numeric_limits<std::streamsize>::max();
+
 Contestant::Contestant(string textLine) {
 	istringstream contestantLine;
 	contestantLine.str(textLine);
@@ -20,10 +22,10 @@ Contestant::Contestant(string textLine) {
 
 	//get id
 	contestantLine >> id;
-	fileDriver.ignore(max, ';');
+	contestantLine.ignore(max, ';');
 
 	//get name
-	std::getline(fileDriver, name, ';');
+	getline(fileDriver, name, ';');
 	testReadingFail(fileDriver);
 	eliminateSpaces(name);
 
@@ -49,12 +51,11 @@ Contestant::Contestant(string textLine) {
 
 	//set week working time
 	weekWorkingTime = Time(maxWeekWorkingTime, 0);
-=======
+}
 /**
  * Contestant implementationsssss
  */
 
 Contestant::Contestant(unsigned int id, string name, string address, unsigned int mobile, unsigned int dob, string specialty, std::vector<unsigned int> participation): Person(name, address, mobile, dob, specialty), id(id), participation(participation) {
 
->>>>>>> 3350bd0d819b65cdbdb07909f1906bb354411f48
 }

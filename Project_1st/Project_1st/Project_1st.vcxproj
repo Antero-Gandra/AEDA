@@ -121,6 +121,7 @@
     <ClCompile Include="..\..\Project\Person.cpp" />
     <ClCompile Include="..\..\Project\SecondFase.cpp" />
     <ClCompile Include="..\..\Project\Time.cpp" />
+    <ClCompile Include="..\..\Project\Util.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Project\Audition.h" />
@@ -133,6 +134,7 @@
     <ClInclude Include="..\..\Project\Person.h" />
     <ClInclude Include="..\..\Project\SecondFase.h" />
     <ClInclude Include="..\..\Project\Time.h" />
+    <ClInclude Include="..\..\Project\Util.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Project\contestants.dat" />
