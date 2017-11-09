@@ -1,10 +1,6 @@
 #include "Judge.h"
 
 
-Judge::Judge(unsigned int id, vector<unsigned int> participation) : Person() {
-	this->id = id;
-	this->participation = participation;
-}
 Judge::Judge(unsigned int id, string name, string address, unsigned int mobile, unsigned int dob, string specialty, std::vector<unsigned int> participation): Person(name, address, mobile, dob, specialty), id(id), participation(participation) {}
 
 

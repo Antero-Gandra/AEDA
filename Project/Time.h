@@ -6,6 +6,9 @@
 #ifndef _TIME_H
 #define _TIME_H
 
+#include <vector>
+using namespace std;
+
 class Time {
 	unsigned int year;
 	unsigned int month;

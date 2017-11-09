@@ -23,8 +23,6 @@ public:
 	CompanyMS(Company &company);
 private:
 	Company company;
-	void mainMenu();
-
 };
 
-#endif //_COMPANYMS_H#endif //_COMPANYMS_H
+#endif //_COMPANYMS_H

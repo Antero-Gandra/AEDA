@@ -17,9 +17,6 @@
  void CompanyMS::run() {
 	 do
 	 {
-		 system("CLS");
-		 mainMenu(); //invokes the menu displayer 
-	 } while (!std::cin.eof()); 
 		 mainMenu(); //invokes the menu displayer
 	 } while (!std::cin.eof());
 
@@ -28,11 +25,7 @@
 	 this->company = company;
  }
  void CompanyMS::mainMenu() {
-	 std::cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
 
-	 std::cout << "1. CONTESTANT" << std::endl;
-	 std::cout << "2. JUDGE" << std::endl;
-	 std::cout << "3. AUDITION" << std::endl;
    unsigned int op;
 
 	 cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
