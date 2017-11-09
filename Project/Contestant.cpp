@@ -5,6 +5,7 @@
 #include <sstream>
 #include "Contestant.h"
 
+<<<<<<< HEAD
 Contestant::Contestant(string textLine) {
 	istringstream contestantLine;
 	contestantLine.str(textLine);
@@ -48,4 +49,12 @@ Contestant::Contestant(string textLine) {
 
 	//set week working time
 	weekWorkingTime = Time(maxWeekWorkingTime, 0);
+=======
+/**
+ * Contestant implementationsssss
+ */
+
+Contestant::Contestant(unsigned int id, string name, string address, unsigned int mobile, unsigned int dob, string specialty, std::vector<unsigned int> participation): Person(name, address, mobile, dob, specialty), id(id), participation(participation) {
+
+>>>>>>> 3350bd0d819b65cdbdb07909f1906bb354411f48
 }
