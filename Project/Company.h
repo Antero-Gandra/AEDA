@@ -15,16 +15,18 @@ class Company {
 
 public:
 	/* ------------------------------------ CONTESTANT -----------------------------------*/
-	bool addContestant(Contestant * contestant);
+	void addContestant(Contestant * contestant);
+	void removeContestant(Contestant * contestant);
 	bool readContestantsFile(string fileName);
-	void writeContestantsFile(string fileName);
+	bool writeContestantsFile(string fileName);
 	bool readContestantsToEnrollFile(string fileName);
 	bool writeContestantsToEnrollFile(string fileName);
 
 	/* -------------------------------------- JUDGE --------------------------------------*/
-	bool addJudge(Judge * judge);
+	void addJudge(Judge * judge);
+	void removeJudge(Judge * judge);
 	bool readJudgesFile(string fileName);
-	void writeJudgesFile(string fileName);
+	bool writeJudgesFile(string fileName);
 };
 
 template <class Comparable>

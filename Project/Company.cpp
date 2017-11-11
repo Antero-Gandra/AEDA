@@ -6,7 +6,7 @@
 #include "ExceptionHand.h"
 
 /* ------------------------------------ CONTESTANT -----------------------------------*/
-bool Company::addContestant(Contestant * contestant) {
+void Company::addContestant(Contestant * contestant) {
 	for (unsigned int i = 0; i < contestants.size(); i++)
 	{
 	if (*contestants[i] == *contestant)
@@ -15,8 +15,13 @@ bool Company::addContestant(Contestant * contestant) {
 
 	contestants.push_back(contestant);
 	sort(contestants.begin(), contestants.end(), comparePointedValues<Contestant>);
-
-	return true;
+}
+void Company::removeContestant(Contestant * contestant) {
+	for (auto it = contestants.begin(); it < contestants.end(); it++)
+	{
+		if ((*it)->getId() == contestant->getId())
+			contestants.erase(it);
+	}
 }
 bool Company::readContestantsFile(string fileName) {
 	ifstream contestantsFile(fileName + ".dat");
@@ -39,7 +44,7 @@ bool Company::readContestantsFile(string fileName) {
 	contestantsFile.close();
 	return true;
 }
-void Company::writeContestantsFile(string fileName) {
+bool Company::writeContestantsFile(string fileName) {
 	ofstream contestantsFile(fileName + ".dat");
 	unsigned int i = 0;
 	for (; i < contestants.size() - 1; i++) {
@@ -48,10 +53,12 @@ void Company::writeContestantsFile(string fileName) {
 	contestantsFile << contestants[i];
 
 	contestantsFile.close();
+
+	return true;
 }
 
 /* --------------------------------------- JUDGE --------------------------------------*/
-bool Company::addJudge(Judge * judge) {
+void Company::addJudge(Judge * judge) {
 	for (unsigned int i = 0; i < judges.size(); i++)
 	{
 		if (*judges[i] == *judge)
@@ -61,7 +68,13 @@ bool Company::addJudge(Judge * judge) {
 	judges.push_back(judge);
 	sort(judges.begin(), judges.end(), comparePointedValues<Judge>);
 
-	return true;
+}
+void Company::removeJudge(Judge * judge) {
+	for (auto it = judges.begin(); it < judges.end(); it++)
+	{
+		if ((*it)->getId() == judge->getId())
+			judges.erase(it);
+	}
 }
 bool Company::readJudgesFile(string fileName) {
 	ifstream judgesFile(fileName + ".dat");
@@ -84,7 +97,7 @@ bool Company::readJudgesFile(string fileName) {
 	judgesFile.close();
 	return true;
 }
-void Company::writeJudgesFile(string fileName) {
+bool Company::writeJudgesFile(string fileName) {
 	ofstream judgesFile(fileName + ".dat");
 	unsigned int i = 0;
 	for (; i < judges.size() - 1; i++) {
@@ -93,4 +106,5 @@ void Company::writeJudgesFile(string fileName) {
 	judgesFile << judges[i];
 
 	judgesFile.close();
+	return true;
 }
