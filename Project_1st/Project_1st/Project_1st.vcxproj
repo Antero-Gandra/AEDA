@@ -115,6 +115,7 @@
     <ClCompile Include="..\..\Project\Company.cpp" />
     <ClCompile Include="..\..\Project\CompanyMS.cpp" />
     <ClCompile Include="..\..\Project\Contestant.cpp" />
+    <ClCompile Include="..\..\Project\ExceptionHand.cpp" />
     <ClCompile Include="..\..\Project\Fase.cpp" />
     <ClCompile Include="..\..\Project\FirstFase.cpp" />
     <ClCompile Include="..\..\Project\Judge.cpp" />
@@ -128,6 +129,7 @@
     <ClInclude Include="..\..\Project\Company.h" />
     <ClInclude Include="..\..\Project\CompanyMS.h" />
     <ClInclude Include="..\..\Project\Contestant.h" />
+    <ClInclude Include="..\..\Project\ExceptionHand.h" />
     <ClInclude Include="..\..\Project\Fase.h" />
     <ClInclude Include="..\..\Project\FirstFase.h" />
     <ClInclude Include="..\..\Project\Judge.h" />

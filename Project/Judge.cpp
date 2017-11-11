@@ -70,12 +70,12 @@ Judge::Judge(string textline) {
 
 //Set Methods
 unsigned int Judge::getId() const {return id;}
-vector<unsigned int> Judge::getParticipation() const { return participations; }
+vector<unsigned int> Judge::getParticipations() const { return participations; }
 
 
 //Get Methods
 void Judge::setId(unsigned int id){this->id=id;}
-void Judge::setParticipation(vector<unsigned int> participations) { this->participations = participations;};
+void Judge::setParticipations(vector<unsigned int> participations) { this->participations = participations;};
 
 //Operator Overloading
 bool Judge::operator<(const Judge & judge1) const  {

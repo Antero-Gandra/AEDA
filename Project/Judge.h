@@ -14,10 +14,10 @@ public:
 	Judge(string textline);
 	//Get Methods
 	unsigned int getId() const;
-	vector<unsigned int> getParticipation() const;
+	vector<unsigned int> getParticipations() const;
 	//Set Methods
 	void setId(unsigned int id);
-	void setParticipation(vector<unsigned int> participation);
+	void setParticipations(vector<unsigned int> participation);
 
 	//Operator overloading
 	bool operator<(const Judge & judge1) const ;

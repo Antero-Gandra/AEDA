@@ -25,7 +25,12 @@ public:
 	//Constructors
 	Contestant(unsigned int id, string name, string address, unsigned int mobile, Time dob, string specialty, std::vector<unsigned int> participation);
 	Contestant(string textLine);
-
+	//Get Methods
+	unsigned int getId() const;
+	vector<participation*> getParticipations() const;
+	//Set Methods
+	void setId(unsigned int id);
+	void setParticipations(vector<participation*> participation);
 	//Operator overloading
 	bool operator<(const Contestant & contestant1) const;
 	bool operator==(const Contestant & contestant1) const;

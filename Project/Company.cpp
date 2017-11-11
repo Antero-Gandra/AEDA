@@ -1,20 +1,21 @@
 #include <fstream>
+#include <algorithm>
 #include "Company.h"
 #include "Contestant.h"
 #include "Judge.h"
-
+#include "ExceptionHand.h"
 
 /* ------------------------------------ CONTESTANT -----------------------------------*/
 bool Company::addContestant(Contestant * contestant) {
-	for (auto it = contestants.begin(); it < contestants.end(); it++)
+	for (unsigned int i = 0; i < contestants.size(); i++)
 	{
-		if (*(*it) == *contestant) return false;
-		if (!(*(*it) < *contestant)) {
-			contestants.insert(it, contestant);
-			return true;
-		}
+	if (*contestants[i] == *contestant)
+		throw RepeatedContestant(contestant->getId()); 
 	}
+
 	contestants.push_back(contestant);
+	sort(contestants.begin(), contestants.end(), comparePointedValues<Contestant>);
+
 	return true;
 }
 bool Company::readContestantsFile(string fileName) {
@@ -51,17 +52,16 @@ void Company::writeContestantsFile(string fileName) {
 
 /* --------------------------------------- JUDGE --------------------------------------*/
 bool Company::addJudge(Judge * judge) {
-	for (auto it = judges.begin(); it < judges.end(); it++)
+	for (unsigned int i = 0; i < judges.size(); i++)
 	{
-		if (*(*it) == *judge) return false;
-		if (!(*(*it) < *judge)) {
-			judges.insert(it, judge);
-			return true;
-		}
+		if (*judges[i] == *judge)
+			throw RepeatedJudge(judge->getId());
 	}
-	judges.push_back(judge);
-	return true;
 
+	judges.push_back(judge);
+	sort(judges.begin(), judges.end(), comparePointedValues<Judge>);
+
+	return true;
 }
 bool Company::readJudgesFile(string fileName) {
 	ifstream judgesFile(fileName + ".dat");

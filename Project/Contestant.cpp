@@ -72,7 +72,12 @@ Contestant::Contestant(unsigned int id, string name, string address, unsigned in
 	this->id = id;
 	this->participations = participations;
 }
-
+//Set Methods
+unsigned int Contestant::getId() const { return id; }
+vector<participation*> Contestant::getParticipations() const { return participations; }
+//Get Methods
+void Contestant::setId(unsigned int id) { this->id = id; }
+void Contestant::setParticipations(vector<participation*> participations) { this->participations = participations; };
 
 //Operator overloading
 bool Contestant::operator<(const Contestant & contestant1) const {

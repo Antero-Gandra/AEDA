@@ -84,7 +84,7 @@ bool Time::operator<(const Time & time1) const
 	else return true;
 }
 ostream& operator<<(ostream& os, const Time& time) {
-	os << time.date << "   " << time.time();
+	os << time.date() << "   " << time.time();
 	return os;
 }
 //Other Methods
