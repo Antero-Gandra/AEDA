@@ -8,6 +8,7 @@
 #include "Util.h"
 
 const std::streamsize max = std::numeric_limits<std::streamsize>::max();
+
 //Constructors
 Contestant::Contestant(string textLine) {
 	istringstream contestantLine;
@@ -55,6 +56,8 @@ Contestant::Contestant(string textLine) {
 	//get specialty
 	getline(contestantLine, specialty, ';');
 
+	//get participations
+
 	//set attributes
 	this->id = id;
 	this->name = name;
@@ -65,7 +68,6 @@ Contestant::Contestant(string textLine) {
 	this->participations = participations;
 
 }
-
 Contestant::Contestant(unsigned int id, string name, string address, unsigned int mobile, Time dob, string specialty, std::vector<unsigned int> participation): Person(name, address, mobile, dob, specialty) {
 	this->id = id;
 	this->participations = participations;
@@ -73,10 +75,27 @@ Contestant::Contestant(unsigned int id, string name, string address, unsigned in
 
 
 //Operator overloading
-bool Contestant::operator<(Contestant & contestant1) {
+bool Contestant::operator<(const Contestant & contestant1) const {
 	return (id < contestant1.id);
 }
-bool Contestant::operator==(Contestant & contestant1) {
-	return 0;
+
+//A contestant is "equal" to another if they share the same properties (except id, of course)
+bool Contestant::operator==(const Contestant & contestant1) const {
+	return (name == contestant1.name &&
+		address == contestant1.address &&
+		mobile == contestant1.mobile &&
+		dob == contestant1.dob &&
+		specialty == contestant1.specialty &&
+		participations == contestant1.participations);
+
+
 }
+ostream& operator<<(ostream& os, const Contestant& contestant) {
+	os << contestant.id << " ; " << contestant.name << " ; " << contestant.mobile << " ; " << contestant.address << " ; " << contestant.dob.date() << " ; " << contestant.specialty << " ; ";
+	//print participations lacking
+	os << " ; ";
+	return os;
+}
+
+
 

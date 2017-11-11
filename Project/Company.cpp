@@ -4,7 +4,7 @@
 #include "Judge.h"
 
 
- /* ------------------------------------ CONTESTANT -----------------------------------*/
+/* ------------------------------------ CONTESTANT -----------------------------------*/
 bool Company::addContestant(Contestant * contestant) {
 	for (auto it = contestants.begin(); it < contestants.end(); it++)
 	{
@@ -38,6 +38,16 @@ bool Company::readContestantsFile(string fileName) {
 	contestantsFile.close();
 	return true;
 }
+void Company::writeContestantsFile(string fileName) {
+	ofstream contestantsFile(fileName + ".dat");
+	unsigned int i = 0;
+	for (; i < contestants.size() - 1; i++) {
+		contestantsFile << contestants[i] << "\n";
+	}
+	contestantsFile << contestants[i];
+
+	contestantsFile.close();
+}
 
 /* --------------------------------------- JUDGE --------------------------------------*/
 bool Company::addJudge(Judge * judge) {
@@ -68,9 +78,19 @@ bool Company::readJudgesFile(string fileName) {
 	{
 		getline(judgesFile, textLine);
 		Judge * judge = new Judge(textLine);
-		addContestant(judge);
+		addJudge(judge);
 	}
 
 	judgesFile.close();
 	return true;
+}
+void Company::writeJudgesFile(string fileName) {
+	ofstream judgesFile(fileName + ".dat");
+	unsigned int i = 0;
+	for (; i < judges.size() - 1; i++) {
+		judgesFile << judges[i] << "\n";
+	}
+	judgesFile << judges[i];
+
+	judgesFile.close();
 }

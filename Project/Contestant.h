@@ -27,8 +27,9 @@ public:
 	Contestant(string textLine);
 
 	//Operator overloading
-	bool operator<(Contestant & contestant1);
-	bool operator==(Contestant & contestant1);
+	bool operator<(const Contestant & contestant1) const;
+	bool operator==(const Contestant & contestant1) const;
+	friend ostream& operator<<(ostream& os, const Contestant & contestant);
 };
 
 #endif //_CONTESTANT_H

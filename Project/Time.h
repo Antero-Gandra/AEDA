@@ -32,11 +32,14 @@ public:
 	void setHour(unsigned int hour);
 	void setMinute(unsigned int minute);
 	//Operator Overloading
-	Time & operator+(Time & time1);
-	bool operator==(Time & time1);
-	bool operator<(Time & time1);
+	Time & operator+(const Time & time1);
+	bool operator==(const Time & time1) const;
+	bool operator<(const Time & time1) const;
+	friend ostream& operator<<(ostream& os, const Time& time);
 	//Other Methods
 	bool isValidDate();
+	string& Time::date() const;
+	string& Time::time() const;
 };
 
 #endif //_TIME_H

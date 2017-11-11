@@ -1,3 +1,4 @@
+#include <sstream>
 #include "Time.h"
 
 /**
@@ -30,7 +31,7 @@ void Time::setHour(unsigned int hour) { this->hour = hour; }
 void Time::setMinute(unsigned int minute) { this->minute = minute; }
 
 //Operator Overloading
-Time & Time::operator+(Time & time1)
+Time & Time::operator+(const Time & time1)
 {
 	unsigned int minutes, hours, days, months, years;
 	//Setting the minutes
@@ -61,11 +62,11 @@ Time & Time::operator+(Time & time1)
 	year = years;
 	return *this;
 }
-bool Time::operator==(Time & time1)
+bool Time::operator==(const Time & time1) const
 {
 	return (minute == time1.minute && hour == time1.hour && day == time1.day && month == time1.month && year == time1.year);
 }
-bool Time::operator<(Time & time1)
+bool Time::operator<(const Time & time1) const
 {
 	if (year > time1.year) return false;
 	else if (year < time1.year) return true;
@@ -82,9 +83,23 @@ bool Time::operator<(Time & time1)
 	else if (minute >= time1.hour) return false;
 	else return true;
 }
+ostream& operator<<(ostream& os, const Time& time) {
+	os << time.date << "   " << time.time();
+	return os;
+}
 //Other Methods
 bool Time::isValidDate() {
 	if (month >= 1 && month <= 12) //so that we can search the maximum days of that month without range problems
 		return (minute <= 59 && hour <= 23 && day >= 1 && day <= daysOfMonth[month - 1]);
 	else return false;
+}
+string& Time::date() const {
+	ostringstream date;
+	date << year << '/' << month << '/' << day;
+	return date.str();
+}
+string& Time::time() const {
+	ostringstream time;
+	time << hour << ':' << minute;
+	return time.str();
 }

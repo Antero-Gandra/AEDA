@@ -16,10 +16,12 @@ public:
 	/* ------------------------------------ CONTESTANT -----------------------------------*/
 	bool addContestant(Contestant * contestant);
 	bool readContestantsFile(string fileName);
+	void writeContestantsFile(string fileName);
 
 	/* -------------------------------------- JUDGE --------------------------------------*/
 	bool addJudge(Judge * judge);
 	bool readJudgesFile(string fileName);
+	void writeJudgesFile(string fileName);
 };
 
 

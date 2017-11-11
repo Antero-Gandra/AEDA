@@ -3,20 +3,26 @@
 
 #include "Person.h"
 
-
 class Judge: public Person {
 private:
     unsigned int id;
-    vector<unsigned int> participation;
+    vector<unsigned int> participations;
 public:
+	//Constructors
 	Judge() {}
 	Judge(unsigned int id, string name, string address, unsigned int mobile, Time dob, string specialty, vector<unsigned int> participation);
+	Judge(string textline);
 	//Get Methods
 	unsigned int getId() const;
 	vector<unsigned int> getParticipation() const;
 	//Set Methods
 	void setId(unsigned int id);
 	void setParticipation(vector<unsigned int> participation);
+
+	//Operator overloading
+	bool operator<(const Judge & judge1) const ;
+	bool operator==(const Judge & judge1) const;
+	friend ostream& operator<<(ostream& os, const Judge& person);
 };
 
 #endif //_JUDGE_H
