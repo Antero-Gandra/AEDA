@@ -12,22 +12,23 @@
 #include "SecondFase.h"
 #include <string>
 #include <vector>
+#include <string>
 
 using namespace std;
 
 class Audition {
 private: 
     unsigned int id;
-    Time date;
+    Time start;
+	Time end;
     string specialty;
-	vector<Judge *> evaluators;
-	Judge * leader;
-	FirstFase * f1;
-	SecondFase * f2;
+	vector<unsigned int> evaluatorsId;
+	unsigned int leaderId;
+	FirstFase* f1;
+	SecondFase* f2;
 public:
-	Audition(string specialty);
-	Audition(unsigned int id, Time date, string specialty, vector<Judge *> evaluators, Judge * leader);
-
+	Audition(unsigned int id, Time start, Time end, string specialty, vector<unsigned int> evaluators, unsigned int leader);
+	Audition(string textline);
 };
 
 #endif //_AUDITION_H
