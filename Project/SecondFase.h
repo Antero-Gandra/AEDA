@@ -12,7 +12,7 @@
 class SecondFase: public Fase { 
 public:
 	SecondFase() {}
-	SecondFase(unsigned int auditionId, unsigned int grade, vector<unsigned int> ev1, vector<unsigned int> ev2, vector<unsigned int> ld);
+	SecondFase(unsigned int auditionId, vector<unsigned int> final_grade, vector<unsigned int> ev1, vector<unsigned int> ev2, vector<unsigned int> ld);
 };
 
 #endif //_SECONDFASE_H

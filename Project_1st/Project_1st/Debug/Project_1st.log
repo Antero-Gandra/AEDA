@@ -1,7 +1,7 @@
-﻿  SecondFase.cpp
-  Audition.cpp
-c:\users\margarida silva\documents\github\aeda\project\audition.cpp(37): warning C4101: 'ev2': unreferenced local variable
-c:\users\margarida silva\documents\github\aeda\project\audition.cpp(37): warning C4101: 'ld': unreferenced local variable
+﻿  FirstFase.cpp
   Generating Code...
+  Skipping... (no relevant changes detected)
+  SecondFase.cpp
+  Audition.cpp
   Project_1st.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\Project_1st\Debug\Project_1st.exe
   Project_1st.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\Project_1st\Debug\Project_1st.pdb (Partial PDB)

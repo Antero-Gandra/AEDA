@@ -34,10 +34,9 @@ Audition::Audition(string textline) {
 	unsigned int day;
 	unsigned int hour;
 	unsigned int minute;
-	unsigned int ev1, ev2, ld;
-	vector<unsigned int> evs1, evs2, lds2;
-	string s1, s2, s3;
-	string grade;
+	vector<unsigned int> ids;
+	string fase1;
+	string fase2;
 	string specialty;
 
 	//get id
@@ -74,18 +73,30 @@ Audition::Audition(string textline) {
 	getline(auditionLine, specialty, '|');
 	removeSpaces(specialty);
 
-	//get evaluator 1 grades
-	getline(auditionLine, s1, '|');
-	istringstream grades1(s1);
-	getline(grades1, grade, ',');
-	removeSpaces(grade);
+	//get evaluator1 id
+	auditionLine >> id;
+	ids.push_back(id);
 
-	while (grade != "")
-	{
-		ev1 = stoi(grade);
-		evs1.push_back(ev1);
-		getline(grades1, grade, ',');
-		removeSpaces(grade);
-	}
+	//get evaluator2 id
+	auditionLine >> id;
+	ids.push_back(id);
+	auditionLine.ignore(max, '|');
 
+	//get leader id
+	auditionLine >> id;
+	auditionLine.ignore(max, '|');
+
+	//get Fase1
+	getline(auditionLine, fase1, '|');
+
+	//get Fase2;
+	getline(auditionLine, fase2, '|');
+
+	//setting the attributes
+	this->id = id;
+	this->start = start;
+	this->end = end;
+	this->specialty = specialty;
+	this->evaluatorsId = ids;
+	this->leaderId = id;
 }

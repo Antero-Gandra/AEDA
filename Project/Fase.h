@@ -9,14 +9,14 @@
 
 class Fase {
 	unsigned int auditionId;
-	unsigned int mark;
+	vector<unsigned int> final_grade;
 	vector<unsigned int> ev1;
 	vector<unsigned int> ev2;
 	vector <unsigned int> ld;
-	vector<Contestant*> contestants;
+	vector<unsigned int> contestants;
 public:
 	Fase() {}
-	Fase(unsigned int auditionId, unsigned int mark, vector<unsigned int> ev1, vector<unsigned int> ev2, vector<unsigned int> ld);
+	Fase(unsigned int auditionId, vector<unsigned int> final_grade, vector<unsigned int> ev1, vector<unsigned int> ev2, vector<unsigned int> ld);
 	//Get Mehods
 	unsigned int getAuditionId() const;
 	//Set Methods
