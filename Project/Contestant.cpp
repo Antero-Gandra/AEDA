@@ -22,9 +22,12 @@ Contestant::Contestant(string textLine) {
 	unsigned int year;
 	unsigned int month;
 	unsigned int day;
-
-	string specialty;
+	string prtcpations;
+	string prtcpation;
 	vector<participation*> participations;
+	unsigned int auditionId;
+	unsigned int place;
+	unsigned int leaderGrade;
 
 	//get id
 	contestantLine >> id;
@@ -58,6 +61,28 @@ Contestant::Contestant(string textLine) {
 	removeSpaces(specialty);
 
 	//get participations
+	getline(contestantLine, prtcpations, ';');
+	removeSpaces(prtcpations);
+
+	istringstream participationsLine;
+	participationsLine.str(prtcpations);
+
+	//Reading each participation
+	getline(participationsLine, prtcpation, '.');
+	istringstream participationLine(prtcpation);
+	while (prtcpation != "")
+	{
+		participationLine >> auditionId;
+		participationLine.ignore(max, ',');
+		participationLine >> place;
+		participationLine.ignore(max, ',');
+		participationLine >> leaderGrade;
+
+		participation * p = new participation(auditionId, place, leaderGrade);
+
+		getline(participationsLine, prtcpation, '.');
+		istringstream participationLine(prtcpation);
+	}
 
 	//set attributes
 	this->id = id;
@@ -110,6 +135,12 @@ void Contestant::show() const {
 	cout << "-> Adress: " << address << endl;
 	cout << "-> Specialty: " << specialty << endl;
 	cout << "-> Participations: " << endl;
+
+	for (size_t i = 0; i < participations.size(); i++)
+	{cout << "    Audition No. " << participations[i]->auditionId << endl;
+	cout << "    ::Place: " << participations[i]->place << endl;
+	cout << "    ::Leader judges's grade: " << participations[i]->leaderGrade << endl;
+	}
 }
 
 

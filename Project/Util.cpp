@@ -10,15 +10,18 @@ void removeSpaces(std::string &string)
 			i = i - 1;
 		}
 	}
+	if (string.length() >= 1) {
 
-	if (string.at(0) == ' ')
-	{
-		string.erase(0, 1);
+		if (string.at(0) == ' ')
+		{
+			string.erase(0, 1);
+		}
 	}
+	if (string.length() >= 1) {
 
-	if ((string.at(string.length() - 1)) == ' ')
-	{
-		string.erase(string.length() - 1, 1);
+		if ((string.at(string.length() - 1)) == ' ')
+		{
+			string.erase(string.length() - 1, 1);
+		}
 	}
-
 }

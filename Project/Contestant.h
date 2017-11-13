@@ -14,6 +14,11 @@ struct participation {
 	unsigned int auditionId;
 	unsigned int place;
 	unsigned int leaderGrade;
+	participation(unsigned int auditionId, unsigned int place, unsigned int leaderGrade) {
+		this->auditionId = auditionId;
+		this->place = place;
+		this->leaderGrade = leaderGrade;
+	}
 };
 
 class Contestant : public Person {

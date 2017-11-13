@@ -23,9 +23,8 @@ CompanyMS::CompanyMS(Company &company) {
 }
 
 void CompanyMS::run() {
-	company.readJudgesFile("judges");
-	company.showJudges();
-
+	company.readContestantsFile("contestants");
+	company.showContestants();
 	do
 	{
 		clearScreen();
@@ -76,7 +75,6 @@ void CompanyMS::contestantMenu() {
 
 }
 
-
 void CompanyMS::judgeMenu() {
 
 	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
@@ -87,7 +85,6 @@ void CompanyMS::judgeMenu() {
 	cout << "3. Fire a judge" << endl;
 	cout << "4. Print current list of judges" << endl;
 }
-
 
 void CompanyMS::auditionMenu() {
 
