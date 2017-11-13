@@ -21,64 +21,77 @@ Judge::Judge(string textline) {
 	unsigned int year;
 	unsigned int month;
 	unsigned int day;
-
+	string prtcpations;
+	unsigned int auditionId;
+	string aud_id;
 	string specialty;
-	vector<unsigned int> participations;
+	vector<unsigned int> pt;
 
 	//get id
 	judgeLine >> id;
-	judgeLine.ignore(max, ';');
+judgeLine.ignore(max, ';');
 
-	//get name
-	getline(judgeLine, name, ';');
-	removeSpaces(name);
+//get name
+getline(judgeLine, name, ';');
+removeSpaces(name);
 
-	//get dob
-	judgeLine >> year;
-	judgeLine.ignore(max, '/');
-	judgeLine >> month;
-	judgeLine.ignore(max, '/');
-	judgeLine >> day;
-	judgeLine.ignore(max, ';');
-	dob.setYear(year);
-	dob.setMonth(month);
-	dob.setDay(day);
+//get dob
+judgeLine >> year;
+judgeLine.ignore(max, '/');
+judgeLine >> month;
+judgeLine.ignore(max, '/');
+judgeLine >> day;
+judgeLine.ignore(max, ';');
+dob.setYear(year);
+dob.setMonth(month);
+dob.setDay(day);
 
-	//get mobile
-	judgeLine >> mobile;
-	judgeLine.ignore(max, ';');
+//get mobile
+judgeLine >> mobile;
+judgeLine.ignore(max, ';');
 
-	//get address
-	getline(judgeLine, address, ';');
-	removeSpaces(address);
+//get address
+getline(judgeLine, address, ';');
+removeSpaces(address);
 
-	//get specialty
-	getline(judgeLine, specialty, ';');
+//get specialty
+getline(judgeLine, specialty, ';');
 
-	//get participations
+//get participations
+getline(judgeLine, prtcpations, ';');
+istringstream participationsLine(prtcpations);
+getline(participationsLine, aud_id, ',');
+removeSpaces(aud_id);
 
-	//set attributes
-	this->id = id;
-	this->name = name;
-	this->mobile = mobile;
-	this->address = address;
-	this->dob = dob;
-	this->specialty = specialty;
-	this->participations = participations;
+while (aud_id != "")
+{
+	auditionId = stoi(aud_id);
+	pt.push_back(auditionId);
+	getline(participationsLine, aud_id, ',');
+	removeSpaces(aud_id);
+}
+//set attributes
+this->id = id;
+this->name = name;
+this->mobile = mobile;
+this->address = address;
+this->dob = dob;
+this->specialty = specialty;
+this->participations = pt;
 
 }
 
 //Set Methods
-unsigned int Judge::getId() const {return id;}
+unsigned int Judge::getId() const { return id; }
 vector<unsigned int> Judge::getParticipations() const { return participations; }
 
 
 //Get Methods
-void Judge::setId(unsigned int id){this->id=id;}
-void Judge::setParticipations(vector<unsigned int> participations) { this->participations = participations;};
+void Judge::setId(unsigned int id) { this->id = id; }
+void Judge::setParticipations(vector<unsigned int> participations) { this->participations = participations; };
 
 //Operator Overloading
-bool Judge::operator<(const Judge & judge1) const  {
+bool Judge::operator<(const Judge & judge1) const {
 	return id < judge1.id;
 }
 //A judge is "equal" to another if they share the same properties (except id, of course)
@@ -95,9 +108,9 @@ ostream& operator<<(ostream& os, const Judge& judge) {
 	//print participations lacking
 	os << " ;";
 	return os;
-	os << judge.id << " ; " << judge.name << " ; " << judge.dob.date() << " ; " <<judge.mobile << " ; " << judge.address << " ; "  << judge.specialty << " ; ";
+	os << judge.id << " ; " << judge.name << " ; " << judge.dob.date() << " ; " << judge.mobile << " ; " << judge.address << " ; " << judge.specialty << " ; ";
 	unsigned int i = 0;
-	for (; i < judge.participations.size() -1; i++) {
+	for (; i < judge.participations.size() - 1; i++) {
 		os << judge.participations[i] << ", ";
 	}
 	os << judge.participations[i] << ";";
@@ -113,4 +126,15 @@ void Judge::show() {
 	cout << "-> Adress: " << address << endl;
 	cout << "-> Specialty: " << specialty << endl;
 	cout << "-> Participations: " << endl;
+
+	if (participations.size() == 0) {
+		cout << " NONE. "; return;
+	}
+	cout << "Auditions No. "; 
+	size_t i = 0;
+	for (; i < participations.size()-1; i++)
+	{
+		cout << participations[i] << ", ";
+	}
+	cout << participations[i] << ".";
 }

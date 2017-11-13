@@ -91,9 +91,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="contestants.dat">
-      <Filter>Source Files</Filter>
-    </None>
     <None Include="judges.dat">
       <Filter>Source Files</Filter>
     </None>

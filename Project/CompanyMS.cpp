@@ -25,12 +25,20 @@ CompanyMS::CompanyMS(Company &company) {
 void CompanyMS::run() {
 	company.readContestantsFile("contestants");
 	company.showContestants();
+	company.writeContestantsFile("contestants");
+	company.readJudgesFile("judges");
+	company.showJudges();
+	company.writeJudgesFile("judges");
+
+	int a;
+	cin >> a;
+	/*
 	do
 	{
 		clearScreen();
 		mainMenu(); //invokes the menu displayer
 	} while (!std::cin.eof());
-
+	*/
 }
 
 void CompanyMS::mainMenu() {

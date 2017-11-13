@@ -79,7 +79,7 @@ Contestant::Contestant(string textLine) {
 		participationLine >> leaderGrade;
 
 		participation * p = new participation(auditionId, place, leaderGrade);
-
+		participations.push_back(p);
 		getline(participationsLine, prtcpation, '.');
 		istringstream participationLine(prtcpation);
 	}
@@ -121,7 +121,14 @@ bool Contestant::operator==(const Contestant & contestant1) const {
 ostream& operator<<(ostream& os, const Contestant& contestant) {
 
 	os << contestant.id << " ; " << contestant.name << " ; " << contestant.dob.date() << " ; "  << contestant.mobile << " ; " << contestant.address << " ; "  << contestant.specialty << " ; ";
-	//print participations lacking
+	//print participations
+
+	for (size_t i = 0; i < contestant.participations.size(); i++)
+	{
+		os << contestant.participations[i]->auditionId << " , ";
+		os << contestant.participations[i]->place << " , ";
+		os << contestant.participations[i]->leaderGrade << ". ";
+	}
 	os << " ;";
 	return os;
 }
@@ -136,6 +143,7 @@ void Contestant::show() const {
 	cout << "-> Specialty: " << specialty << endl;
 	cout << "-> Participations: " << endl;
 
+	if (participations.size() == 0) cout << " NONE. ";
 	for (size_t i = 0; i < participations.size(); i++)
 	{cout << "    Audition No. " << participations[i]->auditionId << endl;
 	cout << "    ::Place: " << participations[i]->place << endl;

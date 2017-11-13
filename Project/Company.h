@@ -13,6 +13,7 @@ class Company {
 	vector<Judge *> judges;
 	static unsigned int lastContestantId;
 	static unsigned int lastJudgeId;
+	static unsigned int lastAuditionId;
 	
 public:
 	//getMethods

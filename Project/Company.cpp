@@ -9,6 +9,7 @@
 
 unsigned int Company::lastContestantId = 0;
 unsigned int Company::lastJudgeId = 0;
+unsigned int Company::lastAuditionId = 0;
 
 // getMethods
 vector<Contestant*> Company::getContestants() const {
@@ -124,9 +125,9 @@ bool Company::writeJudgesFile(string fileName) {
 	ofstream judgesFile(fileName + ".dat");
 	unsigned int i = 0;
 	for (; i < judges.size() - 1; i++) {
-		judgesFile << judges[i] << "\n";
+		judgesFile << *judges[i] << "\n";
 	}
-	judgesFile << judges[i];
+	judgesFile << *judges[i];
 
 	judgesFile.close();
 	return true;

@@ -2,12 +2,14 @@
 
 void removeSpaces(std::string &string)
 {
-	for (size_t i = 0; i < string.length() - 1; i++)
-	{
-		if ((string.at(i) == ' ') && (string.at(i + 1) == ' '))
+	if (string.length() > 0) {
+		for (size_t i = 0; i < string.length() - 1; i++)
 		{
-			string.erase(i, 1); //erases the current space if it's followed by another space
-			i = i - 1;
+			if ((string.at(i) == ' ') && (string.at(i + 1) == ' '))
+			{
+				string.erase(i, 1); //erases the current space if it's followed by another space
+				i = i - 1;
+			}
 		}
 	}
 	if (string.length() >= 1) {
