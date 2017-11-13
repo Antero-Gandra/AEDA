@@ -23,6 +23,9 @@ public:
 	bool operator<(const Judge & judge1) const ;
 	bool operator==(const Judge & judge1) const;
 	friend ostream& operator<<(ostream& os, const Judge& person);
+
+	//Other Methods
+	void show();
 };
 
 #endif //_JUDGE_H

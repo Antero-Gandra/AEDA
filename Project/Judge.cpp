@@ -33,14 +33,6 @@ Judge::Judge(string textline) {
 	getline(judgeLine, name, ';');
 	removeSpaces(name);
 
-	//get mobile
-	judgeLine >> mobile;
-	judgeLine.ignore(max, ';');
-
-	//get address
-	getline(judgeLine, address, ';');
-	removeSpaces(address);
-
 	//get dob
 	judgeLine >> year;
 	judgeLine.ignore(max, '/');
@@ -51,6 +43,14 @@ Judge::Judge(string textline) {
 	dob.setYear(year);
 	dob.setMonth(month);
 	dob.setDay(day);
+
+	//get mobile
+	judgeLine >> mobile;
+	judgeLine.ignore(max, ';');
+
+	//get address
+	getline(judgeLine, address, ';');
+	removeSpaces(address);
 
 	//get specialty
 	getline(judgeLine, specialty, ';');
@@ -102,4 +102,15 @@ ostream& operator<<(ostream& os, const Judge& judge) {
 	}
 	os << judge.participations[i] << ";";
 	return os;
+}
+
+//Other Methods
+void Judge::show() {
+	cout << "Judge No. " << id << endl;
+	cout << "-> Name: " << name << endl;
+	cout << "-> Date of Birth: " << dob.date() << endl;
+	cout << "-> Mobile: " << mobile << endl;
+	cout << "-> Adress: " << address << endl;
+	cout << "-> Specialty: " << specialty << endl;
+	cout << "-> Participations: " << endl;
 }

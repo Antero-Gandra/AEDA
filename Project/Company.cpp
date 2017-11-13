@@ -131,3 +131,11 @@ bool Company::writeJudgesFile(string fileName) {
 	judgesFile.close();
 	return true;
 }
+void Company::showJudges() {
+	unsigned int i = 0;
+	for (; i < judges.size() - 1; i++) {
+		judges[i]->show();
+		cout << endl;
+	}
+	judges[i]->show();
+}

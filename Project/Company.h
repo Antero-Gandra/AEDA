@@ -33,6 +33,7 @@ public:
 	void removeJudge(Judge * judge);
 	bool readJudgesFile(string fileName);
 	bool writeJudgesFile(string fileName);
+	void Company::showJudges();
 };
 
 template <class Comparable>

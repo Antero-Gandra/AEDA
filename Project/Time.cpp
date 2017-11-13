@@ -64,7 +64,11 @@ Time & Time::operator+(const Time & time1)
 }
 bool Time::operator==(const Time & time1) const
 {
-	return (minute == time1.minute && hour == time1.hour && day == time1.day && month == time1.month && year == time1.year);
+	return (minute == time1.minute
+		&& hour == time1.hour
+		&& day == time1.day
+		&& month == time1.month
+		&& year == time1.year);
 }
 bool Time::operator<(const Time & time1) const
 {

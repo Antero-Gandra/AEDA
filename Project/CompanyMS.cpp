@@ -23,8 +23,8 @@ CompanyMS::CompanyMS(Company &company) {
 }
 
 void CompanyMS::run() {
-	company.readContestantsFile("contestants");
-	company.showContestants();
+	company.readJudgesFile("judges");
+	company.showJudges();
 
 	do
 	{
