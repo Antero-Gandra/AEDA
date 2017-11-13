@@ -140,6 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="contestants.dat" />
+    <None Include="judges.dat" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

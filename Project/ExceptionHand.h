@@ -6,8 +6,12 @@ public:
 	unsigned int getId() const { return id; }
 };
 
-class NoJudgeFound {
+class ContestantIdNotFound {
 	unsigned int id;
+public:
+	ContestantIdNotFound(unsigned int id) { this->id = id; }
+	unsigned int getId() const { return id; }
+
 };
 
 class RepeatedJudge {
@@ -15,4 +19,12 @@ class RepeatedJudge {
 public:
 	RepeatedJudge(unsigned int id) { this->id = id; }
 	unsigned int getId() const { return id; }
+};
+
+class JudgeIdNotFound {
+	unsigned int id;
+public:
+	JudgeIdNotFound(unsigned int id) { this->id = id; }
+	unsigned int getId() const { return id; }
+
 };

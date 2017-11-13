@@ -31,6 +31,8 @@ public:
 	//Set Methods
 	void setId(unsigned int id);
 	void setParticipations(vector<participation*> participation);
+	//Other Methods
+	void show() const ;
 	//Operator overloading
 	bool operator<(const Contestant & contestant1) const;
 	bool operator==(const Contestant & contestant1) const;

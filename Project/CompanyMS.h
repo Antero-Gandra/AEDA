@@ -18,6 +18,8 @@ public:
 	void contestantMenu();
 	void judgeMenu();
 	void auditionMenu();
+
+	void showContestantsByIdMenu();
 	void clearScreen();
 	//Constructor
 	CompanyMS(Company &company);

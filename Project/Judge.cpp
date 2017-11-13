@@ -91,7 +91,11 @@ bool Judge::operator==(const Judge & judge1) const {
 		participations == judge1.participations);
 }
 ostream& operator<<(ostream& os, const Judge& judge) {
-	os << judge.id << " ; " << judge.name << " ; " << judge.mobile << " ; " << judge.address << " ; " << judge.dob.date() << " ; " << judge.specialty << " ; ";
+
+	//print participations lacking
+	os << " ;";
+	return os;
+	os << judge.id << " ; " << judge.name << " ; " << judge.dob.date() << " ; " <<judge.mobile << " ; " << judge.address << " ; "  << judge.specialty << " ; ";
 	unsigned int i = 0;
 	for (; i < judge.participations.size() -1; i++) {
 		os << judge.participations[i] << ", ";

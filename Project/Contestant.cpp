@@ -34,14 +34,6 @@ Contestant::Contestant(string textLine) {
 	getline(contestantLine, name, ';');
 	removeSpaces(name);
 
-	//get mobile
-	contestantLine >> mobile;
-	contestantLine.ignore(max, ';');
-
-	//get address
-	getline(contestantLine, address, ';');
-	removeSpaces(address);
-
 	//get dob
 	contestantLine >> year;
 	contestantLine.ignore(max, '/');
@@ -53,8 +45,17 @@ Contestant::Contestant(string textLine) {
 	dob.setMonth(month);
 	dob.setDay(day);
 
+	//get mobile
+	contestantLine >> mobile;
+	contestantLine.ignore(max, ';');
+
+	//get address
+	getline(contestantLine, address, ';');
+	removeSpaces(address);
+
 	//get specialty
 	getline(contestantLine, specialty, ';');
+	removeSpaces(specialty);
 
 	//get participations
 
@@ -83,7 +84,6 @@ void Contestant::setParticipations(vector<participation*> participations) { this
 bool Contestant::operator<(const Contestant & contestant1) const {
 	return (id < contestant1.id);
 }
-
 //A contestant is "equal" to another if they share the same properties (except id, of course)
 bool Contestant::operator==(const Contestant & contestant1) const {
 	return (name == contestant1.name &&
@@ -92,14 +92,24 @@ bool Contestant::operator==(const Contestant & contestant1) const {
 		dob == contestant1.dob &&
 		specialty == contestant1.specialty &&
 		participations == contestant1.participations);
-
-
 }
 ostream& operator<<(ostream& os, const Contestant& contestant) {
-	os << contestant.id << " ; " << contestant.name << " ; " << contestant.mobile << " ; " << contestant.address << " ; " << contestant.dob.date() << " ; " << contestant.specialty << " ; ";
+
+	os << contestant.id << " ; " << contestant.name << " ; " << contestant.dob.date() << " ; "  << contestant.mobile << " ; " << contestant.address << " ; "  << contestant.specialty << " ; ";
 	//print participations lacking
-	os << " ; ";
+	os << " ;";
 	return os;
+}
+
+//Other Methods
+void Contestant::show() const {
+	cout << "Contestant No. " << id << endl;
+	cout << "-> Name: " << name << endl;
+	cout << "-> Date of Birth: " << dob.date() << endl;
+	cout << "-> Mobile: " << mobile << endl;
+	cout << "-> Adress: " << address << endl;
+	cout << "-> Specialty: " << specialty << endl;
+	cout << "-> Participations: " << endl;
 }
 
 

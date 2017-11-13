@@ -93,12 +93,12 @@ bool Time::isValidDate() {
 		return (minute <= 59 && hour <= 23 && day >= 1 && day <= daysOfMonth[month - 1]);
 	else return false;
 }
-string& Time::date() const {
+string Time::date() const {
 	ostringstream date;
 	date << year << '/' << month << '/' << day;
 	return date.str();
 }
-string& Time::time() const {
+string Time::time() const {
 	ostringstream time;
 	time << hour << ':' << minute;
 	return time.str();

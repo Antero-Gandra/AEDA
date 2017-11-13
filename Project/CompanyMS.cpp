@@ -9,92 +9,105 @@
 #include <iostream>
 
 
- int main()
- {
-	 Company company;
-	 company.readContestantsFile("contestants");
- 	 return 0;
- }
+int main()
+{
+	Company company;
+	CompanyMS MS(company);
+	MS.run();
 
- void CompanyMS::run() {
-	 do
-	 {
-		 clearScreen();
-		 mainMenu(); //invokes the menu displayer
-	 } while (!std::cin.eof());
+	return 0;
+}
 
- }
- CompanyMS::CompanyMS(Company &company) {
-	 this->company = company;
- }
- void CompanyMS::mainMenu() {
+CompanyMS::CompanyMS(Company &company) {
+	this->company = company;
+}
 
-   unsigned int op;
+void CompanyMS::run() {
+	company.readContestantsFile("contestants");
+	company.showContestants();
 
-	 cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
+	do
+	{
+		clearScreen();
+		mainMenu(); //invokes the menu displayer
+	} while (!std::cin.eof());
 
-	 cout << "1. CONTESTANT" << endl;
-	 cout << "2. JUDGE" << endl;
-	 cout << "3. AUDITION" << endl;
-   cout << "0. EXIT" << endl;
+}
 
+void CompanyMS::mainMenu() {
 
+	unsigned int op;
 
- 	 while ( !(cin >> op) && op >3 && op <0) {
-       cout << "Option "<< op << "is not valid. Please try again." << endl;
-        cin >> op;
-        cin.clear();
-        cin.ignore( 1000, '\n' );
-    }
+	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
 
-   switch(op) {
-     case 1: CompanyMS::contestantMenu(); break;
-     case 2: CompanyMS::judgeMenu(); break;
-     case 3: CompanyMS::auditionMenu(); break;
-     case 0: exit(-1); break;
-     default: CompanyMS::mainMenu(); break;
-   }
- }
-
- void CompanyMS::contestantMenu() {
-
-   cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
-   cout << "\t\t::::::::: CONTESTANT ::::::::: \n";
-
-   cout << "1. Enroll a contestant" << endl;
-   cout << "2. Modify the info of a current contestant" << endl;
-   cout << "3. Kick a contestant out" << endl;
-   cout << "4. Print current list of contestants" << endl;
-
- }
+	cout << "1. CONTESTANT" << endl;
+	cout << "2. JUDGE" << endl;
+	cout << "3. AUDITION" << endl;
+	cout << "0. EXIT" << endl;
 
 
-  void CompanyMS::judgeMenu() {
+	clearScreen();
 
-      cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
-      cout << "\t\t::::::::: JUDGE ::::::::: \n";
+	while (!(cin >> op) && op > 3 && op < 0) {
+		cout << "Option " << op << "is not valid. Please try again." << endl;
+		cin >> op;
+		cin.clear();
+		cin.ignore(1000, '\n');
+	}
 
-      cout << "1. Employ a judge" << endl;
-      cout << "2. Modify the info of a current judge" << endl;
-      cout << "3. Fire a judge" << endl;
-      cout << "4. Print current list of judges" << endl;
-  }
+	switch (op) {
+	case 1: CompanyMS::contestantMenu(); break;
+	case 2: CompanyMS::judgeMenu(); break;
+	case 3: CompanyMS::auditionMenu(); break;
+	case 0: exit(-1); break;
+	default: CompanyMS::mainMenu(); break;
+	}
+}
+
+void CompanyMS::contestantMenu() {
+
+	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
+	cout << "\t\t::::::::: CONTESTANT ::::::::: \n";
+
+	cout << "1. Enroll a contestant" << endl;
+	cout << "2. Modify the info of a current contestant" << endl;
+	cout << "3. Kick a contestant out" << endl;
+	cout << "4. Print current list of contestants" << endl;
+
+}
 
 
-   void CompanyMS::auditionMenu() {
+void CompanyMS::judgeMenu() {
 
-       cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
-       cout << "\t\t::::::::: AUDITION ::::::::: \n";
+	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
+	cout << "\t\t::::::::: JUDGE ::::::::: \n";
 
-       cout << "1. Create a new specific audition" << endl;
-       cout << "2. Modify a current audition" << endl;
-       cout << "3. Disassemble an audition" << endl;
-       cout << "4. Print current list of auditions" << endl;
-   }
+	cout << "1. Employ a judge" << endl;
+	cout << "2. Modify the info of a current judge" << endl;
+	cout << "3. Fire a judge" << endl;
+	cout << "4. Print current list of judges" << endl;
+}
+
+
+void CompanyMS::auditionMenu() {
+
+	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
+	cout << "\t\t::::::::: AUDITION ::::::::: \n";
+
+	cout << "1. Create a new specific audition" << endl;
+	cout << "2. Modify a current audition" << endl;
+	cout << "3. Disassemble an audition" << endl;
+	cout << "4. Print current list of auditions" << endl;
+}
+
+void showContestantsByIdMenu() {
+
+}
+
 void CompanyMS::clearScreen() {
-     #ifdef _WIN32
-     system("cls");
-     #else
-     cout << string(40, '\n');
-     #endif
-   }
+#ifdef _WIN32
+	system("cls");
+#else
+	cout << string(40, '\n');
+#endif
+}

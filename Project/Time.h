@@ -38,8 +38,8 @@ public:
 	friend ostream& operator<<(ostream& os, const Time& time);
 	//Other Methods
 	bool isValidDate();
-	string& Time::date() const;
-	string& Time::time() const;
+	string Time::date() const;
+	string Time::time() const;
 };
 
 #endif //_TIME_H
