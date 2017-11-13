@@ -88,9 +88,11 @@ Audition::Audition(string textline) {
 
 	//get Fase1
 	getline(auditionLine, fase1, '|');
+	FirstFase firstFase(fase1);
 
 	//get Fase2;
 	getline(auditionLine, fase2, '|');
+	SecondFase secondFase(fase2);
 
 	//setting the attributes
 	this->id = id;

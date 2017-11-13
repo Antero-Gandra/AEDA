@@ -14,6 +14,8 @@ class Company {
 	static unsigned int lastContestantId;
 	static unsigned int lastJudgeId;
 	static unsigned int lastAuditionId;
+	const Time startOfFunctions = Time(0, 0, 0, 8, 30);
+	const Time endOfFunctions = Time(0, 0, 0, 20, 30);
 	
 public:
 	//getMethods
@@ -28,14 +30,20 @@ public:
 	bool readContestantsToEnrollFile(string fileName);
 	bool writeContestantsToEnrollFile(string fileName);
 	void showContestants();
+	void showContestantsToEnroll();
 
 	/* -------------------------------------- JUDGE --------------------------------------*/
 	void addJudge(Judge * judge);
 	void removeJudge(Judge * judge);
 	bool readJudgesFile(string fileName);
 	bool writeJudgesFile(string fileName);
-	void Company::showJudges();
+	void showJudges();
+
+	/* -------------------------------------- AUDITION -----------------------------------*/
+	void scheduleAudition(string speacialty, vector<unsigned int>, vector<unsigned int>);
 };
+   
+
 
 template <class Comparable>
 bool comparePointedValues(Comparable * comparable1, Comparable * comparable2) {

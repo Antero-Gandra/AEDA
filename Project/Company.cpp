@@ -5,6 +5,7 @@
 #include "Contestant.h"
 #include "Judge.h"
 #include "ExceptionHand.h"
+#include "Audition.h"
 
 
 unsigned int Company::lastContestantId = 0;
@@ -21,15 +22,24 @@ vector<Judge*> Company::getJudges() const {
 
 /* ------------------------------------ CONTESTANT -----------------------------------*/
 void Company::addContestant(Contestant * contestant) {
+	unsigned int repeatedId = 0;
 	for (unsigned int i = 0; i < contestants.size(); i++)
 	{
 		if (*contestants[i] == *contestant)
-			return;
+		{
+			repeatedId = contestants[i]->getId();
+		}
 	}
-	lastContestantId++;
-	contestant->setId(lastContestantId);
-	contestants.push_back(contestant);
-	sort(contestants.begin(), contestants.end(), comparePointedValues<Contestant>);
+	if (repeatedId != 0) {
+		lastContestantId++;
+		contestant->setId(lastContestantId);
+		contestants.push_back(contestant);
+		sort(contestants.begin(), contestants.end(), comparePointedValues<Contestant>);
+		contestantsToEnroll.push_back(contestant);
+	}
+
+	contestant->setId(repeatedId);
+	contestantsToEnroll.push_back(contestant);
 }
 void Company::removeContestant(Contestant * contestant) {
 	for (auto it = contestants.begin(); it < contestants.end(); it++)
@@ -39,6 +49,27 @@ void Company::removeContestant(Contestant * contestant) {
 	}
 }
 bool Company::readContestantsFile(string fileName) {
+	ifstream contestantsFile(fileName + ".dat");
+
+	string textLine;
+
+	//in case of failure during the opening
+	if (contestantsFile.fail())
+	{
+		return false;
+	}
+
+	while (!contestantsFile.eof()) /* adds elements to the Contestant* std::vector until the whole file is read */
+	{
+		getline(contestantsFile, textLine);
+		Contestant * contestant = new Contestant(textLine);
+		addContestant(contestant);
+	}
+
+	contestantsFile.close();
+	return true;
+}
+bool Company::readContestantsToEnrollFile(string fileName) {
 	ifstream contestantsFile(fileName + ".dat");
 
 	string textLine;
@@ -71,6 +102,18 @@ bool Company::writeContestantsFile(string fileName) {
 
 	return true;
 }
+bool Company::writeContestantsToEnrollFile(string fileName) {
+	ofstream contestantsFile(fileName + ".dat");
+	unsigned int i = 0;
+	for (; i < contestantsToEnroll.size() - 1; i++) {
+		contestantsFile << (*contestantsToEnroll[i]) << "\n";
+	}
+	contestantsFile << *contestantsToEnroll[i];
+
+	contestantsFile.close();
+
+	return true;
+}
 void Company::showContestants() {
 	unsigned int i = 0;
 	for (; i < contestants.size() - 1; i++) {
@@ -78,6 +121,14 @@ void Company::showContestants() {
 		cout << endl;
 	}
 	contestants[i]->show();
+}
+void Company::showContestantsToEnroll() {
+	unsigned int i = 0;
+	for (; i < contestantsToEnroll.size() - 1; i++) {
+		contestantsToEnroll[i]->show();
+		cout << endl;
+	}
+	contestantsToEnroll[i]->show();
 }
 
 /* --------------------------------------- JUDGE --------------------------------------*/
@@ -139,4 +190,26 @@ void Company::showJudges() {
 		cout << endl;
 	}
 	judges[i]->show();
+}
+
+/* -------------------------------------- AUDITION ------------------------------------*/
+
+void Company::scheduleAudition(string specialty, vector<unsigned int> cntestnts, vector<unsigned int> jdges) {
+	//if (cntestnts.size() <= 6)
+		// throw an exception
+
+	//if (jdges.size() < 3)
+		// throw an exception
+
+	//if (jdges.size() > 4
+	unsigned int dur = cntestnts.size()*(15 + 5) + 5 * 30;
+	Time duration = Time(0,0,0,dur / 60, dur % 60);
+	lastAuditionId++;
+	vector<unsigned int> evs;
+	evs.push_back(jdges[0]);
+	evs.push_back(jdges[1]);
+	unsigned int id = lastAuditionId;
+	Time begining = startOfFunctions;
+	Time ending = duration + startOfFunctions;
+	Audition audition(id,begining,ending, specialty, evs, jdges[2]);
 }
