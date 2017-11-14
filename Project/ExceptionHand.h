@@ -18,15 +18,18 @@ public:
 	unsigned int getId() const { return id; }
 
 };
+class EmptyAnswer {
+
+};
 
 class InvalidOption {
 
 };
 
-class EmptyOption {
+class OptionOutOfRange {
 
 };
 
-class OptionOutOfRange {
+class NotYesOrNo {
 
 };

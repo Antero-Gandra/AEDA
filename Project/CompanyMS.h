@@ -9,18 +9,21 @@
 #include <vector>
 
 using namespace std;
-extern Time currentTime;
 class CompanyMS {
+	static Time currentTime;
 public:
 	void run();
 	void mainMenu();
 	void contestantMenu();
 	void judgeMenu();
 	void auditionMenu();
+	void EnrollAContestantMenu();
 	void showApplicationsMenu();
 
 	bool isValidOption(string option, unsigned int infLim, unsigned int supLim);
+	bool isYesOrNo(string answer);
 	unsigned int optionHandler(unsigned int infLim, unsigned int supLim);
+	bool CompanyMS::YesNoHandler();
 	void clearScreen();
 	//Constructor
 	CompanyMS(Company * company);

@@ -149,9 +149,10 @@ bool Company::writeApplicationsFile(string fileName) {
 }
 void Company::showContestants() {
 	unsigned int i = 0;
+	cout << endl << endl;
 	for (; i < contestants.size() - 1; i++) {
 		contestants[i]->show();
-		cout << endl;
+		cout << endl << endl;
 	}
 	contestants[i]->show();
 }
