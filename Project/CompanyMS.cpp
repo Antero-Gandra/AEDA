@@ -189,6 +189,9 @@ void CompanyMS::EnrollAContestantMenu() {
 	}
 	
 	unsigned int Id = IdHandler();
+	if (cin.eof()) return;
+	company->addApplication(currentTime, Id);
+
 }
 
 void CompanyMS::showApplicationsMenu() {
@@ -341,5 +344,5 @@ unsigned int CompanyMS::IdHandler() {
 		}
 		if (cin.eof()) return false;
 	}
-	
+	return stoi(id);
 }
