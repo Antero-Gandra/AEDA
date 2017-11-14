@@ -187,7 +187,8 @@ void CompanyMS::EnrollAContestantMenu() {
 		cout << "Available contestants: " << endl;
 		company->showContestants();
 	}
-	int a; cin >> a;
+	
+	unsigned int Id = IdHandler();
 }
 
 void CompanyMS::showApplicationsMenu() {
@@ -228,6 +229,27 @@ bool CompanyMS::isYesOrNo(string answer) {
 	
 	if (answer != "y" && answer != "n" && answer != "N" && answer != "n")
 		throw NotYesOrNo();
+	return true;
+}
+bool CompanyMS::isValidId(string id) {
+	removeSpaces(id);
+	if (cin.eof()) {
+		return false;
+	}
+	if (id.length() == 0) throw EmptyAnswer();
+
+	for (size_t i = 0; i < id.length(); i++)
+	{
+		if (!isdigit(id[i]))
+			throw InvalidId();
+	}
+	unsigned int Id = stoi(id);
+	try {
+		company->getContestantById(Id);
+	}
+	catch (ContestantIdNotFound) {
+		throw ContestantIdNotFound(Id);
+	}
 	return true;
 }
 void CompanyMS::clearScreen() {
@@ -281,11 +303,11 @@ bool CompanyMS::YesNoHandler() {
 		catch (EmptyAnswer)
 		{
 			valid = false;
-			cout << "Your answer was empty. Note that it has to be one of the following: 'y', 'Y', 'n', 'N'" << endl;
+			cout << "Your answer was empty. Note that it has to be one of the following: 'y', 'Y', 'n', 'N' . Please retry to enter it." << endl;
 		}
 		catch (NotYesOrNo) {
 			valid = false;
-			cout << "Your answer was invalid. Note that it has to be one of the following: 'y', 'Y', 'n', 'N'" << endl;
+			cout << "Your answer was invalid. Note that it has to be one of the following: 'y', 'Y', 'n', 'N' . Please retry to enter it." << endl;
 		}
 		
 		if (cin.eof()) return false;
@@ -293,4 +315,31 @@ bool CompanyMS::YesNoHandler() {
 	removeSpaces(op);
 	if (op == "y" || op == "Y") return true;
 	return false;
+}
+unsigned int CompanyMS::IdHandler() {
+	string id;
+	bool valid = false;
+
+	while (!valid) {
+		cout << "Id:";
+		getline(cin, id);
+		try {
+			valid = isValidId(id);
+		}
+		catch (EmptyAnswer)
+		{
+			valid = false;
+			cout << "Your answer was empty. Note that it has to be the ID (a number) of one of the contestants' showed. . Please retry to enter it." << endl;
+		}
+		catch (InvalidId) {
+			valid = false;
+			cout << "Your answer has invalid characters. Note that it has to be the ID (a number) of one of the contestants' showed. . Please retry to enter it." << endl;
+		}
+		catch (ContestantIdNotFound) {
+			valid = false;
+			cout << "It looks like the id you entered is not on our database. Note that it has to be the ID (a number) of one of the contestants' showed. . Please retry to enter it." << endl;
+		}
+		if (cin.eof()) return false;
+	}
+	
 }

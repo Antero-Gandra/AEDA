@@ -33,3 +33,7 @@ class OptionOutOfRange {
 class NotYesOrNo {
 
 };
+
+class InvalidId {
+
+};

@@ -22,8 +22,10 @@ public:
 
 	bool isValidOption(string option, unsigned int infLim, unsigned int supLim);
 	bool isYesOrNo(string answer);
+	bool isValidId(string id);
 	unsigned int optionHandler(unsigned int infLim, unsigned int supLim);
-	bool CompanyMS::YesNoHandler();
+	bool YesNoHandler();
+	unsigned int IdHandler();
 	void clearScreen();
 	//Constructor
 	CompanyMS(Company * company);
