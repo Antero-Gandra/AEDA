@@ -69,7 +69,7 @@ bool Company::readContestantsFile(string fileName) {
 	contestantsFile.close();
 	return true;
 }
-bool Company::readContestantsToEnrollFile(string fileName) {
+bool Company::readApplicationsFile(string fileName) {
 	ifstream contestantsFile(fileName + ".dat");
 
 	string textLine;
@@ -102,7 +102,7 @@ bool Company::writeContestantsFile(string fileName) {
 
 	return true;
 }
-bool Company::writeContestantsToEnrollFile(string fileName) {
+bool Company::writeApplicationsFile(string fileName) {
 	ofstream contestantsFile(fileName + ".dat");
 	unsigned int i = 0;
 	for (; i < contestantsToEnroll.size() - 1; i++) {
@@ -122,7 +122,7 @@ void Company::showContestants() {
 	}
 	contestants[i]->show();
 }
-void Company::showContestantsToEnroll() {
+void Company::showApplications() {
 	unsigned int i = 0;
 	for (; i < contestantsToEnroll.size() - 1; i++) {
 		contestantsToEnroll[i]->show();

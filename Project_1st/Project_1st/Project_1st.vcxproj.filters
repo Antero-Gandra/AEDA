@@ -91,10 +91,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="judges.dat">
+    <None Include="contestants.dat">
       <Filter>Source Files</Filter>
     </None>
-    <None Include="contestants.dat">
+    <None Include="judges.dat">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>

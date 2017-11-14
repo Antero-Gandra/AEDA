@@ -10,11 +10,11 @@
 
 extern const std::streamsize max;
 
-struct participation {
+struct Participation {
 	unsigned int auditionId;
 	unsigned int place;
 	unsigned int leaderGrade;
-	participation(unsigned int auditionId, unsigned int place, unsigned int leaderGrade) {
+	Participation(unsigned int auditionId, unsigned int place, unsigned int leaderGrade) {
 		this->auditionId = auditionId;
 		this->place = place;
 		this->leaderGrade = leaderGrade;
@@ -23,7 +23,7 @@ struct participation {
 
 class Contestant : public Person {
 	unsigned int id;
-	vector<participation*> participations;
+	vector<Participation*> participations;
 	
 
 public:
@@ -32,10 +32,10 @@ public:
 	Contestant(string textLine);
 	//Get Methods
 	unsigned int getId() const;
-	vector<participation*> getParticipations() const;
+	vector<Participation*> getParticipations() const;
 	//Set Methods
 	void setId(unsigned int id);
-	void setParticipations(vector<participation*> participation);
+	void setParticipations(vector<Participation*> participation);
 	//Other Methods
 	void show() const ;
 	//Operator overloading

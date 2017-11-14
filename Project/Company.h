@@ -27,10 +27,10 @@ public:
 	void removeContestant(Contestant * contestant);
 	bool readContestantsFile(string fileName);
 	bool writeContestantsFile(string fileName);
-	bool readContestantsToEnrollFile(string fileName);
-	bool writeContestantsToEnrollFile(string fileName);
+	bool readApplicationsFile(string fileName);
+	bool writeApplicationsFile(string fileName);
 	void showContestants();
-	void showContestantsToEnroll();
+	void showApplications();
 
 	/* -------------------------------------- JUDGE --------------------------------------*/
 	void addJudge(Judge * judge);
@@ -43,6 +43,10 @@ public:
 	void scheduleAudition(string speacialty, vector<unsigned int>, vector<unsigned int>);
 };
    
+struct Application {
+	Time date;
+	unsigned int contestantId;
+};
 
 
 template <class Comparable>
