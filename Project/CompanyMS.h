@@ -19,6 +19,8 @@ public:
 	void auditionMenu();
 	void showApplicationsMenu();
 
+	bool isValidOption(string option, unsigned int infLim, unsigned int supLim);
+	unsigned int optionHandler(unsigned int infLim, unsigned int supLim);
 	void clearScreen();
 	//Constructor
 	CompanyMS(Company * company);

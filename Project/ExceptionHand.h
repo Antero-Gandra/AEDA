@@ -18,3 +18,15 @@ public:
 	unsigned int getId() const { return id; }
 
 };
+
+class InvalidOption {
+
+};
+
+class EmptyOption {
+
+};
+
+class OptionOutOfRange {
+
+};

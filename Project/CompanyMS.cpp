@@ -7,6 +7,7 @@
 #include "Company.h"
 #include "Time.h"
 #include "Util.h"
+#include "ExceptionHand.h"
 #include <iostream>
 Time currentTime = Time(2017, 11, 14, 12, 0);
 
@@ -19,7 +20,7 @@ int main()
 	return 0;
 }
 
-CompanyMS::CompanyMS(Company * company){
+CompanyMS::CompanyMS(Company * company) {
 	this->company = company;
 }
 
@@ -29,11 +30,13 @@ void CompanyMS::run() {
 		clearScreen();
 		mainMenu(); //invokes the menu displayer
 	} while (!std::cin.eof());
+	cin.clear();
 }
 
 void CompanyMS::mainMenu() {
 
-	unsigned int op;
+	string op;
+	
 
 	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
 
@@ -42,22 +45,28 @@ void CompanyMS::mainMenu() {
 	cout << "3. AUDITION" << endl;
 	cout << "Please Press ESC to Exit" << endl;
 
+	unsigned int option = optionHandler(1, 3);
 
-	clearScreen();
-
-	while (!(cin >> op) && op > 3 && op < 0) {
-		cout << "Option " << op << "is not valid. Please try again." << endl;
-		cin >> op;
+	switch (option) {
+	case 1:
+		do {
+			clearScreen();
+			contestantMenu();
+		} while (!std::cin.eof());
 		cin.clear();
-		cin.ignore(1000, '\n');
-	}
-
-	switch (op) {
-	case 1: CompanyMS::contestantMenu(); break;
-	case 2: CompanyMS::judgeMenu(); break;
-	case 3: CompanyMS::auditionMenu(); break;
-	case 0: exit(-1); break;
-	default: CompanyMS::mainMenu(); break;
+		break;
+	case 2: do {
+		clearScreen();
+		judgeMenu();
+	} while (!std::cin.eof());
+	cin.clear();
+	break;
+	case 3: do {
+		clearScreen();
+		auditionMenu();
+	} while (!std::cin.eof());
+	cin.clear();
+	break;
 	}
 }
 
@@ -70,6 +79,8 @@ void CompanyMS::contestantMenu() {
 	cout << "2. Modify the info of a current contestant" << endl;
 	cout << "3. Kick a contestant out" << endl;
 	cout << "4. Print current list of contestants" << endl;
+
+
 
 }
 
@@ -100,16 +111,57 @@ void CompanyMS::showApplicationsMenu() {
 	Contestant * contestant;
 	for (size_t i = 0; i < applications.size(); i++) {
 		cout << "Candidature sent at " << applications[i]->date << " by:" << endl;
-		contestant  = company->getContestantById(applications[i]->contestantId);
+		contestant = company->getContestantById(applications[i]->contestantId);
 		cout << *contestant << endl;
 	}
 }
 
-
+bool CompanyMS::isValidOption(string option, unsigned int infLim, unsigned int supLim) {
+	removeSpaces(option);
+	if (option.length() == 0) throw EmptyOption();
+	for (size_t i = 0; i < option.length(); i++)
+	{
+		if (!isdigit(option.at(i))) throw InvalidOption();
+	}
+	unsigned int op = stoi(option);
+	if (op < infLim || op > supLim)
+		throw OptionOutOfRange();
+	return true;
+}
 void CompanyMS::clearScreen() {
 #ifdef _WIN32
 	system("cls");
 #else
 	cout << string(40, '\n');
 #endif
+}
+
+unsigned int CompanyMS::optionHandler(unsigned int infLim, unsigned int supLim) {
+	string op;
+	bool valid = false;
+
+
+	while (!valid) {
+		cout << "Option:";
+		getline(cin, op);
+		try {
+			valid = isValidOption(op, 1, 3);
+		}
+		catch (EmptyOption)
+		{
+			valid = false;
+			cout << "Your option was empty. Note that it has to be a number between " << infLim << " and "<< supLim <<". Please retry to enter it." << endl;
+		}
+		catch (InvalidOption)
+		{
+			valid = false;
+			cout << "Your option has invalid characters. Note that it has to be a number between " << infLim << " and " << supLim << ". Please retry to enter it." << endl;
+		}
+		catch (OptionOutOfRange)
+		{
+			valid = false;
+			cout << "Your option was out of range. Note that it has to be a number between " << infLim << " and " << supLim << ". Please retry to enter it." << endl;
+		}
+	}
+	return stoi(op);
 }
