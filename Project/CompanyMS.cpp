@@ -24,25 +24,11 @@ CompanyMS::CompanyMS(Company * company){
 }
 
 void CompanyMS::run() {
-	company->readContestantsFile("contestants");
-	company->showContestants();
-	company->writeContestantsFile("contestants");
-	company->readJudgesFile("judges");
-	company->showJudges();
-	company->writeJudgesFile("judges");
-	company->readApplicationsFile("applications");
-	company->showApplications();
-	company->writeApplicationsFile("applications");
-
-	int a;
-	cin >> a;
-	/*
 	do
 	{
 		clearScreen();
 		mainMenu(); //invokes the menu displayer
 	} while (!std::cin.eof());
-	*/
 }
 
 void CompanyMS::mainMenu() {
@@ -54,7 +40,7 @@ void CompanyMS::mainMenu() {
 	cout << "1. CONTESTANT" << endl;
 	cout << "2. JUDGE" << endl;
 	cout << "3. AUDITION" << endl;
-	cout << "0. EXIT" << endl;
+	cout << "Please Press ESC to Exit" << endl;
 
 
 	clearScreen();
