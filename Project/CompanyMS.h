@@ -9,7 +9,7 @@
 #include <vector>
 
 using namespace std;
-
+extern Time currentTime;
 class CompanyMS {
 public:
 	void run();
@@ -17,6 +17,7 @@ public:
 	void contestantMenu();
 	void judgeMenu();
 	void auditionMenu();
+	void showApplicationsMenu();
 
 	void clearScreen();
 	//Constructor

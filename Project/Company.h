@@ -30,9 +30,14 @@ public:
 	//getMethods
 	vector<Contestant*> getContestants() const;
 	vector<Judge*> getJudges() const;
+	vector<Application*> getApplications() const;
 
 	/* ------------------------------------ CONTESTANT -----------------------------------*/
+
+	Contestant * getContestantById(unsigned int id);
+	unsigned int getContestantByInfo(Contestant *);
 	void addContestant(Contestant * contestant);
+	void addApplication(Time ctime, unsigned int id);
 	void removeContestant(Contestant * contestant);
 	bool readContestantsFile(string fileName);
 	bool writeContestantsFile(string fileName);

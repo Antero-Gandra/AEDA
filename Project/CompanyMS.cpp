@@ -8,7 +8,7 @@
 #include "Time.h"
 #include "Util.h"
 #include <iostream>
-
+Time currentTime = Time(2017, 11, 14, 12, 0);
 
 int main()
 {
@@ -108,6 +108,17 @@ void CompanyMS::auditionMenu() {
 	cout << "3. Disassemble an audition" << endl;
 	cout << "4. Print current list of auditions" << endl;
 }
+
+void CompanyMS::showApplicationsMenu() {
+	vector<Application* > applications = company->getApplications();
+	Contestant * contestant;
+	for (size_t i = 0; i < applications.size(); i++) {
+		cout << "Candidature sent at " << applications[i]->date << " by:" << endl;
+		contestant  = company->getContestantById(applications[i]->contestantId);
+		cout << *contestant << endl;
+	}
+}
+
 
 void CompanyMS::clearScreen() {
 #ifdef _WIN32

@@ -21,30 +21,41 @@ vector<Contestant*> Company::getContestants() const {
 vector<Judge*> Company::getJudges() const {
 	return judges;
 }
+vector<Application*> Company::getApplications() const {
+	return applications;
+}
 
 /* ------------------------------------ CONTESTANT -----------------------------------*/
-void Company::addContestant(Contestant * contestant) {
-	unsigned int repeatedId = 0;
-	for (unsigned int i = 0; i < contestants.size(); i++)
-	{
+Contestant * Company::getContestantById(unsigned int id) {
+	for (size_t i = 0; i < contestants.size(); i++) {
+		if (contestants[i]->getId() == id)
+			return contestants[i];
+	}
+	throw ContestantIdNotFound(id);
+}
+unsigned int Company::getContestantByInfo(Contestant * contestant) {
+	for (size_t i = 0; i < contestants.size(); i++) {
 		if (*contestants[i] == *contestant)
-		{
-			repeatedId = contestants[i]->getId();
-		}
+			return contestants[i]->getId();
 	}
-	if (repeatedId == 0) {
-		lastContestantId++;
-		contestant->setId(lastContestantId);
-		contestants.push_back(contestant);
-		sort(contestants.begin(), contestants.end(), comparePointedValues<Contestant>);
-	}
+	throw ContestantInfoNotFound();
+}
+void Company::addContestant(Contestant * contestant) {
+	lastContestantId++;
+	contestant->setId(lastContestantId);
+	contestants.push_back(contestant);
+	sort(contestants.begin(), contestants.end(), comparePointedValues<Contestant>);
+}
+void Company::addApplication(Time ctime, unsigned int id) {
+	Application * application = new Application(ctime, id);
+	applications.push_back(application);
 }
 void Company::removeContestant(Contestant * contestant) {
-for (auto it = contestants.begin(); it < contestants.end(); it++)
-{
-	if ((*it)->getId() == contestant->getId())
-		contestants.erase(it);
-}
+	for (auto it = contestants.begin(); it < contestants.end(); it++)
+	{
+		if ((*it)->getId() == contestant->getId())
+			contestants.erase(it);
+	}
 }
 bool Company::readContestantsFile(string fileName) {
 	ifstream contestantsFile(fileName + ".dat");
@@ -223,7 +234,7 @@ void Company::scheduleAudition(string specialty, vector<unsigned int> cntestnts,
 
 	//if (jdges.size() > 4
 	unsigned int dur = cntestnts.size()*(15 + 5) + 5 * 30;
-	Time duration = Time(0,0,0,dur / 60, dur % 60);
+	Time duration = Time(0, 0, 0, dur / 60, dur % 60);
 	lastAuditionId++;
 	vector<unsigned int> evs;
 	evs.push_back(jdges[0]);
@@ -231,5 +242,5 @@ void Company::scheduleAudition(string specialty, vector<unsigned int> cntestnts,
 	unsigned int id = lastAuditionId;
 	Time begining = startOfFunctions;
 	Time ending = duration + startOfFunctions;
-	Audition audition(id,begining,ending, specialty, evs, jdges[2]);
+	Audition audition(id, begining, ending, specialty, evs, jdges[2]);
 }
