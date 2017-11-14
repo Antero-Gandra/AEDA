@@ -4,10 +4,10 @@
 
 #include <sstream>
 #include <iostream>
+#include <ios>
 #include "Contestant.h"
 #include "Util.h"
 
-const std::streamsize max = std::numeric_limits<std::streamsize>::max();
 
 //Constructors
 Contestant::Contestant(string textLine) {
@@ -24,7 +24,7 @@ Contestant::Contestant(string textLine) {
 	unsigned int day;
 	string prtcpations;
 	string prtcpation;
-	vector<participation*> participations;
+	vector<Participation*> participations;
 	unsigned int auditionId;
 	unsigned int place;
 	unsigned int leaderGrade;
@@ -78,7 +78,7 @@ Contestant::Contestant(string textLine) {
 		participationLine.ignore(max, ',');
 		participationLine >> leaderGrade;
 
-		participation * p = new participation(auditionId, place, leaderGrade);
+		Participation * p = new Participation(auditionId, place, leaderGrade);
 		participations.push_back(p);
 		getline(participationsLine, prtcpation, '.');
 		istringstream participationLine(prtcpation);
@@ -100,10 +100,10 @@ Contestant::Contestant(unsigned int id, string name, string address, unsigned in
 }
 //Set Methods
 unsigned int Contestant::getId() const { return id; }
-vector<participation*> Contestant::getParticipations() const { return participations; }
+vector<Participation*> Contestant::getParticipations() const { return participations; }
 //Get Methods
 void Contestant::setId(unsigned int id) { this->id = id; }
-void Contestant::setParticipations(vector<participation*> participations) { this->participations = participations; };
+void Contestant::setParticipations(vector<Participation*> participations) { this->participations = participations; };
 
 //Operator overloading
 bool Contestant::operator<(const Contestant & contestant1) const {

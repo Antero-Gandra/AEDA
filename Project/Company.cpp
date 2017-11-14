@@ -1,4 +1,5 @@
 #include <fstream>
+#include <sstream>
 #include <iostream>
 #include <algorithm>
 #include "Company.h"
@@ -6,6 +7,7 @@
 #include "Judge.h"
 #include "ExceptionHand.h"
 #include "Audition.h"
+#include "Util.h"
 
 
 unsigned int Company::lastContestantId = 0;
@@ -30,23 +32,19 @@ void Company::addContestant(Contestant * contestant) {
 			repeatedId = contestants[i]->getId();
 		}
 	}
-	if (repeatedId != 0) {
+	if (repeatedId == 0) {
 		lastContestantId++;
 		contestant->setId(lastContestantId);
 		contestants.push_back(contestant);
 		sort(contestants.begin(), contestants.end(), comparePointedValues<Contestant>);
-		contestantsToEnroll.push_back(contestant);
 	}
-
-	contestant->setId(repeatedId);
-	contestantsToEnroll.push_back(contestant);
 }
 void Company::removeContestant(Contestant * contestant) {
-	for (auto it = contestants.begin(); it < contestants.end(); it++)
-	{
-		if ((*it)->getId() == contestant->getId())
-			contestants.erase(it);
-	}
+for (auto it = contestants.begin(); it < contestants.end(); it++)
+{
+	if ((*it)->getId() == contestant->getId())
+		contestants.erase(it);
+}
 }
 bool Company::readContestantsFile(string fileName) {
 	ifstream contestantsFile(fileName + ".dat");
@@ -70,24 +68,48 @@ bool Company::readContestantsFile(string fileName) {
 	return true;
 }
 bool Company::readApplicationsFile(string fileName) {
-	ifstream contestantsFile(fileName + ".dat");
+	ifstream applicationsFile(fileName + ".dat");
 
 	string textLine;
+	Time date;
+	unsigned int year, month, day, hour, minute;
+	unsigned int id;
 
 	//in case of failure during the opening
-	if (contestantsFile.fail())
+	if (applicationsFile.fail())
 	{
 		return false;
 	}
 
-	while (!contestantsFile.eof()) /* adds elements to the Contestant* std::vector until the whole file is read */
+	while (!applicationsFile.eof()) /* adds elements to the Contestant* std::vector until the whole file is read */
 	{
-		getline(contestantsFile, textLine);
-		Contestant * contestant = new Contestant(textLine);
-		addContestant(contestant);
+		getline(applicationsFile, textLine);
+		istringstream applicationLine(textLine);
+		//get date
+		applicationLine >> year;
+		applicationLine.ignore(std::numeric_limits<std::streamsize>::max(), '/');
+		applicationLine >> month;
+		applicationLine.ignore(std::numeric_limits<std::streamsize>::max(), '/');
+		applicationLine >> day;
+		applicationLine.ignore(std::numeric_limits<std::streamsize>::max(), '/');
+		applicationLine >> hour;
+		applicationLine.ignore(std::numeric_limits<std::streamsize>::max(), '/');
+		applicationLine >> minute;
+		applicationLine.ignore(std::numeric_limits<std::streamsize>::max(), ';');
+		date.setYear(year);
+		date.setMonth(month);
+		date.setDay(day);
+		date.setHour(hour);
+		date.setMinute(minute);
+
+		// get id
+		applicationLine >> id;
+
+		Application *  app = new Application(date, id);
+		applications.push_back(app);
 	}
 
-	contestantsFile.close();
+	applicationsFile.close();
 	return true;
 }
 bool Company::writeContestantsFile(string fileName) {
@@ -105,10 +127,10 @@ bool Company::writeContestantsFile(string fileName) {
 bool Company::writeApplicationsFile(string fileName) {
 	ofstream contestantsFile(fileName + ".dat");
 	unsigned int i = 0;
-	for (; i < contestantsToEnroll.size() - 1; i++) {
-		contestantsFile << (*contestantsToEnroll[i]) << "\n";
+	for (; i < applications.size() - 1; i++) {
+		contestantsFile << applications[i]->date.full() << " ; " << applications[i]->contestantId << endl;
 	}
-	contestantsFile << *contestantsToEnroll[i];
+	contestantsFile << applications[i]->date.full() << " ; " << applications[i]->contestantId;
 
 	contestantsFile.close();
 
@@ -123,12 +145,10 @@ void Company::showContestants() {
 	contestants[i]->show();
 }
 void Company::showApplications() {
-	unsigned int i = 0;
-	for (; i < contestantsToEnroll.size() - 1; i++) {
-		contestantsToEnroll[i]->show();
-		cout << endl;
+	for (unsigned int i = 0; i < applications.size(); i++)
+	{
+		cout << "Candidature sent at " << applications[i]->date << " by contestant No. " << applications[i]->contestantId << endl;
 	}
-	contestantsToEnroll[i]->show();
 }
 
 /* --------------------------------------- JUDGE --------------------------------------*/

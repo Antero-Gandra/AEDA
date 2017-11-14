@@ -8,8 +8,6 @@
 
 #include "Person.h"
 
-extern const std::streamsize max;
-
 struct Participation {
 	unsigned int auditionId;
 	unsigned int place;
@@ -20,6 +18,7 @@ struct Participation {
 		this->leaderGrade = leaderGrade;
 	}
 };
+
 
 class Contestant : public Person {
 	unsigned int id;

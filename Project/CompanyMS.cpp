@@ -6,29 +6,33 @@
 #include "CompanyMS.h"
 #include "Company.h"
 #include "Time.h"
+#include "Util.h"
 #include <iostream>
 
 
 int main()
 {
-	Company company;
+	Company * company = new Company;
 	CompanyMS MS(company);
 	MS.run();
 
 	return 0;
 }
 
-CompanyMS::CompanyMS(Company &company) {
+CompanyMS::CompanyMS(Company * company){
 	this->company = company;
 }
 
 void CompanyMS::run() {
-	company.readContestantsFile("contestants");
-	company.showContestants();
-	company.writeContestantsFile("contestants");
-	company.readJudgesFile("judges");
-	company.showJudges();
-	company.writeJudgesFile("judges");
+	company->readContestantsFile("contestants");
+	company->showContestants();
+	company->writeContestantsFile("contestants");
+	company->readJudgesFile("judges");
+	company->showJudges();
+	company->writeJudgesFile("judges");
+	company->readApplicationsFile("applications");
+	company->showApplications();
+	company->writeApplicationsFile("applications");
 
 	int a;
 	cin >> a;
@@ -103,10 +107,6 @@ void CompanyMS::auditionMenu() {
 	cout << "2. Modify a current audition" << endl;
 	cout << "3. Disassemble an audition" << endl;
 	cout << "4. Print current list of auditions" << endl;
-}
-
-void showContestantsByIdMenu() {
-
 }
 
 void CompanyMS::clearScreen() {

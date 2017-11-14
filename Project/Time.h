@@ -40,6 +40,7 @@ public:
 	bool isValidDate();
 	string Time::date() const;
 	string Time::time() const;
+	string Time::full() const;
 };
 
 #endif //_TIME_H

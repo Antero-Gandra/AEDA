@@ -1,6 +1,5 @@
 #include "Company.h"
 
-
 #ifndef _COMPANYMS_H
 #define _COMPANYMS_H
 
@@ -19,12 +18,11 @@ public:
 	void judgeMenu();
 	void auditionMenu();
 
-	void showContestantsByIdMenu();
 	void clearScreen();
 	//Constructor
-	CompanyMS(Company &company);
+	CompanyMS(Company * company);
 private:
-	Company company;
+	Company * company;
 };
 
 #endif //_COMPANYMS_H

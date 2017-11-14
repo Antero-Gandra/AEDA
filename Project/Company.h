@@ -2,14 +2,23 @@
 #include "Person.h"
 #include "Contestant.h"
 #include "Judge.h"
-using namespace std;
+
 
 #ifndef _COMPANY_H
 #define _COMPANY_H
 
+struct Application {
+	Time date;
+	unsigned int contestantId;
+	Application(Time date, unsigned int contestantId) {
+		this->date = date;
+		this->contestantId = contestantId;
+	}
+};
+
 class Company {
 	vector<Contestant*> contestants;
-	vector<Contestant*> contestantsToEnroll;
+	vector<Application*> applications;
 	vector<Judge *> judges;
 	static unsigned int lastContestantId;
 	static unsigned int lastJudgeId;
@@ -41,13 +50,9 @@ public:
 
 	/* -------------------------------------- AUDITION -----------------------------------*/
 	void scheduleAudition(string speacialty, vector<unsigned int>, vector<unsigned int>);
+
 };
    
-struct Application {
-	Time date;
-	unsigned int contestantId;
-};
-
 
 template <class Comparable>
 bool comparePointedValues(Comparable * comparable1, Comparable * comparable2) {

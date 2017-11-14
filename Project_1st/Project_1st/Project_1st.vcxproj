@@ -139,6 +139,8 @@
     <ClInclude Include="..\..\Project\Util.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="applications.dat" />
+    <None Include="auditions.dat" />
     <None Include="contestants.dat" />
     <None Include="judges.dat" />
   </ItemGroup>

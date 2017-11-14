@@ -5,6 +5,7 @@
  * Time implementation
  */
 
+const std::streamsize max = std::numeric_limits<std::streamsize>::max();
 vector<unsigned int> daysOfMonth= { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
 //Constructor
@@ -105,5 +106,10 @@ string Time::date() const {
 string Time::time() const {
 	ostringstream time;
 	time << hour << ':' << minute;
+	return time.str();
+}
+string Time::full() const {
+	ostringstream time;
+	time << date() << '/' <<  hour << '/' << minute;
 	return time.str();
 }

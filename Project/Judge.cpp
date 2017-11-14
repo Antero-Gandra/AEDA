@@ -3,13 +3,13 @@
 #include "Judge.h"
 #include "Util.h"
 
-const std::streamsize max = std::numeric_limits<std::streamsize>::max();
+
 
 Judge::Judge(unsigned int id, string name, string address, unsigned int mobile, Time dob, string specialty, std::vector<unsigned int> participations) : Person(name, address, mobile, dob, specialty) {
 	this->id;
 	this->participations = participations;
 }
-Judge::Judge(string textline) {
+Judge::Judge(string textline) {const std::streamsize max = std::numeric_limits<std::streamsize>::max();
 	istringstream judgeLine;
 	judgeLine.str(textline);
 
@@ -56,6 +56,7 @@ removeSpaces(address);
 
 //get specialty
 getline(judgeLine, specialty, ';');
+removeSpaces(specialty);
 
 //get participations
 getline(judgeLine, prtcpations, ';');
@@ -104,16 +105,15 @@ bool Judge::operator==(const Judge & judge1) const {
 		participations == judge1.participations);
 }
 ostream& operator<<(ostream& os, const Judge& judge) {
-
-	//print participations lacking
-	os << " ;";
-	return os;
 	os << judge.id << " ; " << judge.name << " ; " << judge.dob.date() << " ; " << judge.mobile << " ; " << judge.address << " ; " << judge.specialty << " ; ";
-	unsigned int i = 0;
-	for (; i < judge.participations.size() - 1; i++) {
-		os << judge.participations[i] << ", ";
+	//participations
+	if (judge.participations.size() > 0) {
+		unsigned int i = 0;
+		for (; i < judge.participations.size(); i++) {
+			os << judge.participations[i] << ", ";
+		}
 	}
-	os << judge.participations[i] << ";";
+	os << " ;";
 	return os;
 }
 
