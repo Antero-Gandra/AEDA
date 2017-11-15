@@ -138,7 +138,7 @@ void Contestant::show() const {
 	cout << "-> Name: " << name << endl;
 	cout << "-> Date of Birth: " << dob.date() << endl;
 	cout << "-> Mobile: " << mobile << endl;
-	cout << "-> Adress: " << address << endl;
+	cout << "-> Address: " << address << endl;
 	cout << "-> Specialty: " << specialty << endl;
 	cout << "-> Participations: " << endl;
 

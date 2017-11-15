@@ -61,7 +61,23 @@ void Company::removeContestant(Contestant * contestant) {
 	for (auto it = contestants.begin(); it < contestants.end(); it++)
 	{
 		if ((*it)->getId() == contestant->getId())
+		{
 			contestants.erase(it);
+			return;
+		}
+	}
+}
+void Company::removeApplicationsOfContestant(Contestant * contestant) {
+	vector<vector<Application*>::const_iterator> elementsToErase;
+	for (auto it = applications.begin(); it < applications.end(); it++)
+	{
+		if ((*it)->contestantId == contestant->getId())
+		{
+			elementsToErase.push_back(it);
+		}
+	}
+	for (size_t i = 0; i < elementsToErase.size(); i++) {
+		applications.erase(elementsToErase[i]);
 	}
 }
 bool Company::readContestantsFile(string fileName) {
@@ -171,6 +187,13 @@ void Company::showApplications() {
 }
 
 /* --------------------------------------- JUDGE --------------------------------------*/
+Judge * Company::getJudgeById(unsigned int id) {
+	for (size_t i = 0; i < judges.size(); i++) {
+		if (judges[i]->getId() == id)
+			return judges[i];
+	}
+	throw JudgeIdNotFound(id);
+}
 void Company::addJudge(Judge * judge) {
 	for (unsigned int i = 0; i < judges.size(); i++)
 	{
@@ -239,6 +262,28 @@ bool Company::hasSpecialty(string specialty) {
 }
 /* -------------------------------------- AUDITION ------------------------------------*/
 
+Audition * Company::getAuditionById(unsigned int id) {
+	for (size_t i = 0; i < auditions.size(); i++) {
+		if (auditions[i]->getId() == id)
+			return auditions[i];
+	}
+	throw AuditionIdNotFound(id);
+}
+void Company::addAudition(Audition * audition) {
+	for (unsigned int i = 0; i < auditions.size(); i++)
+	{
+		if (*auditions[i] == *audition)
+			return;
+	}
+	lastJudgeId++;
+	audition->setId(lastJudgeId);
+	auditions.push_back(audition);
+	sort(auditions.begin(), auditions.end(), comparePointedValues<Audition>);
+}
+void Company::showAuditionInDetail(unsigned int id) {
+
+		
+}
 void Company::scheduleAudition(string specialty, vector<unsigned int> cntestnts, vector<unsigned int> jdges) {
 	//if (cntestnts.size() <= 6)
 		// throw an exception
@@ -257,4 +302,27 @@ void Company::scheduleAudition(string specialty, vector<unsigned int> cntestnts,
 	Time begining = startOfFunctions;
 	Time ending = duration + startOfFunctions;
 	Audition audition(id, begining, ending, specialty, evs, jdges[2]);
+}
+bool Company::readAuditionsFile(string fileName) {
+	ifstream auditionsFile(fileName + ".dat");
+
+	string textLine;
+	//in case of failure during the opening
+	if (auditionsFile.fail())
+	{
+		return false;
+	}
+
+	while (!auditionsFile.eof()) /* adds elements to the Contestant* std::vector until the whole file is read */
+	{
+		getline(auditionsFile, textLine);
+		Audition * audition = new Audition(textLine);
+		//addAudition(audition);
+	}
+
+	auditionsFile.close();
+	return true;
+}
+bool Company::writeAuditionsFile(string fileName) {
+	return true;
 }

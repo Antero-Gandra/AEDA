@@ -24,7 +24,6 @@ class Contestant : public Person {
 	unsigned int id;
 	vector<Participation*> participations;
 	
-
 public:
 	//Constructors
 	Contestant(unsigned int id, string name, string address, unsigned int mobile, Time dob, string specialty, std::vector<unsigned int> participation);

@@ -18,6 +18,14 @@ public:
 	unsigned int getId() const { return id; }
 
 };
+
+class AuditionIdNotFound{
+	unsigned int id;
+public:
+	AuditionIdNotFound(unsigned int id) { this->id = id; }
+	unsigned int getId() const { return id; }
+};
+
 class EmptyAnswer {
 
 };

@@ -2,6 +2,7 @@
 #include "Person.h"
 #include "Contestant.h"
 #include "Judge.h"
+#include "Audition.h"
 
 
 #ifndef _COMPANY_H
@@ -20,6 +21,7 @@ class Company {
 	vector<Contestant*> contestants;
 	vector<Application*> applications;
 	vector<Judge *> judges;
+	vector<Audition*> auditions;
 	static unsigned int lastContestantId;
 	static unsigned int lastJudgeId;
 	static unsigned int lastAuditionId;
@@ -40,6 +42,7 @@ public:
 	void addApplication(Time ctime, unsigned int id);
 	void updateContestant(Contestant * contestant, Contestant * modContestant);
 	void removeContestant(Contestant * contestant);
+	void removeApplicationsOfContestant(Contestant * contestant);
 	bool readContestantsFile(string fileName);
 	bool writeContestantsFile(string fileName);
 	bool readApplicationsFile(string fileName);
@@ -48,6 +51,7 @@ public:
 	void showApplications();
 
 	/* -------------------------------------- JUDGE --------------------------------------*/
+	Judge * getJudgeById(unsigned int id);
 	void addJudge(Judge * judge);
 	void removeJudge(Judge * judge);
 	bool readJudgesFile(string fileName);
@@ -56,7 +60,12 @@ public:
 	bool hasSpecialty(string specialty);
 
 	/* -------------------------------------- AUDITION -----------------------------------*/
+	Audition * getAuditionById(unsigned int id);
+	void addAudition(Audition * audition);
 	void scheduleAudition(string speacialty, vector<unsigned int>, vector<unsigned int>);
+	bool readAuditionsFile(string fileName);
+	bool writeAuditionsFile(string fileName);
+	void showAuditionInDetail(unsigned int id);
 
 };
    

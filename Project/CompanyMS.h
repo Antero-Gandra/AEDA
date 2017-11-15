@@ -17,12 +17,31 @@ public:
 	void contestantMenu();
 	void judgeMenu();
 	void auditionMenu();
-	void EnrollAContestantMenu();
-	void ModifyContestantInfo();
-	void showApplicationsMenu();
+	//CONTESTANTS
+	void enrollAContestantMenu();
+	void modifyContestantInfoMenu();
+	void removeContestantMenu();
+	void readContestantsFileMenu();
 	void showContestantsMenu();
+	void removeContestantsApplicationsMenu();
+	void readApplicationsFileMenu();
+	void showApplicationsMenu();
+
+	//JUDGES
+	void employJudgeMenu();
+	void modifyJudgeInfoMenu();
+	void fireJudgeMenu();
+	void readJudgesFileMenu();
 	void showJudgesMenu();
 
+	//SESSIONS
+	void scheduleAuditionMenu();
+	void scheduleAuditionsForAllMenu();
+	void modifyAuditionMenu();
+	void disassembleAuditionMenu();
+	void showAuditionsMenu();
+
+	//INPUT HANDLING
 	bool isValidOption(string option, unsigned int infLim, unsigned int supLim);
 	bool isYesOrNo(string answer);
 	bool isValidId(string id);
@@ -30,8 +49,8 @@ public:
 	bool isValidDob(Time dob);
 	bool isValidNumber(string number);
 	unsigned int optionHandler(unsigned int infLim, unsigned int supLim);
-	bool YesNoHandler();
-	unsigned int IdHandler();
+	bool yesNoHandler();
+	unsigned int idHandler();
 	string stringHandler(string type);
 	Time dobHandler();
 	string specialtyHandler();

@@ -91,19 +91,20 @@ void CompanyMS::mainMenu() {
 	}
 }
 
-void CompanyMS::contestantMenu() {
+void CompanyMS::contestantMenu()
+ {
 
 	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
 	cout << "\t\t::::::::: CONTESTANT ::::::::: \n";
 
 	cout << "1. Enroll a contestant" << endl;
 	cout << "2. Modify the info of a contestant" << endl;
-	cout << "3. Remove a contestant applicaton" << endl;
-	cout << "4. Remove a contestant" << endl;
-	cout << "5. Read applications from a file" << endl;
-	cout << "6. Read contestants from a file" << endl;
-	cout << "7. Show all contestants" << endl;
-	cout << "8. Show all applications" << endl;
+	cout << "3. Remove a contestant" << endl;
+	cout << "4. Read contestants from a file" << endl;
+	cout << "5. View all contestants" << endl;
+	cout << "6. Remove a contestant's applicatons" << endl;
+	cout << "7. Read applications from a file" << endl;
+	cout << "8. View all applications" << endl;
 	cout << "Please Press Ctrl^Z to Exit" << endl;
 
 	unsigned int option = optionHandler(1, 8);
@@ -113,18 +114,19 @@ void CompanyMS::contestantMenu() {
 	case 1:
 		do {
 			clearScreen();
-			EnrollAContestantMenu();
+			enrollAContestantMenu();
 		} while (!std::cin.eof());
 		cin.clear();
 		break;
 	case 2: do {
 		clearScreen();
-		ModifyContestantInfo();
+		modifyContestantInfoMenu();
 	} while (!std::cin.eof());
 	cin.clear();
 	break;
 	case 3: do {
 		clearScreen();
+		removeContestantMenu();
 	} while (!std::cin.eof());
 	cin.clear();
 	break;
@@ -135,18 +137,19 @@ void CompanyMS::contestantMenu() {
 	break;
 	case 5: do {
 		clearScreen();
+		showContestantsMenu();
 	} while (!std::cin.eof());
 	cin.clear();
 	break;
 	case 6: do {
 		clearScreen();
-		showApplicationsMenu();
+		
 	} while (!std::cin.eof());
 	cin.clear();
 	break;
 	case 7: do {
 		clearScreen();
-		showContestantsMenu();
+		
 	} while (!std::cin.eof());
 	cin.clear();
 	break;
@@ -169,7 +172,7 @@ void CompanyMS::judgeMenu() {
 	cout << "2. Modify the info of a current judge" << endl;
 	cout << "3. Fire a judge" << endl;
 	cout << "4. Read judges from a file" << endl;
-	cout << "5. Show all judges" << endl;
+	cout << "5. View all judges" << endl;
 	cout << "Please Press Ctrl^Z to go back to the Main Menu" << endl;
 
 	unsigned int option = optionHandler(1, 5);
@@ -211,29 +214,30 @@ void CompanyMS::auditionMenu() {
 	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
 	cout << "\t\t::::::::: AUDITION ::::::::: \n";
 
-	cout << "1. Create a new specific audition" << endl;
-	cout << "2. Modify a current audition" << endl;
+	cout << "1. Schedule an audition" << endl;
+	cout << "2. Schedule auditions for all contestants (if possible) " << endl;
+	cout << "2. Modify an audition" << endl;
 	cout << "3. Disassemble an audition" << endl;
-	cout << "4. Print current list of auditions" << endl;
+	cout << "4. View all auditions" << endl;
 
 	unsigned int option = optionHandler(1, 4);
 	if (cin.eof()) return;
 }
 
-void CompanyMS::EnrollAContestantMenu() {
+void CompanyMS::enrollAContestantMenu() {
 	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
 	cout << "\t\t::::::::: ENROLL A CONTESTANT ::::::::: \n";
 
 	cout << "First things first, is the candidate you want to enroll already in our database? (y/n)";
 
-	bool answer = YesNoHandler();
+	bool answer = yesNoHandler();
 	if (cin.eof()) return;
 
 	if (answer)
 	{
 		cout << "Available contestants: " << endl;
 		company->showContestants();
-		unsigned int Id = IdHandler();
+		unsigned int Id = idHandler();
 		if (cin.eof()) return;
 		company->addApplication(currentTime, Id);
 	}
@@ -266,11 +270,12 @@ void CompanyMS::EnrollAContestantMenu() {
 			{
 				repeated = false;
 				company->addContestant(contestant);
+				company->addApplication(currentTime, company->getContestantByInfo(contestant));
 			}
 			if (i != 0) {
 				cout << "Ooops! It looks like the contestant you specified IS already in our database." << endl;
 				cout << "Do you still want to add an application? (y/n)";
-				bool answer = YesNoHandler();
+				bool answer = yesNoHandler();
 				if (cin.eof()) return;
 				if (answer)
 				{
@@ -287,7 +292,7 @@ void CompanyMS::EnrollAContestantMenu() {
 		getline(cin, option);
 	}
 }
-void CompanyMS::ModifyContestantInfo() {
+void CompanyMS::modifyContestantInfoMenu() {
 	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
 	cout << "\t\t::::::::: MODIFY A CONTESTANT ::::::::: \n";
 	bool repeated = true, answer;
@@ -297,10 +302,11 @@ void CompanyMS::ModifyContestantInfo() {
 	company->showContestants();
 	cout << endl;
 	cout << "Which contestant would you like to modify?" << endl;
-	unsigned int id = IdHandler();
+	unsigned int id = idHandler();
+	if (cin.eof()) return;
 
 	Contestant * contestant = company->getContestantById(id);
-	
+
 
 	while (repeated) {
 		//show contestant
@@ -310,7 +316,7 @@ void CompanyMS::ModifyContestantInfo() {
 
 		//name
 		cout << "Would you like to modify the contestant's name? (y/n)";
-		answer = YesNoHandler();
+		answer = yesNoHandler();
 		if (cin.eof()) return;
 		string name;
 		if (answer)
@@ -319,10 +325,12 @@ void CompanyMS::ModifyContestantInfo() {
 			name = stringHandler("name");
 			if (cin.eof()) return;
 		}
-
+		else {
+			name = contestant->getName();
+		}
 		//dob
 		cout << "Would you like to modify the contestant's dob? (y/n)";
-		answer = YesNoHandler();
+		answer = yesNoHandler();
 		if (cin.eof()) return;
 		Time dob;
 		if (answer)
@@ -331,10 +339,13 @@ void CompanyMS::ModifyContestantInfo() {
 			dob = dobHandler();
 			if (cin.eof()) return;
 		}
+		else {
+			dob = contestant->getDob();
+		}
 
 		//mobile
 		cout << "Would you like to modify the contestant's mobile? (y/n)";
-		answer = YesNoHandler();
+		answer = yesNoHandler();
 		if (cin.eof()) return;
 		unsigned int mobile;
 		if (answer)
@@ -343,10 +354,13 @@ void CompanyMS::ModifyContestantInfo() {
 			mobile = numberHandler("mobile");
 			if (cin.eof()) return;
 		}
+		else {
+			mobile = contestant->getMobile();
+		}
 
 		//address
 		cout << "Would you like to modify the contestant's address? (y/n)";
-		answer = YesNoHandler();
+		answer = yesNoHandler();
 		if (cin.eof()) return;
 		string address;
 		if (answer)
@@ -355,19 +369,23 @@ void CompanyMS::ModifyContestantInfo() {
 			address = stringHandler("address");
 			if (cin.eof()) return;
 		}
-
+		else {
+			address = contestant->getAddress();
+		}
 		//specialty
 		cout << "Would you like to modify the contestant's specialty? (y/n)";
-		answer = YesNoHandler();
+		answer = yesNoHandler();
 		if (cin.eof()) return;
 		string specialty;
 		if (answer)
 		{
 			cout << "Please insert the contestant's new specialty.";
-			address = specialtyHandler();
+			specialty = specialtyHandler();
 			if (cin.eof()) return;
 		}
-
+		else {
+			specialty = contestant->getSpecialty();
+		}
 		Contestant * aux = new Contestant(id, name, address, mobile, dob, specialty, {});
 		unsigned int i = 0;
 		try {
@@ -381,6 +399,37 @@ void CompanyMS::ModifyContestantInfo() {
 		if (i != 0) {
 			cout << "Ooops! It looks like the contestant you specified IS already in our database." << endl;
 			cout << "Please insert different data.";
+		}
+	}
+	cout << "Please Press Ctrl^Z to go back to the Contestants' Menu" << endl;
+	while (!cin.eof()) {
+		string option;
+		getline(cin, option);
+	}
+}
+void CompanyMS::removeContestantMenu() {
+	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
+	cout << "\t\t::::::::: REMOVE A CONTESTANT ::::::::: \n";
+	bool sure = false, answer;
+
+	//Choose of id
+	cout << "List of contestants: " << endl;
+	company->showContestants();
+	cout << endl;
+	while (!sure) {
+		cout << "Which contestant would you like to remove?" << endl;
+		unsigned int id = idHandler();
+		if (cin.eof()) return;
+		Contestant * contestant = company->getContestantById(id);
+		cout << "Are you sure you wish to remove contestant No." << id << "? ";
+		answer = yesNoHandler();
+		if (cin.eof()) return;
+		if (answer)
+		{
+			//Removal of the contestant
+			company->removeContestant(contestant);
+			company->removeApplicationsOfContestant(contestant);
+			sure = true;
 		}
 	}
 	cout << "Please Press Ctrl^Z to go back to the Contestants' Menu" << endl;
@@ -420,6 +469,10 @@ void CompanyMS::showJudgesMenu() {
 		string option;
 		getline(cin, option);
 	}
+}
+
+void CompanyMS::scheduleAuditionMenu() {
+
 }
 
 bool CompanyMS::isValidOption(string option, unsigned int infLim, unsigned int supLim) {
@@ -489,6 +542,7 @@ bool CompanyMS::isValidNumber(string number) {
 		if (!isdigit(number[i]))
 			throw NotANumber();
 	}
+	return true;
 }
 void CompanyMS::clearScreen() {
 #ifdef _WIN32
@@ -528,7 +582,7 @@ unsigned int CompanyMS::optionHandler(unsigned int infLim, unsigned int supLim) 
 	}
 	return stoi(op);
 }
-bool CompanyMS::YesNoHandler() {
+bool CompanyMS::yesNoHandler() {
 	string op;
 	bool valid = false;
 
@@ -554,7 +608,7 @@ bool CompanyMS::YesNoHandler() {
 	if (op == "y" || op == "Y") return true;
 	return false;
 }
-unsigned int CompanyMS::IdHandler() {
+unsigned int CompanyMS::idHandler() {
 	string id;
 	bool valid = false;
 

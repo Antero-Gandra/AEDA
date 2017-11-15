@@ -20,8 +20,8 @@ Audition::Audition(unsigned int id, Time start, Time end, string specialty, vect
 	this->specialty = specialty;
 	this->evaluatorsId = evaluatorsId;
 	this->leaderId = leaderId;
-	this->f1 = 0;
-	this->f2 = 0;
+	this->firstFase = NULL;
+	this->secondFase = NULL;
 }
 Audition::Audition(string textline) {
 
@@ -88,11 +88,11 @@ Audition::Audition(string textline) {
 
 	//get Fase1
 	getline(auditionLine, fase1, '|');
-	FirstFase firstFase(fase1);
+	FirstFase * firstFase = new FirstFase(fase1);
 
 	//get Fase2;
 	getline(auditionLine, fase2, '|');
-	SecondFase secondFase(fase2);
+	SecondFase * secondFase = new SecondFase(fase2);
 
 	//setting the attributes
 	this->id = id;
@@ -101,4 +101,72 @@ Audition::Audition(string textline) {
 	this->specialty = specialty;
 	this->evaluatorsId = ids;
 	this->leaderId = id;
+	this->firstFase = firstFase;
+	this->secondFase = secondFase;
+
+}
+//get Methods
+unsigned int Audition::getId() const {
+	return id;
+}
+Time Audition::getStart() const {
+	return start;
+}
+Time Audition::getEnd() const {
+	return end;
+}
+string Audition::getSpecialty() const {
+	return specialty;
+}
+vector<unsigned int> Audition::getEvaluatorsId() const {
+	return evaluatorsId;
+}
+unsigned int Audition::getLeaderId() const {
+	return leaderId;
+}
+FirstFase* Audition::getFirstFase() const {
+	return firstFase;
+}
+SecondFase* Audition::getSecondFase() const {
+	return secondFase;
+}
+//set Methods
+void Audition::setId(unsigned int id) {
+	this->id = id;
+}
+void Audition::setStart(Time start) {
+	this->start = start;
+}
+void Audition::setEnd(Time end) {
+	this->end = end;
+}
+void Audition::setSpecialty(string specialty) {
+	this->specialty = specialty;
+}
+void Audition::setEvaluatorsId(vector<unsigned int> evaluators) {
+	this->evaluatorsId = evaluatorsId;
+}
+void Audition::setLeaderId(unsigned int leaderId) {
+	this->leaderId = leaderId;
+}
+void Audition::setFirstFase(FirstFase * firstFase) {
+	this->firstFase = firstFase;
+}
+void Audition::setSecondFase(SecondFase *  secondFase) {
+	this->secondFase = secondFase;
+}
+
+//operator Overloading
+bool Audition::operator<(const  Audition & audition1) const {
+	return this->id < audition1.id;
+}
+bool Audition::operator==(const Audition & audition1) const {
+	return (this->start.getDay() == audition1.start.getDay() &&
+		this->start.getMonth() == audition1.start.getMonth() &&
+		this->start.getYear() == audition1.start.getYear() &&
+		this->specialty == audition1.specialty)
+}
+ostream& operator<<(ostream& os, const Audition & audition) {
+	os << audition.id << " | " << audition.start.date() << " | " << audition.end.date() << " | " << audition.evaluatorsId[0] << ", " < os << audition.id << " | " << audition.start.date() << " | " << audition.end.date() << " | " << audition.evaluatorsId[0] << ", " << audition.evaluatorsId[1] << " | " << audition.leaderId << " | " << audition.firstFase << " | " << audition.secondFase << " | ";
+	return os;
 }

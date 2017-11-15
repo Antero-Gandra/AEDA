@@ -17,17 +17,17 @@ Person::Person(string name, string address, unsigned int mobile, Time dob, strin
 }
 
 //Get Methods
-string Person::getName() const { return name; }
-string Person::getAddress() const { return address; }
+string Person::getName() const { return this->name; }
+string Person::getAddress() const { return this->address; }
 unsigned int Person::getMobile() const { return mobile; }
-Time Person::getDob() const { return dob; }
-string Person::getSpecialty() const { return specialty; }
+Time Person::getDob() const { return this->dob; }
+string Person::getSpecialty() const { return this->specialty; }
 //Set Methods
 void Person::setName(string name) { this->name = name; }
-void Person::setAddress(string adress) { this->address = address; }
+void Person::setAddress(string address) { this->address = address; }
 void Person::setMobile(unsigned int mobile) { this->mobile = mobile; }
 void Person::setDob(Time dob) { this->dob = dob; }
-void Person::setSpecialty(string speciality) { this->specialty = speciality; }
+void Person::setSpecialty(string specialty) { this->specialty = specialty; }
 
 //Other Methods
 unsigned int Person::mobileGenerator() {
