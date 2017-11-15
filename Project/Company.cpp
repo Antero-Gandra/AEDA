@@ -50,6 +50,13 @@ void Company::addApplication(Time ctime, unsigned int id) {
 	Application * application = new Application(ctime, id);
 	applications.push_back(application);
 }
+void Company::updateContestant(Contestant * contestant, Contestant * modContestant) {
+	contestant->setName(modContestant->getName());
+	contestant->setDob(modContestant->getDob());
+	contestant->setMobile(modContestant->getMobile());
+	contestant->setAddress(modContestant->getAddress());
+	contestant->setSpecialty(modContestant->getSpecialty());
+}
 void Company::removeContestant(Contestant * contestant) {
 	for (auto it = contestants.begin(); it < contestants.end(); it++)
 	{
@@ -223,7 +230,13 @@ void Company::showJudges() {
 	}
 	judges[i]->show();
 }
-
+bool Company::hasSpecialty(string specialty) {
+	for (size_t i = 0; i < judges.size(); i++) {
+		if (judges[i]->getSpecialty() == specialty)
+			return true;
+	}
+	return false;
+}
 /* -------------------------------------- AUDITION ------------------------------------*/
 
 void Company::scheduleAudition(string specialty, vector<unsigned int> cntestnts, vector<unsigned int> jdges) {

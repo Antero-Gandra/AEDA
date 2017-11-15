@@ -29,13 +29,13 @@ public:
 	string getAddress() const;
 	unsigned int getMobile() const;
 	Time getDob() const;
-	string getSpeciality() const;
+	string getSpecialty() const;
 	//Set Methods
 	void setName(string name);
 	void setAddress(string address);
 	void setMobile(unsigned int mobile);
 	void setDob(Time dob);
-	void setSpeciality(string specialty);
+	void setSpecialty(string specialty);
 	//Other Methods
 	unsigned int mobileGenerator();
 };

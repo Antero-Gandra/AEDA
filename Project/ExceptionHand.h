@@ -37,3 +37,7 @@ class NotYesOrNo {
 class InvalidId {
 
 };
+
+class NotANumber {
+
+};

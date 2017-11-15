@@ -1,3 +1,4 @@
 ﻿  CompanyMS.cpp
+c:\users\margarida silva\documents\github\aeda\project\companyms.cpp(492): warning C4715: 'CompanyMS::isValidNumber': not all control paths return a value
   Project_1st.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\Project_1st\Debug\Project_1st.exe
   Project_1st.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\Project_1st\Debug\Project_1st.pdb (Partial PDB)

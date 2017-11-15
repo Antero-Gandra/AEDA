@@ -38,6 +38,7 @@ public:
 	unsigned int getContestantByInfo(Contestant *);
 	void addContestant(Contestant * contestant);
 	void addApplication(Time ctime, unsigned int id);
+	void updateContestant(Contestant * contestant, Contestant * modContestant);
 	void removeContestant(Contestant * contestant);
 	bool readContestantsFile(string fileName);
 	bool writeContestantsFile(string fileName);
@@ -52,6 +53,7 @@ public:
 	bool readJudgesFile(string fileName);
 	bool writeJudgesFile(string fileName);
 	void showJudges();
+	bool hasSpecialty(string specialty);
 
 	/* -------------------------------------- AUDITION -----------------------------------*/
 	void scheduleAudition(string speacialty, vector<unsigned int>, vector<unsigned int>);

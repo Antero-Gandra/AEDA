@@ -109,14 +109,13 @@ void Contestant::setParticipations(vector<Participation*> participations) { this
 bool Contestant::operator<(const Contestant & contestant1) const {
 	return (id < contestant1.id);
 }
-//A contestant is "equal" to another if they share the same properties (except id, of course)
+//A contestant is "equal" to another if they share the same properties (except id and participations, of course)
 bool Contestant::operator==(const Contestant & contestant1) const {
 	return (name == contestant1.name &&
 		address == contestant1.address &&
 		mobile == contestant1.mobile &&
 		dob == contestant1.dob &&
-		specialty == contestant1.specialty &&
-		participations == contestant1.participations);
+		specialty == contestant1.specialty);
 }
 ostream& operator<<(ostream& os, const Contestant& contestant) {
 

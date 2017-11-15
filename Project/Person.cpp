@@ -21,13 +21,13 @@ string Person::getName() const { return name; }
 string Person::getAddress() const { return address; }
 unsigned int Person::getMobile() const { return mobile; }
 Time Person::getDob() const { return dob; }
-string Person::getSpeciality() const { return specialty; }
+string Person::getSpecialty() const { return specialty; }
 //Set Methods
 void Person::setName(string name) { this->name = name; }
 void Person::setAddress(string adress) { this->address = address; }
 void Person::setMobile(unsigned int mobile) { this->mobile = mobile; }
 void Person::setDob(Time dob) { this->dob = dob; }
-void Person::setSpeciality(string speciality) { this->specialty = speciality; }
+void Person::setSpecialty(string speciality) { this->specialty = speciality; }
 
 //Other Methods
 unsigned int Person::mobileGenerator() {
