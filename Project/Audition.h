@@ -1,8 +1,3 @@
-/**
- * Project Untitled
- */
-
-
 #ifndef _AUDITION_H
 #define _AUDITION_H
 

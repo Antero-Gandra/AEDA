@@ -1,3 +1,8 @@
+#ifndef _EXCEPTIONHAND_H
+#define _EXCEPTIONHAND_H
+
+#include <string> 
+using namespace std;
 
 class ContestantInfoNotFound {
 };
@@ -26,6 +31,13 @@ public:
 	unsigned int getId() const { return id; }
 };
 
+class SpecialtyNotAvailable {
+	string specialty;
+public:
+	SpecialtyNotAvailable(string specialty) { this->specialty = specialty; }
+	string getSpecialty() const { return specialty; }
+};
+
 class EmptyAnswer {
 
 };
@@ -49,3 +61,5 @@ class InvalidId {
 class NotANumber {
 
 };
+
+#endif

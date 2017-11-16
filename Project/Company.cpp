@@ -40,6 +40,26 @@ unsigned int Company::getContestantByInfo(Contestant * contestant) {
 	}
 	throw ContestantInfoNotFound();
 }
+vector<Contestant*> Company::getContestantsOfSpecialty(string specialty) {
+	vector<Contestant*> contestantsOfSpecialty;
+	for (size_t i = 0; i< contestants.size(); i++)
+	{
+		if (contestants[i]->getSpecialty() == specialty)
+			contestantsOfSpecialty.push_back(contestants[i]);
+	}
+	return contestantsOfSpecialty;
+}
+vector<Application*> Company::getApplicationsOfSpecialty(string specialty) {
+	vector<Application*> applicationsOfSpecialty;
+
+	for (size_t i = 0; i< applications.size(); i++)
+	{
+		Contestant * contestant = getContestantById(applications[i]->contestantId);
+		if (contestant->getSpecialty() == specialty)
+			applicationsOfSpecialty.push_back(applications[i]);
+	}
+	return applicationsOfSpecialty;
+}
 void Company::addContestant(Contestant * contestant) {
 	lastContestantId++;
 	contestant->setId(lastContestantId);
@@ -63,6 +83,24 @@ void Company::removeContestant(Contestant * contestant) {
 		if ((*it)->getId() == contestant->getId())
 		{
 			contestants.erase(it);
+			return;
+		}
+	}
+}
+vector<Application*> Company::getApplicationsById(unsigned int id) {
+	vector<Application*> contestantApp;
+	for (auto it = applications.begin(); it < applications.end(); it++) {
+		if ((*it)->contestantId == id)
+			contestantApp.push_back(*it);
+	}
+	return contestantApp;
+}
+void Company::removeOneApplicationOfContestant(Contestant* contestant) {
+	for (auto it = applications.begin(); it < applications.end(); it++)
+	{
+		if ((*it)->contestantId == contestant->getId())
+		{
+			applications.erase(it);
 			return;
 		}
 	}
@@ -169,21 +207,6 @@ bool Company::writeApplicationsFile(string fileName) {
 	contestantsFile.close();
 
 	return true;
-}
-void Company::showContestants() {
-	unsigned int i = 0;
-	cout << endl << endl;
-	for (; i < contestants.size() - 1; i++) {
-		contestants[i]->show();
-		cout << endl << endl;
-	}
-	contestants[i]->show();
-}
-void Company::showApplications() {
-	for (unsigned int i = 0; i < applications.size(); i++)
-	{
-		cout << "Candidature sent at " << applications[i]->date << " by contestant No. " << applications[i]->contestantId << endl;
-	}
 }
 
 /* --------------------------------------- JUDGE --------------------------------------*/

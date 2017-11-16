@@ -17,7 +17,7 @@ public:
 	void contestantMenu();
 	void judgeMenu();
 	void auditionMenu();
-	//CONTESTANTS
+	//CONTESTANTS MENUS
 	void enrollAContestantMenu();
 	void modifyContestantInfoMenu();
 	void removeContestantMenu();
@@ -27,7 +27,7 @@ public:
 	void readApplicationsFileMenu();
 	void showApplicationsMenu();
 
-	//JUDGES
+	//JUDGES MENUS
 	void employJudgeMenu();
 	void modifyJudgeInfoMenu();
 	void fireJudgeMenu();
@@ -40,6 +40,11 @@ public:
 	void modifyAuditionMenu();
 	void disassembleAuditionMenu();
 	void showAuditionsMenu();
+
+	//CANDIDATES SHOW FUNCTIONS
+	void showContestants();
+	void showApplications();
+	void showApplicationsOfSpecialty(string specialty);
 
 	//INPUT HANDLING
 	bool isValidOption(string option, unsigned int infLim, unsigned int supLim);

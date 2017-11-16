@@ -1,7 +1,3 @@
-/**
- * Project Untitled
- */
-
 
 #define _CRT_SECURE_NO_WARNINGS
 #include "CompanyMS.h"
@@ -222,6 +218,31 @@ void CompanyMS::auditionMenu() {
 
 	unsigned int option = optionHandler(1, 4);
 	if (cin.eof()) return;
+
+	switch (option) {
+	case 1:
+		do {
+			clearScreen();
+			scheduleAuditionMenu();
+		} while (!std::cin.eof());
+		cin.clear();
+		break;
+	case 2: do {
+		clearScreen();
+	} while (!std::cin.eof());
+	cin.clear();
+	break;
+	case 3: do {
+		clearScreen();
+	} while (!std::cin.eof());
+	cin.clear();
+	break;
+	case 4: do {
+		clearScreen();
+	} while (!std::cin.eof());
+	cin.clear();
+	break;
+	}
 }
 
 void CompanyMS::enrollAContestantMenu() {
@@ -236,7 +257,7 @@ void CompanyMS::enrollAContestantMenu() {
 	if (answer)
 	{
 		cout << "Available contestants: " << endl;
-		company->showContestants();
+		showContestants();
 		unsigned int Id = idHandler();
 		if (cin.eof()) return;
 		company->addApplication(currentTime, Id);
@@ -299,7 +320,7 @@ void CompanyMS::modifyContestantInfoMenu() {
 
 	//Choose of id
 	cout << "List of contestants: " << endl;
-	company->showContestants();
+	showContestants();
 	cout << endl;
 	cout << "Which contestant would you like to modify?" << endl;
 	unsigned int id = idHandler();
@@ -414,7 +435,7 @@ void CompanyMS::removeContestantMenu() {
 
 	//Choose of id
 	cout << "List of contestants: " << endl;
-	company->showContestants();
+	showContestants();
 	cout << endl;
 	while (!sure) {
 		cout << "Which contestant would you like to remove?" << endl;
@@ -439,7 +460,7 @@ void CompanyMS::removeContestantMenu() {
 	}
 }
 void CompanyMS::showContestantsMenu() {
-	company->showContestants();
+	showContestants();
 	cout << "Please Press Ctrl^Z to go back to the Contestants' Menu" << endl;
 	while (!cin.eof()) {
 		string option;
@@ -472,7 +493,52 @@ void CompanyMS::showJudgesMenu() {
 }
 
 void CompanyMS::scheduleAuditionMenu() {
+	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
+	cout << "\t\t::::::::: SCHEDULE AUDITION ::::::::: \n";
 
+	cout << "Which is the art specialty you would like your audition to be about?";
+
+	string specialty = specialtyHandler();
+	if (cin.eof()) return;
+
+	showApplicationsOfSpecialty(specialty);
+	
+	//Choosing candidates
+	int a; cin >> a;
+	
+}
+
+
+void CompanyMS::showContestants() {
+	vector<Contestant *> contestants = company->getContestants();
+	unsigned int i = 0;
+	cout << endl << endl;
+	for (; i < contestants.size(); i++) {
+		contestants[i]->show();
+		cout << endl << endl;
+	}
+}
+void CompanyMS::showApplications() {
+	vector<Application *> applications = company->getApplications();
+	Contestant* contestant;
+	for (unsigned int i = 0; i < applications.size(); i++)
+	{
+		cout << "Candidature sent at " << applications[i]->date << " by contestant No. " << applications[i]->contestantId << endl;
+		contestant = company->getContestantById(applications[i]->contestantId);
+		contestant->show();
+			cout << endl;
+	}
+}
+void CompanyMS::showApplicationsOfSpecialty(string specialty) {
+	vector<Application*> applications = company->getApplicationsOfSpecialty(specialty);
+	Contestant* contestant;
+	for (unsigned int i = 0; i < applications.size(); i++)
+	{
+		cout << "Candidature sent at " << applications[i]->date << " by contestant No. " << applications[i]->contestantId << endl;
+		contestant = company->getContestantById(applications[i]->contestantId);
+		contestant->show();
+		cout << endl;
+	}
 }
 
 bool CompanyMS::isValidOption(string option, unsigned int infLim, unsigned int supLim) {
@@ -615,6 +681,7 @@ unsigned int CompanyMS::idHandler() {
 	while (!valid) {
 		cout << "Id:";
 		getline(cin, id);
+		if (cin.eof()) return 0;
 		try {
 			valid = isValidId(id);
 		}
@@ -631,7 +698,6 @@ unsigned int CompanyMS::idHandler() {
 			valid = false;
 			cout << "It looks like the id you entered is not on our database. Note that it has to be the ID (a number) of one of the contestants' showed. Please retry to enter it." << endl;
 		}
-		if (cin.eof()) return false;
 	}
 	return stoi(id);
 }
@@ -642,6 +708,7 @@ string CompanyMS::stringHandler(string type) {
 	while (!valid) {
 		cout << type << ":";
 		getline(cin, s);
+		if (cin.eof()) return "";
 		try {
 			valid = isValidString(s);
 		}
@@ -650,7 +717,6 @@ string CompanyMS::stringHandler(string type) {
 			valid = false;
 			cout << "Your answer was empty. Note that it has to have at least one character. Please retry to enter it." << endl;
 		}
-		if (cin.eof()) return false;
 	}
 	return s;
 }
@@ -663,6 +729,7 @@ Time CompanyMS::dobHandler() {
 		while (!valid) {
 			cout << "year:";
 			getline(cin, number);
+			if (cin.eof()) return Time();
 			try {
 				valid = isValidNumber(number);
 			}
@@ -685,6 +752,7 @@ Time CompanyMS::dobHandler() {
 		while (!valid) {
 			cout << "month:";
 			getline(cin, number);
+			if (cin.eof()) return Time();
 			try {
 				valid = isValidNumber(number);
 			}
@@ -708,6 +776,7 @@ Time CompanyMS::dobHandler() {
 		while (!valid) {
 			cout << "day:";
 			getline(cin, number);
+			if (cin.eof()) return Time();
 			try {
 				valid = isValidNumber(number);
 			}
@@ -737,6 +806,7 @@ string CompanyMS::specialtyHandler() {
 	while (!valid) {
 		cout << "specialty:";
 		getline(cin, specialty);
+		if (cin.eof()) return "";
 		try {
 			valid = isValidString(specialty);
 		}
@@ -746,8 +816,14 @@ string CompanyMS::specialtyHandler() {
 			cout << "Your answer was empty. Note that it has to have characters and be one the specialties presented. Please retry to enter it." << endl;
 		}
 
-		if (cin.eof()) return false;
-		valid = company->hasSpecialty(specialty);
+		try {
+			valid = company->hasSpecialty(specialty);
+		}
+		catch (SpecialtyNotAvailable)
+		{
+			valid = false;
+			cout << "It looks like the id you entered is not on our database. Note that it has to be the ID (a number) of one of the contestants' showed. Please retry to enter it." << endl;
+		}
 	}
 	return specialty;
 }

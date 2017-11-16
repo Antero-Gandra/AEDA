@@ -1,12 +1,12 @@
+
+#ifndef _COMPANY_H
+#define _COMPANY_H
+
 #include <string>
 #include "Person.h"
 #include "Contestant.h"
 #include "Judge.h"
 #include "Audition.h"
-
-
-#ifndef _COMPANY_H
-#define _COMPANY_H
 
 struct Application {
 	Time date;
@@ -38,17 +38,19 @@ public:
 
 	Contestant * getContestantById(unsigned int id);
 	unsigned int getContestantByInfo(Contestant *);
+	vector<Contestant*> getContestantsOfSpecialty(string specialty);
+	vector<Application*> getApplicationsOfSpecialty(string specialty);
 	void addContestant(Contestant * contestant);
 	void addApplication(Time ctime, unsigned int id);
 	void updateContestant(Contestant * contestant, Contestant * modContestant);
 	void removeContestant(Contestant * contestant);
+	vector<Application*> getApplicationsById(unsigned int id);
+	void removeOneApplicationOfContestant(Contestant* contestant);
 	void removeApplicationsOfContestant(Contestant * contestant);
 	bool readContestantsFile(string fileName);
 	bool writeContestantsFile(string fileName);
 	bool readApplicationsFile(string fileName);
 	bool writeApplicationsFile(string fileName);
-	void showContestants();
-	void showApplications();
 
 	/* -------------------------------------- JUDGE --------------------------------------*/
 	Judge * getJudgeById(unsigned int id);

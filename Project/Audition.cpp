@@ -164,9 +164,9 @@ bool Audition::operator==(const Audition & audition1) const {
 	return (this->start.getDay() == audition1.start.getDay() &&
 		this->start.getMonth() == audition1.start.getMonth() &&
 		this->start.getYear() == audition1.start.getYear() &&
-		this->specialty == audition1.specialty)
+		this->specialty == audition1.specialty);
 }
 ostream& operator<<(ostream& os, const Audition & audition) {
-	os << audition.id << " | " << audition.start.date() << " | " << audition.end.date() << " | " << audition.evaluatorsId[0] << ", " < os << audition.id << " | " << audition.start.date() << " | " << audition.end.date() << " | " << audition.evaluatorsId[0] << ", " << audition.evaluatorsId[1] << " | " << audition.leaderId << " | " << audition.firstFase << " | " << audition.secondFase << " | ";
+	os << audition.id << " | " << audition.start.date() << " | " << audition.end.date() << " | " << audition.evaluatorsId[0] << ", "  << audition.id << " | " << audition.start.date() << " | " << audition.end.date() << " | " << audition.evaluatorsId[0] << ", " << audition.evaluatorsId[1] << " | " << audition.leaderId << " | " << audition.firstFase << " | " << audition.secondFase << " | ";
 	return os;
 }
