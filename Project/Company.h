@@ -27,6 +27,10 @@ class Company {
 	static unsigned int lastAuditionId;
 	const Time startOfFunctions = Time(0, 0, 0, 8, 30);
 	const Time endOfFunctions = Time(0, 0, 0, 20, 30);
+	const Time durationOfPerformancesF1 = Time(0, 0, 0, 0, 15);
+	const Time breakBetweenPerfomancesF1 = Time(0, 0, 0, 0, 5);
+	const Time durationOfPerformancesF2 = Time(0, 0, 0, 0, 30);
+	const Time breakBetweenPerfomancesF2 = Time(0, 0, 0, 0, 10);
 	
 public:
 	//getMethods
@@ -63,6 +67,7 @@ public:
 
 	/* -------------------------------------- AUDITION -----------------------------------*/
 	Audition * getAuditionById(unsigned int id);
+	Time getDurationOfAudition(unsigned int nCandidates);
 	void addAudition(Audition * audition);
 	void scheduleAudition(string speacialty, vector<unsigned int>, vector<unsigned int>);
 	bool readAuditionsFile(string fileName);

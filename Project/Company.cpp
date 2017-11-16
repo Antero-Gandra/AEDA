@@ -292,6 +292,9 @@ Audition * Company::getAuditionById(unsigned int id) {
 	}
 	throw AuditionIdNotFound(id);
 }
+Time Company::getDurationOfAudition(unsigned int nCandidates) {
+	Time duration;
+}
 void Company::addAudition(Audition * audition) {
 	for (unsigned int i = 0; i < auditions.size(); i++)
 	{

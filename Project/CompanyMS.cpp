@@ -503,8 +503,27 @@ void CompanyMS::scheduleAuditionMenu() {
 
 	showApplicationsOfSpecialty(specialty);
 	
+	//Choosing judges
+
+
 	//Choosing candidates
-	int a; cin >> a;
+	unsigned int i = 0;
+	unsigned int id;
+	vector<Contestant*> contestants;
+	cout << "Please choose the candidates you would like to include in the audition (min = 6; max = 24)." <<  endl;
+	cout << "If you want to stop inserting candidates, please press 0" << endl;
+	while (i < 24)
+	{
+		id = idHandler();
+		if (cin.eof()) return;
+		if (id == 0)
+			if (i >= 6) break;
+			else cout << "Ooops! It looks like you haven't completed yet the minimum of contestants required (6)." << endl;
+		contestants.push_back(company->getContestantById(id));
+	}
+
+	unsigned int total = 
+	cout << "You have included " << i << "contestants in the audition, which makes a total duration of " << 
 	
 }
 
