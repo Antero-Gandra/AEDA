@@ -510,6 +510,12 @@ void CompanyMS::scheduleAuditionMenu() {
 	unsigned int i = 0;
 	unsigned int id;
 	vector<Contestant*> contestants;
+	vector<Judge*> judges;
+	company->generateJudgesForSpecialty(specialty, judges);
+	for (size_t i = 0; i < judges.size(); i++)
+	{
+		judges[i]->show();
+	}
 	cout << "Please choose the candidates you would like to include in the audition (min = 6; max = 24)." <<  endl;
 	cout << "If you want to stop inserting candidates, please press 0" << endl;
 	while (i < 24)
@@ -522,8 +528,7 @@ void CompanyMS::scheduleAuditionMenu() {
 		contestants.push_back(company->getContestantById(id));
 	}
 
-	unsigned int total = 
-	cout << "You have included " << i << "contestants in the audition, which makes a total duration of " << 
+		cout << "You have included " << i << "contestants in the audition, which makes a total duration of ";
 	
 }
 
@@ -549,7 +554,8 @@ void CompanyMS::showApplications() {
 	}
 }
 void CompanyMS::showApplicationsOfSpecialty(string specialty) {
-	vector<Application*> applications = company->getApplicationsOfSpecialty(specialty);
+	vector<Application*> applications;
+	company->getApplicationsOfSpecialty(specialty, applications);
 	Contestant* contestant;
 	for (unsigned int i = 0; i < applications.size(); i++)
 	{

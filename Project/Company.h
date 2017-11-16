@@ -42,8 +42,9 @@ public:
 
 	Contestant * getContestantById(unsigned int id);
 	unsigned int getContestantByInfo(Contestant *);
-	vector<Contestant*> getContestantsOfSpecialty(string specialty);
-	vector<Application*> getApplicationsOfSpecialty(string specialty);
+	void getContestantsOfSpecialty(string specialty, vector<Contestant*> & contestants);
+	void getApplicationsOfSpecialty(string specialty, vector<Application*> & applications);
+	void generateContestantsForSpecialty(string specialty, vector<Contestant*> & contestants);
 	void addContestant(Contestant * contestant);
 	void addApplication(Time ctime, unsigned int id);
 	void updateContestant(Contestant * contestant, Contestant * modContestant);
@@ -58,6 +59,8 @@ public:
 
 	/* -------------------------------------- JUDGE --------------------------------------*/
 	Judge * getJudgeById(unsigned int id);
+	void getJudgesOfSpecialy(string specialty, vector<Judge*> judges);
+	void generateJudgesForSpecialty(string specialty, vector<Judge*> & judges);
 	void addJudge(Judge * judge);
 	void removeJudge(Judge * judge);
 	bool readJudgesFile(string fileName);
@@ -67,6 +70,7 @@ public:
 
 	/* -------------------------------------- AUDITION -----------------------------------*/
 	Audition * getAuditionById(unsigned int id);
+	void getAuditionsOfSpecialy(string specialty, vector<Audition*> auditions);
 	Time getDurationOfAudition(unsigned int nCandidates);
 	void addAudition(Audition * audition);
 	void scheduleAudition(string speacialty, vector<unsigned int>, vector<unsigned int>);

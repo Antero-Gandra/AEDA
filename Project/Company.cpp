@@ -2,6 +2,7 @@
 #include <sstream>
 #include <iostream>
 #include <algorithm>
+#include <ctime>
 #include "Company.h"
 #include "Contestant.h"
 #include "Judge.h"
@@ -40,25 +41,35 @@ unsigned int Company::getContestantByInfo(Contestant * contestant) {
 	}
 	throw ContestantInfoNotFound();
 }
-vector<Contestant*> Company::getContestantsOfSpecialty(string specialty) {
-	vector<Contestant*> contestantsOfSpecialty;
-	for (size_t i = 0; i< contestants.size(); i++)
+void Company::getContestantsOfSpecialty(string specialty, vector<Contestant*> & contestants) {
+	for (size_t i = 0; i< this->contestants.size(); i++)
 	{
-		if (contestants[i]->getSpecialty() == specialty)
-			contestantsOfSpecialty.push_back(contestants[i]);
+		if (this->contestants[i]->getSpecialty() == specialty)
+			contestants.push_back(this->contestants[i]);
 	}
-	return contestantsOfSpecialty;
 }
-vector<Application*> Company::getApplicationsOfSpecialty(string specialty) {
-	vector<Application*> applicationsOfSpecialty;
-
-	for (size_t i = 0; i< applications.size(); i++)
+void Company::getApplicationsOfSpecialty(string specialty, vector<Application*> & applications) {
+	for (size_t i = 0; i< this->applications.size(); i++)
 	{
-		Contestant * contestant = getContestantById(applications[i]->contestantId);
+		Contestant * contestant = getContestantById(this->applications[i]->contestantId);
 		if (contestant->getSpecialty() == specialty)
-			applicationsOfSpecialty.push_back(applications[i]);
+			applications.push_back(this->applications[i]);
 	}
-	return applicationsOfSpecialty;
+}
+void Company::generateContestantsForSpecialty(string specialty, vector<Contestant*> & contestants) {
+	srand(time(NULL));
+	vector<Contestant*> contestantsOfSpecialty;
+	getContestantsOfSpecialty(specialty, contestantsOfSpecialty);
+	unsigned int counter = 0;
+	unsigned int i;
+
+	//Choosing contestants
+	while (counter < 24 && contestantsOfSpecialty.size() > 0) {
+		i = rand() % contestantsOfSpecialty.size(); //randomly
+		contestants.push_back(contestantsOfSpecialty[i]);
+		contestantsOfSpecialty.erase(contestantsOfSpecialty.begin() + i);
+		counter++;
+	}
 }
 void Company::addContestant(Contestant * contestant) {
 	lastContestantId++;
@@ -217,6 +228,31 @@ Judge * Company::getJudgeById(unsigned int id) {
 	}
 	throw JudgeIdNotFound(id);
 }
+void Company::getJudgesOfSpecialy(string specialty, vector<Judge*> judges) {
+	for (size_t i = 0; i< this->judges.size(); i++)
+	{
+		if (this->judges[i]->getSpecialty() == specialty)
+			judges.push_back(this->judges[i]);
+	}
+}
+void Company::generateJudgesForSpecialty(string specialty, vector<Judge*> & judges) {
+	srand(time(NULL));
+	vector<Judge*> judgesOfSpecialty;
+	getJudgesOfSpecialy(specialty, judgesOfSpecialty);
+	unsigned int i;
+
+	//1st Judge
+	i = rand() % judgesOfSpecialty.size();
+	judges.push_back(judgesOfSpecialty[i]);
+	judgesOfSpecialty.erase(judgesOfSpecialty.begin() + i);
+	//2nd Judge
+	i = rand() % judgesOfSpecialty.size();
+	judges.push_back(judgesOfSpecialty[i]);
+	judgesOfSpecialty.erase(judgesOfSpecialty.begin() + i);
+	//3rd Judge
+	i = rand() % judgesOfSpecialty.size();
+	judges.push_back(judgesOfSpecialty[i]);
+}
 void Company::addJudge(Judge * judge) {
 	for (unsigned int i = 0; i < judges.size(); i++)
 	{
@@ -292,8 +328,16 @@ Audition * Company::getAuditionById(unsigned int id) {
 	}
 	throw AuditionIdNotFound(id);
 }
+void Company::getAuditionsOfSpecialy(string specialty, vector<Audition*> auditions) {
+	for (size_t i = 0; i < this->auditions.size(); i++)
+	{
+		if (this->auditions[i]->getSpecialty() == specialty)
+			auditions.push_back(this->auditions[i]);
+	}
+}
 Time Company::getDurationOfAudition(unsigned int nCandidates) {
 	Time duration;
+	return Time();
 }
 void Company::addAudition(Audition * audition) {
 	for (unsigned int i = 0; i < auditions.size(); i++)
@@ -329,6 +373,7 @@ void Company::scheduleAudition(string specialty, vector<unsigned int> cntestnts,
 	Time ending = duration + startOfFunctions;
 	Audition audition(id, begining, ending, specialty, evs, jdges[2]);
 }
+
 bool Company::readAuditionsFile(string fileName) {
 	ifstream auditionsFile(fileName + ".dat");
 

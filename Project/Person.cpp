@@ -3,9 +3,6 @@
 #include <stdio.h>
 #include <time.h>
 
-/**
- * Person implementation
- */
 
 Person::Person(string name, string address, unsigned int mobile, Time dob, string specialty)
 {
