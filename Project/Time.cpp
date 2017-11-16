@@ -88,10 +88,15 @@ bool Time::operator<(const Time & time1) const
 	else if (minute >= time1.hour) return false;
 	else return true;
 }
+Time::operator unsigned int() const {
+	unsigned int hoursInMinutes = hour * 60;
+	return hoursInMinutes + minute;
+}
 ostream& operator<<(ostream& os, const Time& time) {
 	os << time.date() << " " << time.time();
 	return os;
 }
+
 //Other Methods
 bool Time::isValidDate() {
 	if (month >= 1 && month <= 12) //so that we can search the maximum days of that month without range problems

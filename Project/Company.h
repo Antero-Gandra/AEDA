@@ -29,6 +29,7 @@ class Company {
 	const Time endOfFunctions = Time(0, 0, 0, 20, 30);
 	const Time durationOfPerformancesF1 = Time(0, 0, 0, 0, 15);
 	const Time breakBetweenPerfomancesF1 = Time(0, 0, 0, 0, 5);
+	const Time breakBetweenF1andF2 = Time(0, 0, 0, 0, 35);
 	const Time durationOfPerformancesF2 = Time(0, 0, 0, 0, 30);
 	const Time breakBetweenPerfomancesF2 = Time(0, 0, 0, 0, 10);
 	
@@ -44,7 +45,7 @@ public:
 	unsigned int getContestantByInfo(Contestant *);
 	void getContestantsOfSpecialty(string specialty, vector<Contestant*> & contestants);
 	void getApplicationsOfSpecialty(string specialty, vector<Application*> & applications);
-	void generateContestantsForSpecialty(string specialty, vector<Contestant*> & contestants);
+	void generateContestantsOfSpecialty(string specialty, vector<Contestant*> & contestants);
 	void addContestant(Contestant * contestant);
 	void addApplication(Time ctime, unsigned int id);
 	void updateContestant(Contestant * contestant, Contestant * modContestant);
@@ -59,7 +60,7 @@ public:
 
 	/* -------------------------------------- JUDGE --------------------------------------*/
 	Judge * getJudgeById(unsigned int id);
-	void getJudgesOfSpecialy(string specialty, vector<Judge*> judges);
+	void getJudgesOfSpecialy(string specialty, vector<Judge*> & judges);
 	void generateJudgesForSpecialty(string specialty, vector<Judge*> & judges);
 	void addJudge(Judge * judge);
 	void removeJudge(Judge * judge);
@@ -70,8 +71,9 @@ public:
 
 	/* -------------------------------------- AUDITION -----------------------------------*/
 	Audition * getAuditionById(unsigned int id);
-	void getAuditionsOfSpecialy(string specialty, vector<Audition*> auditions);
+	void getAuditionsOfSpecialy(string specialty, vector<Audition*> & auditions);
 	Time getDurationOfAudition(unsigned int nCandidates);
+	unsigned int getMaxNumOfContestantsPerAudition();
 	void addAudition(Audition * audition);
 	void scheduleAudition(string speacialty, vector<unsigned int>, vector<unsigned int>);
 	bool readAuditionsFile(string fileName);

@@ -504,21 +504,16 @@ void CompanyMS::scheduleAuditionMenu() {
 	showApplicationsOfSpecialty(specialty);
 	
 	//Choosing judges
-
+	vector<Judge*> judges;
 
 	//Choosing candidates
 	unsigned int i = 0;
 	unsigned int id;
 	vector<Contestant*> contestants;
-	vector<Judge*> judges;
-	company->generateJudgesForSpecialty(specialty, judges);
-	for (size_t i = 0; i < judges.size(); i++)
-	{
-		judges[i]->show();
-	}
+	cout << company->getMaxNumOfContestantsPerAudition();
 	cout << "Please choose the candidates you would like to include in the audition (min = 6; max = 24)." <<  endl;
 	cout << "If you want to stop inserting candidates, please press 0" << endl;
-	while (i < 24)
+	while (i < company->getMaxNumOfContestantsPerAudition())
 	{
 		id = idHandler();
 		if (cin.eof()) return;

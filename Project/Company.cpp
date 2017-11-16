@@ -3,6 +3,7 @@
 #include <iostream>
 #include <algorithm>
 #include <ctime>
+#include <cmath>
 #include "Company.h"
 #include "Contestant.h"
 #include "Judge.h"
@@ -56,7 +57,7 @@ void Company::getApplicationsOfSpecialty(string specialty, vector<Application*> 
 			applications.push_back(this->applications[i]);
 	}
 }
-void Company::generateContestantsForSpecialty(string specialty, vector<Contestant*> & contestants) {
+void Company::generateContestantsOfSpecialty(string specialty, vector<Contestant*> & contestants) {
 	srand(time(NULL));
 	vector<Contestant*> contestantsOfSpecialty;
 	getContestantsOfSpecialty(specialty, contestantsOfSpecialty);
@@ -228,7 +229,7 @@ Judge * Company::getJudgeById(unsigned int id) {
 	}
 	throw JudgeIdNotFound(id);
 }
-void Company::getJudgesOfSpecialy(string specialty, vector<Judge*> judges) {
+void Company::getJudgesOfSpecialy(string specialty, vector<Judge*>  & judges) {
 	for (size_t i = 0; i< this->judges.size(); i++)
 	{
 		if (this->judges[i]->getSpecialty() == specialty)
@@ -328,16 +329,35 @@ Audition * Company::getAuditionById(unsigned int id) {
 	}
 	throw AuditionIdNotFound(id);
 }
-void Company::getAuditionsOfSpecialy(string specialty, vector<Audition*> auditions) {
+void Company::getAuditionsOfSpecialy(string specialty, vector<Audition*> & auditions) {
 	for (size_t i = 0; i < this->auditions.size(); i++)
 	{
 		if (this->auditions[i]->getSpecialty() == specialty)
 			auditions.push_back(this->auditions[i]);
 	}
 }
-Time Company::getDurationOfAudition(unsigned int nCandidates) {
-	Time duration;
-	return Time();
+Time Company::getDurationOfAudition(unsigned int nContestants) {
+	unsigned int durationPer1 = (unsigned int)durationOfPerformancesF1;
+	unsigned int breakPer1 = (unsigned int)breakBetweenPerfomancesF1;
+	unsigned int durationPer2 = (unsigned int)durationOfPerformancesF2;
+	unsigned int breakPer2 = (unsigned int)breakBetweenPerfomancesF2;
+	unsigned int breakBetF1andF2 = (unsigned int)breakBetweenF1andF2;
+	unsigned int totalDuration = ((nContestants - 1)*(durationPer1 + breakPer1) + durationPer1 + breakBetF1andF2 + 4 * (durationPer2 + breakPer2) + durationPer2);
+	Time duration = Time(0, 0, 0, totalDuration / 60, totalDuration % 60);
+	return duration;
+
+}
+unsigned int Company::getMaxNumOfContestantsPerAudition() {
+	unsigned int durationPer1 = (unsigned int)this->durationOfPerformancesF1;
+	unsigned int breakPer1 = (unsigned int)this->breakBetweenPerfomancesF1;
+	unsigned int durationPer2 = (unsigned int)this->durationOfPerformancesF2;
+	unsigned int breakPer2 = (unsigned int)this->breakBetweenPerfomancesF2;
+	unsigned int breakBetF1andF2 = (unsigned int)this->breakBetweenF1andF2;
+	unsigned int fullDay = (unsigned int)this->endOfFunctions - (unsigned int) this->startOfFunctions;
+	unsigned int nom = (fullDay - (durationPer1 + breakBetF1andF2 + 4 * (durationPer2 + breakPer2) + durationPer2));
+	unsigned int denom = (durationPer1 + breakPer1);
+	unsigned int nContestants = nom/denom + 1;
+	return nContestants;
 }
 void Company::addAudition(Audition * audition) {
 	for (unsigned int i = 0; i < auditions.size(); i++)

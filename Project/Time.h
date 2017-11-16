@@ -35,6 +35,7 @@ public:
 	Time & operator+(const Time & time1);
 	bool operator==(const Time & time1) const;
 	bool operator<(const Time & time1) const;
+	operator unsigned int() const;
 	friend ostream& operator<<(ostream& os, const Time& time);
 	//Other Methods
 	bool isValidDate();
