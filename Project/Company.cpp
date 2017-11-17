@@ -29,6 +29,9 @@ vector<Judge*> Company::getJudges() const {
 vector<Application*> Company::getApplications() const {
 	return applications;
 }
+vector<Audition*> Company::getAuditions() const {
+	return auditions;
+}
 
 /* ------------------------------------ CONTESTANT -----------------------------------*/
 Contestant * Company::getContestantById(unsigned int id) {
@@ -73,6 +76,17 @@ void Company::generateContestantsOfSpecialty(string specialty, vector<Contestant
 		contestants.push_back(contestantsOfSpecialty[i]);
 		contestantsOfSpecialty.erase(contestantsOfSpecialty.begin() + i);
 		counter++;
+	}
+}
+void Company::getContestantsOfApplications(vector<unsigned int> & contestants, const vector<Application*> & applications) {
+	for (size_t i = 0; i < applications.size(); i++) {
+		unsigned int id = applications[i]->contestantId;
+		bool repeated = false;
+		for (size_t i = 0; (i < contestants.size()) && (!repeated); i++)
+		{
+			if (contestants[i] == id); repeated = true;
+		}
+		if (!repeated) contestants.push_back(id);
 	}
 }
 void Company::addContestant(Contestant * contestant) {
@@ -232,30 +246,46 @@ Judge * Company::getJudgeById(unsigned int id) {
 	}
 	throw JudgeIdNotFound(id);
 }
-void Company::getJudgesOfSpecialy(string specialty, vector<Judge*>  & judges) {
+void Company::getJudgesOfSpecialty(string specialty, vector<Judge*>  & judges) {
 	for (size_t i = 0; i< this->judges.size(); i++)
 	{
 		if (this->judges[i]->getSpecialty() == specialty)
 			judges.push_back(this->judges[i]);
 	}
 }
-void Company::generateJudgesForSpecialty(string specialty, vector<Judge*> & judges) {
+void Company::getJudgesNotOfSpecialty(string specialty, vector<Judge*> & judges) {
+	for (size_t i = 0; i< this->judges.size(); i++)
+	{
+		if (this->judges[i]->getSpecialty() != specialty)
+			judges.push_back(this->judges[i]);
+	}
+}
+void Company::generateChiefJudge(string specialty, unsigned int & chiefJudge) {
 	srand(time(NULL));
 	vector<Judge*> judgesOfSpecialty;
-	getJudgesOfSpecialy(specialty, judgesOfSpecialty);
+	getJudgesOfSpecialty(specialty, judgesOfSpecialty);
 	unsigned int i;
 
+	i = rand() % judgesOfSpecialty.size();
+	chiefJudge = judgesOfSpecialty[i]->getId();
+}
+void Company::generateJudges(string specialty, vector<unsigned int> & judges) {
+	srand(time(NULL));
+	vector<Judge*> judgesNotOfSpecialty;
+	getJudgesNotOfSpecialty(specialty, judgesNotOfSpecialty);
+	unsigned int i, j;
+
 	//1st Judge
-	i = rand() % judgesOfSpecialty.size();
-	judges.push_back(judgesOfSpecialty[i]);
-	judgesOfSpecialty.erase(judgesOfSpecialty.begin() + i);
+	i = rand() % judgesNotOfSpecialty.size();
+	judges.push_back(judgesNotOfSpecialty[i]->getId());
+
 	//2nd Judge
-	i = rand() % judgesOfSpecialty.size();
-	judges.push_back(judgesOfSpecialty[i]);
-	judgesOfSpecialty.erase(judgesOfSpecialty.begin() + i);
-	//3rd Judge
-	i = rand() % judgesOfSpecialty.size();
-	judges.push_back(judgesOfSpecialty[i]);
+	do {
+		j = rand() % judgesNotOfSpecialty.size();
+	} while (j == i);
+
+	judges.push_back(judgesNotOfSpecialty[i]->getId());
+
 }
 void Company::addJudge(Judge * judge) {
 	for (unsigned int i = 0; i < judges.size(); i++)
@@ -393,8 +423,35 @@ void Company::scheduleAudition(string specialty, Calendar begining,  vector<unsi
 	lastAuditionId++;
 	Calendar ending = begining + getDurationOfAudition(contestants.size());
 	Audition * audition = new Audition(lastAuditionId, begining, ending, specialty, judges, chiefJudge, contestants);
+	auditions.push_back(audition);
 }
-void Company::scheduieMaxAuditionsOfSpeicalty() {
+void Company::scheduleMaxAuditions() {
+	vector<string> specialties;
+	getSpecialties(specialties);
+	for (size_t i = 0; i < specialties.size(); i++) {
+		scheduleMaxAuditionsOfSpecialty(specialties[i]);
+	}
+}
+void Company::scheduleMaxAuditionsOfSpecialty(string specialty) {
+	vector<Application*> applications;
+	vector<unsigned int> contestants;
+	vector<unsigned int> judges;
+	unsigned int chiefJudge;
+
+	// Contestants 
+	getApplicationsOfSpecialty(specialty, applications);
+	getContestantsOfApplications(contestants, applications);
+
+	if (contestants.size() < 6) return;
+	unsigned int max = getMaxNumOfContestantsPerAudition();
+	if (contestants.size() > max) contestants.resize(max);
+
+	//Judges
+	generateJudges(specialty, judges);
+	generateChiefJudge(specialty, chiefJudge);
+
+	scheduleAudition(specialty, startOfFunctions, contestants, judges, chiefJudge);
+	//BUGS: Applications are not deleted
 
 }
 bool Company::readAuditionsFile(string fileName) {

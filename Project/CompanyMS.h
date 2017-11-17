@@ -34,9 +34,9 @@ public:
 	void readJudgesFileMenu();
 	void showJudgesMenu();
 
-	//SESSIONS
+	//AUDITIONS
 	void scheduleAuditionMenu();
-	void scheduleAuditionsForAllMenu();
+	void scheduleMaxAuditionsMenu();
 	void modifyAuditionMenu();
 	void disassembleAuditionMenu();
 	void showAuditionsMenu();

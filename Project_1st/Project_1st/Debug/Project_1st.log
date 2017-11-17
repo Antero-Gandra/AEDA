@@ -1,14 +1,7 @@
-﻿  SecondFase.cpp
-  FirstFase.cpp
-  Generating Code...
-  Compiling...
-  Fase.cpp
-c:\users\margarida silva\documents\github\aeda\project\fase.cpp(128): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  CompanyMS.cpp
-  Company.cpp
-c:\users\margarida silva\documents\github\aeda\project\company.cpp(64): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\margarida silva\documents\github\aeda\project\company.cpp(243): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Audition.cpp
-  Generating Code...
+﻿  Company.cpp
+c:\users\margarida silva\documents\github\aeda\project\company.cpp(67): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\margarida silva\documents\github\aeda\project\company.cpp(87): warning C4390: ';': empty controlled statement found; is this the intent?
+c:\users\margarida silva\documents\github\aeda\project\company.cpp(264): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\margarida silva\documents\github\aeda\project\company.cpp(273): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Project_1st.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\Project_1st\Debug\Project_1st.exe
   Project_1st.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\Project_1st\Debug\Project_1st.pdb (Partial PDB)

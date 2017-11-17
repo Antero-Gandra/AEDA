@@ -227,6 +227,7 @@ void CompanyMS::auditionMenu() {
 		break;
 	case 2: do {
 		clearScreen();
+		scheduleMaxAuditionsMenu();
 	} while (!std::cin.eof());
 	cin.clear();
 	break;
@@ -237,6 +238,7 @@ void CompanyMS::auditionMenu() {
 	break;
 	case 4: do {
 		clearScreen();
+		showAuditionsMenu();
 	} while (!std::cin.eof());
 	cin.clear();
 	break;
@@ -523,6 +525,26 @@ void CompanyMS::scheduleAuditionMenu() {
 
 		cout << "You have included " << i << "contestants in the audition, which makes a total duration of ";
 	
+}
+void CompanyMS::scheduleMaxAuditionsMenu() {
+	company->scheduleMaxAuditions();
+	cout << "Please Press Ctrl^Z to go back to the Contestants' Menu" << endl;
+	while (!cin.eof()) {
+		string option;
+		getline(cin, option);
+	}
+}
+void CompanyMS::showAuditionsMenu() {
+	vector<Audition*> auditions = company->getAuditions();
+	for(size_t i=0; i<auditions.size(); i++)
+	{ 
+		cout << auditions[i];
+	}
+	cout << "Please Press Ctrl^Z to go back to the Contestants' Menu" << endl;
+	while (!cin.eof()) {
+		string option;
+		getline(cin, option);
+	}
 }
 
 

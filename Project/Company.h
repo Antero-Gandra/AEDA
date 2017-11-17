@@ -31,6 +31,7 @@ public:
 	std::vector<Contestant*> getContestants() const;
 	std::vector<Judge*> getJudges() const;
 	std::vector<Application*> getApplications() const;
+	std::vector<Audition*> getAuditions() const;
 
 	/* ------------------------------------ CONTESTANT -----------------------------------*/
 
@@ -39,6 +40,7 @@ public:
 	void getContestantsOfSpecialty(std::string specialty, std::vector<Contestant*> & contestants);
 	void getApplicationsOfSpecialty(std::string specialty, std::vector<Application*> & applications);
 	void generateContestantsOfSpecialty(std::string specialty, std::vector<Contestant*> & contestants);
+	void getContestantsOfApplications(std::vector<unsigned int> & contestants, const std::vector<Application*> & applications);
 	void addContestant(Contestant * contestant);
 	void addApplication(Calendar calendar, unsigned int id);
 	void updateContestant(Contestant * contestant, Contestant * modContestant);
@@ -53,8 +55,10 @@ public:
 
 	/* -------------------------------------- JUDGE --------------------------------------*/
 	Judge * getJudgeById(unsigned int id);
-	void getJudgesOfSpecialy(std::string specialty, std::vector<Judge*> & judges);
-	void generateJudgesForSpecialty(std::string specialty, std::vector<Judge*> & judges);
+	void getJudgesOfSpecialty(std::string specialty, std::vector<Judge*> & judges);
+	void getJudgesNotOfSpecialty(std::string specialty, std::vector<Judge*> & judges);
+	void generateChiefJudge(std::string specialty, unsigned int & chiefJudge);
+	void generateJudges(std::string specialty, std::vector<unsigned int> & judges);
 	void addJudge(Judge * judge);
 	void removeJudge(Judge * judge);
 	bool readJudgesFile(std::string fileName);
@@ -70,7 +74,8 @@ public:
 	unsigned int getMaxNumOfContestantsPerAudition();
 	void addAudition(Audition * audition);
 	void scheduleAudition(std::string specialty, Calendar begining, std::vector<unsigned int> contestants, std::vector<unsigned int> judges, unsigned int chiefJudge);
-	void scheduieMaxAuditionsOfSpeicalty();
+	void scheduleMaxAuditionsOfSpecialty(std::string specialty);
+	void scheduleMaxAuditions();
 	bool readAuditionsFile(std::string fileName);
 	bool writeAuditionsFile(std::string fileName);
 	void showAuditionInDetail(unsigned int id);
