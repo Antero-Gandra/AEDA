@@ -6,22 +6,20 @@
 #include "Audition.h"
 #include "Util.h"
 #include <sstream>
+#include <limits>
+#include <cstddef>
 
 using namespace std;
 
-/**
- * Audition implementation
- */
-
-Audition::Audition(unsigned int id, Time start, Time end, string specialty, vector<unsigned int> evaluatorsId, unsigned int leaderId) {
+Audition::Audition(unsigned int id, Calendar start, Calendar end, string specialty, vector<unsigned int> evaluatorsId, unsigned int leaderId) {
 	this->id = id;
 	this->start = start;
 	this->end = end;
 	this->specialty = specialty;
 	this->evaluatorsId = evaluatorsId;
 	this->leaderId = leaderId;
-	this->firstFase = NULL;
-	this->secondFase = NULL;
+	this->firstFase = 0;
+	this->secondFase = 0;
 }
 Audition::Audition(string textline) {
 
@@ -41,33 +39,33 @@ Audition::Audition(string textline) {
 
 	//get id
 	auditionLine >> id;
-	auditionLine.ignore(max, '|');
+	auditionLine.ignore(numeric_limits<streamsize>::max(), '|');
 
 	//get start
 	auditionLine >> year;
-	auditionLine.ignore(max, '/');
+	auditionLine.ignore(numeric_limits<streamsize>::max(), '/');
 	auditionLine >> month;
-	auditionLine.ignore(max, '/');
+	auditionLine.ignore(numeric_limits<streamsize>::max(), '/');
 	auditionLine >> day;
-	auditionLine.ignore(max, '/');
+	auditionLine.ignore(numeric_limits<streamsize>::max(), '/');
 	auditionLine >> hour;
-	auditionLine.ignore(max, '/');
+	auditionLine.ignore(numeric_limits<streamsize>::max(), '/');
 	auditionLine >> minute;
-	auditionLine.ignore(max, '|');
-	Time start(year, month, day, hour, minute);
+	auditionLine.ignore(numeric_limits<streamsize>::max(), '|');
+	Calendar start(year, month, day, hour, minute);
 
 	//get end
 	auditionLine >> year;
-	auditionLine.ignore(max, '/');
+	auditionLine.ignore(numeric_limits<streamsize>::max(), '/');
 	auditionLine >> month;
-	auditionLine.ignore(max, '/');
+	auditionLine.ignore(numeric_limits<streamsize>::max(), '/');
 	auditionLine >> day;
-	auditionLine.ignore(max, '/');
+	auditionLine.ignore(numeric_limits<streamsize>::max(), '/');
 	auditionLine >> hour;
-	auditionLine.ignore(max, '/');
+	auditionLine.ignore(numeric_limits<streamsize>::max(), '/');
 	auditionLine >> minute;
-	auditionLine.ignore(max, '|');
-	Time end(year, month, day, hour, minute);
+	auditionLine.ignore(numeric_limits<streamsize>::max(), '|');
+	Calendar end(year, month, day, hour, minute);
 
 	//get specialty
 	getline(auditionLine, specialty, '|');
@@ -80,11 +78,11 @@ Audition::Audition(string textline) {
 	//get evaluator2 id
 	auditionLine >> id;
 	ids.push_back(id);
-	auditionLine.ignore(max, '|');
+	auditionLine.ignore(numeric_limits<streamsize>::max(), '|');
 
 	//get leader id
 	auditionLine >> id;
-	auditionLine.ignore(max, '|');
+	auditionLine.ignore(numeric_limits<streamsize>::max(), '|');
 
 	//get Fase1
 	getline(auditionLine, fase1, '|');
@@ -109,10 +107,10 @@ Audition::Audition(string textline) {
 unsigned int Audition::getId() const {
 	return id;
 }
-Time Audition::getStart() const {
+Calendar Audition::getStart() const {
 	return start;
 }
-Time Audition::getEnd() const {
+Calendar Audition::getEnd() const {
 	return end;
 }
 string Audition::getSpecialty() const {
@@ -134,10 +132,10 @@ SecondFase* Audition::getSecondFase() const {
 void Audition::setId(unsigned int id) {
 	this->id = id;
 }
-void Audition::setStart(Time start) {
+void Audition::setStart(Calendar start) {
 	this->start = start;
 }
-void Audition::setEnd(Time end) {
+void Audition::setEnd(Calendar end) {
 	this->end = end;
 }
 void Audition::setSpecialty(string specialty) {
@@ -167,6 +165,6 @@ bool Audition::operator==(const Audition & audition1) const {
 		this->specialty == audition1.specialty);
 }
 ostream& operator<<(ostream& os, const Audition & audition) {
-	os << audition.id << " | " << audition.start.date() << " | " << audition.end.date() << " | " << audition.evaluatorsId[0] << ", "  << audition.id << " | " << audition.start.date() << " | " << audition.end.date() << " | " << audition.evaluatorsId[0] << ", " << audition.evaluatorsId[1] << " | " << audition.leaderId << " | " << audition.firstFase << " | " << audition.secondFase << " | ";
+	os << audition.getId() << " | " << audition.getStart().date() << " | " << audition.getEnd().date() << " | " << audition.getEvaluatorsId()[0] << ", "  << audition.getId() << " | " << audition.getStart().date() << " | " << audition.getEnd().date() << " | " << audition.getEvaluatorsId()[0] << ", " << audition.getEvaluatorsId()[1] << " | " << audition.getLeaderId() << " | " << audition.getFirstFase() << " | " << audition.getSecondFase() << " | ";
 	return os;
 }

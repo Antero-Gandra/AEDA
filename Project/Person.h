@@ -6,36 +6,32 @@
 #ifndef _PERSON_H
 #define _PERSON_H
 
-#include <string>
-#include <vector>
-#include <stdlib.h>
-#include "Time.h"
+#include "Calendar.h"
 
-using namespace std;
 
 class Person {
 protected: 
-    string name;
-    string address;
+    std::string name;
+    std::string address;
     unsigned int mobile;
-    Time dob;
-    string specialty;
+    Calendar dob;
+    std::string specialty;
 public:
 	//Constructor
 	Person() {};
-	Person(string name, string address, unsigned int mobile, Time dob, string specialty);
+	Person(std::string name, std::string address, unsigned int mobile, Calendar dob, std::string specialty);
 	//Get Methods
-    string getName() const;
-	string getAddress() const;
+    std::string getName() const;
+	std::string getAddress() const;
 	unsigned int getMobile() const;
-	Time getDob() const;
-	string getSpecialty() const;
+	Calendar getDob() const;
+	std::string getSpecialty() const;
 	//Set Methods
-	void setName(string name);
-	void setAddress(string address);
+	void setName(std::string name);
+	void setAddress(std::string address);
 	void setMobile(unsigned int mobile);
-	void setDob(Time dob);
-	void setSpecialty(string specialty);
+	void setDob(Calendar dob);
+	void setSpecialty(std::string specialty);
 	//Other Methods
 	unsigned int mobileGenerator();
 };

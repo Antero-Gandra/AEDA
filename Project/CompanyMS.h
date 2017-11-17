@@ -1,16 +1,16 @@
-#include "Company.h"
-
 #ifndef _COMPANYMS_H
 #define _COMPANYMS_H
 
 
 #include <cstdlib>
-#include <ctime>
 #include <vector>
+
+#include "Calendar.h"
+#include "Company.h"
 
 using namespace std;
 class CompanyMS {
-	static Time currentTime;
+	static Calendar currentCalendar;
 public:
 	void run();
 	void mainMenu();
@@ -51,13 +51,13 @@ public:
 	bool isYesOrNo(string answer);
 	bool isValidId(string id);
 	bool isValidString(string s);
-	bool isValidDob(Time dob);
+	bool isValidDob(Calendar dob);
 	bool isValidNumber(string number);
 	unsigned int optionHandler(unsigned int infLim, unsigned int supLim);
 	bool yesNoHandler();
 	unsigned int idHandler();
 	string stringHandler(string type);
-	Time dobHandler();
+	Calendar dobHandler();
 	string specialtyHandler();
 	unsigned int numberHandler(string type);
 

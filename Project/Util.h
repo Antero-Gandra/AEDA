@@ -3,10 +3,8 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
-
 extern const std::streamsize max;
-void removeSpaces(string &string);
+void removeSpaces(std::string &string);
 
 #endif
 

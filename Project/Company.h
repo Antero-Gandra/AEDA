@@ -7,77 +7,70 @@
 #include "Contestant.h"
 #include "Judge.h"
 #include "Audition.h"
-
-struct Application {
-	Time date;
-	unsigned int contestantId;
-	Application(Time date, unsigned int contestantId) {
-		this->date = date;
-		this->contestantId = contestantId;
-	}
-};
+#include "Application.h"
+#include "Calendar.h"
 
 class Company {
-	vector<Contestant*> contestants;
-	vector<Application*> applications;
-	vector<Judge *> judges;
-	vector<Audition*> auditions;
+	std::vector<Contestant*> contestants;
+	std::vector<Application*> applications;
+	std::vector<Judge *> judges;
+	std::vector<Audition*> auditions;
 	static unsigned int lastContestantId;
 	static unsigned int lastJudgeId;
 	static unsigned int lastAuditionId;
-	const Time startOfFunctions = Time(0, 0, 0, 8, 30);
-	const Time endOfFunctions = Time(0, 0, 0, 20, 30);
-	const Time durationOfPerformancesF1 = Time(0, 0, 0, 0, 15);
-	const Time breakBetweenPerfomancesF1 = Time(0, 0, 0, 0, 5);
-	const Time breakBetweenF1andF2 = Time(0, 0, 0, 0, 35);
-	const Time durationOfPerformancesF2 = Time(0, 0, 0, 0, 30);
-	const Time breakBetweenPerfomancesF2 = Time(0, 0, 0, 0, 10);
+	const Calendar startOfFunctions = Calendar(0, 0, 0, 8, 30);
+	const Calendar endOfFunctions = Calendar(0, 0, 0, 20, 30);
+	const Calendar durationOfPerformancesF1 = Calendar(0, 0, 0, 0, 15);
+	const Calendar breakBetweenPerfomancesF1 = Calendar(0, 0, 0, 0, 5);
+	const Calendar breakBetweenF1andF2 = Calendar(0, 0, 0, 0, 35);
+	const Calendar durationOfPerformancesF2 = Calendar(0, 0, 0, 0, 30);
+	const Calendar breakBetweenPerfomancesF2 = Calendar(0, 0, 0, 0, 10);
 	
 public:
 	//getMethods
-	vector<Contestant*> getContestants() const;
-	vector<Judge*> getJudges() const;
-	vector<Application*> getApplications() const;
+	std::vector<Contestant*> getContestants() const;
+	std::vector<Judge*> getJudges() const;
+	std::vector<Application*> getApplications() const;
 
 	/* ------------------------------------ CONTESTANT -----------------------------------*/
 
 	Contestant * getContestantById(unsigned int id);
 	unsigned int getContestantByInfo(Contestant *);
-	void getContestantsOfSpecialty(string specialty, vector<Contestant*> & contestants);
-	void getApplicationsOfSpecialty(string specialty, vector<Application*> & applications);
-	void generateContestantsOfSpecialty(string specialty, vector<Contestant*> & contestants);
+	void getContestantsOfSpecialty(std::string specialty, std::vector<Contestant*> & contestants);
+	void getApplicationsOfSpecialty(std::string specialty, std::vector<Application*> & applications);
+	void generateContestantsOfSpecialty(std::string specialty, std::vector<Contestant*> & contestants);
 	void addContestant(Contestant * contestant);
-	void addApplication(Time ctime, unsigned int id);
+	void addApplication(Calendar calendar, unsigned int id);
 	void updateContestant(Contestant * contestant, Contestant * modContestant);
 	void removeContestant(Contestant * contestant);
-	vector<Application*> getApplicationsById(unsigned int id);
+	std::vector<Application*> getApplicationsById(unsigned int id);
 	void removeOneApplicationOfContestant(Contestant* contestant);
 	void removeApplicationsOfContestant(Contestant * contestant);
-	bool readContestantsFile(string fileName);
-	bool writeContestantsFile(string fileName);
-	bool readApplicationsFile(string fileName);
-	bool writeApplicationsFile(string fileName);
+	bool readContestantsFile(std::string fileName);
+	bool writeContestantsFile(std::string fileName);
+	bool readApplicationsFile(std::string fileName);
+	bool writeApplicationsFile(std::string fileName);
 
 	/* -------------------------------------- JUDGE --------------------------------------*/
 	Judge * getJudgeById(unsigned int id);
-	void getJudgesOfSpecialy(string specialty, vector<Judge*> & judges);
-	void generateJudgesForSpecialty(string specialty, vector<Judge*> & judges);
+	void getJudgesOfSpecialy(std::string specialty, std::vector<Judge*> & judges);
+	void generateJudgesForSpecialty(std::string specialty, std::vector<Judge*> & judges);
 	void addJudge(Judge * judge);
 	void removeJudge(Judge * judge);
-	bool readJudgesFile(string fileName);
-	bool writeJudgesFile(string fileName);
+	bool readJudgesFile(std::string fileName);
+	bool writeJudgesFile(std::string fileName);
 	void showJudges();
-	bool hasSpecialty(string specialty);
+	bool hasSpecialty(std::string specialty);
 
 	/* -------------------------------------- AUDITION -----------------------------------*/
 	Audition * getAuditionById(unsigned int id);
-	void getAuditionsOfSpecialy(string specialty, vector<Audition*> & auditions);
-	Time getDurationOfAudition(unsigned int nCandidates);
+	void getAuditionsOfSpecialy(std::string specialty, std::vector<Audition*> & auditions);
+	Calendar getDurationOfAudition(unsigned int nCandidates);
 	unsigned int getMaxNumOfContestantsPerAudition();
 	void addAudition(Audition * audition);
-	void scheduleAudition(string speacialty, vector<unsigned int>, vector<unsigned int>);
-	bool readAuditionsFile(string fileName);
-	bool writeAuditionsFile(string fileName);
+	void scheduleAudition(std::string speacialty, std::vector<unsigned int>, std::vector<unsigned int>);
+	bool readAuditionsFile(std::string fileName);
+	bool writeAuditionsFile(std::string fileName);
 	void showAuditionInDetail(unsigned int id);
 
 };
@@ -90,7 +83,7 @@ bool comparePointedValues(Comparable * comparable1, Comparable * comparable2) {
 
 template <class Person>
 bool shareSameId(Person * person1, Person * person2) {
-	return *person1.getId() == person2.getId();
+	return person1->getId() == person2->getId();
 }
 
 

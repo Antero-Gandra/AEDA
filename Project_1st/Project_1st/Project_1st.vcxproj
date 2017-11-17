@@ -111,7 +111,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="applications.dat" />
+    <None Include="auditions.dat" />
+    <None Include="contestants.dat" />
+    <None Include="judges.dat" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Project\Application.cpp" />
     <ClCompile Include="..\..\Project\Audition.cpp" />
+    <ClCompile Include="..\..\Project\Calendar.cpp" />
     <ClCompile Include="..\..\Project\Company.cpp" />
     <ClCompile Include="..\..\Project\CompanyMS.cpp" />
     <ClCompile Include="..\..\Project\Contestant.cpp" />
@@ -119,30 +127,28 @@
     <ClCompile Include="..\..\Project\Fase.cpp" />
     <ClCompile Include="..\..\Project\FirstFase.cpp" />
     <ClCompile Include="..\..\Project\Judge.cpp" />
+    <ClCompile Include="..\..\Project\Participation.cpp" />
     <ClCompile Include="..\..\Project\Person.cpp" />
     <ClCompile Include="..\..\Project\SecondFase.cpp" />
-    <ClCompile Include="..\..\Project\Time.cpp" />
     <ClCompile Include="..\..\Project\Util.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Project\Application.h" />
     <ClInclude Include="..\..\Project\Audition.h" />
+    <ClInclude Include="..\..\Project\Calendar.h" />
     <ClInclude Include="..\..\Project\Company.h" />
     <ClInclude Include="..\..\Project\CompanyMS.h" />
     <ClInclude Include="..\..\Project\Contestant.h" />
     <ClInclude Include="..\..\Project\ExceptionHand.h" />
     <ClInclude Include="..\..\Project\Fase.h" />
     <ClInclude Include="..\..\Project\FirstFase.h" />
+    <ClInclude Include="..\..\Project\insertionSort.h" />
     <ClInclude Include="..\..\Project\Judge.h" />
+    <ClInclude Include="..\..\Project\Participation.h" />
     <ClInclude Include="..\..\Project\Person.h" />
     <ClInclude Include="..\..\Project\SecondFase.h" />
-    <ClInclude Include="..\..\Project\Time.h" />
+    <ClInclude Include="..\..\Project\sequentialSearch.h" />
     <ClInclude Include="..\..\Project\Util.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="applications.dat" />
-    <None Include="auditions.dat" />
-    <None Include="contestants.dat" />
-    <None Include="judges.dat" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

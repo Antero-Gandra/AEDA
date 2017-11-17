@@ -5,20 +5,21 @@
 #ifndef _FASE_H
 #define _FASE_H
 
-#include "Contestant.h"
+#include <vector>
+#include <string>
 
 class Fase {
 	unsigned int auditionId;
-	vector<unsigned int> final_grade;
-	vector<unsigned int> ev1;
-	vector<unsigned int> ev2;
-	vector <unsigned int> ld;
-	vector<unsigned int> contestants;
+	std::vector<unsigned int> final_grade;
+	std::vector<unsigned int> ev1;
+	std::vector<unsigned int> ev2;
+	std::vector <unsigned int> ld;
+	std::vector<unsigned int> contestants;
 public:
 	Fase() {}
-	Fase(unsigned int auditionId, vector<unsigned int> final_grade, vector<unsigned int> ev1, vector<unsigned int> ev2, vector<unsigned int> ld);
-	Fase(string textline);
-	//Get Mehods
+	Fase(unsigned int auditionId, std::vector<unsigned int> final_grade, std::vector<unsigned int> ev1, std::vector<unsigned int> ev2, std::vector<unsigned int> ld);
+	Fase(std::string textline);
+	//Get Methods
 	unsigned int getAuditionId() const;
 	//Set Methods
 	void setAuditionId(unsigned int auditionId);

@@ -7,18 +7,20 @@
 #include <ios>
 #include "Contestant.h"
 #include "Util.h"
+#include <limits>
 
+using namespace std;
 
 //Constructors
 Contestant::Contestant(string textLine) {
-	istringstream contestantLine;
-	contestantLine.str(textLine);
+	const streamsize max = numeric_limits<streamsize>::max();
+	istringstream contestantLine(textLine);
 
 	unsigned int id;
 	string name;
 	string address;
 	unsigned int mobile;
-	Time dob;
+	Calendar dob;
 	unsigned int year;
 	unsigned int month;
 	unsigned int day;
@@ -94,7 +96,7 @@ Contestant::Contestant(string textLine) {
 	this->participations = participations;
 
 }
-Contestant::Contestant(unsigned int id, string name, string address, unsigned int mobile, Time dob, string specialty, std::vector<unsigned int> participation): Person(name, address, mobile, dob, specialty) {
+Contestant::Contestant(unsigned int id, string name, string address, unsigned int mobile, Calendar dob, string specialty, std::vector<unsigned int> participation): Person(name, address, mobile, dob, specialty) {
 	this->id = id;
 	this->participations = participations;
 }
@@ -119,14 +121,15 @@ bool Contestant::operator==(const Contestant & contestant1) const {
 }
 ostream& operator<<(ostream& os, const Contestant& contestant) {
 
-	os << contestant.id << " ; " << contestant.name << " ; " << contestant.dob.date() << " ; "  << contestant.mobile << " ; " << contestant.address << " ; "  << contestant.specialty << " ; ";
+	os << contestant.getId() << " ; " << contestant.getName() << " ; " << contestant.getDob().date() << " ; "  << contestant.getMobile() << " ; " << contestant.getAddress() << " ; "  << contestant.getSpecialty() << " ; ";
 	//print participations
+	auto participations = contestant.getParticipations();
 
-	for (size_t i = 0; i < contestant.participations.size(); i++)
+	for (size_t i = 0; i < participations.size(); i++)
 	{
-		os << contestant.participations[i]->auditionId << " , ";
-		os << contestant.participations[i]->place << " , ";
-		os << contestant.participations[i]->leaderGrade << ". ";
+		os << participations[i]->auditionId << " , ";
+		os <<participations[i]->place << " , ";
+		os << participations[i]->leaderGrade << ". ";
 	}
 	os << " ;";
 	return os;

@@ -9,8 +9,11 @@
 #include "Judge.h"
 #include "ExceptionHand.h"
 #include "Audition.h"
+#include "Calendar.h"
 #include "Util.h"
+#include "time.h"
 
+using namespace std;
 
 unsigned int Company::lastContestantId = 0;
 unsigned int Company::lastJudgeId = 0;
@@ -78,8 +81,8 @@ void Company::addContestant(Contestant * contestant) {
 	contestants.push_back(contestant);
 	sort(contestants.begin(), contestants.end(), comparePointedValues<Contestant>);
 }
-void Company::addApplication(Time ctime, unsigned int id) {
-	Application * application = new Application(ctime, id);
+void Company::addApplication(Calendar calendar, unsigned int id) {
+	Application * application = new Application(calendar, id);
 	applications.push_back(application);
 }
 void Company::updateContestant(Contestant * contestant, Contestant * modContestant) {
@@ -155,7 +158,7 @@ bool Company::readApplicationsFile(string fileName) {
 	ifstream applicationsFile(fileName + ".dat");
 
 	string textLine;
-	Time date;
+	Calendar date;
 	unsigned int year, month, day, hour, minute;
 	unsigned int id;
 
@@ -336,14 +339,14 @@ void Company::getAuditionsOfSpecialy(string specialty, vector<Audition*> & audit
 			auditions.push_back(this->auditions[i]);
 	}
 }
-Time Company::getDurationOfAudition(unsigned int nContestants) {
+Calendar Company::getDurationOfAudition(unsigned int nContestants) {
 	unsigned int durationPer1 = (unsigned int)durationOfPerformancesF1;
 	unsigned int breakPer1 = (unsigned int)breakBetweenPerfomancesF1;
 	unsigned int durationPer2 = (unsigned int)durationOfPerformancesF2;
 	unsigned int breakPer2 = (unsigned int)breakBetweenPerfomancesF2;
 	unsigned int breakBetF1andF2 = (unsigned int)breakBetweenF1andF2;
 	unsigned int totalDuration = ((nContestants - 1)*(durationPer1 + breakPer1) + durationPer1 + breakBetF1andF2 + 4 * (durationPer2 + breakPer2) + durationPer2);
-	Time duration = Time(0, 0, 0, totalDuration / 60, totalDuration % 60);
+	Calendar duration = Calendar(0, 0, 0, totalDuration / 60, totalDuration % 60);
 	return duration;
 
 }
@@ -383,14 +386,14 @@ void Company::scheduleAudition(string specialty, vector<unsigned int> cntestnts,
 
 	//if (jdges.size() > 4
 	unsigned int dur = cntestnts.size()*(15 + 5) + 5 * 30;
-	Time duration = Time(0, 0, 0, dur / 60, dur % 60);
+	Calendar duration = Calendar(0, 0, 0, dur / 60, dur % 60);
 	lastAuditionId++;
 	vector<unsigned int> evs;
 	evs.push_back(jdges[0]);
 	evs.push_back(jdges[1]);
 	unsigned int id = lastAuditionId;
-	Time begining = startOfFunctions;
-	Time ending = duration + startOfFunctions;
+	Calendar begining = startOfFunctions;
+	Calendar ending = duration + startOfFunctions;
 	Audition audition(id, begining, ending, specialty, evs, jdges[2]);
 }
 

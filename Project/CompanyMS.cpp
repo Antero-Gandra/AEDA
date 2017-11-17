@@ -1,16 +1,14 @@
 
 #define _CRT_SECURE_NO_WARNINGS
 #include "CompanyMS.h"
-#include "Company.h"
-#include "Time.h"
 #include "Util.h"
 #include "ExceptionHand.h"
+#include <ctime>
 #include <iostream>
-#include <time.h>
+#include <wchar.h>
 #include <stdio.h>
 
-
-Time CompanyMS::currentTime = Time(2017, 11, 14, 12, 0);
+Calendar CompanyMS::currentCalendar = Calendar(2017, 11, 14, 12, 0);
 
 int main()
 {
@@ -29,11 +27,11 @@ void CompanyMS::run() {
 	time_t t = time(0);   // get time now
 	struct tm * now = localtime(&t);
 
-	currentTime.setYear(now->tm_year + 1900);
-	currentTime.setMonth(now->tm_mon + 1);
-	currentTime.setDay(now->tm_mday + 1);
-	currentTime.setHour(now->tm_hour);
-	currentTime.setMinute(now->tm_min);
+	currentCalendar.setYear(now->tm_year + 1900);
+	currentCalendar.setMonth(now->tm_mon + 1);
+	currentCalendar.setDay(now->tm_mday + 1);
+	currentCalendar.setHour(now->tm_hour);
+	currentCalendar.setMinute(now->tm_min);
 
 	company->readContestantsFile("contestants");
 	company->readApplicationsFile("applications");
@@ -260,7 +258,7 @@ void CompanyMS::enrollAContestantMenu() {
 		showContestants();
 		unsigned int Id = idHandler();
 		if (cin.eof()) return;
-		company->addApplication(currentTime, Id);
+		company->addApplication(currentCalendar, Id);
 	}
 	else {
 		Contestant * contestant = NULL;
@@ -270,7 +268,7 @@ void CompanyMS::enrollAContestantMenu() {
 			string name = stringHandler("name");
 			if (cin.eof()) return;
 			cout << "Please insert the candidate's date of birth." << endl;
-			Time dob = dobHandler();
+			Calendar dob = dobHandler();
 			if (cin.eof()) return;
 			cout << "Please insert the candidate's mobile." << endl;
 			unsigned int mobile = numberHandler("mobile");
@@ -291,7 +289,7 @@ void CompanyMS::enrollAContestantMenu() {
 			{
 				repeated = false;
 				company->addContestant(contestant);
-				company->addApplication(currentTime, company->getContestantByInfo(contestant));
+				company->addApplication(currentCalendar, company->getContestantByInfo(contestant));
 			}
 			if (i != 0) {
 				cout << "Ooops! It looks like the contestant you specified IS already in our database." << endl;
@@ -300,7 +298,7 @@ void CompanyMS::enrollAContestantMenu() {
 				if (cin.eof()) return;
 				if (answer)
 				{
-					company->addApplication(currentTime, i);
+					company->addApplication(currentCalendar, i);
 					repeated = false;
 				}
 
@@ -353,7 +351,7 @@ void CompanyMS::modifyContestantInfoMenu() {
 		cout << "Would you like to modify the contestant's dob? (y/n)";
 		answer = yesNoHandler();
 		if (cin.eof()) return;
-		Time dob;
+		Calendar dob;
 		if (answer)
 		{
 			cout << "Please insert the contestant's new dob. " << endl;
@@ -619,7 +617,7 @@ bool CompanyMS::isValidString(string s) {
 
 	return true;
 }
-bool CompanyMS::isValidDob(Time dob) {
+bool CompanyMS::isValidDob(Calendar dob) {
 	return dob.isValidDate();
 }
 bool CompanyMS::isValidNumber(string number) {
@@ -740,7 +738,7 @@ string CompanyMS::stringHandler(string type) {
 	}
 	return s;
 }
-Time CompanyMS::dobHandler() {
+Calendar CompanyMS::dobHandler() {
 	bool valid = false;
 	string number;
 	unsigned int day, month, year;
@@ -749,7 +747,7 @@ Time CompanyMS::dobHandler() {
 		while (!valid) {
 			cout << "year:";
 			getline(cin, number);
-			if (cin.eof()) return Time();
+			if (cin.eof()) return Calendar();
 			try {
 				valid = isValidNumber(number);
 			}
@@ -763,7 +761,7 @@ Time CompanyMS::dobHandler() {
 				valid = false;
 				cout << "Your answer has invalid characters. Note that it has to a number. Please retry to enter it." << endl;
 			}
-			if (cin.eof()) return Time();
+			if (cin.eof()) return Calendar();
 		}
 		year = stoi(number);
 		valid = false;
@@ -772,7 +770,7 @@ Time CompanyMS::dobHandler() {
 		while (!valid) {
 			cout << "month:";
 			getline(cin, number);
-			if (cin.eof()) return Time();
+			if (cin.eof()) return Calendar();
 			try {
 				valid = isValidNumber(number);
 			}
@@ -786,7 +784,7 @@ Time CompanyMS::dobHandler() {
 				valid = false;
 				cout << "Your answer has invalid characters. Note that it has to a number. Please retry to enter it." << endl;
 			}
-			if (cin.eof()) return Time();
+			if (cin.eof()) return Calendar();
 		}
 		month = stoi(number);
 		valid = false;
@@ -796,7 +794,7 @@ Time CompanyMS::dobHandler() {
 		while (!valid) {
 			cout << "day:";
 			getline(cin, number);
-			if (cin.eof()) return Time();
+			if (cin.eof()) return Calendar();
 			try {
 				valid = isValidNumber(number);
 			}
@@ -810,14 +808,14 @@ Time CompanyMS::dobHandler() {
 				valid = false;
 				cout << "Your answer has invalid characters. Note that it has to a number. Please retry to enter it." << endl;
 			}
-			if (cin.eof()) return Time();
+			if (cin.eof()) return Calendar();
 		}
 		day = stoi(number);
-		valid = isValidDob(Time(year, month, day, 0, 0));
+		valid = isValidDob(Calendar(year, month, day, 0, 0));
 		if (!valid)
 			cout << "Your answer is not a valid date. Not that is has to a be a valid calendar date. Please retry to enter it." << endl;
 	}
-	return Time(year, month, day, 0, 0);
+	return Calendar(year, month, day, 0, 0);
 }
 string CompanyMS::specialtyHandler() {
 	bool valid = false;

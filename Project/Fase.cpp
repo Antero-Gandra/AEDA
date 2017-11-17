@@ -6,10 +6,9 @@
 #include "Fase.h"
 #include "Util.h"
 #include <sstream>
+#include <limits>
 
- /**
-  * Fase implementation
-  */
+using namespace std;
 
 Fase::Fase(unsigned int auditionId, vector<unsigned int> final_grade, vector<unsigned int> ev1, vector<unsigned int> ev2, vector<unsigned int> ld) {
 	this->auditionId = auditionId;
@@ -46,7 +45,7 @@ Fase::Fase(string textline) {
 
 	//get id
 	faseLine >> auditionId;
-	faseLine.ignore(max, ';');
+	faseLine.ignore(numeric_limits<streamsize>::max(), ';');
 
 	//get final marks
 	getline(faseLine, gf, ';');

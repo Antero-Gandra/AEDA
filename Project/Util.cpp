@@ -1,4 +1,6 @@
 #include "Util.h"
+#include <cstddef>
+#include <limits>
 
 const std::streamsize max = std::numeric_limits<std::streamsize>::max();
 void removeSpaces(std::string &string)

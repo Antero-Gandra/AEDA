@@ -2,14 +2,19 @@
 #include <iostream>
 #include "Judge.h"
 #include "Util.h"
+#include <limits>
+
+using namespace std;
 
 
-
-Judge::Judge(unsigned int id, string name, string address, unsigned int mobile, Time dob, string specialty, std::vector<unsigned int> participations) : Person(name, address, mobile, dob, specialty) {
-	this->id;
+Judge::Judge(unsigned int id, string name, string address, unsigned int mobile, Calendar dob, string specialty, std::vector<unsigned int> participations) : Person(name, address, mobile, dob, specialty) {
+	this->id = id;
 	this->participations = participations;
 }
-Judge::Judge(string textline) {const std::streamsize max = std::numeric_limits<std::streamsize>::max();
+Judge::Judge(string textline) {
+
+	const streamsize max = numeric_limits<streamsize>::max();
+
 	istringstream judgeLine;
 	judgeLine.str(textline);
 
@@ -17,7 +22,7 @@ Judge::Judge(string textline) {const std::streamsize max = std::numeric_limits<s
 	string name;
 	string address;
 	unsigned int mobile;
-	Time dob;
+	Calendar dob;
 	unsigned int year;
 	unsigned int month;
 	unsigned int day;
@@ -105,12 +110,13 @@ bool Judge::operator==(const Judge & judge1) const {
 		participations == judge1.participations);
 }
 ostream& operator<<(ostream& os, const Judge& judge) {
-	os << judge.id << " ; " << judge.name << " ; " << judge.dob.date() << " ; " << judge.mobile << " ; " << judge.address << " ; " << judge.specialty << " ; ";
+	os << judge.getId() << " ; " << judge.getName() << " ; " << judge.getDob().date() << " ; " << judge.getMobile() << " ; " << judge.getAddress() << " ; " << judge.getSpecialty() << " ; ";
 	//participations
-	if (judge.participations.size() > 0) {
+	auto participations = judge.getParticipations();
+	if (participations.size() > 0) {
 		unsigned int i = 0;
-		for (; i < judge.participations.size(); i++) {
-			os << judge.participations[i] << ", ";
+		for (; i < participations.size(); i++) {
+			os << participations[i] << ", ";
 		}
 	}
 	os << " ;";
@@ -123,7 +129,7 @@ void Judge::show() {
 	cout << "-> Name: " << name << endl;
 	cout << "-> Date of Birth: " << dob.date() << endl;
 	cout << "-> Mobile: " << mobile << endl;
-	cout << "-> Adress: " << address << endl;
+	cout << "-> Address: " << address << endl;
 	cout << "-> Specialty: " << specialty << endl;
 	cout << "-> Participations: " << endl;
 

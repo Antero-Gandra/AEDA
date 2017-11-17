@@ -15,7 +15,33 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Project\Time.cpp">
+    <None Include="contestants.dat">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="applications.dat">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="auditions.dat">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="judges.dat">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Project\Participation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Project\Person.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Project\SecondFase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Project\Util.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Project\Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Project\Audition.cpp">
@@ -30,6 +56,9 @@
     <ClCompile Include="..\..\Project\Contestant.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Project\ExceptionHand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Project\Fase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -39,69 +68,58 @@
     <ClCompile Include="..\..\Project\Judge.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Project\Person.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Project\SecondFase.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Project\Util.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Project\ExceptionHand.cpp">
+    <ClCompile Include="..\..\Project\Calendar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Project\SecondFase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Project\Time.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Project\Audition.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Project\Company.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Project\CompanyMS.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Project\Contestant.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Project\Fase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Project\FirstFase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Project\Judge.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="..\..\Project\Participation.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Project\Person.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\SecondFase.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\sequentialSearch.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Project\Util.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\Application.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\Audition.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\Company.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\CompanyMS.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\Contestant.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Project\ExceptionHand.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="contestants.dat">
+    <ClInclude Include="..\..\Project\Fase.h">
       <Filter>Source Files</Filter>
-    </None>
-    <None Include="applications.dat">
+    </ClInclude>
+    <ClInclude Include="..\..\Project\FirstFase.h">
       <Filter>Source Files</Filter>
-    </None>
-    <None Include="auditions.dat">
+    </ClInclude>
+    <ClInclude Include="..\..\Project\insertionSort.h">
       <Filter>Source Files</Filter>
-    </None>
-    <None Include="judges.dat">
+    </ClInclude>
+    <ClInclude Include="..\..\Project\Judge.h">
       <Filter>Source Files</Filter>
-    </None>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\Calendar.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
