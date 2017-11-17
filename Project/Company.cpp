@@ -124,13 +124,14 @@ vector<Application*> Company::getApplicationsById(unsigned int id) {
 	}
 	return contestantApp;
 }
-void Company::removeOneApplicationOfContestant(Contestant* contestant) {
+Calendar Company::removeOneApplicationOfContestant(Contestant* contestant) {
 	for (auto it = applications.begin(); it < applications.end(); it++)
 	{
 		if ((*it)->contestantId == contestant->getId())
 		{
+			Calendar oldestApplication = (*it)->date;
 			applications.erase(it);
-			return;
+			return oldestApplication;
 		}
 	}
 }
@@ -398,10 +399,10 @@ unsigned int Company::getMaxNumOfContestantsPerAudition() {
 	unsigned int durationPer2 = (unsigned int)this->durationOfPerformancesF2;
 	unsigned int breakPer2 = (unsigned int)this->breakBetweenPerfomancesF2;
 	unsigned int breakBetF1andF2 = (unsigned int)this->breakBetweenF1andF2;
-	unsigned int fullDay = (unsigned int)this->endOfFunctions - (unsigned int) this->startOfFunctions;
+	unsigned int fullDay = (unsigned int)this->endOfFunctions - (unsigned int)this->startOfFunctions;
 	unsigned int nom = (fullDay - (durationPer1 + breakBetF1andF2 + 4 * (durationPer2 + breakPer2) + durationPer2));
 	unsigned int denom = (durationPer1 + breakPer1);
-	unsigned int nContestants = nom/denom + 1;
+	unsigned int nContestants = nom / denom + 1;
 	return nContestants;
 }
 void Company::addAudition(Audition * audition) {
@@ -417,19 +418,28 @@ void Company::addAudition(Audition * audition) {
 }
 void Company::showAuditionInDetail(unsigned int id) {
 
-		
+
 }
-void Company::scheduleAudition(string specialty, Calendar begining,  vector<unsigned int> contestants, vector<unsigned int> judges, unsigned int chiefJudge) {
+void Company::scheduleAudition(string specialty, Calendar begining, vector<unsigned int> contestants, vector<unsigned int> judges, unsigned int chiefJudge) {
 	lastAuditionId++;
 	Calendar ending = getDurationOfAudition(contestants.size()) + begining;
-	Audition * audition = new Audition(lastAuditionId, begining, ending, specialty, judges, chiefJudge, contestants);
-	auditions.push_back(audition);
-
+	vector<Calendar> dateOfApplications;
 	for (size_t i = 0; i < contestants.size(); i++)
 	{
 		Contestant * contestant = getContestantById(contestants[i]);
-		removeOneApplicationOfContestant(contestant);
+		Calendar date = removeOneApplicationOfContestant(contestant);
+		dateOfApplications.push_back(date);
 	}
+	Calendar newestApp = dateOfApplications[1];
+	for (size_t i = 0; i < dateOfApplications.size(); i++){
+		if (newestApp < dateOfApplications[i])
+			newestApp = dateOfApplications[i];
+	}
+	begining.setDay(newestApp.getDay()+Calendar(0,0,1,0,0));
+	begining.setMonth(newestApp.getMonth());
+	begining.setYear(newestApp.getYear());
+	Audition * audition = new Audition(lastAuditionId, begining, ending, specialty, judges, chiefJudge, contestants);
+	auditions.push_back(audition);
 }
 void Company::scheduleMaxAuditions() {
 	vector<string> specialties;

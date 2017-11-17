@@ -19,7 +19,7 @@ Audition::Audition(unsigned int id, Calendar start, Calendar end, std::string sp
 	this->judgesId = judgesId;
 	this->chiefJudgeId = chiefJudgeId;
 	this->firstFase = new FirstFase(id, {}, {}, {}, {}, contestants);
-	this->secondFase = 0;
+	this->secondFase = new SecondFase(id, {}, {}, {}, {}, {});
 }
 Audition::Audition(string textline) {
 
@@ -103,6 +103,10 @@ Audition::Audition(string textline) {
 	this->secondFase = secondFase;
 
 }
+Audition::~Audition() {
+	delete[] firstFase;
+	delete[] secondFase;
+}
 
 //get Methods
 unsigned int Audition::getId() const {
@@ -166,7 +170,18 @@ bool Audition::operator==(const Audition & audition1) const {
 		this->start.getYear() == audition1.start.getYear() &&
 		this->specialty == audition1.specialty);
 }
-ostream& operator<<(ostream& os, const Audition & audition) {
-	os << audition.id << " | " << audition.start.full() << " | " << audition.end.full() << " | " << audition.judgesId[0] << ", "  << audition.judgesId[1] << " | " << audition.chiefJudgeId << " | " << *audition.firstFase << " | " << audition.secondFase << " | ";
+ostream& operator<<(ostream& os, const Audition & audition)
+{
+	os << audition.getId() << " | " << audition.getStart().full() << " | " << audition.getEnd().full() << " | " << audition.getJudgesId()[0] << ", "  << audition.getJudgesId()[1] << " | " << audition.getChiefJudgeId() << " | " << *(audition.getFirstFase()) << " | " << audition.getSecondFase() << " | ";
 	return os;
+}
+
+//other methods
+void Audition::gradeFirstFase() {
+	firstFase->evaluate();
+	firstFase->overallGrading();
+}
+void Audition::gradeSecondFase() {
+	firstFase->evaluate();
+	firstFase->overallGrading();
 }

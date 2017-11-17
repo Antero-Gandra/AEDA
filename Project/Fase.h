@@ -17,7 +17,8 @@ protected:
 	std::vector <unsigned int> chiefJudge;
 	std::vector<unsigned int> contestants;
 public:
-	Fase() {}
+	Fase(){}
+	virtual ~Fase(){};
 	Fase(unsigned int auditionId, std::vector<unsigned int> final_grade, std::vector<unsigned int> judge1, std::vector<unsigned int> judge2, std::vector<unsigned int> chiefJudge, std::vector<unsigned int> contestants);
 	Fase(std::string textline);
 	//Get Methods

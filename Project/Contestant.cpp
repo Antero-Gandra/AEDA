@@ -71,6 +71,7 @@ Contestant::Contestant(string textLine) {
 
 	//Reading each participation
 	getline(participationsLine, prtcpation, '.');
+	removeSpaces(prtcpation);
 	istringstream participationLine(prtcpation);
 	while (prtcpation != "")
 	{

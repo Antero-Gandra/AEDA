@@ -23,7 +23,7 @@ void FirstFase::overallGrading() {
 }
 
 //Operator overloading
-ostream& operator<<(ostream& os, const FirstFase& firstFase) {
+ostream& operator<<(ostream& os, const FirstFase & firstFase) {
 
 	os << firstFase.getAuditionId() << " ; ";
 	vector<double> finalGrade = firstFase.getFinalGrade();

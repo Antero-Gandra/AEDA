@@ -46,7 +46,7 @@ public:
 	void updateContestant(Contestant * contestant, Contestant * modContestant);
 	void removeContestant(Contestant * contestant);
 	std::vector<Application*> getApplicationsById(unsigned int id);
-	void removeOneApplicationOfContestant(Contestant* contestant);
+	Calendar removeOneApplicationOfContestant(Contestant* contestant);
 	void removeApplicationsOfContestant(Contestant * contestant);
 	bool readContestantsFile(std::string fileName);
 	bool writeContestantsFile(std::string fileName);

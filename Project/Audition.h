@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include "Calendar.h"
+#include <ios>
 
 class Audition {
 private: 
@@ -20,6 +21,7 @@ private:
 public:
 	Audition(unsigned int id, Calendar start, Calendar end, std::string specialty, std::vector<unsigned int> judgesId, unsigned int chiefJudgeId, std::vector<unsigned int> contestants);
 	Audition(std::string textline);
+	~Audition();
 	//get Methods
 	unsigned int getId() const;
 	Calendar getStart() const;
@@ -44,6 +46,10 @@ public:
 	bool operator<(const  Audition & contestant1) const;
 	bool operator==(const Audition & contestant1) const;
 	friend std::ostream& operator<<(std::ostream& os, const Audition & contestant);
+
+	//Other Methods
+	void gradeFirstFase();
+	void gradeSecondFase();
 };
 
 #endif //_AUDITION_H
