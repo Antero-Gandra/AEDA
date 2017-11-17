@@ -323,6 +323,18 @@ bool Company::hasSpecialty(string specialty) {
 	}
 	return false;
 }
+void Company::getSpecialties(std::vector<std::string> & specialties) {
+	bool repeated;
+	for (size_t i = 0; i < judges.size(); i++) {
+		repeated = false;
+		string specialty = judges[i]->getSpecialty();
+		for (size_t i = 0; i < specialties.size() && (!repeated); i++)
+		{
+			if (specialty == specialties[i]) repeated = true;
+		}
+		if (!repeated) specialties.push_back(specialty);
+	}
+}
 /* -------------------------------------- AUDITION ------------------------------------*/
 
 Audition * Company::getAuditionById(unsigned int id) {
@@ -377,26 +389,14 @@ void Company::showAuditionInDetail(unsigned int id) {
 
 		
 }
-void Company::scheduleAudition(string specialty, vector<unsigned int> cntestnts, vector<unsigned int> jdges) {
-	//if (cntestnts.size() <= 6)
-		// throw an exception
-
-	//if (jdges.size() < 3)
-		// throw an exception
-
-	//if (jdges.size() > 4
-	unsigned int dur = cntestnts.size()*(15 + 5) + 5 * 30;
-	Calendar duration = Calendar(0, 0, 0, dur / 60, dur % 60);
+void Company::scheduleAudition(string specialty, Calendar begining,  vector<unsigned int> contestants, vector<unsigned int> judges, unsigned int chiefJudge) {
 	lastAuditionId++;
-	vector<unsigned int> evs;
-	evs.push_back(jdges[0]);
-	evs.push_back(jdges[1]);
-	unsigned int id = lastAuditionId;
-	Calendar begining = startOfFunctions;
-	Calendar ending = duration + startOfFunctions;
-	Audition audition(id, begining, ending, specialty, evs, jdges[2]);
+	Calendar ending = begining + getDurationOfAudition(contestants.size());
+	Audition * audition = new Audition(lastAuditionId, begining, ending, specialty, judges, chiefJudge, contestants);
 }
+void Company::scheduieMaxAuditionsOfSpeicalty() {
 
+}
 bool Company::readAuditionsFile(string fileName) {
 	ifstream auditionsFile(fileName + ".dat");
 

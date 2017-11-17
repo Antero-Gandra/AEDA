@@ -11,14 +11,14 @@
 
 using namespace std;
 
-Audition::Audition(unsigned int id, Calendar start, Calendar end, string specialty, vector<unsigned int> evaluatorsId, unsigned int leaderId) {
+Audition::Audition(unsigned int id, Calendar start, Calendar end, std::string specialty, std::vector<unsigned int> judgesId, unsigned int chiefJudgeId, std::vector<unsigned int> contestants) {
 	this->id = id;
 	this->start = start;
 	this->end = end;
 	this->specialty = specialty;
-	this->evaluatorsId = evaluatorsId;
-	this->leaderId = leaderId;
-	this->firstFase = 0;
+	this->judgesId = judgesId;
+	this->chiefJudgeId = chiefJudgeId;
+	this->firstFase = new FirstFase(id, {}, {}, {}, {}, contestants);
 	this->secondFase = 0;
 }
 Audition::Audition(string textline) {
@@ -80,7 +80,7 @@ Audition::Audition(string textline) {
 	ids.push_back(id);
 	auditionLine.ignore(numeric_limits<streamsize>::max(), '|');
 
-	//get leader id
+	//get chiefJudge id
 	auditionLine >> id;
 	auditionLine.ignore(numeric_limits<streamsize>::max(), '|');
 
@@ -97,12 +97,13 @@ Audition::Audition(string textline) {
 	this->start = start;
 	this->end = end;
 	this->specialty = specialty;
-	this->evaluatorsId = ids;
-	this->leaderId = id;
+	this->judgesId = ids;
+	this->chiefJudgeId = id;
 	this->firstFase = firstFase;
 	this->secondFase = secondFase;
 
 }
+
 //get Methods
 unsigned int Audition::getId() const {
 	return id;
@@ -116,11 +117,11 @@ Calendar Audition::getEnd() const {
 string Audition::getSpecialty() const {
 	return specialty;
 }
-vector<unsigned int> Audition::getEvaluatorsId() const {
-	return evaluatorsId;
+vector<unsigned int> Audition::getJudgesId() const {
+	return judgesId;
 }
-unsigned int Audition::getLeaderId() const {
-	return leaderId;
+unsigned int Audition::getChiefJudgeId() const {
+	return chiefJudgeId;
 }
 FirstFase* Audition::getFirstFase() const {
 	return firstFase;
@@ -128,6 +129,7 @@ FirstFase* Audition::getFirstFase() const {
 SecondFase* Audition::getSecondFase() const {
 	return secondFase;
 }
+
 //set Methods
 void Audition::setId(unsigned int id) {
 	this->id = id;
@@ -141,11 +143,11 @@ void Audition::setEnd(Calendar end) {
 void Audition::setSpecialty(string specialty) {
 	this->specialty = specialty;
 }
-void Audition::setEvaluatorsId(vector<unsigned int> evaluators) {
-	this->evaluatorsId = evaluatorsId;
+void Audition::setJudgesId(vector<unsigned int> evaluators) {
+	this->judgesId = judgesId;
 }
-void Audition::setLeaderId(unsigned int leaderId) {
-	this->leaderId = leaderId;
+void Audition::setChiefJudgeId(unsigned int chiefJudgeId) {
+	this->chiefJudgeId = chiefJudgeId;
 }
 void Audition::setFirstFase(FirstFase * firstFase) {
 	this->firstFase = firstFase;
@@ -165,6 +167,6 @@ bool Audition::operator==(const Audition & audition1) const {
 		this->specialty == audition1.specialty);
 }
 ostream& operator<<(ostream& os, const Audition & audition) {
-	os << audition.getId() << " | " << audition.getStart().date() << " | " << audition.getEnd().date() << " | " << audition.getEvaluatorsId()[0] << ", "  << audition.getId() << " | " << audition.getStart().date() << " | " << audition.getEnd().date() << " | " << audition.getEvaluatorsId()[0] << ", " << audition.getEvaluatorsId()[1] << " | " << audition.getLeaderId() << " | " << audition.getFirstFase() << " | " << audition.getSecondFase() << " | ";
+	os << audition.getId() << " | " << audition.getStart().date() << " | " << audition.getEnd().date() << " | " << audition.getJudgesId()[0] << ", "  << audition.getId() << " | " << audition.getStart().date() << " | " << audition.getEnd().date() << " | " << audition.getJudgesId()[0] << ", " << audition.getJudgesId()[1] << " | " << audition.getChiefJudgeId() << " | " << audition.getFirstFase() << " | " << audition.getSecondFase() << " | ";
 	return os;
 }

@@ -7,17 +7,18 @@
 #include "Util.h"
 #include <sstream>
 #include <limits>
+#include <ctime>
 
 using namespace std;
 
-Fase::Fase(unsigned int auditionId, vector<unsigned int> final_grade, vector<unsigned int> ev1, vector<unsigned int> ev2, vector<unsigned int> ld) {
+Fase::Fase(unsigned int auditionId, vector<unsigned int> final_grade, vector<unsigned int> judge1,  vector<unsigned int> judge2, vector<unsigned int> chiefJudge, vector<unsigned int> contestants) {
 	this->auditionId = auditionId;
 	this->final_grade;
-	this->ev1 = ev1;
-	this->ev2 = ev2;
-	this->ld = ld;
+	this->judge1 = judge1;
+	this->judge2 = judge2;
+	this->chiefJudge = chiefJudge;
+	this->contestants = contestants;
 }
-
 Fase::Fase(string textline) {
 	//get id
 	istringstream faseLine;
@@ -88,7 +89,7 @@ Fase::Fase(string textline) {
 		removeSpaces(grade);
 	}
 
-	// leader
+	// chiefJudge
 	getline(faseLine, g3, ';');
 	istringstream grades3(g3);
 	getline(grades3, grade, ',');
@@ -121,4 +122,16 @@ Fase::Fase(string textline) {
 unsigned int Fase::getAuditionId() const { return auditionId; }
 //Set Method
 void Fase::setAuditionId(unsigned int auditionId) { this->auditionId = auditionId; }
+
+//other methods
+void Fase::evaluate() {
+	srand(time(NULL));
+	for (size_t i = 0; i < contestants.size(); i++)
+	{
+		judge1.push_back(rand() % 10 + 1);
+		judge2.push_back(rand() % 10 + 1);
+		chiefJudge.push_back(rand() % 10 + 1);
+	}
+}
+
 

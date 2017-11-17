@@ -29,7 +29,7 @@ Contestant::Contestant(string textLine) {
 	vector<Participation*> participations;
 	unsigned int auditionId;
 	unsigned int place;
-	unsigned int leaderGrade;
+	unsigned int chiefJudgeGrade;
 
 	//get id
 	contestantLine >> id;
@@ -78,9 +78,9 @@ Contestant::Contestant(string textLine) {
 		participationLine.ignore(max, ',');
 		participationLine >> place;
 		participationLine.ignore(max, ',');
-		participationLine >> leaderGrade;
+		participationLine >> chiefJudgeGrade;
 
-		Participation * p = new Participation(auditionId, place, leaderGrade);
+		Participation * p = new Participation(auditionId, place, chiefJudgeGrade);
 		participations.push_back(p);
 		getline(participationsLine, prtcpation, '.');
 		istringstream participationLine(prtcpation);
@@ -129,7 +129,7 @@ ostream& operator<<(ostream& os, const Contestant& contestant) {
 	{
 		os << participations[i]->auditionId << " , ";
 		os <<participations[i]->place << " , ";
-		os << participations[i]->leaderGrade << ". ";
+		os << participations[i]->chiefJudgeGrade << ". ";
 	}
 	os << " ;";
 	return os;
@@ -149,7 +149,7 @@ void Contestant::show() const {
 	for (size_t i = 0; i < participations.size(); i++)
 	{cout << "    Audition No. " << participations[i]->auditionId << endl;
 	cout << "    ::Place: " << participations[i]->place << endl;
-	cout << "    ::Leader judges's grade: " << participations[i]->leaderGrade << endl;
+	cout << "    ::Chief judges's grade: " << participations[i]->chiefJudgeGrade << endl;
 	}
 }
 

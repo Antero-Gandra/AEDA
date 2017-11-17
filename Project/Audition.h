@@ -13,20 +13,20 @@ private:
     Calendar start;
 	Calendar end;
     std::string specialty;
-	std::vector<unsigned int> evaluatorsId;
-	unsigned int leaderId;
+	std::vector<unsigned int> judgesId;
+	unsigned int chiefJudgeId;
 	FirstFase* firstFase;
 	SecondFase* secondFase;
 public:
-	Audition(unsigned int id, Calendar start, Calendar end, std::string specialty, std::vector<unsigned int> evaluators, unsigned int leader);
+	Audition(unsigned int id, Calendar start, Calendar end, std::string specialty, std::vector<unsigned int> judgesId, unsigned int chiefJudgeId, std::vector<unsigned int> contestants);
 	Audition(std::string textline);
 	//get Methods
 	unsigned int getId() const;
 	Calendar getStart() const;
 	Calendar getEnd() const;
 	std::string getSpecialty() const;
-	std::vector<unsigned int> getEvaluatorsId() const;
-	unsigned int getLeaderId() const;
+	std::vector<unsigned int> getJudgesId() const;
+	unsigned int getChiefJudgeId() const;
 	FirstFase* getFirstFase() const;
 	SecondFase* getSecondFase() const;
 
@@ -35,8 +35,8 @@ public:
 	void setStart(Calendar start);
 	void setEnd(Calendar end);
 	void setSpecialty(std::string specialty);
-	void setEvaluatorsId(std::vector<unsigned int> evaluators);
-	void setLeaderId(unsigned int leaderId);
+	void setJudgesId(std::vector<unsigned int> evaluators);
+	void setChiefJudgeId(unsigned int chiefJudgeId);
 	void setFirstFase(FirstFase * firstFase);
 	void setSecondFase(SecondFase *  secondFase);
 

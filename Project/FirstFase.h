@@ -12,8 +12,9 @@
 class FirstFase: public Fase {
 public: 
 	FirstFase() {}
-	FirstFase(unsigned int auditionId, std::vector<unsigned int> final_grade, std::vector<unsigned int> ev1, std::vector<unsigned int> ev2, std::vector<unsigned int> ld);
+	FirstFase(unsigned int auditionId, std::vector<unsigned int> final_grade, std::vector<unsigned int> ev1, std::vector<unsigned int> ev2, std::vector<unsigned int> ld, std::vector<unsigned int> contestants);
 	FirstFase(std::string textline);
+	virtual void overallGrading();
 };
 
 #endif //_FIRSTFASE_H

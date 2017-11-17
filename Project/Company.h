@@ -61,6 +61,7 @@ public:
 	bool writeJudgesFile(std::string fileName);
 	void showJudges();
 	bool hasSpecialty(std::string specialty);
+	void getSpecialties(std::vector<std::string> & specialties);
 
 	/* -------------------------------------- AUDITION -----------------------------------*/
 	Audition * getAuditionById(unsigned int id);
@@ -68,7 +69,8 @@ public:
 	Calendar getDurationOfAudition(unsigned int nCandidates);
 	unsigned int getMaxNumOfContestantsPerAudition();
 	void addAudition(Audition * audition);
-	void scheduleAudition(std::string speacialty, std::vector<unsigned int>, std::vector<unsigned int>);
+	void scheduleAudition(std::string specialty, Calendar begining, std::vector<unsigned int> contestants, std::vector<unsigned int> judges, unsigned int chiefJudge);
+	void scheduieMaxAuditionsOfSpeicalty();
 	bool readAuditionsFile(std::string fileName);
 	bool writeAuditionsFile(std::string fileName);
 	void showAuditionInDetail(unsigned int id);
@@ -81,8 +83,8 @@ bool comparePointedValues(Comparable * comparable1, Comparable * comparable2) {
 	return (*comparable1 < *comparable2);
 }
 
-template <class Person>
-bool shareSameId(Person * person1, Person * person2) {
+template <class P>
+bool shareSameId(P * person1, P * person2) {
 	return person1->getId() == person2->getId();
 }
 

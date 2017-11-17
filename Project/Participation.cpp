@@ -1,7 +1,7 @@
 #include "Participation.h"
 
-Participation::Participation(unsigned int auditionId, unsigned int place, unsigned int leaderGrade) {
+Participation::Participation(unsigned int auditionId, unsigned int place, unsigned int chiefJudgeGrade) {
 		this->auditionId = auditionId;
 		this->place = place;
-		this->leaderGrade = leaderGrade;
+		this->chiefJudgeGrade = chiefJudgeGrade;
 	}
