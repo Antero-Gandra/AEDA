@@ -13,7 +13,7 @@ using namespace std;
 
 Fase::Fase(unsigned int auditionId, vector<unsigned int> final_grade, vector<unsigned int> judge1,  vector<unsigned int> judge2, vector<unsigned int> chiefJudge, vector<unsigned int> contestants) {
 	this->auditionId = auditionId;
-	this->final_grade;
+	this->finalGrade;
 	this->judge1 = judge1;
 	this->judge2 = judge2;
 	this->chiefJudge = chiefJudge;
@@ -118,8 +118,13 @@ Fase::Fase(string textline) {
 	}
 }
 
-//Get Method
+//Get Methods
 unsigned int Fase::getAuditionId() const { return auditionId; }
+vector<double> Fase::getFinalGrade() const { return finalGrade; }
+vector<unsigned int> Fase::getJudge1() const { return judge1; }
+vector<unsigned int> Fase::getJudge2() const {	return judge2;}
+vector<unsigned int> Fase::getChiefJudge() const { return chiefJudge; }
+vector<unsigned int> Fase::getContestants() const { return contestants; }
 //Set Method
 void Fase::setAuditionId(unsigned int auditionId) { this->auditionId = auditionId; }
 
@@ -133,5 +138,6 @@ void Fase::evaluate() {
 		chiefJudge.push_back(rand() % 10 + 1);
 	}
 }
+
 
 

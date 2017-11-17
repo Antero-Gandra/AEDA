@@ -167,6 +167,6 @@ bool Audition::operator==(const Audition & audition1) const {
 		this->specialty == audition1.specialty);
 }
 ostream& operator<<(ostream& os, const Audition & audition) {
-	os << audition.getId() << " | " << audition.getStart().date() << " | " << audition.getEnd().date() << " | " << audition.getJudgesId()[0] << ", "  << audition.getId() << " | " << audition.getStart().date() << " | " << audition.getEnd().date() << " | " << audition.getJudgesId()[0] << ", " << audition.getJudgesId()[1] << " | " << audition.getChiefJudgeId() << " | " << audition.getFirstFase() << " | " << audition.getSecondFase() << " | ";
+	os << audition.id << " | " << audition.start.full() << " | " << audition.end.full() << " | " << audition.judgesId[0] << ", "  << audition.judgesId[1] << " | " << audition.chiefJudgeId << " | " << *audition.firstFase << " | " << audition.secondFase << " | ";
 	return os;
 }

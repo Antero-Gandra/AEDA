@@ -42,6 +42,11 @@ Calendar & Calendar::operator+(const Calendar & calendar1)
 	//Setting the hours
 	hours = (minute + calendar1.minute) / 60 + (hour + calendar1.hour);
 	hour = hours % 24;
+	if (month == 0) {
+		this->minute = minutes;
+		this->hour = hours;
+		return *this;
+	}
 	//Setting the days, months and years
 	days = day + calendar1.day + hours / 24;
 	months = month + calendar1.month;

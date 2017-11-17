@@ -18,6 +18,31 @@ FirstFase::FirstFase(string textLine) : Fase(textLine) {
 
 void FirstFase::overallGrading() {
 	for (size_t i = 0; i < contestants.size(); i++) {
-		final_grade[i] = (judge1[i] + judge2[i] + chiefJudge[i])/3;
+		finalGrade[i] = (judge1[i] + judge2[i] + chiefJudge[i])/3;
 	}
+}
+
+//Operator overloading
+ostream& operator<<(ostream& os, const FirstFase& firstFase) {
+
+	os << firstFase.getAuditionId() << " ; ";
+	vector<double> finalGrade = firstFase.getFinalGrade();
+	vector<unsigned int> judge1 = firstFase.getJudge1();
+	vector<unsigned int> judge2 = firstFase.getJudge2();
+	vector<unsigned int> chiefJudge = firstFase.getChiefJudge();
+
+	for (size_t i = 0; i < judge1.size(); i++) {
+		os << judge1[i] << " ,";
+	}
+	for (size_t i = 0; i < judge2.size(); i++) {
+		os << judge2[i] << " ,";
+	}
+	for (size_t i = 0; i < chiefJudge.size(); i++) {
+		os << chiefJudge[i] << " ,";
+	}
+	for (size_t i = 0; i < finalGrade.size() ; i++) {
+		os << finalGrade[i] << " ,";
+	}
+
+	return os;
 }

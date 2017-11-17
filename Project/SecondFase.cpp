@@ -16,7 +16,7 @@ SecondFase::SecondFase(string textLine) : Fase(textLine) {
 }
 void SecondFase::overallGrading() {
 	for (size_t i = 0; i < contestants.size(); i++) {
-		final_grade[i] = (judge1[i] + judge2[i] + 2*chiefJudge[i]) / 3;
+		finalGrade[i] = (judge1[i] + judge2[i] + 2*chiefJudge[i]) / 3;
 	}
 }
 

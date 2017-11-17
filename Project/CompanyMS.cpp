@@ -538,7 +538,7 @@ void CompanyMS::showAuditionsMenu() {
 	vector<Audition*> auditions = company->getAuditions();
 	for(size_t i=0; i<auditions.size(); i++)
 	{ 
-		cout << auditions[i];
+		cout << *auditions[i];
 	}
 	cout << "Please Press Ctrl^Z to go back to the Contestants' Menu" << endl;
 	while (!cin.eof()) {

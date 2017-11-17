@@ -84,7 +84,7 @@ void Company::getContestantsOfApplications(vector<unsigned int> & contestants, c
 		bool repeated = false;
 		for (size_t i = 0; (i < contestants.size()) && (!repeated); i++)
 		{
-			if (contestants[i] == id); repeated = true;
+			if (contestants[i] == id) repeated = true;
 		}
 		if (!repeated) contestants.push_back(id);
 	}
@@ -284,7 +284,7 @@ void Company::generateJudges(string specialty, vector<unsigned int> & judges) {
 		j = rand() % judgesNotOfSpecialty.size();
 	} while (j == i);
 
-	judges.push_back(judgesNotOfSpecialty[i]->getId());
+	judges.push_back(judgesNotOfSpecialty[j]->getId());
 
 }
 void Company::addJudge(Judge * judge) {
@@ -421,9 +421,15 @@ void Company::showAuditionInDetail(unsigned int id) {
 }
 void Company::scheduleAudition(string specialty, Calendar begining,  vector<unsigned int> contestants, vector<unsigned int> judges, unsigned int chiefJudge) {
 	lastAuditionId++;
-	Calendar ending = begining + getDurationOfAudition(contestants.size());
+	Calendar ending = getDurationOfAudition(contestants.size()) + begining;
 	Audition * audition = new Audition(lastAuditionId, begining, ending, specialty, judges, chiefJudge, contestants);
 	auditions.push_back(audition);
+
+	for (size_t i = 0; i < contestants.size(); i++)
+	{
+		Contestant * contestant = getContestantById(contestants[i]);
+		removeOneApplicationOfContestant(contestant);
+	}
 }
 void Company::scheduleMaxAuditions() {
 	vector<string> specialties;
@@ -441,18 +447,24 @@ void Company::scheduleMaxAuditionsOfSpecialty(string specialty) {
 	// Contestants 
 	getApplicationsOfSpecialty(specialty, applications);
 	getContestantsOfApplications(contestants, applications);
-
-	if (contestants.size() < 6) return;
 	unsigned int max = getMaxNumOfContestantsPerAudition();
-	if (contestants.size() > max) contestants.resize(max);
 
-	//Judges
-	generateJudges(specialty, judges);
-	generateChiefJudge(specialty, chiefJudge);
 
-	scheduleAudition(specialty, startOfFunctions, contestants, judges, chiefJudge);
-	//BUGS: Applications are not deleted
+	while (contestants.size() > 6) {
+		if (contestants.size() > max) contestants.resize(max);
 
+		//Judges
+		judges = {};
+		generateJudges(specialty, judges);
+		generateChiefJudge(specialty, chiefJudge);
+
+		scheduleAudition(specialty, startOfFunctions, contestants, judges, chiefJudge);
+
+		// Contestants 
+		applications = {}; contestants = {};
+		getApplicationsOfSpecialty(specialty, applications);
+		getContestantsOfApplications(contestants, applications);
+	}
 }
 bool Company::readAuditionsFile(string fileName) {
 	ifstream auditionsFile(fileName + ".dat");

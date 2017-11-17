@@ -11,7 +11,7 @@
 class Fase {
 protected:
 	unsigned int auditionId;
-	std::vector<double> final_grade;
+	std::vector<double> finalGrade;
 	std::vector<unsigned int> judge1;
 	std::vector<unsigned int> judge2;
 	std::vector <unsigned int> chiefJudge;
@@ -22,6 +22,11 @@ public:
 	Fase(std::string textline);
 	//Get Methods
 	unsigned int getAuditionId() const;
+	std::vector<double> getFinalGrade() const;
+	std::vector<unsigned int> getJudge1() const;
+	std::vector<unsigned int> getJudge2() const;
+	std::vector<unsigned int> getChiefJudge() const;
+	std::vector<unsigned int> getContestants() const;
 	//Set Methods
 	void setAuditionId(unsigned int auditionId);
 	//other methods

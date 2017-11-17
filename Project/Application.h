@@ -4,7 +4,8 @@
 #include "Calendar.h"
 
 
-struct Application {
+class Application {
+public:
 	Calendar date;
 	unsigned int contestantId;
 	Application(Calendar date, unsigned int contestantId);
