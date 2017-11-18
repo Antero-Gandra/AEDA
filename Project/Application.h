@@ -9,6 +9,7 @@ public:
 	Calendar date;
 	unsigned int contestantId;
 	Application(Calendar date, unsigned int contestantId);
+	bool operator <(const Application & application);
 };
 
 #endif //_AUDITION_H

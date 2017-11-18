@@ -39,7 +39,9 @@ Audition::Audition(string textline) {
 
 	//get id
 	auditionLine >> id;
+	this->id = id;
 	auditionLine.ignore(numeric_limits<streamsize>::max(), '|');
+
 
 	//get start
 	auditionLine >> year;
@@ -74,6 +76,7 @@ Audition::Audition(string textline) {
 	//get evaluator1 id
 	auditionLine >> id;
 	ids.push_back(id);
+	auditionLine.ignore(numeric_limits<streamsize>::max(), ',');
 
 	//get evaluator2 id
 	auditionLine >> id;
@@ -93,7 +96,7 @@ Audition::Audition(string textline) {
 	SecondFase * secondFase = new SecondFase(fase2);
 
 	//setting the attributes
-	this->id = id;
+
 	this->start = start;
 	this->end = end;
 	this->specialty = specialty;
@@ -162,7 +165,7 @@ void Audition::setSecondFase(SecondFase *  secondFase) {
 
 //operator Overloading
 bool Audition::operator<(const  Audition & audition1) const {
-	return this->id < audition1.id;
+	return this->start < audition1.start;
 }
 bool Audition::operator==(const Audition & audition1) const {
 	return (this->start.getDay() == audition1.start.getDay() &&
@@ -172,7 +175,7 @@ bool Audition::operator==(const Audition & audition1) const {
 }
 ostream& operator<<(ostream& os, const Audition & audition)
 {
-	os << audition.getId() << " | " << audition.getStart().full() << " | " << audition.getEnd().full() << " | " << audition.getJudgesId()[0] << ", "  << audition.getJudgesId()[1] << " | " << audition.getChiefJudgeId() << " | " << *(audition.getFirstFase()) << " | " << audition.getSecondFase() << " | ";
+	os << audition.getId() << " | " << audition.getStart().full() << " | " << audition.getEnd().full() << " | " << audition.getSpecialty() << " | " << audition.getJudgesId()[0] << ", "  << audition.getJudgesId()[1] << " | " << audition.getChiefJudgeId() << " | " << *(audition.getFirstFase()) << " | " << *(audition.getSecondFase()) << " | ";
 	return os;
 }
 

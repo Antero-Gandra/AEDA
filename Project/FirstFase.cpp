@@ -13,7 +13,6 @@ using namespace std;
 FirstFase::FirstFase(unsigned int auditionId, vector<unsigned int> final_grade, vector<unsigned int> ev1, vector<unsigned int> ev2, vector<unsigned int> ld, vector<unsigned int> contestants) :Fase(auditionId, final_grade, ev1, ev2, ld, contestants) {
 }
 FirstFase::FirstFase(string textLine) : Fase(textLine) {
-
 }
 
 void FirstFase::overallGrading() {
@@ -30,19 +29,27 @@ ostream& operator<<(ostream& os, const FirstFase & firstFase) {
 	vector<unsigned int> judge1 = firstFase.getJudge1();
 	vector<unsigned int> judge2 = firstFase.getJudge2();
 	vector<unsigned int> chiefJudge = firstFase.getChiefJudge();
+	vector<unsigned int> contestants = firstFase.getContestants();
 
+	for (size_t i = 0; i < contestants.size(); i++) {
+		os << contestants[i] << " , ";
+	}
+	os << " ; ";
 	for (size_t i = 0; i < judge1.size(); i++) {
-		os << judge1[i] << " ,";
+		os << judge1[i] << " , " ;
 	}
+	os << " ; ";
 	for (size_t i = 0; i < judge2.size(); i++) {
-		os << judge2[i] << " ,";
+		os << judge2[i] << " , ";
 	}
+	os << " ; ";
 	for (size_t i = 0; i < chiefJudge.size(); i++) {
-		os << chiefJudge[i] << " ,";
+		os << chiefJudge[i] << " , ";
 	}
+	os << " ; ";
 	for (size_t i = 0; i < finalGrade.size() ; i++) {
-		os << finalGrade[i] << " ,";
+		os << finalGrade[i] << " , ";
 	}
-
+	os << " ; ";
 	return os;
 }

@@ -49,14 +49,14 @@ unsigned int Company::getContestantByInfo(Contestant * contestant) {
 	throw ContestantInfoNotFound();
 }
 void Company::getContestantsOfSpecialty(string specialty, vector<Contestant*> & contestants) {
-	for (size_t i = 0; i< this->contestants.size(); i++)
+	for (size_t i = 0; i < this->contestants.size(); i++)
 	{
 		if (this->contestants[i]->getSpecialty() == specialty)
 			contestants.push_back(this->contestants[i]);
 	}
 }
 void Company::getApplicationsOfSpecialty(string specialty, vector<Application*> & applications) {
-	for (size_t i = 0; i< this->applications.size(); i++)
+	for (size_t i = 0; i < this->applications.size(); i++)
 	{
 		Contestant * contestant = getContestantById(this->applications[i]->contestantId);
 		if (contestant->getSpecialty() == specialty)
@@ -89,22 +89,29 @@ void Company::getContestantsOfApplications(vector<unsigned int> & contestants, c
 		if (!repeated) contestants.push_back(id);
 	}
 }
-void Company::addContestant(Contestant * contestant) {
+void Company::addNewContestant(Contestant * contestant) {
 	lastContestantId++;
 	contestant->setId(lastContestantId);
+	addContestant(contestant);
+}
+void Company::addContestant(Contestant * contestant) {
 	contestants.push_back(contestant);
-	sort(contestants.begin(), contestants.end(), comparePointedValues<Contestant>);
+	sort(contestants.begin(), contestants.end(), compareById<Contestant>);
 }
 void Company::addApplication(Calendar calendar, unsigned int id) {
 	Application * application = new Application(calendar, id);
 	applications.push_back(application);
 }
 void Company::updateContestant(Contestant * contestant, Contestant * modContestant) {
+
+	if (contestant->getSpecialty() != modContestant->getSpecialty())
+		removeApplicationsOfContestant(contestant);
 	contestant->setName(modContestant->getName());
 	contestant->setDob(modContestant->getDob());
 	contestant->setMobile(modContestant->getMobile());
 	contestant->setAddress(modContestant->getAddress());
 	contestant->setSpecialty(modContestant->getSpecialty());
+
 }
 void Company::removeContestant(Contestant * contestant) {
 	for (auto it = contestants.begin(); it < contestants.end(); it++)
@@ -134,6 +141,7 @@ Calendar Company::removeOneApplicationOfContestant(Contestant* contestant) {
 			return oldestApplication;
 		}
 	}
+	return Calendar(0, 0, 0, 0, 0);
 }
 void Company::removeApplicationsOfContestant(Contestant * contestant) {
 	vector<vector<Application*>::const_iterator> elementsToErase;
@@ -164,8 +172,8 @@ bool Company::readContestantsFile(string fileName) {
 		getline(contestantsFile, textLine);
 		Contestant * contestant = new Contestant(textLine);
 		addContestant(contestant);
+		lastContestantId = contestant->getId();
 	}
-
 	contestantsFile.close();
 	return true;
 }
@@ -210,7 +218,7 @@ bool Company::readApplicationsFile(string fileName) {
 		Application *  app = new Application(date, id);
 		applications.push_back(app);
 	}
-
+	sort(applications.begin(), applications.end(), compareWithOperator<Application>);
 	applicationsFile.close();
 	return true;
 }
@@ -248,14 +256,14 @@ Judge * Company::getJudgeById(unsigned int id) {
 	throw JudgeIdNotFound(id);
 }
 void Company::getJudgesOfSpecialty(string specialty, vector<Judge*>  & judges) {
-	for (size_t i = 0; i< this->judges.size(); i++)
+	for (size_t i = 0; i < this->judges.size(); i++)
 	{
 		if (this->judges[i]->getSpecialty() == specialty)
 			judges.push_back(this->judges[i]);
 	}
 }
 void Company::getJudgesNotOfSpecialty(string specialty, vector<Judge*> & judges) {
-	for (size_t i = 0; i< this->judges.size(); i++)
+	for (size_t i = 0; i < this->judges.size(); i++)
 	{
 		if (this->judges[i]->getSpecialty() != specialty)
 			judges.push_back(this->judges[i]);
@@ -297,7 +305,7 @@ void Company::addJudge(Judge * judge) {
 	lastJudgeId++;
 	judge->setId(lastJudgeId);
 	judges.push_back(judge);
-	sort(judges.begin(), judges.end(), comparePointedValues<Judge>);
+	sort(judges.begin(), judges.end(), compareById<Judge>);
 }
 void Company::removeJudge(Judge * judge) {
 	for (auto it = judges.begin(); it < judges.end(); it++)
@@ -323,6 +331,7 @@ bool Company::readJudgesFile(string fileName) {
 		getline(judgesFile, textLine);
 		Judge * judge = new Judge(textLine);
 		addJudge(judge);
+		lastJudgeId = judge->getId();
 	}
 
 	judgesFile.close();
@@ -411,10 +420,8 @@ void Company::addAudition(Audition * audition) {
 		if (*auditions[i] == *audition)
 			return;
 	}
-	lastJudgeId++;
-	audition->setId(lastJudgeId);
 	auditions.push_back(audition);
-	sort(auditions.begin(), auditions.end(), comparePointedValues<Audition>);
+	sort(auditions.begin(), auditions.end(), compareWithOperator<Audition>);
 }
 void Company::showAuditionInDetail(unsigned int id) {
 
@@ -422,8 +429,8 @@ void Company::showAuditionInDetail(unsigned int id) {
 }
 void Company::scheduleAudition(string specialty, Calendar begining, vector<unsigned int> contestants, vector<unsigned int> judges, unsigned int chiefJudge) {
 	lastAuditionId++;
-	Calendar ending = getDurationOfAudition(contestants.size()) + begining;
 	vector<Calendar> dateOfApplications;
+	Calendar ending = getDurationOfAudition(contestants.size()) + begining;
 	for (size_t i = 0; i < contestants.size(); i++)
 	{
 		Contestant * contestant = getContestantById(contestants[i]);
@@ -431,15 +438,20 @@ void Company::scheduleAudition(string specialty, Calendar begining, vector<unsig
 		dateOfApplications.push_back(date);
 	}
 	Calendar newestApp = dateOfApplications[1];
-	for (size_t i = 0; i < dateOfApplications.size(); i++){
+	for (size_t i = 0; i < dateOfApplications.size(); i++) {
 		if (newestApp < dateOfApplications[i])
 			newestApp = dateOfApplications[i];
 	}
-	begining.setDay(newestApp.getDay()+Calendar(0,0,1,0,0));
+	begining.setDay(newestApp.getDay() + Calendar(0, 0, 1, 0, 0));
 	begining.setMonth(newestApp.getMonth());
 	begining.setYear(newestApp.getYear());
+	ending.setDay(newestApp.getDay() + Calendar(0, 0, 1, 0, 0));
+	ending.setMonth(newestApp.getMonth());
+	ending.setYear(newestApp.getYear());
+
 	Audition * audition = new Audition(lastAuditionId, begining, ending, specialty, judges, chiefJudge, contestants);
 	auditions.push_back(audition);
+
 }
 void Company::scheduleMaxAuditions() {
 	vector<string> specialties;
@@ -460,7 +472,7 @@ void Company::scheduleMaxAuditionsOfSpecialty(string specialty) {
 	unsigned int max = getMaxNumOfContestantsPerAudition();
 
 
-	while (contestants.size() > 6) {
+	while (contestants.size() >= 6) {
 		if (contestants.size() > max) contestants.resize(max);
 
 		//Judges
@@ -489,13 +501,28 @@ bool Company::readAuditionsFile(string fileName) {
 	while (!auditionsFile.eof()) /* adds elements to the Contestant* std::vector until the whole file is read */
 	{
 		getline(auditionsFile, textLine);
+		if (textLine == "") break;
 		Audition * audition = new Audition(textLine);
-		//addAudition(audition);
+		addAudition(audition);
+		lastAuditionId = audition->getId();
 	}
 
 	auditionsFile.close();
 	return true;
 }
 bool Company::writeAuditionsFile(string fileName) {
+	ofstream auditionsFile(fileName + ".dat");
+	unsigned int i = 0;
+	for (; i < auditions.size() - 1; i++) {
+		auditionsFile << *auditions[i] << "\n";
+	}
+	auditionsFile << *auditions[i];
+
+	auditionsFile.close();
 	return true;
+
+}
+
+bool compareByCalendar(Audition * audition1, Audition *  audition2) {
+	return (audition1->getStart() < audition2->getStart());
 }

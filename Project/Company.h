@@ -41,6 +41,7 @@ public:
 	void getApplicationsOfSpecialty(std::string specialty, std::vector<Application*> & applications);
 	void generateContestantsOfSpecialty(std::string specialty, std::vector<Contestant*> & contestants);
 	void getContestantsOfApplications(std::vector<unsigned int> & contestants, const std::vector<Application*> & applications);
+	void addNewContestant(Contestant * contestant);
 	void addContestant(Contestant * contestant);
 	void addApplication(Calendar calendar, unsigned int id);
 	void updateContestant(Contestant * contestant, Contestant * modContestant);
@@ -84,14 +85,18 @@ public:
    
 
 template <class Comparable>
-bool comparePointedValues(Comparable * comparable1, Comparable * comparable2) {
-	return (*comparable1 < *comparable2);
+bool compareById(Comparable * comparable1, Comparable * comparable2) {
+	return (comparable1->getId() < comparable2->getId());
+}
+
+template <class Comparable>
+bool compareWithOperator(Comparable * comparable1, Comparable * comparable2) {
+	return *comparable1 < *comparable2;
 }
 
 template <class P>
 bool shareSameId(P * person1, P * person2) {
 	return person1->getId() == person2->getId();
 }
-
 
 #endif //_COMPANY_H

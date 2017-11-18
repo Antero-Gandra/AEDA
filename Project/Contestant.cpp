@@ -138,7 +138,10 @@ ostream& operator<<(ostream& os, const Contestant& contestant) {
 
 //Other Methods
 void Contestant::show() const {
-	cout << "Contestant No. " << id << endl;
+	if (id != 0)
+	{
+		cout << "Contestant No. " << id << endl;
+	}
 	cout << "-> Name: " << name << endl;
 	cout << "-> Date of Birth: " << dob.date() << endl;
 	cout << "-> Mobile: " << mobile << endl;

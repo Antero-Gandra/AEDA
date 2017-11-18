@@ -33,35 +33,34 @@ Fase::Fase(string textline) {
 	string grade;
 	string cont;
 	string id;
-	vector<unsigned int> final_grades;
+	vector<double> finalGrades;
 	vector<unsigned int> ev1s;
 	vector<unsigned int> ev2s;
-	vector<unsigned int> lds;
+	vector<unsigned int> chiefs;
 	vector<unsigned int> cntestants;
-	unsigned int grd;
+	double grd;
 	unsigned int ev1;
 	unsigned int ev2;
-	unsigned int ld;
+	unsigned int chief;
 	unsigned int contestantId;
 
 	//get id
 	faseLine >> auditionId;
 	faseLine.ignore(numeric_limits<streamsize>::max(), ';');
 
-	//get final marks
-	getline(faseLine, gf, ';');
-	istringstream gradesf(gf);
-	getline(gradesf, grade, ',');
-	removeSpaces(grade);
+	//get contestants
+	getline(faseLine, cont, ';');
+	istringstream contestantsLine(cont);
+	getline(contestantsLine, id, ',');
+	removeSpaces(id);
 
-	while (grade != "")
+	while (id != "")
 	{
-		grd = stoi(grade);
-		final_grades.push_back(grd);
-		getline(gradesf, grade, ',');
-		removeSpaces(grade);
+		contestantId = stoi(id);
+		contestants.push_back(contestantId);
+		getline(contestantsLine, id, ',');
+		removeSpaces(id);
 	}
-
 	// evaluator 1
 	getline(faseLine, g1, ';');
 	istringstream grades1(g1);
@@ -97,25 +96,33 @@ Fase::Fase(string textline) {
 
 	while (grade != "")
 	{
-		ld = stoi(grade);
-		lds.push_back(ld);
+		chief = stoi(grade);
+		chiefs.push_back(chief);
 		getline(grades3, grade, ',');
 		removeSpaces(grade);
 	}
 
-	//get contestants
-	getline(faseLine, cont, ';');
-	istringstream contestantsLine(cont);
-	getline(contestantsLine, id, ',');
-	removeSpaces(id);
 
-	while (id != "")
+	//get final marks
+	getline(faseLine, gf, ';');
+	istringstream gradesf(gf);
+	getline(gradesf, grade, ',');
+	removeSpaces(grade);
+
+	while (grade != "")
 	{
-		contestantId = stoi(id);
-		contestants.push_back(contestantId);
-		getline(contestantsLine, id, ',');
-		removeSpaces(id);
+		grd = stoi(grade);
+		finalGrades.push_back(grd);
+		getline(gradesf, grade, ',');
+		removeSpaces(grade);
 	}
+
+	this->auditionId = auditionId;
+	this->judge1 = ev1s;
+	this->judge2 = ev2s;
+	this->chiefJudge = chiefs;
+	this->finalGrade = finalGrades;
+	this->contestants = contestants;
 }
 
 //Get Methods

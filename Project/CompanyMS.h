@@ -8,7 +8,6 @@
 #include "Calendar.h"
 #include "Company.h"
 
-using namespace std;
 class CompanyMS {
 	static Calendar currentCalendar;
 public:
@@ -44,23 +43,27 @@ public:
 	//CANDIDATES SHOW FUNCTIONS
 	void showContestants();
 	void showApplications();
-	void showApplicationsOfSpecialty(string specialty);
+	void showApplicationsOfSpecialty(std::string specialty);
 
 	//INPUT HANDLING
-	bool isValidOption(string option, unsigned int infLim, unsigned int supLim);
-	bool isYesOrNo(string answer);
-	bool isValidId(string id);
-	bool isValidString(string s);
+	bool isValidOption(std::string option, unsigned int infLim, unsigned int supLim);
+	bool isYesOrNo(std::string answer);
+	bool isValidId(std::string id);
+	bool isValidString(std::string s);
 	bool isValidDob(Calendar dob);
-	bool isValidNumber(string number);
+	bool isValidNumber(std::string number);
 	unsigned int optionHandler(unsigned int infLim, unsigned int supLim);
 	bool yesNoHandler();
 	unsigned int idHandler();
-	string stringHandler(string type);
+	std::string stringHandler(std::string type);
 	Calendar dobHandler();
-	string specialtyHandler();
-	unsigned int numberHandler(string type);
+	std::string specialtyHandler();
+	unsigned int numberHandler(std::string type);
 
+	//FILE SYNC
+	void updateFilesHandler();
+	//APPEARANCE
+	void printInColour(std::string text, unsigned  int colour, bool dark);
 	void clearScreen();
 	//Constructor
 	CompanyMS(Company * company);

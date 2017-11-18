@@ -20,4 +20,37 @@ void SecondFase::overallGrading() {
 	}
 }
 
+//Operator overloading
+ostream& operator<<(ostream& os, const SecondFase & secondFase) {
+
+	os << secondFase.getAuditionId() << " ; ";
+	vector<double> finalGrade = secondFase.getFinalGrade();
+	vector<unsigned int> judge1 = secondFase.getJudge1();
+	vector<unsigned int> judge2 = secondFase.getJudge2();
+	vector<unsigned int> chiefJudge = secondFase.getChiefJudge();
+	vector<unsigned int> contestants = secondFase.getContestants();
+
+	for (size_t i = 0; i < contestants.size(); i++) {
+		os << contestants[i] << " , ";
+	}
+	os << " ; ";
+	for (size_t i = 0; i < judge1.size(); i++) {
+		os << judge1[i] << " , ";
+	}
+	os << " ; ";
+	for (size_t i = 0; i < judge2.size(); i++) {
+		os << judge2[i] << " , ";
+	}
+	os << " ; ";
+	for (size_t i = 0; i < chiefJudge.size(); i++) {
+		os << chiefJudge[i] << " , ";
+	}
+	os << " ; ";
+	for (size_t i = 0; i < finalGrade.size(); i++) {
+		os << finalGrade[i] << " , ";
+	}
+	os << " ; ";
+	return os;
+}
+
 
