@@ -56,15 +56,17 @@ public:
 
 	/* -------------------------------------- JUDGE --------------------------------------*/
 	Judge * getJudgeById(unsigned int id);
+	unsigned int getJudgeByInfo(Judge * judge);
 	void getJudgesOfSpecialty(std::string specialty, std::vector<Judge*> & judges);
 	void getJudgesNotOfSpecialty(std::string specialty, std::vector<Judge*> & judges);
 	void generateChiefJudge(std::string specialty, unsigned int & chiefJudge);
 	void generateJudges(std::string specialty, std::vector<unsigned int> & judges);
 	void addJudge(Judge * judge);
+	void addNewJudge(Judge * judge);
+	void updateJudge(Judge * judge, Judge * modJudge);
 	void removeJudge(Judge * judge);
 	bool readJudgesFile(std::string fileName);
 	bool writeJudgesFile(std::string fileName);
-	void showJudges();
 	bool hasSpecialty(std::string specialty);
 	void getSpecialties(std::vector<std::string> & specialties);
 

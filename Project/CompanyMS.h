@@ -18,7 +18,7 @@ public:
 	void auditionMenu();
 	//CONTESTANTS MENUS
 	void enrollAContestantMenu();
-	void modifyContestantInfoMenu();
+	void modifyContestantMenu();
 	void removeContestantMenu();
 	void readContestantsFileMenu();
 	void showContestantsMenu();
@@ -28,7 +28,7 @@ public:
 
 	//JUDGES MENUS
 	void employJudgeMenu();
-	void modifyJudgeInfoMenu();
+	void modifyJudgeMenu();
 	void fireJudgeMenu();
 	void readJudgesFileMenu();
 	void showJudgesMenu();
@@ -44,6 +44,7 @@ public:
 	void showContestants();
 	void showApplications();
 	void showApplicationsOfSpecialty(std::string specialty);
+	void showJudges();
 
 	//INPUT HANDLING
 	bool isValidOption(std::string option, unsigned int infLim, unsigned int supLim);

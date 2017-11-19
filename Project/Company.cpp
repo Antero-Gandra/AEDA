@@ -255,6 +255,13 @@ Judge * Company::getJudgeById(unsigned int id) {
 	}
 	throw JudgeIdNotFound(id);
 }
+unsigned int Company::getJudgeByInfo(Judge * judge) {
+	for (size_t i = 0; i < judges.size(); i++) {
+		if (*judges[i] == *judge)
+			return contestants[i]->getId();
+	}
+	throw JudgeInfoNotFound();
+}
 void Company::getJudgesOfSpecialty(string specialty, vector<Judge*>  & judges) {
 	for (size_t i = 0; i < this->judges.size(); i++)
 	{
@@ -302,16 +309,29 @@ void Company::addJudge(Judge * judge) {
 		if (*judges[i] == *judge)
 			return;
 	}
-	lastJudgeId++;
-	judge->setId(lastJudgeId);
 	judges.push_back(judge);
 	sort(judges.begin(), judges.end(), compareById<Judge>);
+}
+void Company::addNewJudge(Judge * judge) {
+	lastJudgeId++;
+	judge->setId(lastJudgeId);
+	addJudge(judge);
+}
+void Company::updateJudge(Judge * judge, Judge * modJudge) {
+	judge->setName(modJudge->getName());
+	judge->setDob(modJudge->getDob());
+	judge->setMobile(modJudge->getMobile());
+	judge->setAddress(modJudge->getAddress());
+	judge->setSpecialty(modJudge->getSpecialty());
 }
 void Company::removeJudge(Judge * judge) {
 	for (auto it = judges.begin(); it < judges.end(); it++)
 	{
 		if ((*it)->getId() == judge->getId())
+		{
 			judges.erase(it);
+			return;
+		}
 	}
 	throw JudgeIdNotFound(judge->getId());
 }
@@ -347,14 +367,6 @@ bool Company::writeJudgesFile(string fileName) {
 
 	judgesFile.close();
 	return true;
-}
-void Company::showJudges() {
-	unsigned int i = 0;
-	for (; i < judges.size() - 1; i++) {
-		judges[i]->show();
-		cout << endl;
-	}
-	judges[i]->show();
 }
 bool Company::hasSpecialty(string specialty) {
 	for (size_t i = 0; i < judges.size(); i++) {

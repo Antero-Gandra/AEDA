@@ -115,7 +115,7 @@ void CompanyMS::contestantMenu()
 		break;
 	case 2: do {
 		clearScreen();
-		modifyContestantInfoMenu();
+		modifyContestantMenu();
 	} while (!std::cin.eof());
 	cin.clear();
 	break;
@@ -177,16 +177,19 @@ void CompanyMS::judgeMenu() {
 	case 1:
 		do {
 			clearScreen();
+			employJudgeMenu();
 		} while (!std::cin.eof());
 		cin.clear();
 		break;
 	case 2: do {
 		clearScreen();
+		modifyJudgeMenu();
 	} while (!std::cin.eof());
 	cin.clear();
 	break;
 	case 3: do {
 		clearScreen();
+		fireJudgeMenu();
 	} while (!std::cin.eof());
 	cin.clear();
 	break;
@@ -289,9 +292,8 @@ void CompanyMS::enrollAContestantMenu() {
 			}
 			catch (ContestantInfoNotFound)
 			{
-				string warning = "Are you sure you wish to add this contestant? ";
+				string warning = "Are you sure you wish to add this contestant? \n";
 				printInColour(warning, 3, false);
-				cout << endl;
 				contestant->show();
 				answer = yesNoHandler();
 				if (answer) {
@@ -300,10 +302,12 @@ void CompanyMS::enrollAContestantMenu() {
 					company->addApplication(currentCalendar, company->getContestantByInfo(contestant));
 					cout << "Your contestant has been added and enrolled successfuly!" << endl;
 					updateFilesHandler();
+					if (cin.eof()) return;
 				}
 			}
 			if (i != 0) {
-				cout << "Ooops! It looks like the contestant you specified IS already in our database." << endl;
+				printInColour("Ooops!\n ", 3, false);
+				cout << "It looks like the contestant you specified IS already in our database." << endl;
 				cout << "Do you still want to add an application? (y/n)";
 				bool answer = yesNoHandler();
 				if (cin.eof()) return;
@@ -314,6 +318,7 @@ void CompanyMS::enrollAContestantMenu() {
 				}
 				cout << "Your application has been added successfuly!" << endl;
 				updateFilesHandler();
+				if (cin.eof()) return;
 
 			}
 		}
@@ -324,7 +329,7 @@ void CompanyMS::enrollAContestantMenu() {
 		getline(cin, option);
 	}
 }
-void CompanyMS::modifyContestantInfoMenu() {
+void CompanyMS::modifyContestantMenu() {
 	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
 	cout << "\t\t::::::::: MODIFY A CONTESTANT ::::::::: \n";
 	printInColour("Important Notes: \n", 3, false);
@@ -455,8 +460,8 @@ void CompanyMS::modifyContestantInfoMenu() {
 				else repeated = false;
 			}
 			if (i != 0) {
-				cout << "Ooops! It looks like the contestant you specified IS already in our database." << endl;
-				cout << "Please insert different data.";
+				printInColour("Ooops!\n ", 3, false);
+				cout <<"It looks like the contestant you specified IS already in our database. Please insert different data.";
 			}
 		}
 	}
@@ -471,16 +476,21 @@ void CompanyMS::removeContestantMenu() {
 	cout << "\t\t::::::::: REMOVE A CONTESTANT ::::::::: \n";
 	bool sure = false, answer;
 
+	cout << "Would you like to see the list of contestants? " << endl;
+	answer = yesNoHandler();
+	if (cin.eof()) return;
+	if (answer) {
+		cout << "List of contestants: " << endl;
+		showContestants();
+		cout << endl;
+	}
 	//Choose of id
-	cout << "List of contestants: " << endl;
-	showContestants();
-	cout << endl;
 	while (!sure) {
 		cout << "Which contestant would you like to remove?" << endl;
 		unsigned int id = idHandler();
 		if (cin.eof()) return;
 		Contestant * contestant = company->getContestantById(id);
-		string warning = "Are you sure you wish to remove contestant No. " + to_string(id) + "? ";
+		string warning = "Are you sure you wish to remove contestant No. " + to_string(id) + "? \n";
 		printInColour(warning, 3, false);
 		answer = yesNoHandler();
 		if (cin.eof()) return;
@@ -525,16 +535,245 @@ void CompanyMS::showApplicationsMenu() {
 }
 
 void CompanyMS::employJudgeMenu() {
+	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
+	cout << "\t\t::::::::: EMPLOY A JUDGE ::::::::: \n";
 
+	Judge * judge = NULL;
+	bool repeated = true, answer;
+
+	while (repeated) {
+		cout << "Please insert the judge's name." << endl;
+		string name = stringHandler("name");
+		if (cin.eof()) return;
+		cout << "Please insert the judges's date of birth." << endl;
+		Calendar dob = dobHandler();
+		if (cin.eof()) return;
+		cout << "Please insert judge's mobile." << endl;
+		unsigned int mobile = numberHandler("mobile");
+		if (cin.eof()) return;
+		cout << "Please insert the judge's address." << endl;
+		string address = stringHandler("address");
+		if (cin.eof()) return;
+		cout << "Please insert the judge's specialty." << endl;
+		string specialty = specialtyHandler();
+		if (cin.eof()) return;
+
+		judge = new Judge(0, name, address, mobile, dob, specialty, {});
+		unsigned int i = 0;
+		try {
+			i = company->getJudgeByInfo(judge);
+		}
+		catch (JudgeInfoNotFound)
+		{
+			string warning = "Are you sure you wish to employ this judge? \n";
+			printInColour(warning, 3, false);
+			judge->show();
+			answer = yesNoHandler();
+			if (cin.eof()) return;
+			if (answer) {
+				repeated = false;
+				company->addNewJudge(judge);
+				cout << "Your judge has been addeed successfuly!" << endl;
+				updateFilesHandler();
+				if (cin.eof()) return;
+			}
+		}
+		if (i != 0) {
+			printInColour("Ooops!\n ", 3, false);
+			cout << "It looks like the judge you specified IS already in our database. Please insert different data." << endl;
+
+		}
+	}
+	cout << "Please Press Ctrl^Z to go back to the Judge's Menu" << endl;
+	while (!cin.eof()) {
+		string option;
+		getline(cin, option);
+	}
 }
-void CompanyMS::modifyJudgeInfoMenu() {
+void CompanyMS::modifyJudgeMenu() {
+	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
+	cout << "\t\t::::::::: MODIFY A JUDGE ::::::::: \n";
 
+	bool repeated = true, answer;
+	bool changes = false;
+	cout << "Would you like to see the list of judges? " << endl;
+	answer = yesNoHandler();
+	if (cin.eof()) return;
+	if (answer) {
+		cout << "List of judges: " << endl;
+		showJudges();
+		cout << endl;
+	}
+	//Choose of id
+	cout << "Which judge would you like to modify?" << endl;
+	unsigned int id = idHandler();
+	if (cin.eof()) return;
+
+	Judge * judge = company->getJudgeById(id);
+
+
+	while (repeated) {
+		//show judge
+		cout << endl;
+		judge->show();
+		cout << endl;
+
+		//name
+		cout << "Would you like to modify the judge's name? (y/n)";
+		answer = yesNoHandler();
+		if (cin.eof()) return;
+		string name;
+		if (answer)
+		{
+			cout << "Please insert the judge's new name. " << endl;
+			name = stringHandler("name");
+			if (cin.eof()) return;
+			if (name != judge->getName()) changes = true;
+		}
+		else {
+			name = judge->getName();
+		}
+		//dob
+		cout << "Would you like to modify the judge's dob? (y/n)";
+		answer = yesNoHandler();
+		if (cin.eof()) return;
+		Calendar dob;
+		if (answer)
+		{
+			changes = true;
+			cout << "Please insert the judge's new dob. " << endl;
+			dob = dobHandler();
+			if (cin.eof()) return;
+			if (dob != judge->getDob()) changes = true;
+		}
+		else {
+			dob = judge->getDob();
+		}
+
+		//mobile
+		cout << "Would you like to modify the judge's mobile? (y/n)";
+		answer = yesNoHandler();
+		if (cin.eof()) return;
+		unsigned int mobile;
+		if (answer)
+		{
+			cout << "Please insert the judge's new mobile. " << endl;
+			mobile = numberHandler("mobile");
+			if (cin.eof()) return;
+			if (mobile != judge->getMobile()) changes = true;
+		}
+		else {
+			mobile = judge->getMobile();
+		}
+
+		//address
+		cout << "Would you like to modify the judge's address? (y/n)";
+		answer = yesNoHandler();
+		if (cin.eof()) return;
+		string address;
+		if (answer)
+		{
+			cout << "Please insert the judge's new address.";
+			address = stringHandler("address");
+			if (cin.eof()) return;
+			if (address != judge->getAddress()) changes = true;
+		}
+		else {
+			address = judge->getAddress();
+		}
+		//specialty
+		cout << "Would you like to modify the judge's specialty? (y/n)";
+		answer = yesNoHandler();
+		if (cin.eof()) return;
+		string specialty;
+		if (answer)
+		{
+			cout << "Please insert the judge's new specialty.";
+			specialty = specialtyHandler();
+			if (cin.eof()) return;
+			if (specialty != judge->getSpecialty()) changes = true;
+		}
+		else {
+			specialty = judge->getSpecialty();
+		}
+		Judge * aux = new Judge(id, name, address, mobile, dob, specialty, {});
+		unsigned int i = 0;
+		if (changes) {
+			try {
+				i = company->getJudgeByInfo(aux);
+			}
+			catch (JudgeInfoNotFound)
+			{
+				string warning = "Are you sure you wish to update judge No. " + to_string(id) + "? \n";
+				printInColour(warning, 3, false);
+				printInColour("old : \n", 5, false);
+				judge->show(); cout << endl;
+				printInColour("new : \n", 5, false);
+				aux->show(); cout << endl;
+				answer = yesNoHandler();
+				if (answer)
+				{
+					company->updateJudge(judge, aux);
+					cout << "Judge No. " << id << " has been updates successfuly!" << endl;
+					updateFilesHandler();
+					repeated = false;
+				}
+			}
+			if (i != 0) {
+				printInColour("Ooops!\n ", 3, false);
+				cout << "It looks like the judge you specified IS already in our database. Please insert different data.";
+			}
+		}
+	}
+	cout << "Please Press Ctrl^Z to go back to the Judge's Menu" << endl;
+	while (!cin.eof()) {
+		string option;
+		getline(cin, option);
+	}
 }
 void CompanyMS::fireJudgeMenu() {
+	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
+	cout << "\t\t::::::::: FIRE A JUDGE ::::::::: \n";
+	bool sure = false, answer;
 
+	cout << "Would you like to see the list of judges? " << endl;
+	answer = yesNoHandler();
+	if (cin.eof()) return;
+	if (answer) {
+		cout << "List of judges: " << endl;
+		showJudges();
+		cout << endl;
+	}
+	//Choose of id
+	while (!sure) {
+		cout << "Which judge would you like to remove?" << endl;
+		unsigned int id = idHandler();
+		if (cin.eof()) return;
+		Judge * judge = company->getJudgeById(id);
+		string warning = "Are you sure you wish to remove judge No. " + to_string(id) + "?\n";
+		printInColour(warning, 3, false);
+		judge->show();
+		cout << endl;
+		answer = yesNoHandler();
+		if (cin.eof()) return;
+		if (answer)
+		{
+			//Removal of the contestant
+			company->removeJudge(judge);
+			sure = true;
+			cout << "Judge No. " << id << " has been removed  successfuly!" << endl;
+			updateFilesHandler();
+			if (cin.eof()) return;
+		}
+	}
+	cout << "Please Press Ctrl^Z to go back to the Judge' Menu" << endl;
+	while (!cin.eof()) {
+		string option;
+		getline(cin, option);
+	}
 }
 void CompanyMS::showJudgesMenu() {
-	company->showJudges();
+	showJudges();
 	cout << "Please Press Ctrl^Z to go back to the Contestants' Menu" << endl;
 	while (!cin.eof()) {
 		string option;
@@ -604,7 +843,7 @@ void CompanyMS::showContestants() {
 	cout << endl << endl;
 	for (; i < contestants.size(); i++) {
 		contestants[i]->show();
-		cout << endl << endl;
+		cout << endl;
 	}
 }
 void CompanyMS::showApplications() {
@@ -629,6 +868,16 @@ void CompanyMS::showApplicationsOfSpecialty(string specialty) {
 		contestant->show();
 		cout << endl;
 	}
+}
+void CompanyMS::showJudges() {
+	vector<Judge *> judges = company->getJudges();
+	unsigned int i = 0;
+	cout << endl << endl;
+	for (; i < judges.size() - 1; i++) {
+		judges[i]->show();
+		cout << endl;
+	}
+	judges[i]->show();
 }
 
 bool CompanyMS::isValidOption(string option, unsigned int infLim, unsigned int supLim) {
@@ -943,6 +1192,7 @@ unsigned int CompanyMS::numberHandler(string type) {
 void CompanyMS::updateFilesHandler() {
 	cout << "Would you like to update the new changes on the database files?";
 	bool answer = yesNoHandler();
+	if (cin.eof()) return;
 	if (answer) {
 		company->writeApplicationsFile("applications");
 		company->writeContestantsFile("contestants");

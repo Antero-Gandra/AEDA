@@ -149,7 +149,7 @@ void Contestant::show() const {
 	cout << "-> Specialty: " << specialty << endl;
 	cout << "-> Participations: " << endl;
 
-	if (participations.size() == 0) cout << " NONE. ";
+	if (participations.size() == 0) cout << " NONE. " << endl;
 	for (size_t i = 0; i < participations.size(); i++)
 	{cout << "    Audition No. " << participations[i]->auditionId << endl;
 	cout << "    ::Place: " << participations[i]->place << endl;

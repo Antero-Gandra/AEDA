@@ -125,7 +125,9 @@ ostream& operator<<(ostream& os, const Judge& judge) {
 
 //Other Methods
 void Judge::show() {
-	cout << "Judge No. " << id << endl;
+	if (id != 0) {
+		cout << "Judge No. " << id << endl;
+	}
 	cout << "-> Name: " << name << endl;
 	cout << "-> Date of Birth: " << dob.date() << endl;
 	cout << "-> Mobile: " << mobile << endl;
@@ -134,7 +136,7 @@ void Judge::show() {
 	cout << "-> Participations: " << endl;
 
 	if (participations.size() == 0) {
-		cout << " NONE. "; return;
+		cout << " NONE. " << endl; return;
 	}
 	cout << "Auditions No. "; 
 	size_t i = 0;
@@ -142,5 +144,5 @@ void Judge::show() {
 	{
 		cout << participations[i] << ", ";
 	}
-	cout << participations[i] << ".";
+	cout << participations[i] << "." << endl;
 }
