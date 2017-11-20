@@ -134,6 +134,9 @@ vector<unsigned int> Fase::getChiefJudge() const { return chiefJudge; }
 vector<unsigned int> Fase::getContestants() const { return contestants; }
 //Set Method
 void Fase::setAuditionId(unsigned int auditionId) { this->auditionId = auditionId; }
+void Fase::setContestants(std::vector<unsigned int> contestants) {
+	this->contestants = contestants;
+}
 
 //other methods
 void Fase::evaluate() {

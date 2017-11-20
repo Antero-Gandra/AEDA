@@ -35,11 +35,11 @@ vector<Audition*> Company::getAuditions() const {
 
 /* ------------------------------------ CONTESTANT -----------------------------------*/
 Contestant * Company::getContestantById(unsigned int id) {
-	for (size_t i = 0; i < contestants.size(); i++) {
-		if (contestants[i]->getId() == id)
-			return contestants[i];
-	}
-	throw ContestantIdNotFound(id);
+	Contestant * contestant = new Contestant(id, "", "", 0, Calendar(), "", {});
+	contestant = binarySearch<Contestant>(contestants, contestant);
+	if (contestant == NULL)
+		throw ContestantIdNotFound(id);
+	else return contestant;
 }
 unsigned int Company::getContestantByInfo(Contestant * contestant) {
 	for (size_t i = 0; i < contestants.size(); i++) {
@@ -64,7 +64,6 @@ void Company::getApplicationsOfSpecialty(string specialty, vector<Application*> 
 	}
 }
 void Company::generateContestantsOfSpecialty(string specialty, vector<Contestant*> & contestants) {
-	srand(time(NULL));
 	vector<Contestant*> contestantsOfSpecialty;
 	getContestantsOfSpecialty(specialty, contestantsOfSpecialty);
 	unsigned int counter = 0;
@@ -77,6 +76,7 @@ void Company::generateContestantsOfSpecialty(string specialty, vector<Contestant
 		contestantsOfSpecialty.erase(contestantsOfSpecialty.begin() + i);
 		counter++;
 	}
+	sort(contestants.begin(), contestants.end());
 }
 void Company::getContestantsOfApplications(vector<unsigned int> & contestants, const vector<Application*> & applications) {
 	for (size_t i = 0; i < applications.size(); i++) {
@@ -249,11 +249,11 @@ bool Company::writeApplicationsFile(string fileName) {
 
 /* --------------------------------------- JUDGE --------------------------------------*/
 Judge * Company::getJudgeById(unsigned int id) {
-	for (size_t i = 0; i < judges.size(); i++) {
-		if (judges[i]->getId() == id)
-			return judges[i];
-	}
-	throw JudgeIdNotFound(id);
+	Judge * judge = new Judge(id, "", "", 0, Calendar(), "", {});
+	judge = binarySearch<Judge>(judges, judge);
+	if (judge == NULL)
+		throw JudgeIdNotFound(id);
+	else return judge;
 }
 unsigned int Company::getJudgeByInfo(Judge * judge) {
 	for (size_t i = 0; i < judges.size(); i++) {
@@ -276,30 +276,35 @@ void Company::getJudgesNotOfSpecialty(string specialty, vector<Judge*> & judges)
 			judges.push_back(this->judges[i]);
 	}
 }
-void Company::generateChiefJudge(string specialty, unsigned int & chiefJudge) {
-	srand(time(NULL));
+void Company::generateChiefJudge(Calendar date, string specialty, unsigned int & chiefJudge) {
 	vector<Judge*> judgesOfSpecialty;
 	getJudgesOfSpecialty(specialty, judgesOfSpecialty);
 	unsigned int i;
 
-	i = rand() % judgesOfSpecialty.size();
+	do {
+		i = rand() % judgesOfSpecialty.size();
+
+	} while (judgeIsOcupied(date, judgesOfSpecialty[i]->getId())!= -1);
 	chiefJudge = judgesOfSpecialty[i]->getId();
 }
-void Company::generateJudges(string specialty, vector<unsigned int> & judges) {
+void Company::generateJudges(Calendar date, string specialty, vector<unsigned int> & judges) {
 	srand(time(NULL));
 	vector<Judge*> judgesNotOfSpecialty;
 	getJudgesNotOfSpecialty(specialty, judgesNotOfSpecialty);
 	unsigned int i, j;
 
 	//1st Judge
-	i = rand() % judgesNotOfSpecialty.size();
+	do {
+		i = rand() % judgesNotOfSpecialty.size();
+
+	} while (judgeIsOcupied(date, judgesNotOfSpecialty[i]->getId()) != -1);
 	judges.push_back(judgesNotOfSpecialty[i]->getId());
 
 	//2nd Judge
 	do {
 		j = rand() % judgesNotOfSpecialty.size();
-	} while (j == i);
-
+	} while (j == i || (judgeIsOcupied(date, judgesNotOfSpecialty[i]->getId()) != -1));
+	sort(judgesNotOfSpecialty.begin(), judgesNotOfSpecialty.end());
 	judges.push_back(judgesNotOfSpecialty[j]->getId());
 
 }
@@ -319,10 +324,10 @@ void Company::addNewJudge(Judge * judge) {
 }
 void Company::updateJudge(Judge * judge, Judge * modJudge) {
 	judge->setName(modJudge->getName());
-	judge->setDob(modJudge->getDob());
-	judge->setMobile(modJudge->getMobile());
-	judge->setAddress(modJudge->getAddress());
-	judge->setSpecialty(modJudge->getSpecialty());
+judge->setDob(modJudge->getDob());
+judge->setMobile(modJudge->getMobile());
+judge->setAddress(modJudge->getAddress());
+judge->setSpecialty(modJudge->getSpecialty());
 }
 void Company::removeJudge(Judge * judge) {
 	for (auto it = judges.begin(); it < judges.end(); it++)
@@ -373,7 +378,7 @@ bool Company::hasSpecialty(string specialty) {
 		if (judges[i]->getSpecialty() == specialty)
 			return true;
 	}
-	return false;
+	throw SpecialtyNotAvailable(specialty);
 }
 void Company::getSpecialties(std::vector<std::string> & specialties) {
 	bool repeated;
@@ -387,6 +392,19 @@ void Company::getSpecialties(std::vector<std::string> & specialties) {
 		if (!repeated) specialties.push_back(specialty);
 	}
 }
+int Company::judgeIsOcupied(Calendar date, unsigned int id) {
+	unsigned int i = 0;
+	if (auditions.empty()) return -1;
+	for (size_t i = 0; i < auditions.size(); i++)
+	{
+		if (auditions[i]->getStart().date() == date.date()) {
+			if (auditions[i]->getChiefJudgeId() == id || auditions[i]->getJudgesId()[0] == id || auditions[i]->getJudgesId()[1] == id)
+				return i;
+		}
+	}
+	return -1;
+}
+
 /* -------------------------------------- AUDITION ------------------------------------*/
 
 Audition * Company::getAuditionById(unsigned int id) {
@@ -402,6 +420,14 @@ void Company::getAuditionsOfSpecialy(string specialty, vector<Audition*> & audit
 		if (this->auditions[i]->getSpecialty() == specialty)
 			auditions.push_back(this->auditions[i]);
 	}
+}
+int Company::getAuditionOfDayOfSpecialty(Calendar date, std::string specialty) {
+	for (size_t i = 0; i < auditions.size(); i++)
+	{
+		if (auditions[i]->getStart().date() == date.date() && auditions[i]->getSpecialty() == specialty)
+			return i;
+	}
+	return -1;
 }
 Calendar Company::getDurationOfAudition(unsigned int nContestants) {
 	unsigned int durationPer1 = (unsigned int)durationOfPerformancesF1;
@@ -442,28 +468,41 @@ void Company::showAuditionInDetail(unsigned int id) {
 void Company::scheduleAudition(string specialty, Calendar begining, vector<unsigned int> contestants, vector<unsigned int> judges, unsigned int chiefJudge) {
 	lastAuditionId++;
 	vector<Calendar> dateOfApplications;
-	Calendar ending = getDurationOfAudition(contestants.size()) + begining;
+
+	Calendar ending= getDurationOfAudition(contestants.size()) + begining;
+
+	sort(contestants.begin(), contestants.end());
+	Audition * audition = new Audition(lastAuditionId, begining, ending, specialty, judges, chiefJudge, contestants);
+	auditions.push_back(audition);
+
+}
+Calendar Company::scheduleAuditionCalendar(vector<unsigned int> contestants, string specialty) {
+	vector<Calendar> dateOfApplications;
+	Calendar date;
 	for (size_t i = 0; i < contestants.size(); i++)
 	{
 		Contestant * contestant = getContestantById(contestants[i]);
 		Calendar date = removeOneApplicationOfContestant(contestant);
 		dateOfApplications.push_back(date);
 	}
-	Calendar newestApp = dateOfApplications[1];
+	Calendar newestApp = dateOfApplications[0];
 	for (size_t i = 0; i < dateOfApplications.size(); i++) {
 		if (newestApp < dateOfApplications[i])
 			newestApp = dateOfApplications[i];
 	}
-	begining.setDay(newestApp.getDay() + Calendar(0, 0, 1, 0, 0));
-	begining.setMonth(newestApp.getMonth());
-	begining.setYear(newestApp.getYear());
-	ending.setDay(newestApp.getDay() + Calendar(0, 0, 1, 0, 0));
-	ending.setMonth(newestApp.getMonth());
-	ending.setYear(newestApp.getYear());
+	date.setDay(newestApp.getDay() + Calendar(0, 0, 1, 0, 0));
+	date.setMonth(newestApp.getMonth());
+	date.setYear(newestApp.getYear());
 
-	Audition * audition = new Audition(lastAuditionId, begining, ending, specialty, judges, chiefJudge, contestants);
-	auditions.push_back(audition);
+	int auditionId = -1;
 
+	auditionId = getAuditionOfDayOfSpecialty(date, specialty);
+	while (auditionId != -1) {
+		date = date + Calendar(0, 0, 1, 0, 0);
+		auditionId = getAuditionOfDayOfSpecialty(date, specialty);
+	}
+
+	return date;
 }
 void Company::scheduleMaxAuditions() {
 	vector<string> specialties;
@@ -477,22 +516,30 @@ void Company::scheduleMaxAuditionsOfSpecialty(string specialty) {
 	vector<unsigned int> contestants;
 	vector<unsigned int> judges;
 	unsigned int chiefJudge;
+	unsigned int auditionId;
 
 	// Contestants 
 	getApplicationsOfSpecialty(specialty, applications);
 	getContestantsOfApplications(contestants, applications);
-	unsigned int max = getMaxNumOfContestantsPerAudition();
 
+	if (contestants.size() < 6) return;
+	unsigned int max = getMaxNumOfContestantsPerAudition();
 
 	while (contestants.size() >= 6) {
 		if (contestants.size() > max) contestants.resize(max);
+		
+		//Get Date
+		Calendar date = scheduleAuditionCalendar(contestants, specialty);
+		date.setHour(startOfFunctions.getHour());
+		date.setMinute(startOfFunctions.getMinute());
 
 		//Judges
 		judges = {};
-		generateJudges(specialty, judges);
-		generateChiefJudge(specialty, chiefJudge);
+		generateJudges(date, specialty, judges);
+		generateChiefJudge(date, specialty, chiefJudge);
 
-		scheduleAudition(specialty, startOfFunctions, contestants, judges, chiefJudge);
+		scheduleAudition(specialty, date, contestants, judges, chiefJudge);
+
 
 		// Contestants 
 		applications = {}; contestants = {};
@@ -524,15 +571,55 @@ bool Company::readAuditionsFile(string fileName) {
 }
 bool Company::writeAuditionsFile(string fileName) {
 	ofstream auditionsFile(fileName + ".dat");
-	unsigned int i = 0;
-	for (; i < auditions.size() - 1; i++) {
-		auditionsFile << *auditions[i] << "\n";
+	int i = 0;
+	if (!auditions.empty()) {
+		for (i = 0; i < (auditions.size() - 1); i++) {
+			auditionsFile << *auditions[i] << "\n";
+		}
+		auditionsFile << *auditions[i];
 	}
-	auditionsFile << *auditions[i];
-
 	auditionsFile.close();
 	return true;
 
+}
+void Company::gradeAllAuditions() {
+	for (size_t i = 0; i < auditions.size(); i++) {
+		vector<unsigned int> contestantsNotQualified = auditions[i]->gradeFirstFase();
+		//Updating participations of contestants who did not qualify for secondFase
+		for (size_t j = 0; j < contestantsNotQualified.size(); j++)
+		{
+			unsigned int id = contestantsNotQualified[j];
+			Contestant * contestant = getContestantById(id);
+			vector<Participation*> participations = contestant->getParticipations();
+			vector<unsigned int> allContestants = auditions[i]->getFirstFase()->getContestants();
+			//searching the grade
+			unsigned int l = 0;
+			while (allContestants[l] != id) {
+				l++;
+			}
+			unsigned int chiefJudge = auditions[i]->getFirstFase()->getChiefJudge()[l];
+			participations.push_back(new Participation(auditions[i]->getId(), 0, chiefJudge));
+			contestant->setParticipations(participations);
+		}
+
+		vector<unsigned int> contestantsOrdered = auditions[i]->gradeSecondFase();
+
+		//Updating participations of contestants who went to the secondFase
+		for (size_t j = 0; j < contestantsOrdered.size(); j++) {
+			unsigned int id = contestantsOrdered[j];
+			Contestant * contestant = getContestantById(id);
+			vector<Participation*> participations = contestant->getParticipations();
+			vector<unsigned int> allContestants = auditions[i]->getSecondFase()->getContestants();
+			//searching the grade
+			unsigned int l = 0;
+			while (allContestants[l] != id) {
+				l++;
+			}
+			unsigned int chiefJudge = auditions[i]->getSecondFase()->getChiefJudge()[l];
+			participations.push_back(new Participation(auditions[i]->getId(), j + 1, chiefJudge));
+			contestant->setParticipations(participations);
+		}
+	}
 }
 
 bool compareByCalendar(Audition * audition1, Audition *  audition2) {
