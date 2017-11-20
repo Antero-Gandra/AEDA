@@ -1,0 +1,12 @@
+To-Do
+
+Company:
+-Verificar se um judge está ocupado num determinado dia
+-Melhorar a criação de auditions
+-Adicionar audition manualmente
+-Procurar contestant por id/nome, quando por nome aparecem vários com o mesmo nome
+-Contestants de uma especialidade
+-Procurar judge por id/nome
+-Jurados de uma especialidade (cuidado com o id handler!)
+-Quando se apaga uma audition, apagar as participações
+
