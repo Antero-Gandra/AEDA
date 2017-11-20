@@ -59,8 +59,8 @@ public:
 	unsigned int getJudgeByInfo(Judge * judge);
 	void getJudgesOfSpecialty(std::string specialty, std::vector<Judge*> & judges);
 	void getJudgesNotOfSpecialty(std::string specialty, std::vector<Judge*> & judges);
-	void generateChiefJudge(std::string specialty, unsigned int & chiefJudge);
-	void generateJudges(std::string specialty, std::vector<unsigned int> & judges);
+	void generateChiefJudge(Calendar date, std::string specialty, unsigned int & chiefJudge);
+	void generateJudges(Calendar date, std::string specialty, std::vector<unsigned int> & judges);
 	void addJudge(Judge * judge);
 	void addNewJudge(Judge * judge);
 	void updateJudge(Judge * judge, Judge * modJudge);
@@ -69,19 +69,23 @@ public:
 	bool writeJudgesFile(std::string fileName);
 	bool hasSpecialty(std::string specialty);
 	void getSpecialties(std::vector<std::string> & specialties);
+	int judgeIsOcupied(Calendar date, unsigned int id);
 
 	/* -------------------------------------- AUDITION -----------------------------------*/
 	Audition * getAuditionById(unsigned int id);
 	void getAuditionsOfSpecialy(std::string specialty, std::vector<Audition*> & auditions);
+	int getAuditionOfDayOfSpecialty(Calendar date, std::string specialty);
 	Calendar getDurationOfAudition(unsigned int nCandidates);
 	unsigned int getMaxNumOfContestantsPerAudition();
 	void addAudition(Audition * audition);
 	void scheduleAudition(std::string specialty, Calendar begining, std::vector<unsigned int> contestants, std::vector<unsigned int> judges, unsigned int chiefJudge);
 	void scheduleMaxAuditionsOfSpecialty(std::string specialty);
 	void scheduleMaxAuditions();
+	Calendar scheduleAuditionCalendar(std::vector<unsigned int> contestants, std::string specialty);
 	bool readAuditionsFile(std::string fileName);
 	bool writeAuditionsFile(std::string fileName);
 	void showAuditionInDetail(unsigned int id);
+	void gradeAllAuditions();
 
 };
    

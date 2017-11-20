@@ -48,8 +48,16 @@ public:
 	friend std::ostream& operator<<(std::ostream& os, const Audition & contestant);
 
 	//Other Methods
-	void gradeFirstFase();
-	void gradeSecondFase();
+	/*
+	@return The ids of the contestants who were not qualified for the second fase.
+	*/
+	std::vector<unsigned int> gradeFirstFase();
+	/*
+	@return The ids of the contestants who participated in the second fase, ordered by grades obtained.
+	*/
+	std::vector<unsigned int> gradeSecondFase();
+
+	void show();
 };
 
 #endif //_AUDITION_H

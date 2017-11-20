@@ -22,6 +22,7 @@ public:
 	void removeContestantMenu();
 	void readContestantsFileMenu();
 	void showContestantsMenu();
+	void searchContestantByIdMenu();
 	void removeContestantsApplicationsMenu();
 	void readApplicationsFileMenu();
 	void showApplicationsMenu();
@@ -38,6 +39,8 @@ public:
 	void scheduleMaxAuditionsMenu();
 	void modifyAuditionMenu();
 	void disassembleAuditionMenu();
+	void evaluateAuditionMenu();
+	void evaluateAllAuditions();
 	void showAuditionsMenu();
 
 	//CANDIDATES SHOW FUNCTIONS
@@ -45,17 +48,20 @@ public:
 	void showApplications();
 	void showApplicationsOfSpecialty(std::string specialty);
 	void showJudges();
+	void showAudition(unsigned int id);
 
 	//INPUT HANDLING
 	bool isValidOption(std::string option, unsigned int infLim, unsigned int supLim);
 	bool isYesOrNo(std::string answer);
-	bool isValidId(std::string id);
+	bool isValidContestantId(std::string id);
+	bool isValidJudgeId(std::string id);
 	bool isValidString(std::string s);
 	bool isValidDob(Calendar dob);
 	bool isValidNumber(std::string number);
 	unsigned int optionHandler(unsigned int infLim, unsigned int supLim);
 	bool yesNoHandler();
-	unsigned int idHandler();
+	unsigned int contestantIdHandler();
+	unsigned int judgeIdHandler();
 	std::string stringHandler(std::string type);
 	Calendar dobHandler();
 	std::string specialtyHandler();

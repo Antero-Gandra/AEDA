@@ -8,6 +8,7 @@
 #include <sstream>
 #include <limits>
 #include <cstddef>
+#include <algorithm> 
 
 using namespace std;
 
@@ -180,11 +181,55 @@ ostream& operator<<(ostream& os, const Audition & audition)
 }
 
 //other methods
-void Audition::gradeFirstFase() {
+vector<unsigned int> Audition::gradeFirstFase() {
 	firstFase->evaluate();
 	firstFase->overallGrading();
+
+	vector<unsigned int> orderedContestants = firstFase->getContestants();
+	vector<double> orderedGrades = firstFase->getFinalGrade();
+	
+	//double sort
+	for (unsigned int j = orderedGrades.size() - 1; j > 0; j--){
+		bool troca = false;
+		for (unsigned int i = 0; i < j; i++)
+			if (orderedGrades[i + 1] < orderedGrades[i]) {
+				swap(orderedGrades[i], orderedGrades[i + 1]);
+				swap(orderedContestants[i], orderedContestants[i + 1]);
+				troca = true;
+			}
+		if (!troca) break;
+	}
+	//Contestants who were not qualified
+	vector<unsigned int> contestantsNotQualified = orderedContestants;
+	contestantsNotQualified.resize(orderedContestants.size() - 5);
+
+	//Contestants who were qualified
+	vector<unsigned int> contestantsQualified = orderedContestants;
+	reverse(contestantsQualified.begin(), contestantsQualified.end());
+	contestantsQualified.resize(5);
+	sort(contestantsQualified.begin(), contestantsQualified.end());
+	secondFase->setContestants(contestantsQualified);
+
+	return contestantsNotQualified;
 }
-void Audition::gradeSecondFase() {
-	firstFase->evaluate();
-	firstFase->overallGrading();
+vector<unsigned int> Audition::gradeSecondFase() {
+	secondFase->evaluate();
+	secondFase->overallGrading();
+
+	vector<unsigned int> orderedContestants = secondFase->getContestants();
+	vector<double> orderedGrades = secondFase->getFinalGrade();
+
+	//double sort
+	for (unsigned int j = orderedGrades.size() - 1; j > 0; j--) {
+		bool troca = false;
+		for (unsigned int i = 0; i < j; i++)
+			if (orderedGrades[i + 1] < orderedGrades[i]) {
+				swap(orderedGrades[i], orderedGrades[i + 1]);
+				swap(orderedContestants[i], orderedContestants[i + 1]);
+				troca = true;
+			}
+		if (!troca) break;
+	}
+	reverse(orderedContestants.begin(), orderedContestants.end());
+	return orderedContestants;
 }

@@ -30,6 +30,7 @@ public:
 	std::vector<unsigned int> getContestants() const;
 	//Set Methods
 	void setAuditionId(unsigned int auditionId);
+	void setContestants(std::vector<unsigned int> contestants);
 	//other methods
 	void evaluate();
 	virtual void overallGrading() = 0;

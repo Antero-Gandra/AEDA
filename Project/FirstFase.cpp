@@ -17,7 +17,7 @@ FirstFase::FirstFase(string textLine) : Fase(textLine) {
 
 void FirstFase::overallGrading() {
 	for (size_t i = 0; i < contestants.size(); i++) {
-		finalGrade[i] = (judge1[i] + judge2[i] + chiefJudge[i])/3;
+		finalGrade.push_back((double)(judge1[i] + judge2[i] + chiefJudge[i])/3);
 	}
 }
 
