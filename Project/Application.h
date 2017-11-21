@@ -8,7 +8,17 @@ class Application {
 public:
 	Calendar date;
 	unsigned int contestantId;
+	
+	/**
+	* @brief Application Contructor
+	* @param date a Calendar Object, contestantId an unsigned integer
+	*/
 	Application(Calendar date, unsigned int contestantId);
+	/**
+	* @brief Check which Application object is smaller
+	* @param application an Application Object constant reference
+	* @return true if Object is smaller than application, false otherwise
+	*/
 	bool operator <(const Application & application);
 };
 
