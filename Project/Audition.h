@@ -43,20 +43,13 @@ public:
 	void setSecondFase(SecondFase *  secondFase);
 
 	//operator overloading
-	bool operator<(const  Audition & contestant1) const;
-	bool operator==(const Audition & contestant1) const;
 	friend std::ostream& operator<<(std::ostream& os, const Audition & contestant);
 
 	//Other Methods
-	/*
-	@return The ids of the contestants who were not qualified for the second fase.
 	*/
 	std::vector<unsigned int> gradeFirstFase();
-	/*
-	@return The ids of the contestants who participated in the second fase, ordered by grades obtained.
 	*/
 	std::vector<unsigned int> gradeSecondFase();
-
 	void show();
 };
 

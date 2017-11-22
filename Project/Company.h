@@ -27,16 +27,13 @@ class Company {
 	const Calendar breakBetweenPerfomancesF2 = Calendar(0, 0, 0, 0, 10);
 	
 public:
-	//getMethods
 	std::vector<Contestant*> getContestants() const;
 	std::vector<Judge*> getJudges() const;
 	std::vector<Application*> getApplications() const;
 	std::vector<Audition*> getAuditions() const;
 
 	/* ------------------------------------ CONTESTANT -----------------------------------*/
-
 	Contestant * getContestantById(unsigned int id);
-	unsigned int getContestantByInfo(Contestant *);
 	void getContestantsOfSpecialty(std::string specialty, std::vector<Contestant*> & contestants);
 	void getApplicationsOfSpecialty(std::string specialty, std::vector<Application*> & applications);
 	void generateContestantsOfSpecialty(std::string specialty, std::vector<Contestant*> & contestants);
@@ -50,6 +47,7 @@ public:
 	Calendar removeOneApplicationOfContestant(Contestant* contestant);
 	void removeApplicationsOfContestant(Contestant * contestant);
 	bool readContestantsFile(std::string fileName);
+	/**
 	bool writeContestantsFile(std::string fileName);
 	bool readApplicationsFile(std::string fileName);
 	bool writeApplicationsFile(std::string fileName);
@@ -89,7 +87,6 @@ public:
 
 };
    
-
 template <class Comparable>
 bool compareById(Comparable * comparable1, Comparable * comparable2) {
 	return (comparable1->getId() < comparable2->getId());
