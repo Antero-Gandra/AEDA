@@ -29,31 +29,49 @@ Judge::Judge(string textline) {
 	string prtcpations;
 	unsigned int auditionId;
 	string aud_id;
+	string aux_num;
 	string specialty;
 	vector<unsigned int> pt;
 
 	//get id
-	judgeLine >> id;
-judgeLine.ignore(max, ';');
+	getline(judgeLine, aux_num, ';');
+	removeSpaces(aux_num);
+	istringstream id_num(aux_num);
+	id_num >> id;
 
 //get name
 getline(judgeLine, name, ';');
 removeSpaces(name);
 
 //get dob
-judgeLine >> year;
-judgeLine.ignore(max, '/');
-judgeLine >> month;
-judgeLine.ignore(max, '/');
-judgeLine >> day;
-judgeLine.ignore(max, ';');
+
+//year
+getline(judgeLine, aux_num, '/');
+removeSpaces(aux_num);
+istringstream year_num(aux_num);
+year_num >> year;
+
+//month
+getline(judgeLine, aux_num, '/');
+removeSpaces(aux_num);
+istringstream month_num(aux_num);
+month_num >> month;
+
+//day
+getline(judgeLine, aux_num, ';');
+removeSpaces(aux_num);
+istringstream day_num(aux_num);
+day_num >> day;
+
 dob.setYear(year);
 dob.setMonth(month);
 dob.setDay(day);
 
 //get mobile
-judgeLine >> mobile;
-judgeLine.ignore(max, ';');
+getline(judgeLine, aux_num, ';');
+removeSpaces(aux_num);
+istringstream mobile_num(aux_num);
+mobile_num >> mobile;
 
 //get address
 getline(judgeLine, address, ';');

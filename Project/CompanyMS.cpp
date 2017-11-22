@@ -98,15 +98,13 @@ void CompanyMS::contestantMenu()
 	cout << "1. Enroll a contestant" << endl;
 	cout << "2. Modify the info of a contestant" << endl;
 	cout << "3. Remove a contestant" << endl;
-	cout << "4. Read contestants from a file" << endl;
-	cout << "5. View all contestants" << endl;
-	cout << "6. View contestants of a specialty" << endl;
-	cout << "7. View contestants who won castings" << endl;
-	cout << "8. Search contestant by id" << endl;
-	cout << "9. Search contestant by name" << endl;
-	cout << "10. Remove a contestant's applicatons" << endl;
-	cout << "7. Read applications from a file" << endl;
+	cout << "4. Remove a contestant's applicatons" << endl;
+	cout << "7. View all contestants" << endl;
 	cout << "8. View all applications" << endl;
+	cout << "9. View contestants of a specialty" << endl;
+	cout << "10. View contestants who won castings" << endl;
+	cout << "11. Search contestant by id" << endl;
+	cout << "12. Search contestant by name" << endl;
 	cout << "Please Press Ctrl^Z to Exit" << endl;
 
 	unsigned int option = optionHandler(1, 8);
@@ -174,14 +172,13 @@ void CompanyMS::judgeMenu() {
 	cout << "1. Employ a judge" << endl;
 	cout << "2. Modify the info of a current judge" << endl;
 	cout << "3. Fire a judge" << endl;
-	cout << "4. Read judges from a file" << endl;
-	cout << "5. View all judges" << endl;
+	cout << "4. View all judges" << endl;
 	cout << "5. View judges of specialty" << endl;
-	cout << "5. Search judge by id" << endl;
-	cout << "5. Search judge by name" << endl;
+	cout << "6. Search judge by id" << endl;
+	cout << "7. Search judge by name" << endl;
 	cout << "Please Press Ctrl^Z to go back to the Main Menu" << endl;
 
-	unsigned int option = optionHandler(1, 5);
+	unsigned int option = optionHandler(1, 7);
 	if (cin.eof()) return;
 
 	switch (option) {
@@ -206,12 +203,13 @@ void CompanyMS::judgeMenu() {
 	break;
 	case 4: do {
 		clearScreen();
+		showJudgesMenu();
 	} while (!std::cin.eof());
 	cin.clear();
 	break;
 	case 5: do {
 		clearScreen();
-		showJudgesMenu();
+		searchJudgeByIdMenu();
 	} while (!std::cin.eof());
 	cin.clear();
 	break;
@@ -830,6 +828,20 @@ void CompanyMS::showJudgesMenu() {
 		getline(cin, option);
 	}
 }
+void CompanyMS::searchJudgeByIdMenu() {
+	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
+	cout << "\t\t::::::::: SEARCH A JUDGE BY ID ::::::::: \n";
+
+	unsigned int id = judgeIdHandler();
+	if (cin.eof()) return;
+	Judge * judge = company->getJudgeById(id);
+	judge->show();
+	cout << "Please Press Ctrl^Z to go back to the Judges' Menu" << endl;
+	while (!cin.eof()) {
+		string option;
+		getline(cin, option);
+	}
+}
 
 void CompanyMS::scheduleAuditionMenu() {
 	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
@@ -1218,7 +1230,7 @@ unsigned int CompanyMS::judgeIdHandler() {
 			valid = false;
 			cout << "Your answer has invalid characters. Note that it has to be the ID (a number) and be part of the company's database. Please retry to enter it." << endl;
 		}
-		catch (ContestantIdNotFound) {
+		catch (JudgeIdNotFound) {
 			valid = false;
 			cout << "It looks like the id you entered is not on our database. Note that it has to be the ID (a number) and be part of the company's database. Please retry to enter it." << endl;
 		}

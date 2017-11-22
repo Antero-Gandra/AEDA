@@ -33,6 +33,7 @@ public:
 	void fireJudgeMenu();
 	void readJudgesFileMenu();
 	void showJudgesMenu();
+	void searchJudgeByIdMenu();
 
 	//AUDITIONS
 	void scheduleAuditionMenu();
