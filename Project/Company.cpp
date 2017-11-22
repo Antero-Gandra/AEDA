@@ -258,6 +258,7 @@ Judge * Company::getJudgeById(unsigned int id) {
 unsigned int Company::getJudgeByInfo(Judge * judge) {
 	for (size_t i = 0; i < judges.size(); i++) {
 		if (*judges[i] == *judge)
+			return judges[i]->getId();
 	}
 	throw JudgeInfoNotFound();
 }
@@ -464,11 +465,14 @@ void Company::showAuditionInDetail(unsigned int id) {
 
 
 }
+void Company::scheduleAudition(string specialty, Calendar beginning, vector<unsigned int> contestants, vector<unsigned int> judges, unsigned int chiefJudge) {
 	lastAuditionId++;
 	vector<Calendar> dateOfApplications;
 
+	Calendar ending= getDurationOfAudition(contestants.size()) + beginning;
 
 	sort(contestants.begin(), contestants.end());
+	Audition * audition = new Audition(lastAuditionId, beginning, ending, specialty, judges, chiefJudge, contestants);
 	auditions.push_back(audition);
 
 }
