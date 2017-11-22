@@ -584,41 +584,48 @@ bool Company::writeAuditionsFile(string fileName) {
 }
 void Company::gradeAllAuditions() {
 	for (size_t i = 0; i < auditions.size(); i++) {
-		vector<unsigned int> contestantsNotQualified = auditions[i]->gradeFirstFase();
-		//Updating participations of contestants who did not qualify for secondFase
-		for (size_t j = 0; j < contestantsNotQualified.size(); j++)
-		{
-			unsigned int id = contestantsNotQualified[j];
-			Contestant * contestant = getContestantById(id);
-			vector<Participation*> participations = contestant->getParticipations();
-			vector<unsigned int> allContestants = auditions[i]->getFirstFase()->getContestants();
-			//searching the grade
-			unsigned int l = 0;
-			while (allContestants[l] != id) {
-				l++;
-			}
-			unsigned int chiefJudge = auditions[i]->getFirstFase()->getChiefJudge()[l];
-			participations.push_back(new Participation(auditions[i]->getId(), 0, chiefJudge));
-			contestant->setParticipations(participations);
-		}
+		
 
-		vector<unsigned int> contestantsOrdered = auditions[i]->gradeSecondFase();
+	}
+}
+void Company::gradeAudition(unsigned int auditionId) {
 
-		//Updating participations of contestants who went to the secondFase
-		for (size_t j = 0; j < contestantsOrdered.size(); j++) {
-			unsigned int id = contestantsOrdered[j];
-			Contestant * contestant = getContestantById(id);
-			vector<Participation*> participations = contestant->getParticipations();
-			vector<unsigned int> allContestants = auditions[i]->getSecondFase()->getContestants();
-			//searching the grade
-			unsigned int l = 0;
-			while (allContestants[l] != id) {
-				l++;
-			}
-			unsigned int chiefJudge = auditions[i]->getSecondFase()->getChiefJudge()[l];
-			participations.push_back(new Participation(auditions[i]->getId(), j + 1, chiefJudge));
-			contestant->setParticipations(participations);
+	Audition * audition = getAuditionById(auditionId);
+	vector<unsigned int> contestantsNotQualified = audition->gradeFirstFase();
+	//Updating participations of contestants who did not qualify for secondFase
+
+	for (size_t j = 0; j < contestantsNotQualified.size(); j++)
+	{
+		unsigned int id = contestantsNotQualified[j];
+		Contestant * contestant = getContestantById(id);
+		vector<Participation*> participations = contestant->getParticipations();
+		vector<unsigned int> allContestants = audition->getFirstFase()->getContestants();
+		//searching the grade
+		unsigned int l = 0;
+		while (allContestants[l] != id) {
+			l++;
 		}
+		unsigned int chiefJudge = audition->getFirstFase()->getChiefJudge()[l];
+		participations.push_back(new Participation(audition->getId(), 0, chiefJudge));
+		contestant->setParticipations(participations);
+	}
+
+	vector<unsigned int> contestantsOrdered = audition->gradeSecondFase();
+
+	//Updating participations of contestants who went to the secondFase
+	for (size_t j = 0; j < contestantsOrdered.size(); j++) {
+		unsigned int id = contestantsOrdered[j];
+		Contestant * contestant = getContestantById(id);
+		vector<Participation*> participations = contestant->getParticipations();
+		vector<unsigned int> allContestants = audition->getSecondFase()->getContestants();
+		//searching the grade
+		unsigned int l = 0;
+		while (allContestants[l] != id) {
+			l++;
+		}
+		unsigned int chiefJudge = audition->getSecondFase()->getChiefJudge()[l];
+		participations.push_back(new Participation(audition->getId(), j + 1, chiefJudge));
+		contestant->setParticipations(participations);
 	}
 }
 

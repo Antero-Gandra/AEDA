@@ -150,6 +150,7 @@ void CompanyMS::contestantMenu()
 	break;
 	case 7: do {
 		clearScreen();
+		showContestantsMenu();
 
 	} while (!std::cin.eof());
 	cin.clear();
@@ -209,7 +210,18 @@ void CompanyMS::judgeMenu() {
 	break;
 	case 5: do {
 		clearScreen();
+		
+	} while (!std::cin.eof());
+	cin.clear();
+	break;
+	case 6: do {
+		clearScreen();
 		searchJudgeByIdMenu();
+	} while (!std::cin.eof());
+	cin.clear();
+	break;
+	case 7: do {
+		clearScreen();
 	} while (!std::cin.eof());
 	cin.clear();
 	break;
@@ -228,7 +240,7 @@ void CompanyMS::auditionMenu() {
 	cout << "5. Disassemble an audition" << endl;
 	cout << "6. Evaluate first fase of an audition" << endl;
 	cout << "7. Evaluate second fase of an audition" << endl;
-	cout << "8. Evaluate the whole audition" << endl;
+	cout << "8. Evaluate an audition" << endl;
 	cout << "9. Evaluate all auditions" << endl;
 	cout << "10. View all auditions" << endl;
 
@@ -280,7 +292,7 @@ void CompanyMS::auditionMenu() {
 	break;
 	case 8: do {
 		clearScreen();
-		showAuditionsMenu();
+		evaluateAuditionMenu();
 	} while (!std::cin.eof());
 	cin.clear();
 	break;
@@ -878,7 +890,29 @@ void CompanyMS::scheduleAuditionMenu() {
 
 }
 void CompanyMS::scheduleMaxAuditionsMenu() {
+	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
+	cout << "\t\t::::::::: SCHEDULE MAXIMUM OF AUDITIONS ::::::::: \n";
+
 	company->scheduleMaxAuditions();
+
+	cout << "Your auditions have been scheduled successfuly!" << endl;
+
+	cout << "Please Press Ctrl^Z to go back to the Contestants' Menu" << endl;
+	while (!cin.eof()) {
+		string option;
+		getline(cin, option);
+	}
+}
+void CompanyMS::scheduleMaxAuditionsOfSpecialtyMenu() {
+	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
+	cout << "\t\t::::::::: SCHEDULE MAXIMUM OF AUDITIONS OF SPECIALTY  ::::::::: \n";
+
+	cout << "Which is the art specialty you would like to schedule auditions for?";
+	string specialty = specialtyHandler();
+	if (cin.eof()) return;
+
+	company->scheduleMaxAuditionsOfSpecialty(specialty);
+
 	cout << "Please Press Ctrl^Z to go back to the Contestants' Menu" << endl;
 	while (!cin.eof()) {
 		string option;
@@ -886,14 +920,34 @@ void CompanyMS::scheduleMaxAuditionsMenu() {
 	}
 }
 void CompanyMS::evaluateAuditionMenu() {
+	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
+	cout << "\t\t::::::::: EVALUATE AUDITION  ::::::::: \n";
+
+	unsigned int auditionId = auditionIdHandler();
+	if (cin.eof()) return;
+
+	company->gradeAudition(auditionId);
+
+	cout << "Your audition has been evaluated successfuly!" << endl;
+
+
 	cout << "Please Press Ctrl^Z to go back to the Contestants' Menu" << endl;
 	while (!cin.eof()) {
 		string option;
 		getline(cin, option);
 	}
 }
+void CompanyMS::evaluateFirstFaseMenu() {
+
+}
 void CompanyMS::evaluateAllAuditions() {
+	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
+	cout << "\t\t::::::::: EVALUATE ALL AUDITION  ::::::::: \n";
+
 	company->gradeAllAuditions();
+
+	cout << "All auditions have been evaluated successfuly!" << endl;
+
 	cout << "Please Press Ctrl^Z to go back to the Auditions' Menu" << endl;
 	while (!cin.eof()) {
 		string option;
@@ -1098,6 +1152,28 @@ bool CompanyMS::isValidJudgeId(string id) {
 	}
 	return true;
 }
+bool CompanyMS::isValidAuditionId(string id) {
+	if (cin.eof()) {
+		return false;
+	}
+	removeSpaces(id);
+
+	if (id.length() == 0) throw EmptyAnswer();
+
+	for (size_t i = 0; i < id.length(); i++)
+	{
+		if (!isdigit(id[i]))
+			throw InvalidId();
+	}
+	unsigned int Id = stoi(id);
+	try {
+		company->getAuditionById(Id);
+	}
+	catch (AuditionIdNotFound) {
+		throw AuditionIdNotFound(Id);
+	}
+	return true;
+}
 bool CompanyMS::isValidString(string s) {
 	if (cin.eof()) {
 		return false;
@@ -1231,6 +1307,33 @@ unsigned int CompanyMS::judgeIdHandler() {
 			cout << "Your answer has invalid characters. Note that it has to be the ID (a number) and be part of the company's database. Please retry to enter it." << endl;
 		}
 		catch (JudgeIdNotFound) {
+			valid = false;
+			cout << "It looks like the id you entered is not on our database. Note that it has to be the ID (a number) and be part of the company's database. Please retry to enter it." << endl;
+		}
+	}
+	return stoi(id);
+}
+unsigned int CompanyMS::auditionIdHandler() {
+	string id;
+	bool valid = false;
+
+	while (!valid) {
+		cout << "Id:";
+		getline(cin, id);
+		if (cin.eof()) return 0;
+		try {
+			valid = isValidAuditionId(id);
+		}
+		catch (EmptyAnswer)
+		{
+			valid = false;
+			cout << "Your answer was empty. Note that it has to be the ID (a number) and be part of the company's database. Please retry to enter it." << endl;
+		}
+		catch (InvalidId) {
+			valid = false;
+			cout << "Your answer has invalid characters. Note that it has to be the ID (a number) and be part of the company's database. Please retry to enter it." << endl;
+		}
+		catch (AuditionIdNotFound) {
 			valid = false;
 			cout << "It looks like the id you entered is not on our database. Note that it has to be the ID (a number) and be part of the company's database. Please retry to enter it." << endl;
 		}

@@ -38,8 +38,11 @@ public:
 	//AUDITIONS
 	void scheduleAuditionMenu();
 	void scheduleMaxAuditionsMenu();
+	void scheduleMaxAuditionsOfSpecialtyMenu();
 	void modifyAuditionMenu();
 	void disassembleAuditionMenu();
+	void evaluateFirstFaseMenu();
+	void evaluateSecondFaseMenu();
 	void evaluateAuditionMenu();
 	void evaluateAllAuditions();
 	void showAuditionsMenu();
@@ -56,6 +59,7 @@ public:
 	bool isYesOrNo(std::string answer);
 	bool isValidContestantId(std::string id);
 	bool isValidJudgeId(std::string id);
+	bool isValidAuditionId(std::string id);
 	bool isValidString(std::string s);
 	bool isValidDob(Calendar dob);
 	bool isValidNumber(std::string number);
@@ -63,6 +67,7 @@ public:
 	bool yesNoHandler();
 	unsigned int contestantIdHandler();
 	unsigned int judgeIdHandler();
+	unsigned int auditionIdHandler();
 	std::string stringHandler(std::string type);
 	Calendar dobHandler();
 	std::string specialtyHandler();

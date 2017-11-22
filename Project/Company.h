@@ -351,6 +351,7 @@ public:
 	
 	void gradeAllAuditions();
 
+	void gradeAudition(unsigned int auditionId);
 };
    
 /**

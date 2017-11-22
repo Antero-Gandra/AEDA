@@ -1,3 +1,9 @@
-﻿  Judge.cpp
+﻿  CompanyMS.cpp
+c:\users\margarida silva\documents\github\aeda\project\companyms.cpp(33): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Company.cpp
+c:\users\margarida silva\documents\github\aeda\project\company.cpp(291): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\margarida silva\documents\github\aeda\project\company.cpp(519): warning C4101: 'auditionId': unreferenced local variable
+c:\users\margarida silva\documents\github\aeda\project\company.cpp(576): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
   Project_1st.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\Project_1st\Debug\Project_1st.exe
   Project_1st.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\Project_1st\Debug\Project_1st.pdb (Partial PDB)
