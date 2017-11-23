@@ -8,10 +8,11 @@ class Application {
 public:
 	Calendar date;
 	unsigned int contestantId;
-	
+
 	/**
 	* @brief Application Contructor
-	* @param date a Calendar Object, contestantId an unsigned integer
+	* @param date a Calendar Object
+	* @param contestantId an unsigned integer
 	*/
 	Application(Calendar date, unsigned int contestantId);
 	/**
