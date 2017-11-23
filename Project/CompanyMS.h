@@ -49,9 +49,11 @@ public:
 
 	//CANDIDATES SHOW FUNCTIONS
 	void showContestants();
+	void showPartialContestants(unsigned int limInf, unsigned int limSup);
 	void showApplications();
 	void showApplicationsOfSpecialty(std::string specialty);
 	void showJudges();
+	void showPartialJudges(unsigned int limInf, unsigned int limSup);
 	void showAudition(unsigned int id);
 
 	//INPUT HANDLING
