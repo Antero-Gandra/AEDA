@@ -17,7 +17,32 @@ protected:
 	std::vector <unsigned int> chiefJudge;
 	std::vector<unsigned int> contestants;
 public:
+
+	/**
+	* @brief Phase default constructor
+	*/
+	Fase() {}
+
+	/**
+	* @brief Phase deconstructor
+	*/
+	virtual ~Fase() {};
+
+	/**
+	* @brief Phase default constructor with their auditionID, final grade, evaluation from the judges and the id of the contestants
+	* @param auditionID an unsigned integer
+	* @param final_grade a vector of unsigned integers
+	* @param ev1 a vector of unsigned integers
+	* @param ev2 a vector of unsigned integers
+	* @param ld a vector of unsigned integers
+	* @param contestants a vector of unsigned integers
+	*/
 	Fase(unsigned int auditionId, std::vector<unsigned int> final_grade, std::vector<unsigned int> judge1, std::vector<unsigned int> judge2, std::vector<unsigned int> chiefJudge, std::vector<unsigned int> contestants);
+
+	/**
+	* @brief Phase constructor by reading a line from the file
+	* @param textLine a string
+	*/
 	Fase(std::string textline);
 	//Get Methods
 	unsigned int getAuditionId() const;

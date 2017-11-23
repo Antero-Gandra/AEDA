@@ -1,4 +1,6 @@
 /**
+* Project Untitled
+*/
 
 
 #ifndef _CALENDAR_H
@@ -19,13 +21,23 @@ public:
 	* @brief Calendar Default Contructor
 	*/
 	Calendar();
+
 	/**
+	* @brief Calendar Contructor with the date and time
+	* @param year an unsigned integer
+	* @param month an unsigned integer
+	* @param day an unsigned integer
+	* @param hour an unsigned integer
+	* @param minute an unsigned integer
 	*/
 	Calendar(unsigned int year, unsigned int month, unsigned int day, unsigned int hour, unsigned int minute);
+
 	/**
 	* @brief Manages to get the year's value
+	* @return constant unsigned integer
 	*/
 	unsigned int getYear() const;
+
 	/**
 	* @brief Manages to get the month's value
 	* @return constant unsigned integer
@@ -40,11 +52,13 @@ public:
 
 	/**
 	* @brief Manages to get the hour's value
+	* @return constant unsigned integer
 	*/
 	unsigned int getHour() const;
 
 	/**
 	* @brief Manages to get the minute's value
+	* @return constant unsigned integer
 	*/
 	unsigned int getMinute() const;
 
@@ -106,7 +120,9 @@ public:
 
 	/**
 	* @brief Operator "<<" is overloaded to output the information about the Calendar information
+	* @param os an Outstream Object
 	* @param calendar a constant Calendar reference
+	* @return ostream reference
 	*/
 	friend std::ostream& operator<<(std::ostream& os, const Calendar& calendar);
 

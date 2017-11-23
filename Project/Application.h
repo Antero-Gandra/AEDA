@@ -11,6 +11,8 @@ public:
 
 	/**
 	* @brief Application Contructor
+	* @param date a Calendar Object
+	* @param contestantId an unsigned integer
 	*/
 	Application(Calendar date, unsigned int contestantId);
 	/**

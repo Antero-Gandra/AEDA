@@ -18,6 +18,13 @@ public:
 
 	/**
 	* @brief Judge Contructor with their id, name, address, mobile phone number, date of birth, specialiy and list of participations by id
+	* @param id an unsigined integer
+	* @param name a string
+	* @param address a string
+	* @param mobile an unsigined integer
+	* @param dob a Calendar Object
+	* @param specialiy a string
+	* @param participation a vector of unsigined integer
 	*/
 	Judge(unsigned int id, std::string name, std::string address, unsigned int mobile, Calendar dob, std::string specialty, std::vector<unsigned int> participation);
 
@@ -67,6 +74,7 @@ public:
 
 	/**
 	* @bfief Operator "<<" is overloaded to output the information about the Judge into a file
+	* @param os an Output Stream Object referece
 	* @param judge a constant Judge reference
 	* @return ostream reference
 	*/

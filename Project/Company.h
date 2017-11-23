@@ -69,21 +69,29 @@ public:
 
 	/**
 	* @brief Manages to get all contestnts of a specific specialty and save them to a reference vector of Contestant Object Pointers
+	* @param specialty a string
+	* @param contestants a reference vector of Contestant Object pointer
 	*/
 	void getContestantsOfSpecialty(std::string specialty, std::vector<Contestant*> & contestants);
 
 	/**
 	* @brief Manages to get all applications of a specific specialty and save them to a reference vector of Application Object Pointers
+	* @param specialty a string
+	* @param applications a reference vector of Application Object pointer
 	*/
 	void getApplicationsOfSpecialty(std::string specialty, std::vector<Application*> & applications);
 
 	/**
 	* @brief Manages to randomly select, at least, 24 contestants of a given specialty and saving them to a reference vector of Contestant Object Pointers
+	* @param specialty a string
+	* @param contestants a reference vector of Contestant Object pointer
 	*/
 	void generateContestantsOfSpecialty(std::string specialty, std::vector<Contestant*> & contestants);
 
 	/**
 	* @brief Manages to apply contestants to a reference vector of Application Object Pointers
+	* @param contestants a reference vector of unsigned integers
+	* @param applications a reference vector of Application Object Pointers
 	*/
 	void getContestantsOfApplications(std::vector<unsigned int> & contestants, const std::vector<Application*> & applications);
 
@@ -101,11 +109,15 @@ public:
 
 	/**
 	* @brief Adds an application with the date and id
+	* @param calendar a Calendar Object
+	* @param id unsigned integer
 	*/
 	void addApplication(Calendar calendar, unsigned int id);
 
 	/**
 	* @brief Updates a Contestant with new information
+	* @param contestant a Contestant Object Pointer
+	* @param modConstant a Contestant Object Pointer
 	*/
 	void updateContestant(Contestant * contestant, Contestant * modContestant);
 
@@ -117,6 +129,7 @@ public:
 
 	/**
 	* @brief Manages to access a vector of applications from a specified Contestant's ID
+	* @param id unsigned integer
 	* @return vector of Application Object Pointers
 	*/
 	std::vector<Application*> getApplicationsById(unsigned int id);
@@ -127,13 +140,21 @@ public:
 	* @return Calendar Object
 	*/
 	Calendar removeOneApplicationOfContestant(Contestant* contestant);
+
+	/**
+	* @brief Removes all Contestant's applications
+	* @param contestant a Contestant Object Pointer
+	* @return Calendar Object
+	*/
 	void removeApplicationsOfContestant(Contestant * contestant);
+
 	/**
 	* @brief Reads the contestant information from a file and calls the function that creates a contestant
 	* @param fileName a string with the name of the file
 	* @return true if successfully reads all the file, false otherwise
 	*/
 	bool readContestantsFile(std::string fileName);
+
 	/**
 	* @brief Writes the contestant information into a file
 	* @param fileName a string with the name of the file
@@ -164,7 +185,9 @@ public:
 	Judge * getJudgeById(unsigned int id);
 
 	/**
+	* @brief Manages to get the ID of a Judge
 	* @param judge a Judge Object Pointer
+	* @return unsigned integer of the Judge's ID
 	*/
 	unsigned int getJudgeByInfo(Judge * judge);
 
@@ -176,17 +199,25 @@ public:
 
 	/**
 	* @brief Manages to sort a vector of judges who are not of the specified specialty
+	* @param specialty a string
+	* @param judges a vector reference of Judge Object Pointers
 	*/
 	void getJudgesNotOfSpecialty(std::string specialty, std::vector<Judge*> & judges);
 
 	/**
 	* @brief Manages to randomly select the Judge who will be responsible for the audition, that has the same specialty as said audition at a given date
+	* @param date Calendar Object
+	* @param specialty a string
+	* @param chiefJudge an unsigned integer reference
 	*/
 
 	void generateChiefJudge(Calendar date, std::string specialty, unsigned int & chiefJudge);
 
 	/**
 	* @brief Manages to randomly select the two Judges who are not responsible for the audition, that have the same specialty as said audition at a given date
+	* @param date Calendar Object
+	* @param specialty a string
+	* @param judges a vector reference of unsigned integer
 	*/
 	void generateJudges(Calendar date, std::string specialty, std::vector<unsigned int> & judges);
 
@@ -204,6 +235,8 @@ public:
 
 	/**
 	* @brief Updates a Judge with new information
+	* @param judge a Judge Object Pointer
+	* @param modJudge a Judge Object Pointer
 	*/
 	void updateJudge(Judge * judge, Judge * modJudge);
 
@@ -229,17 +262,21 @@ public:
 
 	/**
 	* @brief Checks if a judge has the specified specialty
+	* @param specialty a string
 	* @return true if the judge has specialty, false otherwise
 	*/
 	bool hasSpecialty(std::string specialty);
 
 	/**
+	* @brief Adds to specialties, vector of strings, all the individual specialties there currently are
 	* @param specialties a vector reference of strings
 	*/
 	void getSpecialties(std::vector<std::string> & specialties);
 
 	/**
 	* @brief Checks if a judge is already evaluating an audition at a specific date
+	* @param date a Calendar Object
+	* @param id an unsigned integer of the judge
 	* @return integer -1 if the judge with the specified id is already evaluating an audition at that specific date, otherwise returns the judge's id
 	*/
 	int judgeIsOcupied(Calendar date, unsigned int id);
@@ -254,6 +291,8 @@ public:
 
 	/**
 	* @brief Manages to add to the auditions vector all the auditions of a specified specialy
+	* @param specialty a string
+	* @param auditions a vector reference of Audition Object Pointers
 	*/
 	void getAuditionsOfSpecialy(std::string specialty, std::vector<Audition*> & auditions);
 
@@ -266,12 +305,14 @@ public:
 
 	/**
 	* @brief Manages to get the duration of the full audition due to the number of candidates
+	* @param nCandidates an unsigned int
 	* @return Calendar Object
 	*/
 	Calendar getDurationOfAudition(unsigned int nCandidates);
 
 	/**
 	* @brief Manages to get the number of Contestants per Audition
+	* @return unsigned int
 	*/
 	unsigned int getMaxNumOfContestantsPerAudition();
 
@@ -283,6 +324,11 @@ public:
 
 	/**
 	* @brief Schedule an audition with specific specialty, beginning date, vector of contestant's id, vector of judge's id and the id of the reposible judge; calculates the ending time of said audition
+	* @param specialty a string
+	* @param beginning a Calendar Object
+	* @param contestants a vector of unsigned integers
+	* @param judges a vector of unsigned integers
+	* @param chiefJudge an unsigned integer
 	*/
 	void scheduleAudition(std::string specialty, Calendar beginning, std::vector<unsigned int> contestants, std::vector<unsigned int> judges, unsigned int chiefJudge);
 
@@ -299,6 +345,8 @@ public:
 
 	/**
 	* @brief Schedule an audition with specific specialty
+	* @param contestants a vector of unsigned integers
+	* @param specialty a string
 	* @return Calendar Object
 	*/
 	Calendar scheduleAuditionCalendar(std::vector<unsigned int> contestants, std::string specialty);
@@ -326,11 +374,18 @@ public:
 	* @brief Grades all auditions, updating the participation of contestants who managed to get to Second Phase and those who didn't
 	*/
 	void gradeAllAuditions();
+	
+	/**
+	* @brief Grades a specified audition, updating the participation of contestants who managed to get to Second Phase and those who didn't
+	* @param auditionID an unsigned integer
+	*/
 	void gradeAudition(unsigned int auditionId);
 };
 
 /**
 * @brief Compares two templates from object Comperable to check which one is greater or lesser
+* @param comparable1 Comperable Object Pointer
+* @param comparable2 Comperable Object Pointer
 * @return true if comparable1's id is smaller than comparable2's id, false otherwise
 */
 template <class Comparable>
@@ -340,7 +395,10 @@ bool compareById(Comparable * comparable1, Comparable * comparable2) {
 
 /**
 * @brief Compares two templates from object Comparable to check which one is greater or lesser
+* @param comparable1 Comperable Object Pointer
+* @param comparable2 Comperable Object Pointer
 * @return true if comparable1 is smaller than comparable2, false otherwise
+*/
 template <class Comparable>
 bool compareWithOperator(Comparable * comparable1, Comparable * comparable2) {
 	return *comparable1 < *comparable2;
@@ -348,6 +406,8 @@ bool compareWithOperator(Comparable * comparable1, Comparable * comparable2) {
 
 /**
 * @brief Compares two templates from object P to check if they are the same
+* @param person1 P Object Pointer
+* @param person2 P Object Pointer
 * @return true if person1's id is equal to person's id, false otherwise
 */
 template <class P>
