@@ -83,6 +83,7 @@ public:
 	*/
 	void showContestantsMenu();
 
+
 	/**
 	* @brief Invokes the menu where it shows if the contestant's id exists and if so, show's it
 	*/
@@ -197,14 +198,10 @@ public:
 	* @brief Prints the information of all contestants on the database
 	*/
 	void showContestants();
-<<<<<<< HEAD
 	void showPartialContestants(unsigned int limInf, unsigned int limSup);
-=======
-
 	/**
 	* @brief Prints the date that a contestant applied to an audition
 	*/
->>>>>>> 47de5147043f6d53eca488a6c0739ad70acfa57a
 	void showApplications();
 
 	/**
@@ -215,15 +212,13 @@ public:
 	* @brief Prints the information of all judges on the database
 	*/
 	void showJudges();
-<<<<<<< HEAD
 	void showPartialJudges(unsigned int limInf, unsigned int limSup);
-=======
 
 	/**
 	* @brief Prints the auditions from the specified id
 	* @param id as unsigned int
 	**/
->>>>>>> 47de5147043f6d53eca488a6c0739ad70acfa57a
+
 	void showAudition(unsigned int id);
 
 

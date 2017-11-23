@@ -1,0 +1,4 @@
+﻿  CompanyMS.cpp
+c:\users\margarida silva\documents\aeda-master\aeda-master\project\companyms.cpp(33): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Project1.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\FinalProj\Project1\Debug\Project1.exe
+  Project1.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\FinalProj\Project1\Debug\Project1.pdb (Partial PDB)

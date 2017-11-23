@@ -5,6 +5,7 @@
 #include "ExceptionHand.h"
 #include <ctime>
 #include <iostream>
+#include <vector>
 #include <wchar.h>
 #include <stdio.h>
 #include <string>
