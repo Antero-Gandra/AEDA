@@ -1,4 +1,28 @@
+<<<<<<< HEAD
 ﻿  CompanyMS.cpp
 c:\users\margarida silva\documents\github\aeda\project\companyms.cpp(33): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Project_1st.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\Project_1st\Debug\Project_1st.exe
   Project_1st.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\Project_1st\Debug\Project_1st.pdb (Partial PDB)
+=======
+﻿  Util.cpp
+  SecondFase.cpp
+  Person.cpp
+  Participation.cpp
+  Judge.cpp
+  FirstFase.cpp
+  Fase.cpp
+c:\users\pc\documents\github\aeda\project\fase.cpp(143): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  ExceptionHand.cpp
+  Contestant.cpp
+  CompanyMS.cpp
+c:\users\pc\documents\github\aeda\project\companyms.cpp(33): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Company.cpp
+c:\users\pc\documents\github\aeda\project\company.cpp(291): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\pc\documents\github\aeda\project\company.cpp(519): warning C4101: 'auditionId': unreferenced local variable
+c:\users\pc\documents\github\aeda\project\company.cpp(576): warning C4018: '<': signed/unsigned mismatch
+  Calendar.cpp
+  Audition.cpp
+  Application.cpp
+  Generating Code...
+  Project_1st.vcxproj -> C:\Users\PC\Documents\GitHub\AEDA\Project_1st\Debug\Project_1st.exe
+>>>>>>> 47de5147043f6d53eca488a6c0739ad70acfa57a

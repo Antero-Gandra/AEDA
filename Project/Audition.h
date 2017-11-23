@@ -20,7 +20,6 @@ private:
 	SecondFase* secondFase;
 public:
 	/**
-	* @brief Audition contructor
 	*/
 	Audition(unsigned int id, Calendar start, Calendar end, std::string specialty, std::vector<unsigned int> judgesId, unsigned int chiefJudgeId, std::vector<unsigned int> contestants);
 	/**
@@ -135,33 +134,27 @@ public:
 	* @return true if the Object is greater than audition1's id and false if the Object is lesser than audition1's id
 	*/
 	bool operator<(const  Audition & audition1) const;
-	
 	/**
 	* Operator "==" is overloaded to check if the Object Audition is equal to another given Audition in case they share the same properties
 	* @param audition1 a constant Audition reference
 	* @return true if the Object is equal to audition1's properties and false if the Object is not equal to audition1's properties
 	*/
 	bool operator==(const Audition & audition1) const;
-	
 	/**
 	* Operator "<<" is overloaded to output the information about the Audition into a file
 	* @param audition1 a constant Audition reference
-	* @return the information of the Audition in a specific format into a file	
 	*/
-	friend std::ostream& operator<<(std::ostream& os, const Audition & contestant);
 
 	/**
 	* Grades the contestants of the Object Audition for the First Phase and sorts them by grade; splits the contestants who were and were not qualified
-	* @return vector of unsigned integers of the contestants sorted by grade of those who didn't qualified to second phase	
+	* @return vector of unsigned integers of the contestants sorted by grade of those who didn't qualified to second phase
 	*/
 	std::vector<unsigned int> gradeFirstFase();
-	
 	/**
 	* Grades the contestants of the Object Audition for the Second Phase and sorts them by grade
 	* @return vector of unsigned integers of the contestants sorted by grade
 	*/
 	std::vector<unsigned int> gradeSecondFase();
-	
 	/**
 	* @brief Prints the Audition's full information on the screen
 	*/

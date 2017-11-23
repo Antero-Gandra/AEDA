@@ -16,6 +16,8 @@ public:
 	void contestantMenu();
 	void judgeMenu();
 	void auditionMenu();
+
+
 	//CONTESTANTS MENUS
 	void enrollAContestantMenu();
 	void modifyContestantMenu();
@@ -69,7 +71,6 @@ public:
 	bool yesNoHandler();
 	unsigned int contestantIdHandler();
 	unsigned int judgeIdHandler();
-	unsigned int auditionIdHandler();
 	std::string stringHandler(std::string type);
 	Calendar dobHandler();
 	std::string specialtyHandler();

@@ -18,7 +18,6 @@ public:
 
 	/**
 	* @brief Judge Contructor with their id, name, address, mobile phone number, date of birth, specialiy and list of participations by id
-	* @param id an unsigined integer, name a string, address a string, mobile an unsigined int, dob a Calendar Object, specialiy a string, participation a vector of unsigined int
 	*/
 	Judge(unsigned int id, std::string name, std::string address, unsigned int mobile, Calendar dob, std::string specialty, std::vector<unsigned int> participation);
 

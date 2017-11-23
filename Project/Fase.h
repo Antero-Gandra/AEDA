@@ -1,6 +1,6 @@
 /**
- * Project Untitled
- */
+* Project Untitled
+*/
 
 #ifndef _FASE_H
 #define _FASE_H
@@ -17,8 +17,6 @@ protected:
 	std::vector <unsigned int> chiefJudge;
 	std::vector<unsigned int> contestants;
 public:
-	Fase(){}
-	virtual ~Fase(){};
 	Fase(unsigned int auditionId, std::vector<unsigned int> final_grade, std::vector<unsigned int> judge1, std::vector<unsigned int> judge2, std::vector<unsigned int> chiefJudge, std::vector<unsigned int> contestants);
 	Fase(std::string textline);
 	//Get Methods
