@@ -18,6 +18,45 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Project\Application.cpp" />
+    <ClCompile Include="..\..\Project\Audition.cpp" />
+    <ClCompile Include="..\..\Project\Calendar.cpp" />
+    <ClCompile Include="..\..\Project\Company.cpp" />
+    <ClCompile Include="..\..\Project\CompanyMS.cpp" />
+    <ClCompile Include="..\..\Project\Contestant.cpp" />
+    <ClCompile Include="..\..\Project\ExceptionHand.cpp" />
+    <ClCompile Include="..\..\Project\Phase.cpp" />
+    <ClCompile Include="..\..\Project\FirstPhase.cpp" />
+    <ClCompile Include="..\..\Project\Judge.cpp" />
+    <ClCompile Include="..\..\Project\main.cpp" />
+    <ClCompile Include="..\..\Project\Participation.cpp" />
+    <ClCompile Include="..\..\Project\Person.cpp" />
+    <ClCompile Include="..\..\Project\SecondPhase.cpp" />
+    <ClCompile Include="..\..\Project\Util.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Project\Application.h" />
+    <ClInclude Include="..\..\Project\Audition.h" />
+    <ClInclude Include="..\..\Project\Calendar.h" />
+    <ClInclude Include="..\..\Project\Company.h" />
+    <ClInclude Include="..\..\Project\CompanyMS.h" />
+    <ClInclude Include="..\..\Project\Contestant.h" />
+    <ClInclude Include="..\..\Project\ExceptionHand.h" />
+    <ClInclude Include="..\..\Project\Phase.h" />
+    <ClInclude Include="..\..\Project\FirstPhase.h" />
+    <ClInclude Include="..\..\Project\Judge.h" />
+    <ClInclude Include="..\..\Project\Participation.h" />
+    <ClInclude Include="..\..\Project\Person.h" />
+    <ClInclude Include="..\..\Project\SecondPhase.h" />
+    <ClInclude Include="..\..\Project\Util.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="applications.dat" />
+    <None Include="auditions.dat" />
+    <None Include="contestants.dat" />
+    <None Include="judges.dat" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{242A221E-F766-4B74-89D0-39E928A7AB24}</ProjectGuid>
@@ -110,40 +149,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\AEDA-master\AEDA-master\Project\Application.h" />
-    <ClInclude Include="..\..\..\..\..\AEDA-master\AEDA-master\Project\Audition.h" />
-    <ClInclude Include="..\..\..\..\..\AEDA-master\AEDA-master\Project\Calendar.h" />
-    <ClInclude Include="..\..\..\..\..\AEDA-master\AEDA-master\Project\Company.h" />
-    <ClInclude Include="..\..\..\..\..\AEDA-master\AEDA-master\Project\CompanyMS.h" />
-    <ClInclude Include="..\..\..\..\..\AEDA-master\AEDA-master\Project\Contestant.h" />
-    <ClInclude Include="..\..\..\..\..\AEDA-master\AEDA-master\Project\ExceptionHand.h" />
-    <ClInclude Include="..\..\..\..\..\AEDA-master\AEDA-master\Project\Fase.h" />
-    <ClInclude Include="..\..\..\..\..\AEDA-master\AEDA-master\Project\FirstFase.h" />
-    <ClInclude Include="..\..\..\..\..\AEDA-master\AEDA-master\Project\insertionSort.h" />
-    <ClInclude Include="..\..\..\..\..\AEDA-master\AEDA-master\Project\Judge.h" />
-    <ClInclude Include="..\..\..\..\..\AEDA-master\AEDA-master\Project\Participation.h" />
-    <ClInclude Include="..\..\..\..\..\AEDA-master\AEDA-master\Project\Person.h" />
-    <ClInclude Include="..\..\..\..\..\AEDA-master\AEDA-master\Project\SecondFase.h" />
-    <ClInclude Include="..\..\..\..\..\AEDA-master\AEDA-master\Project\sequentialSearch.h" />
-    <ClInclude Include="..\..\..\..\..\AEDA-master\AEDA-master\Project\Util.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\AEDA-master\AEDA-master\Project\Application.cpp" />
-    <ClCompile Include="..\..\..\..\..\AEDA-master\AEDA-master\Project\Audition.cpp" />
-    <ClCompile Include="..\..\..\..\..\AEDA-master\AEDA-master\Project\Calendar.cpp" />
-    <ClCompile Include="..\..\..\..\..\AEDA-master\AEDA-master\Project\Company.cpp" />
-    <ClCompile Include="..\..\..\..\..\AEDA-master\AEDA-master\Project\CompanyMS.cpp" />
-    <ClCompile Include="..\..\..\..\..\AEDA-master\AEDA-master\Project\Contestant.cpp" />
-    <ClCompile Include="..\..\..\..\..\AEDA-master\AEDA-master\Project\ExceptionHand.cpp" />
-    <ClCompile Include="..\..\..\..\..\AEDA-master\AEDA-master\Project\Fase.cpp" />
-    <ClCompile Include="..\..\..\..\..\AEDA-master\AEDA-master\Project\FirstFase.cpp" />
-    <ClCompile Include="..\..\..\..\..\AEDA-master\AEDA-master\Project\Judge.cpp" />
-    <ClCompile Include="..\..\..\..\..\AEDA-master\AEDA-master\Project\Participation.cpp" />
-    <ClCompile Include="..\..\..\..\..\AEDA-master\AEDA-master\Project\Person.cpp" />
-    <ClCompile Include="..\..\..\..\..\AEDA-master\AEDA-master\Project\SecondFase.cpp" />
-    <ClCompile Include="..\..\..\..\..\AEDA-master\AEDA-master\Project\Util.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
