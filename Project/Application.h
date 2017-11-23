@@ -8,6 +8,7 @@ class Application {
 public:
 	Calendar date;
 	unsigned int contestantId;
+
 	/**
 	* @brief Application Contructor
 	*/
