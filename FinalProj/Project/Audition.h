@@ -29,10 +29,13 @@ public:
 	* @param chiefJudge an unsigned integer
 	*/
 	Audition(unsigned int id, Calendar start, Calendar end, std::string specialty, std::vector<unsigned int> judgesId, unsigned int chiefJudgeId, std::vector<unsigned int> contestants);
+	
 	/**
-	* @brief Audition contructor by reading the file
+	* @brief Audition contructor by reading a line from the file
+	* @param textline as string
 	*/
 	Audition(std::string textline);
+	
 	/**
 	* @brief Audition Decontructor
 	*/
@@ -119,7 +122,7 @@ public:
 	
 	/**
 	* Changes the Judge's in charge ID of the Audition
-	* @param chiefJudgeId an unsigned int
+	* @param chiefJudgeId an unsigned integer
 	*/
 	void setChiefJudgeId(unsigned int chiefJudgeId);
 	

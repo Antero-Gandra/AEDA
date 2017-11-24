@@ -37,6 +37,7 @@ public:
 	* @param textLine a string
 	*/
 	SecondPhase(std::string textLine);
+	
 	/**
 	* @brief Grades all contestants from the second phase
 	*/

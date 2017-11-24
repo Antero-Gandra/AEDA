@@ -194,7 +194,8 @@ public:
 
 	/**
 	* @brief Manages to sort a vector of judges who are of the specified specialty
-	* @param specialty a string, judges a vector reference of Judge Object Pointers
+	* @param specialty a string
+	* @param judges a vector reference of Judge Object Pointers
 	*/
 	void getJudgesOfSpecialty(std::string specialty, std::vector<Judge*> & judges);
 
@@ -299,7 +300,8 @@ public:
 
 	/**
 	* @brief Searches an audition from a specified date and specialty
-	* @param date a Calendar Object, specialty a string
+	* @param date a Calendar Object
+	* @param specialty a string
 	* @return integer -1 if there is no audition with the specified date and specialty, otherwise returns the position of the auditions vector
 	*/
 	int getAuditionOfDayOfSpecialty(Calendar date, std::string specialty);
@@ -334,18 +336,26 @@ public:
 	void scheduleAudition(std::string specialty, Calendar beginning, std::vector<unsigned int> contestants, std::vector<unsigned int> judges, unsigned int chiefJudge);
 
 	/**
-	* @brief Schedule an audition with the max number of contestants within a specific specialty
+	* @brief Schedules multiple auditions that validates the prerequisite of the limit of contestants per audition within a specific specialty
 	* @param specialty a string
 	*/
 	void scheduleMaxAuditionsOfSpecialty(std::string specialty);
-
+	
+	/**
+	* @brief Schedule an audition of a specific specialty
+	* @param specialty a string
+	*/
 	void scheduleAuditionOfSpecialty(std::string specialty);
 
 	/**
-	* @brief Schedule an audition with the max number of contestants
+	* @brief Schedules multiple auditions that validates the prerequisite of the limit of contestants per audition
 	*/
 	void scheduleMaxAuditions();
-
+	
+	/**
+	* @brief Removes an audition from the database
+	* @param audition an Audition Object Pointer
+	*/
 	void removeAudition(Audition * audition);
 
 	/**
@@ -404,6 +414,12 @@ bool compareWithOperator(Comparable * comparable1, Comparable * comparable2) {
 	return *comparable1 < *comparable2;
 }
 
+/**
+* @brief Compares two templates from object Comparable to sort the name alphabetically
+* @param comparable1 Comperable Object Pointer
+* @param comparable2 Comperable Object Pointer
+* @return true if comparable1 is smaller than comparable2, false otherwise
+*/
 template <class Comparable>
 bool compareByName(Comparable * p1, Comparable * p2) {
 	return (p1->getName() < p2->getName());
