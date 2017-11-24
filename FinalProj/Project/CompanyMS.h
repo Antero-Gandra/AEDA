@@ -80,11 +80,19 @@ public:
 	void removeContestantMenu();
 
 	/**
+	* @brief Invokes a menu where the user can view all contestants' information or select 2 contestants id where it prints
+	*		 all contentant's information sorted by id between that range
 	*/
 	void showContestantsByIdMenu();
 
+	/**
+	* @brief Invokes a menu where it shows all contestants' information sorted by name
+	*/
 	void showContestantsByNameMenu();
 
+	/**
+	* @brief Invokes a menu where it shows all contestants' information from a specified speciality
+	*/
 	void showContestantsOfSpecialtyMenu();
 
 	/**
@@ -93,6 +101,7 @@ public:
 	void searchContestantByIdMenu();
 
 	/**
+	* @brief Invokes the menu where it removes all applications from a contestant
 	*/
 	void removeContestantsApplicationsMenu();
 
@@ -120,9 +129,19 @@ public:
 	void fireJudgeMenu();
 
 	/**
+	* @brief Invokes a menu where the user can view all judges' information or select 2 judges id where it prints
+	*		 all judges's information sorted by id between that range
 	*/
 	void showJudgesByIdMenu();
+	
+	/**
+	* @brief Invokes a menu where it shows all judges' information sorted by name
+	*/
 	void showJudgesByNameMenu();
+	
+	/**
+	* @brief Invokes a menu where it shows all judges' information from a specified speciality
+	*/
 	void showJudgesOfSpecialtyMenu();
 
 	/**
@@ -150,6 +169,7 @@ public:
 	void scheduleMaxAuditionsOfSpecialtyMenu();
 
 	/**
+	* @brief Invokes a menu where it removes an audition from the database
 	*/
 	void disassembleAuditionMenu();
 	
@@ -172,10 +192,20 @@ public:
 	//CANDIDATES SHOW FUNCTIONS
 
 	/**
+	* @brief Prints the information of all contestants on the database sorted by id
 	*/
 	void showContestants();
+	
+	/**
+	* @brief Prints the information of all contestants on the database sorted by name
+	*/
 	void showContestantsByName();
 
+	/**
+	* @brief Prints the information of a range, sorted by id, of contestants on the database
+	* @param limInf an unsigned integer
+	* @param limSup an unsigned integer
+	*/
 	void showPartialContestants(unsigned int limInf, unsigned int limSup);
 
 	/**
@@ -189,9 +219,18 @@ public:
 	void showApplicationsOfSpecialty(std::string specialty);
 
 	/**
+	* @brief Prints the information of all judges on the database sorted by id
 	*/
 	void showJudges();
 
+	/**
+	* @brief Prints the information of all judges on the database sorted by name
+	*/
+	void showJudgesByName();
+	
+	/**
+	* @brief Prints the information of a range, sorted by id, of judges on the database
+	*/
 	void showPartialJudges(unsigned int limInf, unsigned int limSup);
 
 	/**
@@ -199,6 +238,10 @@ public:
 	* @param id as unsigned int
 	**/
 	void showAudition(unsigned int id);
+	
+	/**
+	* @brief Prints all possible auditions
+	**/
 	void showAuditions();
 
 	
@@ -278,16 +321,31 @@ public:
 	bool yesNoHandler();
 
 	/**
+	* @brief Converts the string inputed of the judge's id to unsigned integer
 	* @return unsigned int
 	*/
 	unsigned int contestantIdHandler();
+	
+	/**
+	* @brief Converts the string inputed of the judge's id to unsigned integer that handles zero
+	* @return unsigned int
+	*/
+	
 	unsigned int specialContestantIdHandler();
 	
 	/**
+	* @brief Converts the string inputed of the judge's id to unsigned integer
 	* @return unsigned int
 	*/
 	unsigned int judgeIdHandler();
 
+	/**
+	* @brief Converts the string inputed of the audition's id to unsigned integer
+	* @return unsigned int
+	*/
+
+	unsigned int auditionIdHandler();
+	
 	/**
 	* @brief Checks if the input string is valid and not empty
 	* @param type as string
@@ -324,6 +382,7 @@ public:
 	//APPEARANCE
 
 	/**
+	* @brief Prints text in a specific color and if it is bold of not
 	* @param text as string
 	* @param colour as unsigned int
 	* @param dark as bool
@@ -335,6 +394,9 @@ public:
 	*/
 	void clearScreen();
 
+	/**
+	* @brief Prints the title of the program
+	*/
 	void mainTitle();
 
 private:

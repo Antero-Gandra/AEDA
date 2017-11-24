@@ -46,8 +46,10 @@ public:
 	void overallGrading();
 	//Operator overloading
 	/**
+	* @brief Operator "<<" is overloaded to output the information about the First Phase into a file
 	* @param os an Outstream Object
 	* @param firstPhase a constant FirstPhase reference
+	* @return ostream reference of the information of the First Phase in a specific format into a file
 	*/
 	friend std::ostream& operator<<(std::ostream& os, const FirstPhase & firstPhase);
 };

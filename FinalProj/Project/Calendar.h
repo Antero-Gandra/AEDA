@@ -114,6 +114,8 @@ public:
 	bool operator<(const Calendar & calendar1) const;
 
 	/**
+	* @brief Converts the object's time in minutes
+	* @return unsigned integer of the time in minutes
 	*/
 	operator unsigned int() const;
 
