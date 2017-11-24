@@ -1,0 +1,982 @@
+\hypertarget{class_company}{}\section{Company Class Reference}
+\label{class_company}\index{Company@{Company}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \hyperlink{class_contestant}{Contestant} $\ast$ $>$ \hyperlink{class_company_a3e0b5c137e22060961b27332396384ca}{get\+Contestants} () const
+\begin{DoxyCompactList}\small\item\em Manages to access all contestants ever applied. \end{DoxyCompactList}\item 
+std\+::vector$<$ \hyperlink{class_judge}{Judge} $\ast$ $>$ \hyperlink{class_company_a287cc3acf891e584e630eced10eba45a}{get\+Judges} () const
+\begin{DoxyCompactList}\small\item\em Manages to access all judges ever hired. \end{DoxyCompactList}\item 
+std\+::vector$<$ \hyperlink{class_application}{Application} $\ast$ $>$ \hyperlink{class_company_ac47e9c6c7a5b9cf67a685f14bde2f103}{get\+Applications} () const
+\begin{DoxyCompactList}\small\item\em Manages to access all applications ever created. \end{DoxyCompactList}\item 
+std\+::vector$<$ \hyperlink{class_audition}{Audition} $\ast$ $>$ \hyperlink{class_company_a9d2d2e8bdad7bccc57324100de3c3e5b}{get\+Auditions} () const
+\begin{DoxyCompactList}\small\item\em Manages to access all auditions ever created. \end{DoxyCompactList}\item 
+\hyperlink{class_contestant}{Contestant} $\ast$ \hyperlink{class_company_a9a633866abe6cc598bb290498dc3d7ad}{get\+Contestant\+By\+Id} (unsigned int id)
+\begin{DoxyCompactList}\small\item\em Manages to access a \hyperlink{class_contestant}{Contestant} by ID. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_company_ae6e1537b2cd2c2d8c4906f67dfbb80ca}{get\+Contestant\+By\+Info} (\hyperlink{class_contestant}{Contestant} $\ast$contestant)
+\begin{DoxyCompactList}\small\item\em Manages to access a contestant\textquotesingle{}s ID. \end{DoxyCompactList}\item 
+void \hyperlink{class_company_a64ff4709f2a3d567b1e2fd55f308a665}{get\+Contestants\+Of\+Specialty} (std\+::string specialty, std\+::vector$<$ \hyperlink{class_contestant}{Contestant} $\ast$$>$ \&contestants)
+\begin{DoxyCompactList}\small\item\em Manages to get all contestnts of a specific specialty and save them to a reference vector of \hyperlink{class_contestant}{Contestant} Object Pointers. \end{DoxyCompactList}\item 
+void \hyperlink{class_company_aaa349bd5785e941e985384f3b9a05288}{get\+Applications\+Of\+Specialty} (std\+::string specialty, std\+::vector$<$ \hyperlink{class_application}{Application} $\ast$$>$ \&applications)
+\begin{DoxyCompactList}\small\item\em Manages to get all applications of a specific specialty and save them to a reference vector of \hyperlink{class_application}{Application} Object Pointers. \end{DoxyCompactList}\item 
+void \hyperlink{class_company_ac637492635bbf4e2ab0c90e2681f8732}{generate\+Contestants\+Of\+Specialty} (std\+::string specialty, std\+::vector$<$ \hyperlink{class_contestant}{Contestant} $\ast$$>$ \&contestants)
+\begin{DoxyCompactList}\small\item\em Manages to randomly select, at least, 24 contestants of a given specialty and saving them to a reference vector of \hyperlink{class_contestant}{Contestant} Object Pointers. \end{DoxyCompactList}\item 
+void \hyperlink{class_company_a84df3faac90c9fa0d966e381a6d7459c}{get\+Contestants\+Of\+Applications} (std\+::vector$<$ unsigned int $>$ \&contestants, const std\+::vector$<$ \hyperlink{class_application}{Application} $\ast$$>$ \&applications)
+\begin{DoxyCompactList}\small\item\em Manages to apply contestants to a reference vector of \hyperlink{class_application}{Application} Object Pointers. \end{DoxyCompactList}\item 
+void \hyperlink{class_company_a6784ebb8b31be1fcb5a1e5665b84c06c}{add\+New\+Contestant} (\hyperlink{class_contestant}{Contestant} $\ast$contestant)
+\begin{DoxyCompactList}\small\item\em Adds a new \hyperlink{class_contestant}{Contestant} to the vector of all Contestants of the company. \end{DoxyCompactList}\item 
+void \hyperlink{class_company_a8db12922bdf5e3bc1817dd001ca81f7a}{add\+Contestant} (\hyperlink{class_contestant}{Contestant} $\ast$contestant)
+\begin{DoxyCompactList}\small\item\em Adds a \hyperlink{class_contestant}{Contestant} to the vector of all Contestants of the company. \end{DoxyCompactList}\item 
+void \hyperlink{class_company_a3d0fee60dd012d0303483a142dfd4ce1}{add\+Application} (\hyperlink{class_calendar}{Calendar} calendar, unsigned int id)
+\begin{DoxyCompactList}\small\item\em Adds an application with the date and id. \end{DoxyCompactList}\item 
+void \hyperlink{class_company_a8948265cd00ed452e5336964ef2b5537}{update\+Contestant} (\hyperlink{class_contestant}{Contestant} $\ast$contestant, \hyperlink{class_contestant}{Contestant} $\ast$mod\+Contestant)
+\begin{DoxyCompactList}\small\item\em Updates a \hyperlink{class_contestant}{Contestant} with new information. \end{DoxyCompactList}\item 
+void \hyperlink{class_company_acccfc131326fef9d641bdab101d0cb9e}{remove\+Contestant} (\hyperlink{class_contestant}{Contestant} $\ast$contestant)
+\begin{DoxyCompactList}\small\item\em Removes a specified \hyperlink{class_contestant}{Contestant}. \end{DoxyCompactList}\item 
+std\+::vector$<$ \hyperlink{class_application}{Application} $\ast$ $>$ \hyperlink{class_company_af4cd471e2417b865078b3404e964b334}{get\+Applications\+By\+Id} (unsigned int id)
+\begin{DoxyCompactList}\small\item\em Manages to access a vector of applications from a specified \hyperlink{class_contestant}{Contestant}\textquotesingle{}s ID. \end{DoxyCompactList}\item 
+\hyperlink{class_calendar}{Calendar} \hyperlink{class_company_a744e01f3f6644035f054ceb6827ddaa9}{remove\+One\+Application\+Of\+Contestant} (\hyperlink{class_contestant}{Contestant} $\ast$contestant)
+\begin{DoxyCompactList}\small\item\em Removes a \hyperlink{class_contestant}{Contestant}\textquotesingle{}s application when they get appied due to a schedule creation. \end{DoxyCompactList}\item 
+void \hyperlink{class_company_a60f441b02e7db24f47b82e4dcd1a1e17}{remove\+Applications\+Of\+Contestant} (\hyperlink{class_contestant}{Contestant} $\ast$contestant)
+\begin{DoxyCompactList}\small\item\em Removes all \hyperlink{class_contestant}{Contestant}\textquotesingle{}s applications. \end{DoxyCompactList}\item 
+bool \hyperlink{class_company_af5f148bc24f2d7d74f2c4ada055bad64}{read\+Contestants\+File} (std\+::string file\+Name)
+\begin{DoxyCompactList}\small\item\em Reads the contestant information from a file and calls the function that creates a contestant. \end{DoxyCompactList}\item 
+bool \hyperlink{class_company_aa52ac354a5ab3f0e5bc0712bb48cb7b4}{write\+Contestants\+File} (std\+::string file\+Name)
+\begin{DoxyCompactList}\small\item\em Writes the contestant information into a file. \end{DoxyCompactList}\item 
+bool \hyperlink{class_company_a2be6170874e4695402614a5d8f624f9c}{read\+Applications\+File} (std\+::string file\+Name)
+\begin{DoxyCompactList}\small\item\em Reads the application information from a file and calls the function that creates an application. \end{DoxyCompactList}\item 
+bool \hyperlink{class_company_a4bdd95cb403430ae299259ac26721dde}{write\+Applications\+File} (std\+::string file\+Name)
+\begin{DoxyCompactList}\small\item\em Writes the application information into a file. \end{DoxyCompactList}\item 
+\hyperlink{class_judge}{Judge} $\ast$ \hyperlink{class_company_ab4135415448c7f20c5db91413ca947fd}{get\+Judge\+By\+Id} (unsigned int id)
+\begin{DoxyCompactList}\small\item\em Manages to access a \hyperlink{class_judge}{Judge} by ID. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_company_a0ea843e026af967b2d4d69d268481cb7}{get\+Judge\+By\+Info} (\hyperlink{class_judge}{Judge} $\ast$judge)
+\begin{DoxyCompactList}\small\item\em Manages to get the ID of a \hyperlink{class_judge}{Judge}. \end{DoxyCompactList}\item 
+void \hyperlink{class_company_ad8d86971b1fb7acb622c1eef3db1fa4e}{get\+Judges\+Of\+Specialty} (std\+::string specialty, std\+::vector$<$ \hyperlink{class_judge}{Judge} $\ast$$>$ \&judges)
+\begin{DoxyCompactList}\small\item\em Manages to sort a vector of judges who are of the specified specialty. \end{DoxyCompactList}\item 
+void \hyperlink{class_company_ad8f032997ab625e04324093ac20d83cf}{get\+Judges\+Not\+Of\+Specialty} (std\+::string specialty, std\+::vector$<$ \hyperlink{class_judge}{Judge} $\ast$$>$ \&judges)
+\begin{DoxyCompactList}\small\item\em Manages to sort a vector of judges who are not of the specified specialty. \end{DoxyCompactList}\item 
+void \hyperlink{class_company_af5121e8ac79b845e06a1c592f9db41d3}{generate\+Chief\+Judge} (\hyperlink{class_calendar}{Calendar} date, std\+::string specialty, unsigned int \&chief\+Judge)
+\begin{DoxyCompactList}\small\item\em Manages to randomly select the \hyperlink{class_judge}{Judge} who will be responsible for the audition, that has the same specialty as said audition at a given date. \end{DoxyCompactList}\item 
+void \hyperlink{class_company_aa3a5c5f2ea59e01207f1407676a302ef}{generate\+Judges} (\hyperlink{class_calendar}{Calendar} date, std\+::string specialty, std\+::vector$<$ unsigned int $>$ \&judges)
+\begin{DoxyCompactList}\small\item\em Manages to randomly select the two Judges who are not responsible for the audition, that have the same specialty as said audition at a given date. \end{DoxyCompactList}\item 
+void \hyperlink{class_company_a349e0b6205c7dfe137e50cd35666448e}{add\+Judge} (\hyperlink{class_judge}{Judge} $\ast$judge)
+\begin{DoxyCompactList}\small\item\em Adds a \hyperlink{class_judge}{Judge} to the vector of all Contestants of the company. \end{DoxyCompactList}\item 
+void \hyperlink{class_company_a0103d856876e3cb9188d1bf71903baff}{add\+New\+Judge} (\hyperlink{class_judge}{Judge} $\ast$judge)
+\begin{DoxyCompactList}\small\item\em Adds a new \hyperlink{class_judge}{Judge} to the vector of all Contestants of the company. \end{DoxyCompactList}\item 
+void \hyperlink{class_company_a315bc334167bce6e6836b6462f85e959}{update\+Judge} (\hyperlink{class_judge}{Judge} $\ast$judge, \hyperlink{class_judge}{Judge} $\ast$mod\+Judge)
+\begin{DoxyCompactList}\small\item\em Updates a \hyperlink{class_judge}{Judge} with new information. \end{DoxyCompactList}\item 
+void \hyperlink{class_company_a39346c8e12c0cdcd47e300089301a6ea}{remove\+Judge} (\hyperlink{class_judge}{Judge} $\ast$judge)
+\begin{DoxyCompactList}\small\item\em Removes a specified \hyperlink{class_judge}{Judge}. \end{DoxyCompactList}\item 
+bool \hyperlink{class_company_a5c53dbd29fab7972acbb7e92eeee2ee5}{read\+Judges\+File} (std\+::string file\+Name)
+\begin{DoxyCompactList}\small\item\em Reads the judges information from a file and calls the function that creates a judge. \end{DoxyCompactList}\item 
+bool \hyperlink{class_company_acfdd8f76389ec02d7ab72625ac1bb9d1}{write\+Judges\+File} (std\+::string file\+Name)
+\begin{DoxyCompactList}\small\item\em Writes the judge information into a file. \end{DoxyCompactList}\item 
+bool \hyperlink{class_company_a3976d4ec91c9f9dfe1b777b4d7587684}{has\+Specialty} (std\+::string specialty)
+\begin{DoxyCompactList}\small\item\em Checks if a judge has the specified specialty. \end{DoxyCompactList}\item 
+void \hyperlink{class_company_aab93a983bbd590e540b439033c9ec723}{get\+Specialties} (std\+::vector$<$ std\+::string $>$ \&specialties)
+\begin{DoxyCompactList}\small\item\em Adds to specialties, vector of strings, all the individual specialties there currently are. \end{DoxyCompactList}\item 
+int \hyperlink{class_company_a65a8b53db0f81846a91709108f4e36fa}{judge\+Is\+Ocupied} (\hyperlink{class_calendar}{Calendar} date, unsigned int id)
+\begin{DoxyCompactList}\small\item\em Checks if a judge is already evaluating an audition at a specific date. \end{DoxyCompactList}\item 
+\hyperlink{class_audition}{Audition} $\ast$ \hyperlink{class_company_ab55bf93a7417322bfd8ef7fc7596e609}{get\+Audition\+By\+Id} (unsigned int id)
+\begin{DoxyCompactList}\small\item\em Manages to access an \hyperlink{class_audition}{Audition} by ID. \end{DoxyCompactList}\item 
+void \hyperlink{class_company_a9740e4c34fac69951145e289269fabdb}{get\+Auditions\+Of\+Specialy} (std\+::string specialty, std\+::vector$<$ \hyperlink{class_audition}{Audition} $\ast$$>$ \&auditions)
+\begin{DoxyCompactList}\small\item\em Manages to add to the auditions vector all the auditions of a specified specialy. \end{DoxyCompactList}\item 
+int \hyperlink{class_company_ad0f12e0fa92a28869aac46fde4b304c8}{get\+Audition\+Of\+Day\+Of\+Specialty} (\hyperlink{class_calendar}{Calendar} date, std\+::string specialty)
+\begin{DoxyCompactList}\small\item\em Searches an audition from a specified date and specialty. \end{DoxyCompactList}\item 
+\hyperlink{class_calendar}{Calendar} \hyperlink{class_company_ac51c38ee442d1b87f0eede53e2919c3a}{get\+Duration\+Of\+Audition} (unsigned int n\+Candidates)
+\begin{DoxyCompactList}\small\item\em Manages to get the duration of the full audition due to the number of candidates. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_company_a7631d2e0b84275b8f8cab27e3dad0473}{get\+Max\+Num\+Of\+Contestants\+Per\+Audition} ()
+\begin{DoxyCompactList}\small\item\em Manages to get the number of Contestants per \hyperlink{class_audition}{Audition}. \end{DoxyCompactList}\item 
+void \hyperlink{class_company_a19096e3cb1b5879774bd17b0c096ffdb}{add\+Audition} (\hyperlink{class_audition}{Audition} $\ast$audition)
+\begin{DoxyCompactList}\small\item\em Adds an audition. \end{DoxyCompactList}\item 
+void \hyperlink{class_company_ae5763c1da591cd2fcee8715990869fbd}{schedule\+Audition} (std\+::string specialty, \hyperlink{class_calendar}{Calendar} beginning, std\+::vector$<$ unsigned int $>$ contestants, std\+::vector$<$ unsigned int $>$ judges, unsigned int chief\+Judge)
+\begin{DoxyCompactList}\small\item\em Schedule an audition with specific specialty, beginning date, vector of contestant\textquotesingle{}s id, vector of judge\textquotesingle{}s id and the id of the reposible judge; calculates the ending time of said audition. \end{DoxyCompactList}\item 
+void \hyperlink{class_company_a6da20c8e4cdbaa15326fa3c44ec70885}{schedule\+Max\+Auditions\+Of\+Specialty} (std\+::string specialty)
+\begin{DoxyCompactList}\small\item\em Schedules multiple auditions that validates the prerequisite of the limit of contestants per audition within a specific specialty. \end{DoxyCompactList}\item 
+void \hyperlink{class_company_a0a0805c0f7e083200f04b07384e1c515}{schedule\+Audition\+Of\+Specialty} (std\+::string specialty)
+\begin{DoxyCompactList}\small\item\em Schedule an audition of a specific specialty. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_company_ab290830aef89af33ffd5d687162440ee}\label{class_company_ab290830aef89af33ffd5d687162440ee}} 
+void \hyperlink{class_company_ab290830aef89af33ffd5d687162440ee}{schedule\+Max\+Auditions} ()
+\begin{DoxyCompactList}\small\item\em Schedules multiple auditions that validates the prerequisite of the limit of contestants per audition. \end{DoxyCompactList}\item 
+void \hyperlink{class_company_a6001cfc0c20bf5037345b4ccd3dc7840}{remove\+Audition} (\hyperlink{class_audition}{Audition} $\ast$audition)
+\begin{DoxyCompactList}\small\item\em Removes an audition from the database. \end{DoxyCompactList}\item 
+\hyperlink{class_calendar}{Calendar} \hyperlink{class_company_a918b212e5e2ece1a3d73d8f79d2a8d9d}{schedule\+Audition\+Calendar} (std\+::vector$<$ unsigned int $>$ contestants, std\+::string specialty)
+\begin{DoxyCompactList}\small\item\em Schedule an audition with specific specialty. \end{DoxyCompactList}\item 
+bool \hyperlink{class_company_adecfc6079e977e211786571fc348167b}{read\+Auditions\+File} (std\+::string file\+Name)
+\begin{DoxyCompactList}\small\item\em Reads the audition information from a file and calls the function that creates an audition. \end{DoxyCompactList}\item 
+bool \hyperlink{class_company_afe265c202d76f371917835b5ce3f9184}{write\+Auditions\+File} (std\+::string file\+Name)
+\begin{DoxyCompactList}\small\item\em Writes the audition information into a file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_company_ad30bfdbfc740ab51805112a10133a412}\label{class_company_ad30bfdbfc740ab51805112a10133a412}} 
+void \hyperlink{class_company_ad30bfdbfc740ab51805112a10133a412}{grade\+All\+Auditions} ()
+\begin{DoxyCompactList}\small\item\em Grades all auditions, updating the participation of contestants who managed to get to Second \hyperlink{class_phase}{Phase} and those who didn\textquotesingle{}t. \end{DoxyCompactList}\item 
+void \hyperlink{class_company_a56268c11009ad2441a1dde545f7ceacf}{grade\+Audition} (unsigned int audition\+Id)
+\begin{DoxyCompactList}\small\item\em Grades a specified audition, updating the participation of contestants who managed to get to Second \hyperlink{class_phase}{Phase} and those who didn\textquotesingle{}t. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_company_a3d0fee60dd012d0303483a142dfd4ce1}\label{class_company_a3d0fee60dd012d0303483a142dfd4ce1}} 
+\index{Company@{Company}!add\+Application@{add\+Application}}
+\index{add\+Application@{add\+Application}!Company@{Company}}
+\subsubsection{\texorpdfstring{add\+Application()}{addApplication()}}
+{\footnotesize\ttfamily void Company\+::add\+Application (\begin{DoxyParamCaption}\item[{\hyperlink{class_calendar}{Calendar}}]{calendar,  }\item[{unsigned int}]{id }\end{DoxyParamCaption})}
+
+
+
+Adds an application with the date and id. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em calendar} & a \hyperlink{class_calendar}{Calendar} Object \\
+\hline
+{\em id} & unsigned integer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_company_a19096e3cb1b5879774bd17b0c096ffdb}\label{class_company_a19096e3cb1b5879774bd17b0c096ffdb}} 
+\index{Company@{Company}!add\+Audition@{add\+Audition}}
+\index{add\+Audition@{add\+Audition}!Company@{Company}}
+\subsubsection{\texorpdfstring{add\+Audition()}{addAudition()}}
+{\footnotesize\ttfamily void Company\+::add\+Audition (\begin{DoxyParamCaption}\item[{\hyperlink{class_audition}{Audition} $\ast$}]{audition }\end{DoxyParamCaption})}
+
+
+
+Adds an audition. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em audition} & an \hyperlink{class_audition}{Audition} Object Pointer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_company_a8db12922bdf5e3bc1817dd001ca81f7a}\label{class_company_a8db12922bdf5e3bc1817dd001ca81f7a}} 
+\index{Company@{Company}!add\+Contestant@{add\+Contestant}}
+\index{add\+Contestant@{add\+Contestant}!Company@{Company}}
+\subsubsection{\texorpdfstring{add\+Contestant()}{addContestant()}}
+{\footnotesize\ttfamily void Company\+::add\+Contestant (\begin{DoxyParamCaption}\item[{\hyperlink{class_contestant}{Contestant} $\ast$}]{contestant }\end{DoxyParamCaption})}
+
+
+
+Adds a \hyperlink{class_contestant}{Contestant} to the vector of all Contestants of the company. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em contestant} & a pointer of \hyperlink{class_contestant}{Contestant} Object \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_company_a349e0b6205c7dfe137e50cd35666448e}\label{class_company_a349e0b6205c7dfe137e50cd35666448e}} 
+\index{Company@{Company}!add\+Judge@{add\+Judge}}
+\index{add\+Judge@{add\+Judge}!Company@{Company}}
+\subsubsection{\texorpdfstring{add\+Judge()}{addJudge()}}
+{\footnotesize\ttfamily void Company\+::add\+Judge (\begin{DoxyParamCaption}\item[{\hyperlink{class_judge}{Judge} $\ast$}]{judge }\end{DoxyParamCaption})}
+
+
+
+Adds a \hyperlink{class_judge}{Judge} to the vector of all Contestants of the company. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em judge} & a pointer of \hyperlink{class_judge}{Judge} Object \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_company_a6784ebb8b31be1fcb5a1e5665b84c06c}\label{class_company_a6784ebb8b31be1fcb5a1e5665b84c06c}} 
+\index{Company@{Company}!add\+New\+Contestant@{add\+New\+Contestant}}
+\index{add\+New\+Contestant@{add\+New\+Contestant}!Company@{Company}}
+\subsubsection{\texorpdfstring{add\+New\+Contestant()}{addNewContestant()}}
+{\footnotesize\ttfamily void Company\+::add\+New\+Contestant (\begin{DoxyParamCaption}\item[{\hyperlink{class_contestant}{Contestant} $\ast$}]{contestant }\end{DoxyParamCaption})}
+
+
+
+Adds a new \hyperlink{class_contestant}{Contestant} to the vector of all Contestants of the company. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em contestant} & a pointer of \hyperlink{class_contestant}{Contestant} Object \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_company_a0103d856876e3cb9188d1bf71903baff}\label{class_company_a0103d856876e3cb9188d1bf71903baff}} 
+\index{Company@{Company}!add\+New\+Judge@{add\+New\+Judge}}
+\index{add\+New\+Judge@{add\+New\+Judge}!Company@{Company}}
+\subsubsection{\texorpdfstring{add\+New\+Judge()}{addNewJudge()}}
+{\footnotesize\ttfamily void Company\+::add\+New\+Judge (\begin{DoxyParamCaption}\item[{\hyperlink{class_judge}{Judge} $\ast$}]{judge }\end{DoxyParamCaption})}
+
+
+
+Adds a new \hyperlink{class_judge}{Judge} to the vector of all Contestants of the company. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em judge} & a pointer of \hyperlink{class_judge}{Judge} Object \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_company_af5121e8ac79b845e06a1c592f9db41d3}\label{class_company_af5121e8ac79b845e06a1c592f9db41d3}} 
+\index{Company@{Company}!generate\+Chief\+Judge@{generate\+Chief\+Judge}}
+\index{generate\+Chief\+Judge@{generate\+Chief\+Judge}!Company@{Company}}
+\subsubsection{\texorpdfstring{generate\+Chief\+Judge()}{generateChiefJudge()}}
+{\footnotesize\ttfamily void Company\+::generate\+Chief\+Judge (\begin{DoxyParamCaption}\item[{\hyperlink{class_calendar}{Calendar}}]{date,  }\item[{std\+::string}]{specialty,  }\item[{unsigned int \&}]{chief\+Judge }\end{DoxyParamCaption})}
+
+
+
+Manages to randomly select the \hyperlink{class_judge}{Judge} who will be responsible for the audition, that has the same specialty as said audition at a given date. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em date} & \hyperlink{class_calendar}{Calendar} Object \\
+\hline
+{\em specialty} & a string \\
+\hline
+{\em chief\+Judge} & an unsigned integer reference \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_company_ac637492635bbf4e2ab0c90e2681f8732}\label{class_company_ac637492635bbf4e2ab0c90e2681f8732}} 
+\index{Company@{Company}!generate\+Contestants\+Of\+Specialty@{generate\+Contestants\+Of\+Specialty}}
+\index{generate\+Contestants\+Of\+Specialty@{generate\+Contestants\+Of\+Specialty}!Company@{Company}}
+\subsubsection{\texorpdfstring{generate\+Contestants\+Of\+Specialty()}{generateContestantsOfSpecialty()}}
+{\footnotesize\ttfamily void Company\+::generate\+Contestants\+Of\+Specialty (\begin{DoxyParamCaption}\item[{std\+::string}]{specialty,  }\item[{std\+::vector$<$ \hyperlink{class_contestant}{Contestant} $\ast$$>$ \&}]{contestants }\end{DoxyParamCaption})}
+
+
+
+Manages to randomly select, at least, 24 contestants of a given specialty and saving them to a reference vector of \hyperlink{class_contestant}{Contestant} Object Pointers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em specialty} & a string \\
+\hline
+{\em contestants} & a reference vector of \hyperlink{class_contestant}{Contestant} Object pointer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_company_aa3a5c5f2ea59e01207f1407676a302ef}\label{class_company_aa3a5c5f2ea59e01207f1407676a302ef}} 
+\index{Company@{Company}!generate\+Judges@{generate\+Judges}}
+\index{generate\+Judges@{generate\+Judges}!Company@{Company}}
+\subsubsection{\texorpdfstring{generate\+Judges()}{generateJudges()}}
+{\footnotesize\ttfamily void Company\+::generate\+Judges (\begin{DoxyParamCaption}\item[{\hyperlink{class_calendar}{Calendar}}]{date,  }\item[{std\+::string}]{specialty,  }\item[{std\+::vector$<$ unsigned int $>$ \&}]{judges }\end{DoxyParamCaption})}
+
+
+
+Manages to randomly select the two Judges who are not responsible for the audition, that have the same specialty as said audition at a given date. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em date} & \hyperlink{class_calendar}{Calendar} Object \\
+\hline
+{\em specialty} & a string \\
+\hline
+{\em judges} & a vector reference of unsigned integer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_company_ac47e9c6c7a5b9cf67a685f14bde2f103}\label{class_company_ac47e9c6c7a5b9cf67a685f14bde2f103}} 
+\index{Company@{Company}!get\+Applications@{get\+Applications}}
+\index{get\+Applications@{get\+Applications}!Company@{Company}}
+\subsubsection{\texorpdfstring{get\+Applications()}{getApplications()}}
+{\footnotesize\ttfamily vector$<$ \hyperlink{class_application}{Application} $\ast$ $>$ Company\+::get\+Applications (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Manages to access all applications ever created. 
+
+\begin{DoxyReturn}{Returns}
+constant vector of \hyperlink{class_application}{Application} Object pointers 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_af4cd471e2417b865078b3404e964b334}\label{class_company_af4cd471e2417b865078b3404e964b334}} 
+\index{Company@{Company}!get\+Applications\+By\+Id@{get\+Applications\+By\+Id}}
+\index{get\+Applications\+By\+Id@{get\+Applications\+By\+Id}!Company@{Company}}
+\subsubsection{\texorpdfstring{get\+Applications\+By\+Id()}{getApplicationsById()}}
+{\footnotesize\ttfamily vector$<$ \hyperlink{class_application}{Application} $\ast$ $>$ Company\+::get\+Applications\+By\+Id (\begin{DoxyParamCaption}\item[{unsigned int}]{id }\end{DoxyParamCaption})}
+
+
+
+Manages to access a vector of applications from a specified \hyperlink{class_contestant}{Contestant}\textquotesingle{}s ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & unsigned integer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector of \hyperlink{class_application}{Application} Object Pointers 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_aaa349bd5785e941e985384f3b9a05288}\label{class_company_aaa349bd5785e941e985384f3b9a05288}} 
+\index{Company@{Company}!get\+Applications\+Of\+Specialty@{get\+Applications\+Of\+Specialty}}
+\index{get\+Applications\+Of\+Specialty@{get\+Applications\+Of\+Specialty}!Company@{Company}}
+\subsubsection{\texorpdfstring{get\+Applications\+Of\+Specialty()}{getApplicationsOfSpecialty()}}
+{\footnotesize\ttfamily void Company\+::get\+Applications\+Of\+Specialty (\begin{DoxyParamCaption}\item[{std\+::string}]{specialty,  }\item[{std\+::vector$<$ \hyperlink{class_application}{Application} $\ast$$>$ \&}]{applications }\end{DoxyParamCaption})}
+
+
+
+Manages to get all applications of a specific specialty and save them to a reference vector of \hyperlink{class_application}{Application} Object Pointers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em specialty} & a string \\
+\hline
+{\em applications} & a reference vector of \hyperlink{class_application}{Application} Object pointer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_company_ab55bf93a7417322bfd8ef7fc7596e609}\label{class_company_ab55bf93a7417322bfd8ef7fc7596e609}} 
+\index{Company@{Company}!get\+Audition\+By\+Id@{get\+Audition\+By\+Id}}
+\index{get\+Audition\+By\+Id@{get\+Audition\+By\+Id}!Company@{Company}}
+\subsubsection{\texorpdfstring{get\+Audition\+By\+Id()}{getAuditionById()}}
+{\footnotesize\ttfamily \hyperlink{class_audition}{Audition} $\ast$ Company\+::get\+Audition\+By\+Id (\begin{DoxyParamCaption}\item[{unsigned int}]{id }\end{DoxyParamCaption})}
+
+
+
+Manages to access an \hyperlink{class_audition}{Audition} by ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & an unsigned int \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_audition}{Audition} Object pointer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_ad0f12e0fa92a28869aac46fde4b304c8}\label{class_company_ad0f12e0fa92a28869aac46fde4b304c8}} 
+\index{Company@{Company}!get\+Audition\+Of\+Day\+Of\+Specialty@{get\+Audition\+Of\+Day\+Of\+Specialty}}
+\index{get\+Audition\+Of\+Day\+Of\+Specialty@{get\+Audition\+Of\+Day\+Of\+Specialty}!Company@{Company}}
+\subsubsection{\texorpdfstring{get\+Audition\+Of\+Day\+Of\+Specialty()}{getAuditionOfDayOfSpecialty()}}
+{\footnotesize\ttfamily int Company\+::get\+Audition\+Of\+Day\+Of\+Specialty (\begin{DoxyParamCaption}\item[{\hyperlink{class_calendar}{Calendar}}]{date,  }\item[{std\+::string}]{specialty }\end{DoxyParamCaption})}
+
+
+
+Searches an audition from a specified date and specialty. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em date} & a \hyperlink{class_calendar}{Calendar} Object \\
+\hline
+{\em specialty} & a string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+integer -\/1 if there is no audition with the specified date and specialty, otherwise returns the position of the auditions vector 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_a9d2d2e8bdad7bccc57324100de3c3e5b}\label{class_company_a9d2d2e8bdad7bccc57324100de3c3e5b}} 
+\index{Company@{Company}!get\+Auditions@{get\+Auditions}}
+\index{get\+Auditions@{get\+Auditions}!Company@{Company}}
+\subsubsection{\texorpdfstring{get\+Auditions()}{getAuditions()}}
+{\footnotesize\ttfamily vector$<$ \hyperlink{class_audition}{Audition} $\ast$ $>$ Company\+::get\+Auditions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Manages to access all auditions ever created. 
+
+\begin{DoxyReturn}{Returns}
+constant vector of \hyperlink{class_audition}{Audition} Object pointers 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_a9740e4c34fac69951145e289269fabdb}\label{class_company_a9740e4c34fac69951145e289269fabdb}} 
+\index{Company@{Company}!get\+Auditions\+Of\+Specialy@{get\+Auditions\+Of\+Specialy}}
+\index{get\+Auditions\+Of\+Specialy@{get\+Auditions\+Of\+Specialy}!Company@{Company}}
+\subsubsection{\texorpdfstring{get\+Auditions\+Of\+Specialy()}{getAuditionsOfSpecialy()}}
+{\footnotesize\ttfamily void Company\+::get\+Auditions\+Of\+Specialy (\begin{DoxyParamCaption}\item[{std\+::string}]{specialty,  }\item[{std\+::vector$<$ \hyperlink{class_audition}{Audition} $\ast$$>$ \&}]{auditions }\end{DoxyParamCaption})}
+
+
+
+Manages to add to the auditions vector all the auditions of a specified specialy. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em specialty} & a string \\
+\hline
+{\em auditions} & a vector reference of \hyperlink{class_audition}{Audition} Object Pointers \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_company_a9a633866abe6cc598bb290498dc3d7ad}\label{class_company_a9a633866abe6cc598bb290498dc3d7ad}} 
+\index{Company@{Company}!get\+Contestant\+By\+Id@{get\+Contestant\+By\+Id}}
+\index{get\+Contestant\+By\+Id@{get\+Contestant\+By\+Id}!Company@{Company}}
+\subsubsection{\texorpdfstring{get\+Contestant\+By\+Id()}{getContestantById()}}
+{\footnotesize\ttfamily \hyperlink{class_contestant}{Contestant} $\ast$ Company\+::get\+Contestant\+By\+Id (\begin{DoxyParamCaption}\item[{unsigned int}]{id }\end{DoxyParamCaption})}
+
+
+
+Manages to access a \hyperlink{class_contestant}{Contestant} by ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & an unsigned int \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_contestant}{Contestant} Object pointer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_ae6e1537b2cd2c2d8c4906f67dfbb80ca}\label{class_company_ae6e1537b2cd2c2d8c4906f67dfbb80ca}} 
+\index{Company@{Company}!get\+Contestant\+By\+Info@{get\+Contestant\+By\+Info}}
+\index{get\+Contestant\+By\+Info@{get\+Contestant\+By\+Info}!Company@{Company}}
+\subsubsection{\texorpdfstring{get\+Contestant\+By\+Info()}{getContestantByInfo()}}
+{\footnotesize\ttfamily unsigned int Company\+::get\+Contestant\+By\+Info (\begin{DoxyParamCaption}\item[{\hyperlink{class_contestant}{Contestant} $\ast$}]{contestant }\end{DoxyParamCaption})}
+
+
+
+Manages to access a contestant\textquotesingle{}s ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em contestant} & a \hyperlink{class_contestant}{Contestant} Object pointer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+unsigned integer\textquotesingle{}s ID of the \hyperlink{class_contestant}{Contestant} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_a3e0b5c137e22060961b27332396384ca}\label{class_company_a3e0b5c137e22060961b27332396384ca}} 
+\index{Company@{Company}!get\+Contestants@{get\+Contestants}}
+\index{get\+Contestants@{get\+Contestants}!Company@{Company}}
+\subsubsection{\texorpdfstring{get\+Contestants()}{getContestants()}}
+{\footnotesize\ttfamily vector$<$ \hyperlink{class_contestant}{Contestant} $\ast$ $>$ Company\+::get\+Contestants (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Manages to access all contestants ever applied. 
+
+\begin{DoxyReturn}{Returns}
+constant vector of \hyperlink{class_contestant}{Contestant} Object pointers 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_a84df3faac90c9fa0d966e381a6d7459c}\label{class_company_a84df3faac90c9fa0d966e381a6d7459c}} 
+\index{Company@{Company}!get\+Contestants\+Of\+Applications@{get\+Contestants\+Of\+Applications}}
+\index{get\+Contestants\+Of\+Applications@{get\+Contestants\+Of\+Applications}!Company@{Company}}
+\subsubsection{\texorpdfstring{get\+Contestants\+Of\+Applications()}{getContestantsOfApplications()}}
+{\footnotesize\ttfamily void Company\+::get\+Contestants\+Of\+Applications (\begin{DoxyParamCaption}\item[{std\+::vector$<$ unsigned int $>$ \&}]{contestants,  }\item[{const std\+::vector$<$ \hyperlink{class_application}{Application} $\ast$$>$ \&}]{applications }\end{DoxyParamCaption})}
+
+
+
+Manages to apply contestants to a reference vector of \hyperlink{class_application}{Application} Object Pointers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em contestants} & a reference vector of unsigned integers \\
+\hline
+{\em applications} & a reference vector of \hyperlink{class_application}{Application} Object Pointers \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_company_a64ff4709f2a3d567b1e2fd55f308a665}\label{class_company_a64ff4709f2a3d567b1e2fd55f308a665}} 
+\index{Company@{Company}!get\+Contestants\+Of\+Specialty@{get\+Contestants\+Of\+Specialty}}
+\index{get\+Contestants\+Of\+Specialty@{get\+Contestants\+Of\+Specialty}!Company@{Company}}
+\subsubsection{\texorpdfstring{get\+Contestants\+Of\+Specialty()}{getContestantsOfSpecialty()}}
+{\footnotesize\ttfamily void Company\+::get\+Contestants\+Of\+Specialty (\begin{DoxyParamCaption}\item[{std\+::string}]{specialty,  }\item[{std\+::vector$<$ \hyperlink{class_contestant}{Contestant} $\ast$$>$ \&}]{contestants }\end{DoxyParamCaption})}
+
+
+
+Manages to get all contestnts of a specific specialty and save them to a reference vector of \hyperlink{class_contestant}{Contestant} Object Pointers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em specialty} & a string \\
+\hline
+{\em contestants} & a reference vector of \hyperlink{class_contestant}{Contestant} Object pointer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_company_ac51c38ee442d1b87f0eede53e2919c3a}\label{class_company_ac51c38ee442d1b87f0eede53e2919c3a}} 
+\index{Company@{Company}!get\+Duration\+Of\+Audition@{get\+Duration\+Of\+Audition}}
+\index{get\+Duration\+Of\+Audition@{get\+Duration\+Of\+Audition}!Company@{Company}}
+\subsubsection{\texorpdfstring{get\+Duration\+Of\+Audition()}{getDurationOfAudition()}}
+{\footnotesize\ttfamily \hyperlink{class_calendar}{Calendar} Company\+::get\+Duration\+Of\+Audition (\begin{DoxyParamCaption}\item[{unsigned int}]{n\+Candidates }\end{DoxyParamCaption})}
+
+
+
+Manages to get the duration of the full audition due to the number of candidates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n\+Candidates} & an unsigned int \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_calendar}{Calendar} Object 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_ab4135415448c7f20c5db91413ca947fd}\label{class_company_ab4135415448c7f20c5db91413ca947fd}} 
+\index{Company@{Company}!get\+Judge\+By\+Id@{get\+Judge\+By\+Id}}
+\index{get\+Judge\+By\+Id@{get\+Judge\+By\+Id}!Company@{Company}}
+\subsubsection{\texorpdfstring{get\+Judge\+By\+Id()}{getJudgeById()}}
+{\footnotesize\ttfamily \hyperlink{class_judge}{Judge} $\ast$ Company\+::get\+Judge\+By\+Id (\begin{DoxyParamCaption}\item[{unsigned int}]{id }\end{DoxyParamCaption})}
+
+
+
+Manages to access a \hyperlink{class_judge}{Judge} by ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & an unsigned int \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_judge}{Judge} Object pointer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_a0ea843e026af967b2d4d69d268481cb7}\label{class_company_a0ea843e026af967b2d4d69d268481cb7}} 
+\index{Company@{Company}!get\+Judge\+By\+Info@{get\+Judge\+By\+Info}}
+\index{get\+Judge\+By\+Info@{get\+Judge\+By\+Info}!Company@{Company}}
+\subsubsection{\texorpdfstring{get\+Judge\+By\+Info()}{getJudgeByInfo()}}
+{\footnotesize\ttfamily unsigned int Company\+::get\+Judge\+By\+Info (\begin{DoxyParamCaption}\item[{\hyperlink{class_judge}{Judge} $\ast$}]{judge }\end{DoxyParamCaption})}
+
+
+
+Manages to get the ID of a \hyperlink{class_judge}{Judge}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em judge} & a \hyperlink{class_judge}{Judge} Object Pointer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+unsigned integer of the \hyperlink{class_judge}{Judge}\textquotesingle{}s ID 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_a287cc3acf891e584e630eced10eba45a}\label{class_company_a287cc3acf891e584e630eced10eba45a}} 
+\index{Company@{Company}!get\+Judges@{get\+Judges}}
+\index{get\+Judges@{get\+Judges}!Company@{Company}}
+\subsubsection{\texorpdfstring{get\+Judges()}{getJudges()}}
+{\footnotesize\ttfamily vector$<$ \hyperlink{class_judge}{Judge} $\ast$ $>$ Company\+::get\+Judges (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Manages to access all judges ever hired. 
+
+\begin{DoxyReturn}{Returns}
+constant vector of \hyperlink{class_judge}{Judge} Object pointers 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_ad8f032997ab625e04324093ac20d83cf}\label{class_company_ad8f032997ab625e04324093ac20d83cf}} 
+\index{Company@{Company}!get\+Judges\+Not\+Of\+Specialty@{get\+Judges\+Not\+Of\+Specialty}}
+\index{get\+Judges\+Not\+Of\+Specialty@{get\+Judges\+Not\+Of\+Specialty}!Company@{Company}}
+\subsubsection{\texorpdfstring{get\+Judges\+Not\+Of\+Specialty()}{getJudgesNotOfSpecialty()}}
+{\footnotesize\ttfamily void Company\+::get\+Judges\+Not\+Of\+Specialty (\begin{DoxyParamCaption}\item[{std\+::string}]{specialty,  }\item[{std\+::vector$<$ \hyperlink{class_judge}{Judge} $\ast$$>$ \&}]{judges }\end{DoxyParamCaption})}
+
+
+
+Manages to sort a vector of judges who are not of the specified specialty. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em specialty} & a string \\
+\hline
+{\em judges} & a vector reference of \hyperlink{class_judge}{Judge} Object Pointers \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_company_ad8d86971b1fb7acb622c1eef3db1fa4e}\label{class_company_ad8d86971b1fb7acb622c1eef3db1fa4e}} 
+\index{Company@{Company}!get\+Judges\+Of\+Specialty@{get\+Judges\+Of\+Specialty}}
+\index{get\+Judges\+Of\+Specialty@{get\+Judges\+Of\+Specialty}!Company@{Company}}
+\subsubsection{\texorpdfstring{get\+Judges\+Of\+Specialty()}{getJudgesOfSpecialty()}}
+{\footnotesize\ttfamily void Company\+::get\+Judges\+Of\+Specialty (\begin{DoxyParamCaption}\item[{std\+::string}]{specialty,  }\item[{std\+::vector$<$ \hyperlink{class_judge}{Judge} $\ast$$>$ \&}]{judges }\end{DoxyParamCaption})}
+
+
+
+Manages to sort a vector of judges who are of the specified specialty. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em specialty} & a string \\
+\hline
+{\em judges} & a vector reference of \hyperlink{class_judge}{Judge} Object Pointers \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_company_a7631d2e0b84275b8f8cab27e3dad0473}\label{class_company_a7631d2e0b84275b8f8cab27e3dad0473}} 
+\index{Company@{Company}!get\+Max\+Num\+Of\+Contestants\+Per\+Audition@{get\+Max\+Num\+Of\+Contestants\+Per\+Audition}}
+\index{get\+Max\+Num\+Of\+Contestants\+Per\+Audition@{get\+Max\+Num\+Of\+Contestants\+Per\+Audition}!Company@{Company}}
+\subsubsection{\texorpdfstring{get\+Max\+Num\+Of\+Contestants\+Per\+Audition()}{getMaxNumOfContestantsPerAudition()}}
+{\footnotesize\ttfamily unsigned int Company\+::get\+Max\+Num\+Of\+Contestants\+Per\+Audition (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Manages to get the number of Contestants per \hyperlink{class_audition}{Audition}. 
+
+\begin{DoxyReturn}{Returns}
+unsigned int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_aab93a983bbd590e540b439033c9ec723}\label{class_company_aab93a983bbd590e540b439033c9ec723}} 
+\index{Company@{Company}!get\+Specialties@{get\+Specialties}}
+\index{get\+Specialties@{get\+Specialties}!Company@{Company}}
+\subsubsection{\texorpdfstring{get\+Specialties()}{getSpecialties()}}
+{\footnotesize\ttfamily void Company\+::get\+Specialties (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$ \&}]{specialties }\end{DoxyParamCaption})}
+
+
+
+Adds to specialties, vector of strings, all the individual specialties there currently are. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em specialties} & a vector reference of strings \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_company_a56268c11009ad2441a1dde545f7ceacf}\label{class_company_a56268c11009ad2441a1dde545f7ceacf}} 
+\index{Company@{Company}!grade\+Audition@{grade\+Audition}}
+\index{grade\+Audition@{grade\+Audition}!Company@{Company}}
+\subsubsection{\texorpdfstring{grade\+Audition()}{gradeAudition()}}
+{\footnotesize\ttfamily void Company\+::grade\+Audition (\begin{DoxyParamCaption}\item[{unsigned int}]{audition\+Id }\end{DoxyParamCaption})}
+
+
+
+Grades a specified audition, updating the participation of contestants who managed to get to Second \hyperlink{class_phase}{Phase} and those who didn\textquotesingle{}t. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em audition\+ID} & an unsigned integer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_company_a3976d4ec91c9f9dfe1b777b4d7587684}\label{class_company_a3976d4ec91c9f9dfe1b777b4d7587684}} 
+\index{Company@{Company}!has\+Specialty@{has\+Specialty}}
+\index{has\+Specialty@{has\+Specialty}!Company@{Company}}
+\subsubsection{\texorpdfstring{has\+Specialty()}{hasSpecialty()}}
+{\footnotesize\ttfamily bool Company\+::has\+Specialty (\begin{DoxyParamCaption}\item[{std\+::string}]{specialty }\end{DoxyParamCaption})}
+
+
+
+Checks if a judge has the specified specialty. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em specialty} & a string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the judge has specialty, false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_a65a8b53db0f81846a91709108f4e36fa}\label{class_company_a65a8b53db0f81846a91709108f4e36fa}} 
+\index{Company@{Company}!judge\+Is\+Ocupied@{judge\+Is\+Ocupied}}
+\index{judge\+Is\+Ocupied@{judge\+Is\+Ocupied}!Company@{Company}}
+\subsubsection{\texorpdfstring{judge\+Is\+Ocupied()}{judgeIsOcupied()}}
+{\footnotesize\ttfamily int Company\+::judge\+Is\+Ocupied (\begin{DoxyParamCaption}\item[{\hyperlink{class_calendar}{Calendar}}]{date,  }\item[{unsigned int}]{id }\end{DoxyParamCaption})}
+
+
+
+Checks if a judge is already evaluating an audition at a specific date. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em date} & a \hyperlink{class_calendar}{Calendar} Object \\
+\hline
+{\em id} & an unsigned integer of the judge \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+integer -\/1 if the judge with the specified id is already evaluating an audition at that specific date, otherwise returns the judge\textquotesingle{}s id 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_a2be6170874e4695402614a5d8f624f9c}\label{class_company_a2be6170874e4695402614a5d8f624f9c}} 
+\index{Company@{Company}!read\+Applications\+File@{read\+Applications\+File}}
+\index{read\+Applications\+File@{read\+Applications\+File}!Company@{Company}}
+\subsubsection{\texorpdfstring{read\+Applications\+File()}{readApplicationsFile()}}
+{\footnotesize\ttfamily bool Company\+::read\+Applications\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Name }\end{DoxyParamCaption})}
+
+
+
+Reads the application information from a file and calls the function that creates an application. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & a string with the name of the file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if successfully reads all the file, false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_adecfc6079e977e211786571fc348167b}\label{class_company_adecfc6079e977e211786571fc348167b}} 
+\index{Company@{Company}!read\+Auditions\+File@{read\+Auditions\+File}}
+\index{read\+Auditions\+File@{read\+Auditions\+File}!Company@{Company}}
+\subsubsection{\texorpdfstring{read\+Auditions\+File()}{readAuditionsFile()}}
+{\footnotesize\ttfamily bool Company\+::read\+Auditions\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Name }\end{DoxyParamCaption})}
+
+
+
+Reads the audition information from a file and calls the function that creates an audition. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & a string with the name of the file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if successfully reads all the file, false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_af5f148bc24f2d7d74f2c4ada055bad64}\label{class_company_af5f148bc24f2d7d74f2c4ada055bad64}} 
+\index{Company@{Company}!read\+Contestants\+File@{read\+Contestants\+File}}
+\index{read\+Contestants\+File@{read\+Contestants\+File}!Company@{Company}}
+\subsubsection{\texorpdfstring{read\+Contestants\+File()}{readContestantsFile()}}
+{\footnotesize\ttfamily bool Company\+::read\+Contestants\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Name }\end{DoxyParamCaption})}
+
+
+
+Reads the contestant information from a file and calls the function that creates a contestant. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & a string with the name of the file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if successfully reads all the file, false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_a5c53dbd29fab7972acbb7e92eeee2ee5}\label{class_company_a5c53dbd29fab7972acbb7e92eeee2ee5}} 
+\index{Company@{Company}!read\+Judges\+File@{read\+Judges\+File}}
+\index{read\+Judges\+File@{read\+Judges\+File}!Company@{Company}}
+\subsubsection{\texorpdfstring{read\+Judges\+File()}{readJudgesFile()}}
+{\footnotesize\ttfamily bool Company\+::read\+Judges\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Name }\end{DoxyParamCaption})}
+
+
+
+Reads the judges information from a file and calls the function that creates a judge. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & a string with the name of the file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if successfully reads all the file, false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_a60f441b02e7db24f47b82e4dcd1a1e17}\label{class_company_a60f441b02e7db24f47b82e4dcd1a1e17}} 
+\index{Company@{Company}!remove\+Applications\+Of\+Contestant@{remove\+Applications\+Of\+Contestant}}
+\index{remove\+Applications\+Of\+Contestant@{remove\+Applications\+Of\+Contestant}!Company@{Company}}
+\subsubsection{\texorpdfstring{remove\+Applications\+Of\+Contestant()}{removeApplicationsOfContestant()}}
+{\footnotesize\ttfamily void Company\+::remove\+Applications\+Of\+Contestant (\begin{DoxyParamCaption}\item[{\hyperlink{class_contestant}{Contestant} $\ast$}]{contestant }\end{DoxyParamCaption})}
+
+
+
+Removes all \hyperlink{class_contestant}{Contestant}\textquotesingle{}s applications. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em contestant} & a \hyperlink{class_contestant}{Contestant} Object Pointer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_calendar}{Calendar} Object 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_a6001cfc0c20bf5037345b4ccd3dc7840}\label{class_company_a6001cfc0c20bf5037345b4ccd3dc7840}} 
+\index{Company@{Company}!remove\+Audition@{remove\+Audition}}
+\index{remove\+Audition@{remove\+Audition}!Company@{Company}}
+\subsubsection{\texorpdfstring{remove\+Audition()}{removeAudition()}}
+{\footnotesize\ttfamily void Company\+::remove\+Audition (\begin{DoxyParamCaption}\item[{\hyperlink{class_audition}{Audition} $\ast$}]{audition }\end{DoxyParamCaption})}
+
+
+
+Removes an audition from the database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em audition} & an \hyperlink{class_audition}{Audition} Object Pointer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_company_acccfc131326fef9d641bdab101d0cb9e}\label{class_company_acccfc131326fef9d641bdab101d0cb9e}} 
+\index{Company@{Company}!remove\+Contestant@{remove\+Contestant}}
+\index{remove\+Contestant@{remove\+Contestant}!Company@{Company}}
+\subsubsection{\texorpdfstring{remove\+Contestant()}{removeContestant()}}
+{\footnotesize\ttfamily void Company\+::remove\+Contestant (\begin{DoxyParamCaption}\item[{\hyperlink{class_contestant}{Contestant} $\ast$}]{contestant }\end{DoxyParamCaption})}
+
+
+
+Removes a specified \hyperlink{class_contestant}{Contestant}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em contestant} & a \hyperlink{class_contestant}{Contestant} Object pointer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_company_a39346c8e12c0cdcd47e300089301a6ea}\label{class_company_a39346c8e12c0cdcd47e300089301a6ea}} 
+\index{Company@{Company}!remove\+Judge@{remove\+Judge}}
+\index{remove\+Judge@{remove\+Judge}!Company@{Company}}
+\subsubsection{\texorpdfstring{remove\+Judge()}{removeJudge()}}
+{\footnotesize\ttfamily void Company\+::remove\+Judge (\begin{DoxyParamCaption}\item[{\hyperlink{class_judge}{Judge} $\ast$}]{judge }\end{DoxyParamCaption})}
+
+
+
+Removes a specified \hyperlink{class_judge}{Judge}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em judge} & a \hyperlink{class_judge}{Judge} Object pointer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_company_a744e01f3f6644035f054ceb6827ddaa9}\label{class_company_a744e01f3f6644035f054ceb6827ddaa9}} 
+\index{Company@{Company}!remove\+One\+Application\+Of\+Contestant@{remove\+One\+Application\+Of\+Contestant}}
+\index{remove\+One\+Application\+Of\+Contestant@{remove\+One\+Application\+Of\+Contestant}!Company@{Company}}
+\subsubsection{\texorpdfstring{remove\+One\+Application\+Of\+Contestant()}{removeOneApplicationOfContestant()}}
+{\footnotesize\ttfamily \hyperlink{class_calendar}{Calendar} Company\+::remove\+One\+Application\+Of\+Contestant (\begin{DoxyParamCaption}\item[{\hyperlink{class_contestant}{Contestant} $\ast$}]{contestant }\end{DoxyParamCaption})}
+
+
+
+Removes a \hyperlink{class_contestant}{Contestant}\textquotesingle{}s application when they get appied due to a schedule creation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em contestant} & a \hyperlink{class_contestant}{Contestant} Object Pointer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_calendar}{Calendar} Object 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_ae5763c1da591cd2fcee8715990869fbd}\label{class_company_ae5763c1da591cd2fcee8715990869fbd}} 
+\index{Company@{Company}!schedule\+Audition@{schedule\+Audition}}
+\index{schedule\+Audition@{schedule\+Audition}!Company@{Company}}
+\subsubsection{\texorpdfstring{schedule\+Audition()}{scheduleAudition()}}
+{\footnotesize\ttfamily void Company\+::schedule\+Audition (\begin{DoxyParamCaption}\item[{std\+::string}]{specialty,  }\item[{\hyperlink{class_calendar}{Calendar}}]{beginning,  }\item[{std\+::vector$<$ unsigned int $>$}]{contestants,  }\item[{std\+::vector$<$ unsigned int $>$}]{judges,  }\item[{unsigned int}]{chief\+Judge }\end{DoxyParamCaption})}
+
+
+
+Schedule an audition with specific specialty, beginning date, vector of contestant\textquotesingle{}s id, vector of judge\textquotesingle{}s id and the id of the reposible judge; calculates the ending time of said audition. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em specialty} & a string \\
+\hline
+{\em beginning} & a \hyperlink{class_calendar}{Calendar} Object \\
+\hline
+{\em contestants} & a vector of unsigned integers \\
+\hline
+{\em judges} & a vector of unsigned integers \\
+\hline
+{\em chief\+Judge} & an unsigned integer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_company_a918b212e5e2ece1a3d73d8f79d2a8d9d}\label{class_company_a918b212e5e2ece1a3d73d8f79d2a8d9d}} 
+\index{Company@{Company}!schedule\+Audition\+Calendar@{schedule\+Audition\+Calendar}}
+\index{schedule\+Audition\+Calendar@{schedule\+Audition\+Calendar}!Company@{Company}}
+\subsubsection{\texorpdfstring{schedule\+Audition\+Calendar()}{scheduleAuditionCalendar()}}
+{\footnotesize\ttfamily \hyperlink{class_calendar}{Calendar} Company\+::schedule\+Audition\+Calendar (\begin{DoxyParamCaption}\item[{std\+::vector$<$ unsigned int $>$}]{contestants,  }\item[{std\+::string}]{specialty }\end{DoxyParamCaption})}
+
+
+
+Schedule an audition with specific specialty. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em contestants} & a vector of unsigned integers \\
+\hline
+{\em specialty} & a string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_calendar}{Calendar} Object 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_a0a0805c0f7e083200f04b07384e1c515}\label{class_company_a0a0805c0f7e083200f04b07384e1c515}} 
+\index{Company@{Company}!schedule\+Audition\+Of\+Specialty@{schedule\+Audition\+Of\+Specialty}}
+\index{schedule\+Audition\+Of\+Specialty@{schedule\+Audition\+Of\+Specialty}!Company@{Company}}
+\subsubsection{\texorpdfstring{schedule\+Audition\+Of\+Specialty()}{scheduleAuditionOfSpecialty()}}
+{\footnotesize\ttfamily void Company\+::schedule\+Audition\+Of\+Specialty (\begin{DoxyParamCaption}\item[{std\+::string}]{specialty }\end{DoxyParamCaption})}
+
+
+
+Schedule an audition of a specific specialty. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em specialty} & a string \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_company_a6da20c8e4cdbaa15326fa3c44ec70885}\label{class_company_a6da20c8e4cdbaa15326fa3c44ec70885}} 
+\index{Company@{Company}!schedule\+Max\+Auditions\+Of\+Specialty@{schedule\+Max\+Auditions\+Of\+Specialty}}
+\index{schedule\+Max\+Auditions\+Of\+Specialty@{schedule\+Max\+Auditions\+Of\+Specialty}!Company@{Company}}
+\subsubsection{\texorpdfstring{schedule\+Max\+Auditions\+Of\+Specialty()}{scheduleMaxAuditionsOfSpecialty()}}
+{\footnotesize\ttfamily void Company\+::schedule\+Max\+Auditions\+Of\+Specialty (\begin{DoxyParamCaption}\item[{std\+::string}]{specialty }\end{DoxyParamCaption})}
+
+
+
+Schedules multiple auditions that validates the prerequisite of the limit of contestants per audition within a specific specialty. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em specialty} & a string \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_company_a8948265cd00ed452e5336964ef2b5537}\label{class_company_a8948265cd00ed452e5336964ef2b5537}} 
+\index{Company@{Company}!update\+Contestant@{update\+Contestant}}
+\index{update\+Contestant@{update\+Contestant}!Company@{Company}}
+\subsubsection{\texorpdfstring{update\+Contestant()}{updateContestant()}}
+{\footnotesize\ttfamily void Company\+::update\+Contestant (\begin{DoxyParamCaption}\item[{\hyperlink{class_contestant}{Contestant} $\ast$}]{contestant,  }\item[{\hyperlink{class_contestant}{Contestant} $\ast$}]{mod\+Contestant }\end{DoxyParamCaption})}
+
+
+
+Updates a \hyperlink{class_contestant}{Contestant} with new information. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em contestant} & a \hyperlink{class_contestant}{Contestant} Object Pointer \\
+\hline
+{\em mod\+Constant} & a \hyperlink{class_contestant}{Contestant} Object Pointer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_company_a315bc334167bce6e6836b6462f85e959}\label{class_company_a315bc334167bce6e6836b6462f85e959}} 
+\index{Company@{Company}!update\+Judge@{update\+Judge}}
+\index{update\+Judge@{update\+Judge}!Company@{Company}}
+\subsubsection{\texorpdfstring{update\+Judge()}{updateJudge()}}
+{\footnotesize\ttfamily void Company\+::update\+Judge (\begin{DoxyParamCaption}\item[{\hyperlink{class_judge}{Judge} $\ast$}]{judge,  }\item[{\hyperlink{class_judge}{Judge} $\ast$}]{mod\+Judge }\end{DoxyParamCaption})}
+
+
+
+Updates a \hyperlink{class_judge}{Judge} with new information. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em judge} & a \hyperlink{class_judge}{Judge} Object Pointer \\
+\hline
+{\em mod\+Judge} & a \hyperlink{class_judge}{Judge} Object Pointer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_company_a4bdd95cb403430ae299259ac26721dde}\label{class_company_a4bdd95cb403430ae299259ac26721dde}} 
+\index{Company@{Company}!write\+Applications\+File@{write\+Applications\+File}}
+\index{write\+Applications\+File@{write\+Applications\+File}!Company@{Company}}
+\subsubsection{\texorpdfstring{write\+Applications\+File()}{writeApplicationsFile()}}
+{\footnotesize\ttfamily bool Company\+::write\+Applications\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Name }\end{DoxyParamCaption})}
+
+
+
+Writes the application information into a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & a string with the name of the file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if successfully writes all the information into the file, false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_afe265c202d76f371917835b5ce3f9184}\label{class_company_afe265c202d76f371917835b5ce3f9184}} 
+\index{Company@{Company}!write\+Auditions\+File@{write\+Auditions\+File}}
+\index{write\+Auditions\+File@{write\+Auditions\+File}!Company@{Company}}
+\subsubsection{\texorpdfstring{write\+Auditions\+File()}{writeAuditionsFile()}}
+{\footnotesize\ttfamily bool Company\+::write\+Auditions\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Name }\end{DoxyParamCaption})}
+
+
+
+Writes the audition information into a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & a string with the name of the file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if successfully writes all the information into the file, false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_aa52ac354a5ab3f0e5bc0712bb48cb7b4}\label{class_company_aa52ac354a5ab3f0e5bc0712bb48cb7b4}} 
+\index{Company@{Company}!write\+Contestants\+File@{write\+Contestants\+File}}
+\index{write\+Contestants\+File@{write\+Contestants\+File}!Company@{Company}}
+\subsubsection{\texorpdfstring{write\+Contestants\+File()}{writeContestantsFile()}}
+{\footnotesize\ttfamily bool Company\+::write\+Contestants\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Name }\end{DoxyParamCaption})}
+
+
+
+Writes the contestant information into a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & a string with the name of the file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if successfully writes all the information into the file, false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_acfdd8f76389ec02d7ab72625ac1bb9d1}\label{class_company_acfdd8f76389ec02d7ab72625ac1bb9d1}} 
+\index{Company@{Company}!write\+Judges\+File@{write\+Judges\+File}}
+\index{write\+Judges\+File@{write\+Judges\+File}!Company@{Company}}
+\subsubsection{\texorpdfstring{write\+Judges\+File()}{writeJudgesFile()}}
+{\footnotesize\ttfamily bool Company\+::write\+Judges\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Name }\end{DoxyParamCaption})}
+
+
+
+Writes the judge information into a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & a string with the name of the file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if successfully writes all the information into the file, false otherwise 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Company.\+h\item 
+Company.\+cpp\end{DoxyCompactItemize}

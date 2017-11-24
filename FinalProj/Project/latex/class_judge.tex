@@ -1,0 +1,200 @@
+\hypertarget{class_judge}{}\section{Judge Class Reference}
+\label{class_judge}\index{Judge@{Judge}}
+Inheritance diagram for Judge\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_judge}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_judge_a76a14e0c72af67cb72152b6f176111cf}\label{class_judge_a76a14e0c72af67cb72152b6f176111cf}} 
+\hyperlink{class_judge_a76a14e0c72af67cb72152b6f176111cf}{Judge} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_judge}{Judge} Default Contructor. \end{DoxyCompactList}\item 
+\hyperlink{class_judge_ad8e4c64a5b1cb72fc4f1f907117d97c3}{Judge} (unsigned int id, std\+::string name, std\+::string address, unsigned int mobile, \hyperlink{class_calendar}{Calendar} dob, std\+::string specialty, std\+::vector$<$ unsigned int $>$ participation)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_judge}{Judge} Contructor with their id, name, address, mobile phone number, date of birth, specialiy and list of participations by id. \end{DoxyCompactList}\item 
+\hyperlink{class_judge_a50775ff3e2a60d6c12893790e195a97e}{Judge} (std\+::string textline)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_judge}{Judge} Contructor by reading a line from \hyperlink{class_judge}{Judge} file. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_judge_a1db442ff16710223a937fbeb7784c576}{get\+Id} () const
+\begin{DoxyCompactList}\small\item\em Manages to access the \hyperlink{class_judge}{Judge}\textquotesingle{}s ID value. \end{DoxyCompactList}\item 
+std\+::vector$<$ unsigned int $>$ \hyperlink{class_judge_aa854dfe7153ff301cba9319caeb3599c}{get\+Participations} () const
+\begin{DoxyCompactList}\small\item\em Manages to access all participations that the specified \hyperlink{class_judge}{Judge} has had. \end{DoxyCompactList}\item 
+void \hyperlink{class_judge_a06f4e2a65994b0e0a2e6aad38af0edea}{set\+Id} (unsigned int id)
+\begin{DoxyCompactList}\small\item\em Changes \hyperlink{class_judge}{Judge}\textquotesingle{}s ID. \end{DoxyCompactList}\item 
+void \hyperlink{class_judge_ab6bf287475108075c5c95f3fa0d7e6b0}{set\+Participations} (std\+::vector$<$ unsigned int $>$ participation)
+\begin{DoxyCompactList}\small\item\em Changes the participations the judge was in. \end{DoxyCompactList}\item 
+bool \hyperlink{class_judge_a748c3fae9d2a6cea4952d31ebe2bb660}{operator$<$} (const \hyperlink{class_judge}{Judge} \&judge1) const
+\begin{DoxyCompactList}\small\item\em Operator \char`\"{}$<$\char`\"{} is overloaded to compare the ID value of the Object with a specific \hyperlink{class_judge}{Judge}. \end{DoxyCompactList}\item 
+bool \hyperlink{class_judge_ab3a06af6dc3a2f5f427c146e2b1a4573}{operator==} (const \hyperlink{class_judge}{Judge} \&judge1) const
+\item 
+\mbox{\Hypertarget{class_judge_a54d7671b2a8d4fb249378914c9ae1746}\label{class_judge_a54d7671b2a8d4fb249378914c9ae1746}} 
+void \hyperlink{class_judge_a54d7671b2a8d4fb249378914c9ae1746}{show} ()
+\begin{DoxyCompactList}\small\item\em Prints the \hyperlink{class_judge}{Judge}\textquotesingle{}s full information on the screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \hyperlink{class_judge_ad83f9941c7a7e0ae112d4fcf186f86cb}{operator$<$$<$} (std\+::ostream \&os, const \hyperlink{class_judge}{Judge} \&judge)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_judge_ad8e4c64a5b1cb72fc4f1f907117d97c3}\label{class_judge_ad8e4c64a5b1cb72fc4f1f907117d97c3}} 
+\index{Judge@{Judge}!Judge@{Judge}}
+\index{Judge@{Judge}!Judge@{Judge}}
+\subsubsection{\texorpdfstring{Judge()}{Judge()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Judge\+::\+Judge (\begin{DoxyParamCaption}\item[{unsigned int}]{id,  }\item[{std\+::string}]{name,  }\item[{std\+::string}]{address,  }\item[{unsigned int}]{mobile,  }\item[{\hyperlink{class_calendar}{Calendar}}]{dob,  }\item[{std\+::string}]{specialty,  }\item[{std\+::vector$<$ unsigned int $>$}]{participation }\end{DoxyParamCaption})}
+
+
+
+\hyperlink{class_judge}{Judge} Contructor with their id, name, address, mobile phone number, date of birth, specialiy and list of participations by id. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & an unsigined integer \\
+\hline
+{\em name} & a string \\
+\hline
+{\em address} & a string \\
+\hline
+{\em mobile} & an unsigined integer \\
+\hline
+{\em dob} & a \hyperlink{class_calendar}{Calendar} Object \\
+\hline
+{\em specialiy} & a string \\
+\hline
+{\em participation} & a vector of unsigined integer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_judge_a50775ff3e2a60d6c12893790e195a97e}\label{class_judge_a50775ff3e2a60d6c12893790e195a97e}} 
+\index{Judge@{Judge}!Judge@{Judge}}
+\index{Judge@{Judge}!Judge@{Judge}}
+\subsubsection{\texorpdfstring{Judge()}{Judge()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Judge\+::\+Judge (\begin{DoxyParamCaption}\item[{std\+::string}]{textline }\end{DoxyParamCaption})}
+
+
+
+\hyperlink{class_judge}{Judge} Contructor by reading a line from \hyperlink{class_judge}{Judge} file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em textline} & a string \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_judge_a1db442ff16710223a937fbeb7784c576}\label{class_judge_a1db442ff16710223a937fbeb7784c576}} 
+\index{Judge@{Judge}!get\+Id@{get\+Id}}
+\index{get\+Id@{get\+Id}!Judge@{Judge}}
+\subsubsection{\texorpdfstring{get\+Id()}{getId()}}
+{\footnotesize\ttfamily unsigned int Judge\+::get\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Manages to access the \hyperlink{class_judge}{Judge}\textquotesingle{}s ID value. 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_judge}{Judge}\textquotesingle{}s ID 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_judge_aa854dfe7153ff301cba9319caeb3599c}\label{class_judge_aa854dfe7153ff301cba9319caeb3599c}} 
+\index{Judge@{Judge}!get\+Participations@{get\+Participations}}
+\index{get\+Participations@{get\+Participations}!Judge@{Judge}}
+\subsubsection{\texorpdfstring{get\+Participations()}{getParticipations()}}
+{\footnotesize\ttfamily vector$<$ unsigned int $>$ Judge\+::get\+Participations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Manages to access all participations that the specified \hyperlink{class_judge}{Judge} has had. 
+
+\begin{DoxyReturn}{Returns}
+a constant vector of participations from the specified \hyperlink{class_judge}{Judge} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_judge_a748c3fae9d2a6cea4952d31ebe2bb660}\label{class_judge_a748c3fae9d2a6cea4952d31ebe2bb660}} 
+\index{Judge@{Judge}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Judge@{Judge}}
+\subsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool Judge\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \hyperlink{class_judge}{Judge} \&}]{judge1 }\end{DoxyParamCaption}) const}
+
+
+
+Operator \char`\"{}$<$\char`\"{} is overloaded to compare the ID value of the Object with a specific \hyperlink{class_judge}{Judge}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em judge1} & a constant \hyperlink{class_judge}{Judge} reference \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the Object is greater than judge1 and false if the Object is lesser than judge1 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_judge_ab3a06af6dc3a2f5f427c146e2b1a4573}\label{class_judge_ab3a06af6dc3a2f5f427c146e2b1a4573}} 
+\index{Judge@{Judge}!operator==@{operator==}}
+\index{operator==@{operator==}!Judge@{Judge}}
+\subsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Judge\+::operator== (\begin{DoxyParamCaption}\item[{const \hyperlink{class_judge}{Judge} \&}]{judge1 }\end{DoxyParamCaption}) const}
+
+Operator \char`\"{}==\char`\"{} is overloaded to check if the Object \hyperlink{class_judge}{Judge} is equal to another given \hyperlink{class_judge}{Judge} in case they share the same properties 
+\begin{DoxyParams}{Parameters}
+{\em judge1} & a constant \hyperlink{class_judge}{Judge} reference \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the Object is equal to judge1\textquotesingle{}s properties and false if the Object is not equal to judge1\textquotesingle{}s properties 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_judge_a06f4e2a65994b0e0a2e6aad38af0edea}\label{class_judge_a06f4e2a65994b0e0a2e6aad38af0edea}} 
+\index{Judge@{Judge}!set\+Id@{set\+Id}}
+\index{set\+Id@{set\+Id}!Judge@{Judge}}
+\subsubsection{\texorpdfstring{set\+Id()}{setId()}}
+{\footnotesize\ttfamily void Judge\+::set\+Id (\begin{DoxyParamCaption}\item[{unsigned int}]{id }\end{DoxyParamCaption})}
+
+
+
+Changes \hyperlink{class_judge}{Judge}\textquotesingle{}s ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & an unsigined integers \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_judge_ab6bf287475108075c5c95f3fa0d7e6b0}\label{class_judge_ab6bf287475108075c5c95f3fa0d7e6b0}} 
+\index{Judge@{Judge}!set\+Participations@{set\+Participations}}
+\index{set\+Participations@{set\+Participations}!Judge@{Judge}}
+\subsubsection{\texorpdfstring{set\+Participations()}{setParticipations()}}
+{\footnotesize\ttfamily void Judge\+::set\+Participations (\begin{DoxyParamCaption}\item[{std\+::vector$<$ unsigned int $>$}]{participation }\end{DoxyParamCaption})}
+
+
+
+Changes the participations the judge was in. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em participation} & a vector of unsigined integers \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{class_judge_ad83f9941c7a7e0ae112d4fcf186f86cb}\label{class_judge_ad83f9941c7a7e0ae112d4fcf186f86cb}} 
+\index{Judge@{Judge}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Judge@{Judge}}
+\subsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \hyperlink{class_judge}{Judge} \&}]{judge }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+Operator \char`\"{}$<$$<$\char`\"{} is overloaded to output the information about the \hyperlink{class_judge}{Judge} into a file 
+\begin{DoxyParams}{Parameters}
+{\em os} & an Output Stream Object referece \\
+\hline
+{\em judge} & a constant \hyperlink{class_judge}{Judge} reference \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ostream referenc eof the information of a judge in a specific format into a file 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Judge.\+h\item 
+Judge.\+cpp\end{DoxyCompactItemize}

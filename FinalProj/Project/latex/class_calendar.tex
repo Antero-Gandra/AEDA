@@ -1,0 +1,375 @@
+\hypertarget{class_calendar}{}\section{Calendar Class Reference}
+\label{class_calendar}\index{Calendar@{Calendar}}
+
+
+{\ttfamily \#include $<$Calendar.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_calendar_a423ef27351bfa2309c6e2173bff61756}\label{class_calendar_a423ef27351bfa2309c6e2173bff61756}} 
+\hyperlink{class_calendar_a423ef27351bfa2309c6e2173bff61756}{Calendar} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_calendar}{Calendar} Default Contructor. \end{DoxyCompactList}\item 
+\hyperlink{class_calendar_acb7511f11ca554eefcf4348df2d1e8b1}{Calendar} (unsigned int year, unsigned int month, unsigned int day, unsigned int hour, unsigned int minute)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_calendar}{Calendar} Contructor with the date and time. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_calendar_aae56d627c0f61f70fdae96e816152bd7}{get\+Year} () const
+\begin{DoxyCompactList}\small\item\em Manages to get the year\textquotesingle{}s value. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_calendar_a62220669e2fa95a58bb0e5a872aeaa53}{get\+Month} () const
+\begin{DoxyCompactList}\small\item\em Manages to get the month\textquotesingle{}s value. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_calendar_aeb7e684bf63d0f500bd243d901dc20a8}{get\+Day} () const
+\begin{DoxyCompactList}\small\item\em Manages to get the day\textquotesingle{}s value. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_calendar_a292aca906edaeeca39d981917fb87de7}{get\+Hour} () const
+\begin{DoxyCompactList}\small\item\em Manages to get the hour\textquotesingle{}s value. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_calendar_a07c02433f8725c8b052202515023b50a}{get\+Minute} () const
+\begin{DoxyCompactList}\small\item\em Manages to get the minute\textquotesingle{}s value. \end{DoxyCompactList}\item 
+void \hyperlink{class_calendar_a22194fd8dcdc4c083f7a870c8a476f75}{set\+Year} (unsigned int year)
+\begin{DoxyCompactList}\small\item\em Changes the year\textquotesingle{}s value. \end{DoxyCompactList}\item 
+void \hyperlink{class_calendar_a66115274b1543b8a393d4cd92195e746}{set\+Month} (unsigned int month)
+\begin{DoxyCompactList}\small\item\em Changes the month\textquotesingle{}s value. \end{DoxyCompactList}\item 
+void \hyperlink{class_calendar_a84834635f8245a0b2f9ae69b4f31382e}{set\+Day} (unsigned int day)
+\begin{DoxyCompactList}\small\item\em Changes the day\textquotesingle{}s value. \end{DoxyCompactList}\item 
+void \hyperlink{class_calendar_a6f3e8a86bdbf5ad261084b91a6f880e7}{set\+Hour} (unsigned int hour)
+\begin{DoxyCompactList}\small\item\em Changes the hour\textquotesingle{}s value. \end{DoxyCompactList}\item 
+void \hyperlink{class_calendar_a94365aea1df3a5085054d61bfa893e41}{set\+Minute} (unsigned int minute)
+\begin{DoxyCompactList}\small\item\em Changes the minute\textquotesingle{}s value. \end{DoxyCompactList}\item 
+\hyperlink{class_calendar}{Calendar} \& \hyperlink{class_calendar_aebeae7e3eb616dc294ae6f026f5776bf}{operator+} (const \hyperlink{class_calendar}{Calendar} \&calendar1)
+\begin{DoxyCompactList}\small\item\em Operator overloads \char`\"{}+\char`\"{} adding the values of two calendar dates. \end{DoxyCompactList}\item 
+bool \hyperlink{class_calendar_a25fdea266ecbfdf5e5dc0bde770b51c0}{operator==} (const \hyperlink{class_calendar}{Calendar} \&calendar1) const
+\begin{DoxyCompactList}\small\item\em Operator overloads \char`\"{}==\char`\"{} to check the value of two calendar dates. \end{DoxyCompactList}\item 
+bool \hyperlink{class_calendar_ab701051dc424c48d6f423cdf0bca6ad4}{operator$<$} (const \hyperlink{class_calendar}{Calendar} \&calendar1) const
+\begin{DoxyCompactList}\small\item\em Operator overloads \char`\"{}$<$\char`\"{} yo check if the Object is smaller than calendar1. \end{DoxyCompactList}\item 
+\hyperlink{class_calendar_a70f6e6b4f62dcca5c05bd9341d288b0a}{operator unsigned int} () const
+\begin{DoxyCompactList}\small\item\em Converts the object\textquotesingle{}s time in minutes. \end{DoxyCompactList}\item 
+bool \hyperlink{class_calendar_a5b30c644c6a7bf69c541c14fc7c4e47d}{is\+Valid\+Date} ()
+\begin{DoxyCompactList}\small\item\em Checks the veracity of a date. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{class_calendar_a00249de42fc112c379f4bf139e77dd54}{date} () const
+\begin{DoxyCompactList}\small\item\em Manages to get the date (year/month/day) \end{DoxyCompactList}\item 
+std\+::string \hyperlink{class_calendar_ae8d5a30e386a154991cf0e32f7af4b2c}{time} () const
+\begin{DoxyCompactList}\small\item\em Manages to get the time (hour\+:minute) \end{DoxyCompactList}\item 
+std\+::string \hyperlink{class_calendar_a05c05a05e460dd25ce4a5bf1b8ae0ed8}{full} () const
+\begin{DoxyCompactList}\small\item\em Manages to get the full date (year/month/day/hour/minute) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \hyperlink{class_calendar_a4b8b43dc4ffd8338cb542043292b5231}{operator$<$$<$} (std\+::ostream \&os, const \hyperlink{class_calendar}{Calendar} \&calendar)
+\begin{DoxyCompactList}\small\item\em Operator \char`\"{}$<$$<$\char`\"{} is overloaded to output the information about the \hyperlink{class_calendar}{Calendar} information. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Project Untitled 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_calendar_acb7511f11ca554eefcf4348df2d1e8b1}\label{class_calendar_acb7511f11ca554eefcf4348df2d1e8b1}} 
+\index{Calendar@{Calendar}!Calendar@{Calendar}}
+\index{Calendar@{Calendar}!Calendar@{Calendar}}
+\subsubsection{\texorpdfstring{Calendar()}{Calendar()}}
+{\footnotesize\ttfamily Calendar\+::\+Calendar (\begin{DoxyParamCaption}\item[{unsigned int}]{year,  }\item[{unsigned int}]{month,  }\item[{unsigned int}]{day,  }\item[{unsigned int}]{hour,  }\item[{unsigned int}]{minute }\end{DoxyParamCaption})}
+
+
+
+\hyperlink{class_calendar}{Calendar} Contructor with the date and time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em year} & an unsigned integer \\
+\hline
+{\em month} & an unsigned integer \\
+\hline
+{\em day} & an unsigned integer \\
+\hline
+{\em hour} & an unsigned integer \\
+\hline
+{\em minute} & an unsigned integer \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_calendar_a00249de42fc112c379f4bf139e77dd54}\label{class_calendar_a00249de42fc112c379f4bf139e77dd54}} 
+\index{Calendar@{Calendar}!date@{date}}
+\index{date@{date}!Calendar@{Calendar}}
+\subsubsection{\texorpdfstring{date()}{date()}}
+{\footnotesize\ttfamily string Calendar\+::date (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Manages to get the date (year/month/day) 
+
+\begin{DoxyReturn}{Returns}
+constant string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_calendar_a05c05a05e460dd25ce4a5bf1b8ae0ed8}\label{class_calendar_a05c05a05e460dd25ce4a5bf1b8ae0ed8}} 
+\index{Calendar@{Calendar}!full@{full}}
+\index{full@{full}!Calendar@{Calendar}}
+\subsubsection{\texorpdfstring{full()}{full()}}
+{\footnotesize\ttfamily string Calendar\+::full (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Manages to get the full date (year/month/day/hour/minute) 
+
+\begin{DoxyReturn}{Returns}
+constant string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_calendar_aeb7e684bf63d0f500bd243d901dc20a8}\label{class_calendar_aeb7e684bf63d0f500bd243d901dc20a8}} 
+\index{Calendar@{Calendar}!get\+Day@{get\+Day}}
+\index{get\+Day@{get\+Day}!Calendar@{Calendar}}
+\subsubsection{\texorpdfstring{get\+Day()}{getDay()}}
+{\footnotesize\ttfamily unsigned int Calendar\+::get\+Day (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Manages to get the day\textquotesingle{}s value. 
+
+\begin{DoxyReturn}{Returns}
+constant unsigned integer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_calendar_a292aca906edaeeca39d981917fb87de7}\label{class_calendar_a292aca906edaeeca39d981917fb87de7}} 
+\index{Calendar@{Calendar}!get\+Hour@{get\+Hour}}
+\index{get\+Hour@{get\+Hour}!Calendar@{Calendar}}
+\subsubsection{\texorpdfstring{get\+Hour()}{getHour()}}
+{\footnotesize\ttfamily unsigned int Calendar\+::get\+Hour (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Manages to get the hour\textquotesingle{}s value. 
+
+\begin{DoxyReturn}{Returns}
+constant unsigned integer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_calendar_a07c02433f8725c8b052202515023b50a}\label{class_calendar_a07c02433f8725c8b052202515023b50a}} 
+\index{Calendar@{Calendar}!get\+Minute@{get\+Minute}}
+\index{get\+Minute@{get\+Minute}!Calendar@{Calendar}}
+\subsubsection{\texorpdfstring{get\+Minute()}{getMinute()}}
+{\footnotesize\ttfamily unsigned int Calendar\+::get\+Minute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Manages to get the minute\textquotesingle{}s value. 
+
+\begin{DoxyReturn}{Returns}
+constant unsigned integer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_calendar_a62220669e2fa95a58bb0e5a872aeaa53}\label{class_calendar_a62220669e2fa95a58bb0e5a872aeaa53}} 
+\index{Calendar@{Calendar}!get\+Month@{get\+Month}}
+\index{get\+Month@{get\+Month}!Calendar@{Calendar}}
+\subsubsection{\texorpdfstring{get\+Month()}{getMonth()}}
+{\footnotesize\ttfamily unsigned int Calendar\+::get\+Month (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Manages to get the month\textquotesingle{}s value. 
+
+\begin{DoxyReturn}{Returns}
+constant unsigned integer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_calendar_aae56d627c0f61f70fdae96e816152bd7}\label{class_calendar_aae56d627c0f61f70fdae96e816152bd7}} 
+\index{Calendar@{Calendar}!get\+Year@{get\+Year}}
+\index{get\+Year@{get\+Year}!Calendar@{Calendar}}
+\subsubsection{\texorpdfstring{get\+Year()}{getYear()}}
+{\footnotesize\ttfamily unsigned int Calendar\+::get\+Year (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Manages to get the year\textquotesingle{}s value. 
+
+\begin{DoxyReturn}{Returns}
+constant unsigned integer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_calendar_a5b30c644c6a7bf69c541c14fc7c4e47d}\label{class_calendar_a5b30c644c6a7bf69c541c14fc7c4e47d}} 
+\index{Calendar@{Calendar}!is\+Valid\+Date@{is\+Valid\+Date}}
+\index{is\+Valid\+Date@{is\+Valid\+Date}!Calendar@{Calendar}}
+\subsubsection{\texorpdfstring{is\+Valid\+Date()}{isValidDate()}}
+{\footnotesize\ttfamily bool Calendar\+::is\+Valid\+Date (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks the veracity of a date. 
+
+\begin{DoxyReturn}{Returns}
+true if a date if valid, false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_calendar_a70f6e6b4f62dcca5c05bd9341d288b0a}\label{class_calendar_a70f6e6b4f62dcca5c05bd9341d288b0a}} 
+\index{Calendar@{Calendar}!operator unsigned int@{operator unsigned int}}
+\index{operator unsigned int@{operator unsigned int}!Calendar@{Calendar}}
+\subsubsection{\texorpdfstring{operator unsigned int()}{operator unsigned int()}}
+{\footnotesize\ttfamily Calendar\+::operator unsigned int (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Converts the object\textquotesingle{}s time in minutes. 
+
+\begin{DoxyReturn}{Returns}
+unsigned integer of the time in minutes 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_calendar_aebeae7e3eb616dc294ae6f026f5776bf}\label{class_calendar_aebeae7e3eb616dc294ae6f026f5776bf}} 
+\index{Calendar@{Calendar}!operator+@{operator+}}
+\index{operator+@{operator+}!Calendar@{Calendar}}
+\subsubsection{\texorpdfstring{operator+()}{operator+()}}
+{\footnotesize\ttfamily \hyperlink{class_calendar}{Calendar} \& Calendar\+::operator+ (\begin{DoxyParamCaption}\item[{const \hyperlink{class_calendar}{Calendar} \&}]{calendar1 }\end{DoxyParamCaption})}
+
+
+
+Operator overloads \char`\"{}+\char`\"{} adding the values of two calendar dates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em calendar1} & a \hyperlink{class_calendar}{Calendar} Object Reference \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_calendar}{Calendar} Object Reference 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_calendar_ab701051dc424c48d6f423cdf0bca6ad4}\label{class_calendar_ab701051dc424c48d6f423cdf0bca6ad4}} 
+\index{Calendar@{Calendar}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Calendar@{Calendar}}
+\subsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool Calendar\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \hyperlink{class_calendar}{Calendar} \&}]{calendar1 }\end{DoxyParamCaption}) const}
+
+
+
+Operator overloads \char`\"{}$<$\char`\"{} yo check if the Object is smaller than calendar1. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em calendar1} & a \hyperlink{class_calendar}{Calendar} Object Reference \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if \hyperlink{class_calendar}{Calendar} Object is smaller than calendar1, false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_calendar_a25fdea266ecbfdf5e5dc0bde770b51c0}\label{class_calendar_a25fdea266ecbfdf5e5dc0bde770b51c0}} 
+\index{Calendar@{Calendar}!operator==@{operator==}}
+\index{operator==@{operator==}!Calendar@{Calendar}}
+\subsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Calendar\+::operator== (\begin{DoxyParamCaption}\item[{const \hyperlink{class_calendar}{Calendar} \&}]{calendar1 }\end{DoxyParamCaption}) const}
+
+
+
+Operator overloads \char`\"{}==\char`\"{} to check the value of two calendar dates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em calendar1} & a \hyperlink{class_calendar}{Calendar} Object Reference \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if \hyperlink{class_calendar}{Calendar} Object is equal to calendar1, false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_calendar_a84834635f8245a0b2f9ae69b4f31382e}\label{class_calendar_a84834635f8245a0b2f9ae69b4f31382e}} 
+\index{Calendar@{Calendar}!set\+Day@{set\+Day}}
+\index{set\+Day@{set\+Day}!Calendar@{Calendar}}
+\subsubsection{\texorpdfstring{set\+Day()}{setDay()}}
+{\footnotesize\ttfamily void Calendar\+::set\+Day (\begin{DoxyParamCaption}\item[{unsigned int}]{day }\end{DoxyParamCaption})}
+
+
+
+Changes the day\textquotesingle{}s value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em day} & an unsigned integer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_calendar_a6f3e8a86bdbf5ad261084b91a6f880e7}\label{class_calendar_a6f3e8a86bdbf5ad261084b91a6f880e7}} 
+\index{Calendar@{Calendar}!set\+Hour@{set\+Hour}}
+\index{set\+Hour@{set\+Hour}!Calendar@{Calendar}}
+\subsubsection{\texorpdfstring{set\+Hour()}{setHour()}}
+{\footnotesize\ttfamily void Calendar\+::set\+Hour (\begin{DoxyParamCaption}\item[{unsigned int}]{hour }\end{DoxyParamCaption})}
+
+
+
+Changes the hour\textquotesingle{}s value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hour} & an unsigned integer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_calendar_a94365aea1df3a5085054d61bfa893e41}\label{class_calendar_a94365aea1df3a5085054d61bfa893e41}} 
+\index{Calendar@{Calendar}!set\+Minute@{set\+Minute}}
+\index{set\+Minute@{set\+Minute}!Calendar@{Calendar}}
+\subsubsection{\texorpdfstring{set\+Minute()}{setMinute()}}
+{\footnotesize\ttfamily void Calendar\+::set\+Minute (\begin{DoxyParamCaption}\item[{unsigned int}]{minute }\end{DoxyParamCaption})}
+
+
+
+Changes the minute\textquotesingle{}s value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em minute} & an unsigned integer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_calendar_a66115274b1543b8a393d4cd92195e746}\label{class_calendar_a66115274b1543b8a393d4cd92195e746}} 
+\index{Calendar@{Calendar}!set\+Month@{set\+Month}}
+\index{set\+Month@{set\+Month}!Calendar@{Calendar}}
+\subsubsection{\texorpdfstring{set\+Month()}{setMonth()}}
+{\footnotesize\ttfamily void Calendar\+::set\+Month (\begin{DoxyParamCaption}\item[{unsigned int}]{month }\end{DoxyParamCaption})}
+
+
+
+Changes the month\textquotesingle{}s value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em month} & an unsigned integer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_calendar_a22194fd8dcdc4c083f7a870c8a476f75}\label{class_calendar_a22194fd8dcdc4c083f7a870c8a476f75}} 
+\index{Calendar@{Calendar}!set\+Year@{set\+Year}}
+\index{set\+Year@{set\+Year}!Calendar@{Calendar}}
+\subsubsection{\texorpdfstring{set\+Year()}{setYear()}}
+{\footnotesize\ttfamily void Calendar\+::set\+Year (\begin{DoxyParamCaption}\item[{unsigned int}]{year }\end{DoxyParamCaption})}
+
+
+
+Changes the year\textquotesingle{}s value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em year} & an unsigned integer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_calendar_ae8d5a30e386a154991cf0e32f7af4b2c}\label{class_calendar_ae8d5a30e386a154991cf0e32f7af4b2c}} 
+\index{Calendar@{Calendar}!time@{time}}
+\index{time@{time}!Calendar@{Calendar}}
+\subsubsection{\texorpdfstring{time()}{time()}}
+{\footnotesize\ttfamily string Calendar\+::time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Manages to get the time (hour\+:minute) 
+
+\begin{DoxyReturn}{Returns}
+constant string 
+\end{DoxyReturn}
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{class_calendar_a4b8b43dc4ffd8338cb542043292b5231}\label{class_calendar_a4b8b43dc4ffd8338cb542043292b5231}} 
+\index{Calendar@{Calendar}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Calendar@{Calendar}}
+\subsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \hyperlink{class_calendar}{Calendar} \&}]{calendar }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Operator \char`\"{}$<$$<$\char`\"{} is overloaded to output the information about the \hyperlink{class_calendar}{Calendar} information. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & an Outstream Object \\
+\hline
+{\em calendar} & a constant \hyperlink{class_calendar}{Calendar} reference \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ostream reference 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Calendar.\+h\item 
+Calendar.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,231 @@
+\hypertarget{class_phase}{}\section{Phase Class Reference}
+\label{class_phase}\index{Phase@{Phase}}
+
+
+{\ttfamily \#include $<$Phase.\+h$>$}
+
+Inheritance diagram for Phase\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_phase}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_phase_a3760262f782f336aa55c1f14266fc455}\label{class_phase_a3760262f782f336aa55c1f14266fc455}} 
+\hyperlink{class_phase_a3760262f782f336aa55c1f14266fc455}{Phase} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_phase}{Phase} default constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_phase_ad66fc793040c3e37c2c3e954edfc627d}\label{class_phase_ad66fc793040c3e37c2c3e954edfc627d}} 
+virtual \hyperlink{class_phase_ad66fc793040c3e37c2c3e954edfc627d}{$\sim$\+Phase} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_phase}{Phase} deconstructor. \end{DoxyCompactList}\item 
+\hyperlink{class_phase_a19be92bd99171dcd6f202aa414941df8}{Phase} (unsigned int audition\+Id, std\+::vector$<$ unsigned int $>$ final\+\_\+grade, std\+::vector$<$ unsigned int $>$ judge1, std\+::vector$<$ unsigned int $>$ judge2, std\+::vector$<$ unsigned int $>$ chief\+Judge, std\+::vector$<$ unsigned int $>$ contestants)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_phase}{Phase} default constructor with their audition\+ID, final grade, evaluation from the judges and the id of the contestants. \end{DoxyCompactList}\item 
+\hyperlink{class_phase_ad0e5ebffc33f2127e147b0330e72efd5}{Phase} (std\+::string textline)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_phase}{Phase} constructor by reading a line from the file. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_phase_a7d5b0ced6ad5d523cace56f9122b0af2}{get\+Audition\+Id} () const
+\begin{DoxyCompactList}\small\item\em Manages to get the audition\textquotesingle{}s id. \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ \hyperlink{class_phase_acc55a56cbaec90a2972cb78ad8ce085c}{get\+Final\+Grade} () const
+\begin{DoxyCompactList}\small\item\em Manages access all the final grades from the contestants of a certain phase. \end{DoxyCompactList}\item 
+std\+::vector$<$ unsigned int $>$ \hyperlink{class_phase_aa705f5aa86b20627a115034ed9881246}{get\+Judge1} () const
+\begin{DoxyCompactList}\small\item\em Manages access the grades the first judge gave to all contestants of a certain phase. \end{DoxyCompactList}\item 
+std\+::vector$<$ unsigned int $>$ \hyperlink{class_phase_ac8f4328b114a36e3296ee2f4e9fd06e8}{get\+Judge2} () const
+\begin{DoxyCompactList}\small\item\em Manages access the grades the second judge gave to all contestants of a certain phase. \end{DoxyCompactList}\item 
+std\+::vector$<$ unsigned int $>$ \hyperlink{class_phase_a1c251350327ab06f2cc8bb8f1331d370}{get\+Chief\+Judge} () const
+\begin{DoxyCompactList}\small\item\em Manages access the grades the reposible judge gave to all contestants of a certain phase. \end{DoxyCompactList}\item 
+std\+::vector$<$ unsigned int $>$ \hyperlink{class_phase_a670856408ac3d956d30e371dd69fbf13}{get\+Contestants} () const
+\begin{DoxyCompactList}\small\item\em Manages access the id of all contestants of a certain phase. \end{DoxyCompactList}\item 
+void \hyperlink{class_phase_af2bc70b0e24880d38e42f37ef31164ac}{set\+Audition\+Id} (unsigned int audition\+Id)
+\begin{DoxyCompactList}\small\item\em Changes the id of an audition. \end{DoxyCompactList}\item 
+void \hyperlink{class_phase_a3a08956302c65b5ccea41521059a787c}{set\+Contestants} (std\+::vector$<$ unsigned int $>$ contestants)
+\begin{DoxyCompactList}\small\item\em Changes the id of all contestants. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_phase_af57b6ad20a1b4790f55e97b8f68fdd7c}\label{class_phase_af57b6ad20a1b4790f55e97b8f68fdd7c}} 
+void \hyperlink{class_phase_af57b6ad20a1b4790f55e97b8f68fdd7c}{evaluate} ()
+\begin{DoxyCompactList}\small\item\em Randomly assigns the the individual grades of each judges to all contestants. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_phase_a672ed9cf455ca8dbf89fc56687d455b3}\label{class_phase_a672ed9cf455ca8dbf89fc56687d455b3}} 
+virtual void \hyperlink{class_phase_a672ed9cf455ca8dbf89fc56687d455b3}{overall\+Grading} ()=0
+\begin{DoxyCompactList}\small\item\em Virtual function to grade all contestants. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_phase_a3e576bda9c8be6db31bf3c46ab1284ca}\label{class_phase_a3e576bda9c8be6db31bf3c46ab1284ca}} 
+unsigned int {\bfseries audition\+Id}
+\item 
+\mbox{\Hypertarget{class_phase_a44fede0ef598b2689aef0ecd213ac156}\label{class_phase_a44fede0ef598b2689aef0ecd213ac156}} 
+std\+::vector$<$ double $>$ {\bfseries final\+Grade}
+\item 
+\mbox{\Hypertarget{class_phase_abd94426c3e881880e3fea3d5d70310b9}\label{class_phase_abd94426c3e881880e3fea3d5d70310b9}} 
+std\+::vector$<$ unsigned int $>$ {\bfseries judge1}
+\item 
+\mbox{\Hypertarget{class_phase_a658128a2fbbe3b9bc4fb672bf851f45c}\label{class_phase_a658128a2fbbe3b9bc4fb672bf851f45c}} 
+std\+::vector$<$ unsigned int $>$ {\bfseries judge2}
+\item 
+\mbox{\Hypertarget{class_phase_ad6179ca6a93733eb072e2808c357a2d4}\label{class_phase_ad6179ca6a93733eb072e2808c357a2d4}} 
+std\+::vector$<$ unsigned int $>$ {\bfseries chief\+Judge}
+\item 
+\mbox{\Hypertarget{class_phase_ae0511c17f00d8856298e23a9288ba698}\label{class_phase_ae0511c17f00d8856298e23a9288ba698}} 
+std\+::vector$<$ unsigned int $>$ {\bfseries contestants}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Project Untitled 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_phase_a19be92bd99171dcd6f202aa414941df8}\label{class_phase_a19be92bd99171dcd6f202aa414941df8}} 
+\index{Phase@{Phase}!Phase@{Phase}}
+\index{Phase@{Phase}!Phase@{Phase}}
+\subsubsection{\texorpdfstring{Phase()}{Phase()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Phase\+::\+Phase (\begin{DoxyParamCaption}\item[{unsigned int}]{audition\+Id,  }\item[{std\+::vector$<$ unsigned int $>$}]{final\+\_\+grade,  }\item[{std\+::vector$<$ unsigned int $>$}]{judge1,  }\item[{std\+::vector$<$ unsigned int $>$}]{judge2,  }\item[{std\+::vector$<$ unsigned int $>$}]{chief\+Judge,  }\item[{std\+::vector$<$ unsigned int $>$}]{contestants }\end{DoxyParamCaption})}
+
+
+
+\hyperlink{class_phase}{Phase} default constructor with their audition\+ID, final grade, evaluation from the judges and the id of the contestants. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em audition\+ID} & an unsigned integer \\
+\hline
+{\em final\+\_\+grade} & a vector of unsigned integers \\
+\hline
+{\em ev1} & a vector of unsigned integers \\
+\hline
+{\em ev2} & a vector of unsigned integers \\
+\hline
+{\em ld} & a vector of unsigned integers \\
+\hline
+{\em contestants} & a vector of unsigned integers \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_phase_ad0e5ebffc33f2127e147b0330e72efd5}\label{class_phase_ad0e5ebffc33f2127e147b0330e72efd5}} 
+\index{Phase@{Phase}!Phase@{Phase}}
+\index{Phase@{Phase}!Phase@{Phase}}
+\subsubsection{\texorpdfstring{Phase()}{Phase()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Phase\+::\+Phase (\begin{DoxyParamCaption}\item[{std\+::string}]{textline }\end{DoxyParamCaption})}
+
+
+
+\hyperlink{class_phase}{Phase} constructor by reading a line from the file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text\+Line} & a string \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_phase_a7d5b0ced6ad5d523cace56f9122b0af2}\label{class_phase_a7d5b0ced6ad5d523cace56f9122b0af2}} 
+\index{Phase@{Phase}!get\+Audition\+Id@{get\+Audition\+Id}}
+\index{get\+Audition\+Id@{get\+Audition\+Id}!Phase@{Phase}}
+\subsubsection{\texorpdfstring{get\+Audition\+Id()}{getAuditionId()}}
+{\footnotesize\ttfamily unsigned int Phase\+::get\+Audition\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Manages to get the audition\textquotesingle{}s id. 
+
+\begin{DoxyReturn}{Returns}
+unsigned integer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_phase_a1c251350327ab06f2cc8bb8f1331d370}\label{class_phase_a1c251350327ab06f2cc8bb8f1331d370}} 
+\index{Phase@{Phase}!get\+Chief\+Judge@{get\+Chief\+Judge}}
+\index{get\+Chief\+Judge@{get\+Chief\+Judge}!Phase@{Phase}}
+\subsubsection{\texorpdfstring{get\+Chief\+Judge()}{getChiefJudge()}}
+{\footnotesize\ttfamily vector$<$ unsigned int $>$ Phase\+::get\+Chief\+Judge (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Manages access the grades the reposible judge gave to all contestants of a certain phase. 
+
+\begin{DoxyReturn}{Returns}
+vector of unsigned integers the grade of the resposible judge 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_phase_a670856408ac3d956d30e371dd69fbf13}\label{class_phase_a670856408ac3d956d30e371dd69fbf13}} 
+\index{Phase@{Phase}!get\+Contestants@{get\+Contestants}}
+\index{get\+Contestants@{get\+Contestants}!Phase@{Phase}}
+\subsubsection{\texorpdfstring{get\+Contestants()}{getContestants()}}
+{\footnotesize\ttfamily vector$<$ unsigned int $>$ Phase\+::get\+Contestants (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Manages access the id of all contestants of a certain phase. 
+
+\begin{DoxyReturn}{Returns}
+vector of unsigned integers 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_phase_acc55a56cbaec90a2972cb78ad8ce085c}\label{class_phase_acc55a56cbaec90a2972cb78ad8ce085c}} 
+\index{Phase@{Phase}!get\+Final\+Grade@{get\+Final\+Grade}}
+\index{get\+Final\+Grade@{get\+Final\+Grade}!Phase@{Phase}}
+\subsubsection{\texorpdfstring{get\+Final\+Grade()}{getFinalGrade()}}
+{\footnotesize\ttfamily vector$<$ double $>$ Phase\+::get\+Final\+Grade (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Manages access all the final grades from the contestants of a certain phase. 
+
+\begin{DoxyReturn}{Returns}
+vector of doubles the final grade 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_phase_aa705f5aa86b20627a115034ed9881246}\label{class_phase_aa705f5aa86b20627a115034ed9881246}} 
+\index{Phase@{Phase}!get\+Judge1@{get\+Judge1}}
+\index{get\+Judge1@{get\+Judge1}!Phase@{Phase}}
+\subsubsection{\texorpdfstring{get\+Judge1()}{getJudge1()}}
+{\footnotesize\ttfamily vector$<$ unsigned int $>$ Phase\+::get\+Judge1 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Manages access the grades the first judge gave to all contestants of a certain phase. 
+
+\begin{DoxyReturn}{Returns}
+vector of unsigned integers the grade of the first judge 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_phase_ac8f4328b114a36e3296ee2f4e9fd06e8}\label{class_phase_ac8f4328b114a36e3296ee2f4e9fd06e8}} 
+\index{Phase@{Phase}!get\+Judge2@{get\+Judge2}}
+\index{get\+Judge2@{get\+Judge2}!Phase@{Phase}}
+\subsubsection{\texorpdfstring{get\+Judge2()}{getJudge2()}}
+{\footnotesize\ttfamily vector$<$ unsigned int $>$ Phase\+::get\+Judge2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Manages access the grades the second judge gave to all contestants of a certain phase. 
+
+\begin{DoxyReturn}{Returns}
+vector of unsigned integers the grade of the second judge 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_phase_af2bc70b0e24880d38e42f37ef31164ac}\label{class_phase_af2bc70b0e24880d38e42f37ef31164ac}} 
+\index{Phase@{Phase}!set\+Audition\+Id@{set\+Audition\+Id}}
+\index{set\+Audition\+Id@{set\+Audition\+Id}!Phase@{Phase}}
+\subsubsection{\texorpdfstring{set\+Audition\+Id()}{setAuditionId()}}
+{\footnotesize\ttfamily void Phase\+::set\+Audition\+Id (\begin{DoxyParamCaption}\item[{unsigned int}]{audition\+Id }\end{DoxyParamCaption})}
+
+
+
+Changes the id of an audition. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em audition\+Id} & unsigned integer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_phase_a3a08956302c65b5ccea41521059a787c}\label{class_phase_a3a08956302c65b5ccea41521059a787c}} 
+\index{Phase@{Phase}!set\+Contestants@{set\+Contestants}}
+\index{set\+Contestants@{set\+Contestants}!Phase@{Phase}}
+\subsubsection{\texorpdfstring{set\+Contestants()}{setContestants()}}
+{\footnotesize\ttfamily void Phase\+::set\+Contestants (\begin{DoxyParamCaption}\item[{std\+::vector$<$ unsigned int $>$}]{contestants }\end{DoxyParamCaption})}
+
+
+
+Changes the id of all contestants. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em contestants} & unsigned integer \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Phase.\+h\item 
+Phase.\+cpp\end{DoxyCompactItemize}
