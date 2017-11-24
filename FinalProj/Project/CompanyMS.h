@@ -283,8 +283,6 @@ public:
 	* @return true if it is valid by checking the database, false otherwise
 	*/
 	bool isValidAuditionId(std::string id);
-
-	bool isSpecialValidContestantId(std::string id);
 	
 	/**
 	* @brief Checks if the string inputed is a valid
@@ -325,13 +323,6 @@ public:
 	* @return unsigned int
 	*/
 	unsigned int contestantIdHandler();
-	
-	/**
-	* @brief Converts the string inputed of the judge's id to unsigned integer that handles zero
-	* @return unsigned int
-	*/
-	
-	unsigned int specialContestantIdHandler();
 	
 	/**
 	* @brief Converts the string inputed of the judge's id to unsigned integer

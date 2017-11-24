@@ -1356,29 +1356,6 @@ bool CompanyMS::isValidContestantId(string id) {
 	}
 	return true;
 }
-bool CompanyMS::isSpecialValidContestantId(string id) {
-	if (cin.eof()) {
-		return false;
-	}
-	removeSpaces(id);
-
-	if (id.length() == 0) throw EmptyAnswer();
-
-	for (size_t i = 0; i < id.length(); i++)
-	{
-		if (!isdigit(id[i]))
-			throw InvalidId();
-	}
-	unsigned int Id = stoi(id);
-	if (Id == 0) return true;
-	try {
-		company->getContestantById(Id);
-	}
-	catch (ContestantIdNotFound) {
-		throw ContestantIdNotFound(Id);
-	}
-	return true;
-}
 bool CompanyMS::isValidJudgeId(string id) {
 	if (cin.eof()) {
 		return false;
@@ -1532,34 +1509,6 @@ unsigned int CompanyMS::contestantIdHandler() {
 			valid = false;
 			cout << "It looks like the id you entered is not on our database. Note that it has to be the ID (a number) and be part of the company's database. Please retry to enter it." << endl;
 		}
-	}
-	return stoi(id);
-}
-unsigned int CompanyMS::specialContestantIdHandler() {
-	string id;
-	bool valid = false;
-
-	while (!valid) {
-		cout << "Id:";
-		getline(cin, id);
-		if (cin.eof()) return 0;
-		try {
-			valid = isSpecialValidContestantId(id);
-		}
-		catch (EmptyAnswer)
-		{
-			valid = false;
-			cout << "Your answer was empty. Note that it has to be the ID (a number) and be part of the company's database. Please retry to enter it." << endl;
-		}
-		catch (InvalidId) {
-			valid = false;
-			cout << "Your answer has invalid characters. Note that it has to be the ID (a number) and be part of the company's database. Please retry to enter it." << endl;
-		}
-		catch (ContestantIdNotFound) {
-			valid = false;
-			cout << "It looks like the id you entered is not on our database. Note that it has to be the ID (a number) and be part of the company's database. Please retry to enter it." << endl;
-		}
-		
 	}
 	return stoi(id);
 }
