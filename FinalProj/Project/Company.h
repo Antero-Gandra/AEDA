@@ -339,6 +339,8 @@ public:
 	*/
 	void scheduleMaxAuditionsOfSpecialty(std::string specialty);
 
+	void scheduleAuditionOfSpecialty(std::string specialty);
+
 	/**
 	* @brief Schedule an audition with the max number of contestants
 	*/
@@ -367,11 +369,6 @@ public:
 	* @return true if successfully writes all the information into the file, false otherwise
 	*/
 	bool writeAuditionsFile(std::string fileName);
-
-	/**
-	*TBC
-	*/
-	void showAuditionInDetail(unsigned int id);
 
 	/**
 	* @brief Grades all auditions, updating the participation of contestants who managed to get to Second Phase and those who didn't

@@ -299,7 +299,7 @@ void Company::generateChiefJudge(Calendar date, string specialty, unsigned int &
 	do {
 		i = rand() % judgesOfSpecialty.size();
 
-	} while (judgeIsOcupied(date, judgesOfSpecialty[i]->getId())!= -1);
+	} while (judgeIsOcupied(date, judgesOfSpecialty[i]->getId()) != -1);
 	chiefJudge = judgesOfSpecialty[i]->getId();
 }
 void Company::generateJudges(Calendar date, string specialty, vector<unsigned int> & judges) {
@@ -339,10 +339,10 @@ void Company::addNewJudge(Judge * judge) {
 }
 void Company::updateJudge(Judge * judge, Judge * modJudge) {
 	judge->setName(modJudge->getName());
-judge->setDob(modJudge->getDob());
-judge->setMobile(modJudge->getMobile());
-judge->setAddress(modJudge->getAddress());
-judge->setSpecialty(modJudge->getSpecialty());
+	judge->setDob(modJudge->getDob());
+	judge->setMobile(modJudge->getMobile());
+	judge->setAddress(modJudge->getAddress());
+	judge->setSpecialty(modJudge->getSpecialty());
 }
 void Company::removeJudge(Judge * judge) {
 	for (auto it = judges.begin(); it < judges.end(); it++)
@@ -522,15 +522,11 @@ void Company::removeAudition(Audition * audition) {
 		}
 	}
 }
-void Company::showAuditionInDetail(unsigned int id) {
-
-
-}
 void Company::scheduleAudition(string specialty, Calendar beginning, vector<unsigned int> contestants, vector<unsigned int> judges, unsigned int chiefJudge) {
 	lastAuditionId++;
 	vector<Calendar> dateOfApplications;
 
-	Calendar ending= getDurationOfAudition(contestants.size()) + beginning;
+	Calendar ending = getDurationOfAudition(contestants.size()) + beginning;
 
 	sort(contestants.begin(), contestants.end());
 	Audition * audition = new Audition(lastAuditionId, beginning, ending, specialty, judges, chiefJudge, contestants);
@@ -588,7 +584,7 @@ void Company::scheduleMaxAuditionsOfSpecialty(string specialty) {
 
 	while (contestants.size() >= 6) {
 		if (contestants.size() > max) contestants.resize(max);
-		
+
 		//Get Date
 		Calendar date = scheduleAuditionCalendar(contestants, specialty);
 		date.setHour(startOfFunctions.getHour());
@@ -607,6 +603,36 @@ void Company::scheduleMaxAuditionsOfSpecialty(string specialty) {
 		getApplicationsOfSpecialty(specialty, applications);
 		getContestantsOfApplications(contestants, applications);
 	}
+}
+void Company::scheduleAuditionOfSpecialty(string specialty) {
+	vector<Application*> applications;
+	vector<unsigned int> contestants;
+	vector<unsigned int> judges;
+	unsigned int chiefJudge;
+	unsigned int auditionId;
+
+	// Contestants 
+	getApplicationsOfSpecialty(specialty, applications);
+	getContestantsOfApplications(contestants, applications);
+
+	if (contestants.size() < 6) return;
+	unsigned int max = getMaxNumOfContestantsPerAudition();
+
+
+	if (contestants.size() > max) contestants.resize(max);
+
+	//Get Date
+	Calendar date = scheduleAuditionCalendar(contestants, specialty);
+	date.setHour(startOfFunctions.getHour());
+	date.setMinute(startOfFunctions.getMinute());
+
+	//Judges
+	judges = {};
+	generateJudges(date, specialty, judges);
+	generateChiefJudge(date, specialty, chiefJudge);
+
+	scheduleAudition(specialty, date, contestants, judges, chiefJudge);
+
 }
 bool Company::readAuditionsFile(string fileName) {
 	ifstream auditionsFile(fileName + ".dat");
@@ -645,8 +671,7 @@ bool Company::writeAuditionsFile(string fileName) {
 }
 void Company::gradeAllAuditions() {
 	for (size_t i = 0; i < auditions.size(); i++) {
-		
-
+		gradeAudition(auditions[i]->getId());
 	}
 }
 void Company::gradeAudition(unsigned int auditionId) {

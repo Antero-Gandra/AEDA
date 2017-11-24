@@ -30,6 +30,7 @@ public:
 	*/
 	void mainMenu();
 
+	void saveMenu();
 
 	/**
 	* @brief Invokes the contestant menu with the CRUD option and also to read from a file to update the database;
@@ -353,6 +354,8 @@ public:
 	* @brief Clears the screen when calling other menus
 	*/
 	void clearScreen();
+
+	void mainTitle();
 
 private:
 	Company * company;
