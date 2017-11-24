@@ -77,7 +77,6 @@ public:
 	/**
 	* @bfief Operator "<<" is overloaded to output the information about the Contestant into a file
 	* @param contestant1 a constant Contestant reference
-	* @return ostream reference
 	*/
 	friend std::ostream& operator<<(std::ostream& os, const Contestant & contestant);
 };

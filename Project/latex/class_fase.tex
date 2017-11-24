@@ -1,0 +1,128 @@
+\hypertarget{class_fase}{}\section{Fase Class Reference}
+\label{class_fase}\index{Fase@{Fase}}
+
+
+{\ttfamily \#include $<$Fase.\+h$>$}
+
+Inheritance diagram for Fase\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_fase}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_fase_a7028d5e9bc110b73a584b29c2006246c}\label{class_fase_a7028d5e9bc110b73a584b29c2006246c}} 
+\hyperlink{class_fase_a7028d5e9bc110b73a584b29c2006246c}{Fase} ()
+\begin{DoxyCompactList}\small\item\em Phase default constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_fase_aeccaf20fceca679c5a88b1a6fc40b26f}\label{class_fase_aeccaf20fceca679c5a88b1a6fc40b26f}} 
+virtual \hyperlink{class_fase_aeccaf20fceca679c5a88b1a6fc40b26f}{$\sim$\+Fase} ()
+\begin{DoxyCompactList}\small\item\em Phase deconstructor. \end{DoxyCompactList}\item 
+\hyperlink{class_fase_a2c24bb5d2c4c0f3935c9843600b1b2ba}{Fase} (unsigned int audition\+Id, std\+::vector$<$ unsigned int $>$ final\+\_\+grade, std\+::vector$<$ unsigned int $>$ judge1, std\+::vector$<$ unsigned int $>$ judge2, std\+::vector$<$ unsigned int $>$ chief\+Judge, std\+::vector$<$ unsigned int $>$ contestants)
+\begin{DoxyCompactList}\small\item\em Phase default constructor with their audition\+ID, final grade, evaluation from the judges and the id of the contestants. \end{DoxyCompactList}\item 
+\hyperlink{class_fase_a645ce6349297a150d75f17e5ac44c498}{Fase} (std\+::string textline)
+\begin{DoxyCompactList}\small\item\em Phase constructor by reading a line from the file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_fase_aec5a708ac331f4abb116c77ffb4ba7a0}\label{class_fase_aec5a708ac331f4abb116c77ffb4ba7a0}} 
+unsigned int {\bfseries get\+Audition\+Id} () const
+\item 
+\mbox{\Hypertarget{class_fase_a9b80df1ce2860ec40f63830b6c6b6ced}\label{class_fase_a9b80df1ce2860ec40f63830b6c6b6ced}} 
+std\+::vector$<$ double $>$ {\bfseries get\+Final\+Grade} () const
+\item 
+\mbox{\Hypertarget{class_fase_a1b3af27fb8ea617bf9ed88d53b33f56e}\label{class_fase_a1b3af27fb8ea617bf9ed88d53b33f56e}} 
+std\+::vector$<$ unsigned int $>$ {\bfseries get\+Judge1} () const
+\item 
+\mbox{\Hypertarget{class_fase_aebfe4fdf55798d2065ef425baf6ac643}\label{class_fase_aebfe4fdf55798d2065ef425baf6ac643}} 
+std\+::vector$<$ unsigned int $>$ {\bfseries get\+Judge2} () const
+\item 
+\mbox{\Hypertarget{class_fase_a1de92f73f196f6bd183a23bcc98eec79}\label{class_fase_a1de92f73f196f6bd183a23bcc98eec79}} 
+std\+::vector$<$ unsigned int $>$ {\bfseries get\+Chief\+Judge} () const
+\item 
+\mbox{\Hypertarget{class_fase_a25b917f087fcb3091ec82e165a2a0504}\label{class_fase_a25b917f087fcb3091ec82e165a2a0504}} 
+std\+::vector$<$ unsigned int $>$ {\bfseries get\+Contestants} () const
+\item 
+\mbox{\Hypertarget{class_fase_ac5b33fc102c82292a7ceb1c536744f1b}\label{class_fase_ac5b33fc102c82292a7ceb1c536744f1b}} 
+void {\bfseries set\+Audition\+Id} (unsigned int audition\+Id)
+\item 
+\mbox{\Hypertarget{class_fase_a5f182b1a4e7e0113157278d573679b08}\label{class_fase_a5f182b1a4e7e0113157278d573679b08}} 
+void {\bfseries set\+Contestants} (std\+::vector$<$ unsigned int $>$ contestants)
+\item 
+\mbox{\Hypertarget{class_fase_ab36057ace87728ef9f72a94a17bb0706}\label{class_fase_ab36057ace87728ef9f72a94a17bb0706}} 
+void {\bfseries evaluate} ()
+\item 
+\mbox{\Hypertarget{class_fase_a594a6fbd46a8d76bc798f526441b5f73}\label{class_fase_a594a6fbd46a8d76bc798f526441b5f73}} 
+virtual void {\bfseries overall\+Grading} ()=0
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_fase_a23da3f134d27b245f63f360139e34472}\label{class_fase_a23da3f134d27b245f63f360139e34472}} 
+unsigned int {\bfseries audition\+Id}
+\item 
+\mbox{\Hypertarget{class_fase_a9535376b5bcb948bb0597f3a8e42a0bd}\label{class_fase_a9535376b5bcb948bb0597f3a8e42a0bd}} 
+std\+::vector$<$ double $>$ {\bfseries final\+Grade}
+\item 
+\mbox{\Hypertarget{class_fase_a3a9f904165996ac7e31c71adff5af91f}\label{class_fase_a3a9f904165996ac7e31c71adff5af91f}} 
+std\+::vector$<$ unsigned int $>$ {\bfseries judge1}
+\item 
+\mbox{\Hypertarget{class_fase_a30599777b01ec01afa4475a048305622}\label{class_fase_a30599777b01ec01afa4475a048305622}} 
+std\+::vector$<$ unsigned int $>$ {\bfseries judge2}
+\item 
+\mbox{\Hypertarget{class_fase_a317275a52edeaf34d2374defc44b3683}\label{class_fase_a317275a52edeaf34d2374defc44b3683}} 
+std\+::vector$<$ unsigned int $>$ {\bfseries chief\+Judge}
+\item 
+\mbox{\Hypertarget{class_fase_aa30cd5a93c8ba490e8ed4854c204d402}\label{class_fase_aa30cd5a93c8ba490e8ed4854c204d402}} 
+std\+::vector$<$ unsigned int $>$ {\bfseries contestants}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Project Untitled 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_fase_a2c24bb5d2c4c0f3935c9843600b1b2ba}\label{class_fase_a2c24bb5d2c4c0f3935c9843600b1b2ba}} 
+\index{Fase@{Fase}!Fase@{Fase}}
+\index{Fase@{Fase}!Fase@{Fase}}
+\subsubsection{\texorpdfstring{Fase()}{Fase()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Fase\+::\+Fase (\begin{DoxyParamCaption}\item[{unsigned int}]{audition\+Id,  }\item[{std\+::vector$<$ unsigned int $>$}]{final\+\_\+grade,  }\item[{std\+::vector$<$ unsigned int $>$}]{judge1,  }\item[{std\+::vector$<$ unsigned int $>$}]{judge2,  }\item[{std\+::vector$<$ unsigned int $>$}]{chief\+Judge,  }\item[{std\+::vector$<$ unsigned int $>$}]{contestants }\end{DoxyParamCaption})}
+
+
+
+Phase default constructor with their audition\+ID, final grade, evaluation from the judges and the id of the contestants. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em audition\+ID} & an unsigned integer \\
+\hline
+{\em final\+\_\+grade} & a vector of unsigned integers \\
+\hline
+{\em ev1} & a vector of unsigned integers \\
+\hline
+{\em ev2} & a vector of unsigned integers \\
+\hline
+{\em ld} & a vector of unsigned integers \\
+\hline
+{\em contestants} & a vector of unsigned integers \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_fase_a645ce6349297a150d75f17e5ac44c498}\label{class_fase_a645ce6349297a150d75f17e5ac44c498}} 
+\index{Fase@{Fase}!Fase@{Fase}}
+\index{Fase@{Fase}!Fase@{Fase}}
+\subsubsection{\texorpdfstring{Fase()}{Fase()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Fase\+::\+Fase (\begin{DoxyParamCaption}\item[{std\+::string}]{textline }\end{DoxyParamCaption})}
+
+
+
+Phase constructor by reading a line from the file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text\+Line} & a string \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Fase.\+h\item 
+Fase.\+cpp\end{DoxyCompactItemize}

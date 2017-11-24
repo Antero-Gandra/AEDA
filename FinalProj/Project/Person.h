@@ -97,7 +97,6 @@ public:
 	* @brief Randomly generates a mobile number
 	* @return unsigned int of the mobile number
 	*/
-
 	unsigned int mobileGenerator();
 };
 

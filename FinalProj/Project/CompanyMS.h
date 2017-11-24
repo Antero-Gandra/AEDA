@@ -80,7 +80,6 @@ public:
 	void removeContestantMenu();
 
 	/**
-	* @brief Invokes a menu where it prints all the contestants information
 	*/
 	void showContestantsByIdMenu();
 
@@ -94,7 +93,6 @@ public:
 	void searchContestantByIdMenu();
 
 	/**
-	* @brief
 	*/
 	void removeContestantsApplicationsMenu();
 
@@ -122,12 +120,9 @@ public:
 	void fireJudgeMenu();
 
 	/**
-	* @brief Invokes a menu where it prints all the judges information
 	*/
 	void showJudgesByIdMenu();
-
 	void showJudgesByNameMenu();
-
 	void showJudgesOfSpecialtyMenu();
 
 	/**
@@ -155,7 +150,6 @@ public:
 	void scheduleMaxAuditionsOfSpecialtyMenu();
 
 	/**
-	* @brief
 	*/
 	void disassembleAuditionMenu();
 	
@@ -178,7 +172,6 @@ public:
 	//CANDIDATES SHOW FUNCTIONS
 
 	/**
-	* @brief Prints the information of all contestants on the database
 	*/
 	void showContestants();
 	void showContestantsByName();
@@ -196,27 +189,19 @@ public:
 	void showApplicationsOfSpecialty(std::string specialty);
 
 	/**
-	* @brief Prints the information of all judges on the database
 	*/
 	void showJudges();
-	void showJudgesByName();
 
 	void showPartialJudges(unsigned int limInf, unsigned int limSup);
-
 
 	/**
 	* @brief Prints the auditions from the specified id
 	* @param id as unsigned int
 	**/
-
 	void showAudition(unsigned int id);
-
 	void showAuditions();
 
-
-	/**
-	* @brief
-	*/
+	
 	//INPUT HANDLING
 
 	/**
@@ -293,14 +278,12 @@ public:
 	bool yesNoHandler();
 
 	/**
-	* @brief Validates if the contestant's ID input is not empty, if it has invalid characters and if it exists in the database
 	* @return unsigned int
 	*/
 	unsigned int contestantIdHandler();
-
 	unsigned int specialContestantIdHandler();
+	
 	/**
-	* @brief Validates if the judge's ID input is not empty, if it has invalid characters and if it exists in the database
 	* @return unsigned int
 	*/
 	unsigned int judgeIdHandler();
@@ -310,8 +293,6 @@ public:
 	* @param type as string
 	* @return string
 	*/
-	unsigned int auditionIdHandler();
-
 	std::string stringHandler(std::string type);
 
 	/**
@@ -343,7 +324,6 @@ public:
 	//APPEARANCE
 
 	/**
-	* @brief
 	* @param text as string
 	* @param colour as unsigned int
 	* @param dark as bool

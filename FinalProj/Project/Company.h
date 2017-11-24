@@ -194,7 +194,6 @@ public:
 
 	/**
 	* @brief Manages to sort a vector of judges who are of the specified specialty
-	* @param specialty a string, judges a vector reference of Judge Object Pointers
 	*/
 	void getJudgesOfSpecialty(std::string specialty, std::vector<Judge*> & judges);
 
@@ -299,7 +298,6 @@ public:
 
 	/**
 	* @brief Searches an audition from a specified date and specialty
-	* @param date a Calendar Object, specialty a string
 	* @return integer -1 if there is no audition with the specified date and specialty, otherwise returns the position of the auditions vector
 	*/
 	int getAuditionOfDayOfSpecialty(Calendar date, std::string specialty);
@@ -334,18 +332,14 @@ public:
 	void scheduleAudition(std::string specialty, Calendar beginning, std::vector<unsigned int> contestants, std::vector<unsigned int> judges, unsigned int chiefJudge);
 
 	/**
-	* @brief Schedule an audition with the max number of contestants within a specific specialty
 	* @param specialty a string
 	*/
 	void scheduleMaxAuditionsOfSpecialty(std::string specialty);
-
 	void scheduleAuditionOfSpecialty(std::string specialty);
 
 	/**
-	* @brief Schedule an audition with the max number of contestants
 	*/
 	void scheduleMaxAuditions();
-
 	void removeAudition(Audition * audition);
 
 	/**

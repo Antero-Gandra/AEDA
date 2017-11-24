@@ -114,7 +114,6 @@ public:
 	bool operator<(const Calendar & calendar1) const;
 
 	/**
-	*  TBC
 	*/
 	operator unsigned int() const;
 

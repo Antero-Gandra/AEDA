@@ -45,17 +45,70 @@ public:
 	*/
 	Phase(std::string textline);
 	//Get Methods
+	/**
+	* @brief Manages to get the audition's id
+	* @return unsigned integer
+	*/
 	unsigned int getAuditionId() const;
+		
+	/**
+	* @brief Manages access all the final grades from the contestants of a certain phase
+	* @return vector of doubles the final grade
+	*/
 	std::vector<double> getFinalGrade() const;
+	
+	/**
+	* @brief Manages access the grades the first judge gave to all contestants of a certain phase
+	* @return vector of unsigned integers the grade of the first judge
+	*/
 	std::vector<unsigned int> getJudge1() const;
+	
+	/**
+	* @brief Manages access the grades the second judge gave to all contestants of a certain phase
+	* @return vector of unsigned integers the grade of the second judge
+	*/
 	std::vector<unsigned int> getJudge2() const;
+	
+	/**
+	* @brief Manages access the grades the reposible judge gave to all contestants of a certain phase
+	* @return vector of unsigned integers the grade of the resposible judge
+	*/
 	std::vector<unsigned int> getChiefJudge() const;
+	
+	/**
+	* @brief Manages access the id of all contestants of a certain phase
+	* @return vector of unsigned integers
+	*/
 	std::vector<unsigned int> getContestants() const;
+	
+	
 	//Set Methods
+	
+	/**
+	* @brief Changes the id of an audition
+	* @param auditionId unsigned integer 
+	*/
 	void setAuditionId(unsigned int auditionId);
+	
+	/**
+	* @brief Changes the id of all contestants
+	* @param contestants unsigned integer 
+	*/
 	void setContestants(std::vector<unsigned int> contestants);
+	
+	
 	//other methods
+	
+	/**
+	* @brief Randomly assigns the the individual grades of each judges to all contestants
+	*/
+	
 	void evaluate();
+	
+	/**
+	* @brief Virtual function to grade all contestants
+	*/
+	
 	virtual void overallGrading() = 0;
 };
 
