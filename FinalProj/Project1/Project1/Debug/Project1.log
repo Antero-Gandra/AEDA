@@ -4,5 +4,8 @@ c:\users\margarida silva\documents\github\aeda\finalproj\project\companyms.cpp(6
 c:\users\margarida silva\documents\github\aeda\finalproj\project\companyms.cpp(624): warning C4018: '<': signed/unsigned mismatch
 c:\users\margarida silva\documents\github\aeda\finalproj\project\companyms.cpp(948): warning C4101: 'answer': unreferenced local variable
 c:\users\margarida silva\documents\github\aeda\finalproj\project\companyms.cpp(967): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  main.cpp
   Project1.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\FinalProj\Project1\Debug\Project1.exe
   Project1.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\FinalProj\Project1\Debug\Project1.pdb (Partial PDB)
