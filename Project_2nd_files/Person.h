@@ -93,12 +93,7 @@ public:
 	*/
 	void setSpecialty(std::string specialty);
 
-	/**
-	* @brief Randomly generates a mobile number
-	* @return unsigned int of the mobile number
-	*/
-
-	unsigned int mobileGenerator();
+	virtual void show() const;
 };
 
 #endif //_PERSON_H

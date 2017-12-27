@@ -76,14 +76,14 @@ public:
 	* @bfief Operator "<<" is overloaded to output the information about the Judge into a file
 	* @param os an Output Stream Object referece
 	* @param judge a constant Judge reference
-	* @return ostream reference
+	* @return ostream referenc eof the information of a judge in a specific format into a file
 	*/
 	friend std::ostream& operator<<(std::ostream& os, const Judge& judge);
 
 	/**
 	* @brief Prints the Judge's full information on the screen
 	*/
-	void show();
+	void show() const ;
 };
 
 #endif //_JUDGE_H

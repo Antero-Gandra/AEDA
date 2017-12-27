@@ -19,8 +19,8 @@ Audition::Audition(unsigned int id, Calendar start, Calendar end, std::string sp
 	this->specialty = specialty;
 	this->judgesId = judgesId;
 	this->chiefJudgeId = chiefJudgeId;
-	this->firstFase = new FirstFase(id, {}, {}, {}, {}, contestants);
-	this->secondFase = new SecondFase(id, {}, {}, {}, {}, {});
+	this->firstPhase = new FirstPhase(id, {}, {}, {}, {}, contestants);
+	this->secondPhase = new SecondPhase(id, {}, {}, {}, {}, {});
 }
 Audition::Audition(string textline) {
 
@@ -34,8 +34,8 @@ Audition::Audition(string textline) {
 	unsigned int hour;
 	unsigned int minute;
 	vector<unsigned int> ids;
-	string fase1;
-	string fase2;
+	string phase1;
+	string phase2;
 	string specialty;
 
 	//get id
@@ -88,13 +88,13 @@ Audition::Audition(string textline) {
 	auditionLine >> id;
 	auditionLine.ignore(numeric_limits<streamsize>::max(), '|');
 
-	//get Fase1
-	getline(auditionLine, fase1, '|');
-	FirstFase * firstFase = new FirstFase(fase1);
+	//get Phase1
+	getline(auditionLine, phase1, '|');
+	FirstPhase * firstPhase = new FirstPhase(phase1);
 
-	//get Fase2;
-	getline(auditionLine, fase2, '|');
-	SecondFase * secondFase = new SecondFase(fase2);
+	//get Phase2;
+	getline(auditionLine, phase2, '|');
+	SecondPhase * secondPhase = new SecondPhase(phase2);
 
 	//setting the attributes
 
@@ -103,13 +103,13 @@ Audition::Audition(string textline) {
 	this->specialty = specialty;
 	this->judgesId = ids;
 	this->chiefJudgeId = id;
-	this->firstFase = firstFase;
-	this->secondFase = secondFase;
+	this->firstPhase = firstPhase;
+	this->secondPhase = secondPhase;
 
 }
 Audition::~Audition() {
-	delete[] firstFase;
-	delete[] secondFase;
+	delete firstPhase;
+	delete secondPhase;
 }
 
 //get Methods
@@ -131,11 +131,11 @@ vector<unsigned int> Audition::getJudgesId() const {
 unsigned int Audition::getChiefJudgeId() const {
 	return chiefJudgeId;
 }
-FirstFase* Audition::getFirstFase() const {
-	return firstFase;
+FirstPhase* Audition::getFirstPhase() const {
+	return firstPhase;
 }
-SecondFase* Audition::getSecondFase() const {
-	return secondFase;
+SecondPhase* Audition::getSecondPhase() const {
+	return secondPhase;
 }
 
 //set Methods
@@ -157,11 +157,11 @@ void Audition::setJudgesId(vector<unsigned int> evaluators) {
 void Audition::setChiefJudgeId(unsigned int chiefJudgeId) {
 	this->chiefJudgeId = chiefJudgeId;
 }
-void Audition::setFirstFase(FirstFase * firstFase) {
-	this->firstFase = firstFase;
+void Audition::setFirstPhase(FirstPhase * firstPhase) {
+	this->firstPhase = firstPhase;
 }
-void Audition::setSecondFase(SecondFase *  secondFase) {
-	this->secondFase = secondFase;
+void Audition::setSecondPhase(SecondPhase *  secondPhase) {
+	this->secondPhase = secondPhase;
 }
 
 //operator Overloading
@@ -176,17 +176,17 @@ bool Audition::operator==(const Audition & audition1) const {
 }
 ostream& operator<<(ostream& os, const Audition & audition)
 {
-	os << audition.getId() << " | " << audition.getStart().full() << " | " << audition.getEnd().full() << " | " << audition.getSpecialty() << " | " << audition.getJudgesId()[0] << ", "  << audition.getJudgesId()[1] << " | " << audition.getChiefJudgeId() << " | " << *(audition.getFirstFase()) << " | " << *(audition.getSecondFase()) << " | ";
+	os << audition.getId() << " | " << audition.getStart().full() << " | " << audition.getEnd().full() << " | " << audition.getSpecialty() << " | " << audition.getJudgesId()[0] << ", "  << audition.getJudgesId()[1] << " | " << audition.getChiefJudgeId() << " | " << *(audition.getFirstPhase()) << " | " << *(audition.getSecondPhase()) << " | ";
 	return os;
 }
 
 //other methods
-vector<unsigned int> Audition::gradeFirstFase() {
-	firstFase->evaluate();
-	firstFase->overallGrading();
+vector<unsigned int> Audition::gradeFirstPhase() {
+	firstPhase->evaluate();
+	firstPhase->overallGrading();
 
-	vector<unsigned int> orderedContestants = firstFase->getContestants();
-	vector<double> orderedGrades = firstFase->getFinalGrade();
+	vector<unsigned int> orderedContestants = firstPhase->getContestants();
+	vector<double> orderedGrades = firstPhase->getFinalGrade();
 	
 	//double sort
 	for (unsigned int j = orderedGrades.size() - 1; j > 0; j--){
@@ -208,16 +208,16 @@ vector<unsigned int> Audition::gradeFirstFase() {
 	reverse(contestantsQualified.begin(), contestantsQualified.end());
 	contestantsQualified.resize(5);
 	sort(contestantsQualified.begin(), contestantsQualified.end());
-	secondFase->setContestants(contestantsQualified);
+	secondPhase->setContestants(contestantsQualified);
 
 	return contestantsNotQualified;
 }
-vector<unsigned int> Audition::gradeSecondFase() {
-	secondFase->evaluate();
-	secondFase->overallGrading();
+vector<unsigned int> Audition::gradeSecondPhase() {
+	secondPhase->evaluate();
+	secondPhase->overallGrading();
 
-	vector<unsigned int> orderedContestants = secondFase->getContestants();
-	vector<double> orderedGrades = secondFase->getFinalGrade();
+	vector<unsigned int> orderedContestants = secondPhase->getContestants();
+	vector<double> orderedGrades = secondPhase->getFinalGrade();
 
 	//double sort
 	for (unsigned int j = orderedGrades.size() - 1; j > 0; j--) {

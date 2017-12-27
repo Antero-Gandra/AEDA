@@ -1,8 +1,8 @@
 #ifndef _AUDITION_H
 #define _AUDITION_H
 
-#include "FirstFase.h"
-#include "SecondFase.h"
+#include "FirstPhase.h"
+#include "SecondPhase.h"
 #include <string>
 #include <vector>
 #include "Calendar.h"
@@ -16,8 +16,8 @@ private:
     std::string specialty;
 	std::vector<unsigned int> judgesId;
 	unsigned int chiefJudgeId;
-	FirstFase* firstFase;
-	SecondFase* secondFase;
+	FirstPhase* firstPhase;
+	SecondPhase* secondPhase;
 public:
 	/**
 	* @brief Audition contructor with its id, start and end date, speciality, judges' id and reposible judge's id.
@@ -29,10 +29,13 @@ public:
 	* @param chiefJudge an unsigned integer
 	*/
 	Audition(unsigned int id, Calendar start, Calendar end, std::string specialty, std::vector<unsigned int> judgesId, unsigned int chiefJudgeId, std::vector<unsigned int> contestants);
+	
 	/**
-	* @brief Audition contructor by reading the file
+	* @brief Audition contructor by reading a line from the file
+	* @param textline as string
 	*/
 	Audition(std::string textline);
+	
 	/**
 	* @brief Audition Decontructor
 	*/
@@ -79,13 +82,13 @@ public:
 	* Retrieves the First Phase of the specific Audition
 	* @return constant First Phase pointer's object of the Audition
 	*/
-	FirstFase* getFirstFase() const;
+	FirstPhase* getFirstPhase() const;
 	
 	
 	/**
 	* Retrieves the Second Phase of the specific Audition
 	* @return constant Second Phase pointer's object of the Audition
-	*/SecondFase* getSecondFase() const;
+	*/SecondPhase* getSecondPhase() const;
 
 	/**
 	* Changes the ID of the Audition
@@ -119,21 +122,21 @@ public:
 	
 	/**
 	* Changes the Judge's in charge ID of the Audition
-	* @param chiefJudgeId an unsigned int
+	* @param chiefJudgeId an unsigned integer
 	*/
 	void setChiefJudgeId(unsigned int chiefJudgeId);
 	
 	/**
 	* Changes First Phase of the Audition
-	* @param firstFase a FirstFase object pointer
+	* @param firstPhase a FirstPhase object pointer
 	*/
-	void setFirstFase(FirstFase * firstFase);
+	void setFirstPhase(FirstPhase * firstPhase);
 	
 	/**
 	* Changes Second Phase of the Audition
-	* @param secondFase a SecondFase object pointer
+	* @param secondPhase a SecondPhase object pointer
 	*/
-	void setSecondFase(SecondFase *  secondFase);
+	void setSecondPhase(SecondPhase *  secondPhase);
 
 	/**
 	* Operator "<" is overloaded to compare the ID value of the Object Audition with a specific Audition
@@ -161,13 +164,13 @@ public:
 	* Grades the contestants of the Object Audition for the First Phase and sorts them by grade; splits the contestants who were and were not qualified
 	* @return vector of unsigned integers of the contestants sorted by grade of those who didn't qualified to second phase
 	*/
-	std::vector<unsigned int> gradeFirstFase();
+	std::vector<unsigned int> gradeFirstPhase();
 
 	/**
 	* Grades the contestants of the Object Audition for the Second Phase and sorts them by grade
 	* @return vector of unsigned integers of the contestants sorted by grade
 	*/
-	std::vector<unsigned int> gradeSecondFase();
+	std::vector<unsigned int> gradeSecondPhase();
 
 	/**
 	* @brief Prints the Audition's full information on the screen

@@ -142,15 +142,13 @@ ostream& operator<<(ostream& os, const Judge& judge) {
 }
 
 //Other Methods
-void Judge::show() {
+void Judge::show() const {
 	if (id != 0) {
 		cout << "Judge No. " << id << endl;
 	}
-	cout << "-> Name: " << name << endl;
-	cout << "-> Date of Birth: " << dob.date() << endl;
-	cout << "-> Mobile: " << mobile << endl;
-	cout << "-> Address: " << address << endl;
-	cout << "-> Specialty: " << specialty << endl;
+
+	Person::show();
+
 	cout << "-> Participations: " << endl;
 
 	if (participations.size() == 0) {

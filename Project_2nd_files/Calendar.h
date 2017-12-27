@@ -1,8 +1,3 @@
-/**
-* Project Untitled
-*/
-
-
 #ifndef _CALENDAR_H
 #define _CALENDAR_H
 
@@ -114,7 +109,8 @@ public:
 	bool operator<(const Calendar & calendar1) const;
 
 	/**
-	*  TBC
+	* @brief Converts the object's time in minutes
+	* @return unsigned integer of the time in minutes
 	*/
 	operator unsigned int() const;
 

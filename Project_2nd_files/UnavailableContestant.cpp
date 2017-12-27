@@ -10,5 +10,3 @@ UnavailableContestant::UnavailableContestant(unsigned int id, std::string name, 
 	this->unavailbalePeriodEnd = unavailablePeriodEnd;
 	this->reason = reason;
 }
-
-

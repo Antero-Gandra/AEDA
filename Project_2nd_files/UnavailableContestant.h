@@ -17,4 +17,4 @@ struct UContestantPtr {
 	UnavailableContestant * uCont;
 };
 
-#endif //_CONTESTANT_H
+#endif //_UNAVAILABLECONTESTANT_H

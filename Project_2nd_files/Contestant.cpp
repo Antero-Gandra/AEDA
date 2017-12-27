@@ -147,9 +147,9 @@ ostream& operator<<(ostream& os, const Contestant& contestant) {
 
 	for (size_t i = 0; i < participations.size(); i++)
 	{
-		os << participations[i]->auditionId << " , ";
-		os <<participations[i]->place << " , ";
-		os << participations[i]->chiefJudgeGrade << ". ";
+		os << participations[i]->getAuditionId() << " , ";
+		os <<participations[i]->getPlace() << " , ";
+		os << participations[i]->getChiedJudgeGrade() << ". ";
 	}
 	os << " ;";
 	return os;
@@ -161,18 +161,16 @@ void Contestant::show() const {
 	{
 		cout << "Contestant No. " << id << endl;
 	}
-	cout << "-> Name: " << name << endl;
-	cout << "-> Date of Birth: " << dob.date() << endl;
-	cout << "-> Mobile: " << mobile << endl;
-	cout << "-> Address: " << address << endl;
-	cout << "-> Specialty: " << specialty << endl;
+
+	Person::show();
+
 	cout << "-> Participations: " << endl;
 
 	if (participations.size() == 0) cout << " NONE. " << endl;
 	for (size_t i = 0; i < participations.size(); i++)
-	{cout << "    Audition No. " << participations[i]->auditionId << endl;
-	cout << "    ::Place: " << participations[i]->place << endl;
-	cout << "    ::Chief judges's grade: " << participations[i]->chiefJudgeGrade << endl;
+	{cout << "    Audition No. " << participations[i]->getAuditionId() << endl;
+	cout << "    ::Place: " << participations[i]->getPlace() << endl;
+	cout << "    ::Chief judges's grade: " << participations[i]->getChiedJudgeGrade() << endl;
 	}
 }
 

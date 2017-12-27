@@ -30,6 +30,7 @@ public:
 
 	/**
 	* @brief Contestant Contructor by reading a line from Contestant file
+	* @param textline as string
 	*/
 	Contestant(std::string textLine);
 
@@ -77,7 +78,7 @@ public:
 	/**
 	* @bfief Operator "<<" is overloaded to output the information about the Contestant into a file
 	* @param contestant1 a constant Contestant reference
-	* @return ostream reference
+	* @return ostream reference of the information of the contestant in a specific format into a file
 	*/
 	friend std::ostream& operator<<(std::ostream& os, const Contestant & contestant);
 };

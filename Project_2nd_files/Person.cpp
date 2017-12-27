@@ -1,4 +1,5 @@
 #include "Person.h"
+#include <iostream>
 #include <stdio.h>
 #include <ctime>
 
@@ -27,8 +28,10 @@ void Person::setDob(Calendar dob) { this->dob = dob; }
 void Person::setSpecialty(string specialty) { this->specialty = specialty; }
 
 //Other Methods
-/*unsigned int Person::mobileGenerator() {
-	unsigned int number = rand()% 100000000 + 900000000;
-	srand(Calendar(NULL));
-	return number;
-};*/
+void Person::show() const {
+	cout << "-> Name: " << name << endl;
+	cout << "-> Date of Birth: " << dob.date() << endl;
+	cout << "-> Mobile: " << mobile << endl;
+	cout << "-> Address: " << address << endl;
+	cout << "-> Specialty: " << specialty << endl;
+}

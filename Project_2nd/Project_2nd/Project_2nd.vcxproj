@@ -18,6 +18,41 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Project_2nd_files\Application.cpp" />
+    <ClCompile Include="..\..\Project_2nd_files\Audition.cpp" />
+    <ClCompile Include="..\..\Project_2nd_files\Calendar.cpp" />
+    <ClCompile Include="..\..\Project_2nd_files\Company.cpp" />
+    <ClCompile Include="..\..\Project_2nd_files\CompanyMS.cpp" />
+    <ClCompile Include="..\..\Project_2nd_files\Contestant.cpp" />
+    <ClCompile Include="..\..\Project_2nd_files\ExceptionHand.cpp" />
+    <ClCompile Include="..\..\Project_2nd_files\FirstPhase.cpp" />
+    <ClCompile Include="..\..\Project_2nd_files\Judge.cpp" />
+    <ClCompile Include="..\..\Project_2nd_files\main.cpp" />
+    <ClCompile Include="..\..\Project_2nd_files\Participation.cpp" />
+    <ClCompile Include="..\..\Project_2nd_files\Person.cpp" />
+    <ClCompile Include="..\..\Project_2nd_files\Phase.cpp" />
+    <ClCompile Include="..\..\Project_2nd_files\SecondPhase.cpp" />
+    <ClCompile Include="..\..\Project_2nd_files\UnavailableContestant.cpp" />
+    <ClCompile Include="..\..\Project_2nd_files\Util.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Project_2nd_files\Application.h" />
+    <ClInclude Include="..\..\Project_2nd_files\Audition.h" />
+    <ClInclude Include="..\..\Project_2nd_files\Calendar.h" />
+    <ClInclude Include="..\..\Project_2nd_files\Company.h" />
+    <ClInclude Include="..\..\Project_2nd_files\CompanyMS.h" />
+    <ClInclude Include="..\..\Project_2nd_files\Contestant.h" />
+    <ClInclude Include="..\..\Project_2nd_files\ExceptionHand.h" />
+    <ClInclude Include="..\..\Project_2nd_files\FirstPhase.h" />
+    <ClInclude Include="..\..\Project_2nd_files\Judge.h" />
+    <ClInclude Include="..\..\Project_2nd_files\Participation.h" />
+    <ClInclude Include="..\..\Project_2nd_files\Person.h" />
+    <ClInclude Include="..\..\Project_2nd_files\Phase.h" />
+    <ClInclude Include="..\..\Project_2nd_files\SecondPhase.h" />
+    <ClInclude Include="..\..\Project_2nd_files\UnavailableContestant.h" />
+    <ClInclude Include="..\..\Project_2nd_files\Util.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{FF1FB536-FF0D-42FC-BF90-8AC17564F1E3}</ProjectGuid>
@@ -110,42 +145,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\Project_2nd_files\Application.h" />
-    <ClInclude Include="..\..\Project_2nd_files\Audition.h" />
-    <ClInclude Include="..\..\Project_2nd_files\Calendar.h" />
-    <ClInclude Include="..\..\Project_2nd_files\Company.h" />
-    <ClInclude Include="..\..\Project_2nd_files\CompanyMS.h" />
-    <ClInclude Include="..\..\Project_2nd_files\Contestant.h" />
-    <ClInclude Include="..\..\Project_2nd_files\ExceptionHand.h" />
-    <ClInclude Include="..\..\Project_2nd_files\Fase.h" />
-    <ClInclude Include="..\..\Project_2nd_files\FirstFase.h" />
-    <ClInclude Include="..\..\Project_2nd_files\insertionSort.h" />
-    <ClInclude Include="..\..\Project_2nd_files\Judge.h" />
-    <ClInclude Include="..\..\Project_2nd_files\Participation.h" />
-    <ClInclude Include="..\..\Project_2nd_files\Person.h" />
-    <ClInclude Include="..\..\Project_2nd_files\SecondFase.h" />
-    <ClInclude Include="..\..\Project_2nd_files\sequentialSearch.h" />
-    <ClInclude Include="..\..\Project_2nd_files\UnavailableContestant.h" />
-    <ClInclude Include="..\..\Project_2nd_files\Util.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\Project_2nd_files\Application.cpp" />
-    <ClCompile Include="..\..\Project_2nd_files\Audition.cpp" />
-    <ClCompile Include="..\..\Project_2nd_files\Calendar.cpp" />
-    <ClCompile Include="..\..\Project_2nd_files\Company.cpp" />
-    <ClCompile Include="..\..\Project_2nd_files\CompanyMS.cpp" />
-    <ClCompile Include="..\..\Project_2nd_files\Contestant.cpp" />
-    <ClCompile Include="..\..\Project_2nd_files\ExceptionHand.cpp" />
-    <ClCompile Include="..\..\Project_2nd_files\Fase.cpp" />
-    <ClCompile Include="..\..\Project_2nd_files\FirstFase.cpp" />
-    <ClCompile Include="..\..\Project_2nd_files\Judge.cpp" />
-    <ClCompile Include="..\..\Project_2nd_files\Participation.cpp" />
-    <ClCompile Include="..\..\Project_2nd_files\Person.cpp" />
-    <ClCompile Include="..\..\Project_2nd_files\SecondFase.cpp" />
-    <ClCompile Include="..\..\Project_2nd_files\UnavailableContestant.cpp" />
-    <ClCompile Include="..\..\Project_2nd_files\Util.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

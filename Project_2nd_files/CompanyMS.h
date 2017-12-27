@@ -10,7 +10,14 @@
 
 class CompanyMS {
 	static Calendar currentCalendar;
+	Company * company;
 public:
+	//Constructor
+	/**
+	* @brief CompanyMS constructor
+	* @param company as Company Object pointer
+	*/
+	CompanyMS(Company * company);
 
 	/**
 	* @brief Ivokes the current time, reads and imports to the specific data structure
@@ -24,6 +31,7 @@ public:
 	*/
 	void mainMenu();
 
+	void saveMenu();
 
 	/**
 	* @brief Invokes the contestant menu with the CRUD option and also to read from a file to update the database;
@@ -72,17 +80,21 @@ public:
 	*/
 	void removeContestantMenu();
 
+	/**
+	* @brief Invokes a menu where the user can view all contestants' information or select 2 contestants id where it prints
+	*		 all contentant's information sorted by id between that range
+	*/
+	void showContestantsByIdMenu();
 
 	/**
-	* @brief 
+	* @brief Invokes a menu where it shows all contestants' information sorted by name
 	*/
-	void readContestantsFileMenu();
+	void showContestantsByNameMenu();
 
 	/**
-	* @brief Invokes a menu where it prints all the contestants information
+	* @brief Invokes a menu where it shows all contestants' information from a specified speciality
 	*/
-	void showContestantsMenu();
-
+	void showContestantsOfSpecialtyMenu();
 
 	/**
 	* @brief Invokes the menu where it shows if the contestant's id exists and if so, show's it
@@ -90,14 +102,9 @@ public:
 	void searchContestantByIdMenu();
 
 	/**
-	* @brief
+	* @brief Invokes the menu where it removes all applications from a contestant
 	*/
 	void removeContestantsApplicationsMenu();
-
-	/**
-	* @brief
-	*/
-	void readApplicationsFileMenu();
 
 	/**
 	* @brief Invokes the menu where it shows the applications from all candidates
@@ -123,14 +130,20 @@ public:
 	void fireJudgeMenu();
 
 	/**
-	* @brief
+	* @brief Invokes a menu where the user can view all judges' information or select 2 judges id where it prints
+	*		 all judges's information sorted by id between that range
 	*/
-	void readJudgesFileMenu();
-
+	void showJudgesByIdMenu();
+	
 	/**
-	* @brief Invokes a menu where it prints all the judges information
+	* @brief Invokes a menu where it shows all judges' information sorted by name
 	*/
-	void showJudgesMenu();
+	void showJudgesByNameMenu();
+	
+	/**
+	* @brief Invokes a menu where it shows all judges' information from a specified speciality
+	*/
+	void showJudgesOfSpecialtyMenu();
 
 	/**
 	* @brief Invokes a menu where it searches for a judge with a specific id
@@ -157,24 +170,9 @@ public:
 	void scheduleMaxAuditionsOfSpecialtyMenu();
 
 	/**
-	* @brief 
-	*/
-	void modifyAuditionMenu();
-
-	/**
-	* @brief
+	* @brief Invokes a menu where it removes an audition from the database
 	*/
 	void disassembleAuditionMenu();
-
-	/**
-	* @brief
-	*/
-	void evaluateFirstFaseMenu();
-	
-	/**
-	* @brief
-	*/
-	void evaluateSecondFaseMenu();
 	
 	/**
 	* @brief Invokes a menu where it evaluates a given audition
@@ -184,7 +182,7 @@ public:
 	/**
 	* @brief Invokes a menu where it evaluates all possible auditions
 	*/
-	void evaluateAllAuditions();
+	void evaluateAllAuditionsMenu();
 
 	/**
 	* @brief Invokes a menu where it prints all the auditions information
@@ -195,10 +193,22 @@ public:
 	//CANDIDATES SHOW FUNCTIONS
 
 	/**
-	* @brief Prints the information of all contestants on the database
+	* @brief Prints the information of all contestants on the database sorted by id
 	*/
 	void showContestants();
+	
+	/**
+	* @brief Prints the information of all contestants on the database sorted by name
+	*/
+	void showContestantsByName();
+
+	/**
+	* @brief Prints the information of a range, sorted by id, of contestants on the database
+	* @param limInf an unsigned integer
+	* @param limSup an unsigned integer
+	*/
 	void showPartialContestants(unsigned int limInf, unsigned int limSup);
+
 	/**
 	* @brief Prints the date that a contestant applied to an audition
 	*/
@@ -208,23 +218,34 @@ public:
 	* @brief Prints the date that a contestant applied to an audition of a specified specialty
 	*/
 	void showApplicationsOfSpecialty(std::string specialty);
+
 	/**
-	* @brief Prints the information of all judges on the database
+	* @brief Prints the information of all judges on the database sorted by id
 	*/
 	void showJudges();
+
+	/**
+	* @brief Prints the information of all judges on the database sorted by name
+	*/
+	void showJudgesByName();
+	
+	/**
+	* @brief Prints the information of a range, sorted by id, of judges on the database
+	*/
 	void showPartialJudges(unsigned int limInf, unsigned int limSup);
 
 	/**
 	* @brief Prints the auditions from the specified id
 	* @param id as unsigned int
 	**/
-
 	void showAudition(unsigned int id);
-
-
+	
 	/**
-	* @brief
-	*/
+	* @brief Prints all possible auditions
+	**/
+	void showAuditions();
+
+	
 	//INPUT HANDLING
 
 	/**
@@ -299,24 +320,29 @@ public:
 	bool yesNoHandler();
 
 	/**
-	* @brief Validates if the contestant's ID input is not empty, if it has invalid characters and if it exists in the database
+	* @brief Converts the string inputed of the judge's id to unsigned integer
 	* @return unsigned int
 	*/
 	unsigned int contestantIdHandler();
-
+	
 	/**
-	* @brief Validates if the judge's ID input is not empty, if it has invalid characters and if it exists in the database
+	* @brief Converts the string inputed of the judge's id to unsigned integer
 	* @return unsigned int
 	*/
 	unsigned int judgeIdHandler();
 
 	/**
+	* @brief Converts the string inputed of the audition's id to unsigned integer
+	* @return unsigned int
+	*/
+
+	unsigned int auditionIdHandler();
+	
+	/**
 	* @brief Checks if the input string is valid and not empty
 	* @param type as string
 	* @return string
 	*/
-		unsigned int auditionIdHandler();
-
 	std::string stringHandler(std::string type);
 
 	/**
@@ -348,7 +374,7 @@ public:
 	//APPEARANCE
 
 	/**
-	* @brief
+	* @brief Prints text in a specific color and if it is bold of not
 	* @param text as string
 	* @param colour as unsigned int
 	* @param dark as bool
@@ -360,14 +386,10 @@ public:
 	*/
 	void clearScreen();
 
-	//Constructor
 	/**
-	* @brief CompanyMS constructor
-	* @param company as Company Object pointer
+	* @brief Prints the title of the program
 	*/
-	CompanyMS(Company * company);
-private:
-	Company * company;
+	void mainTitle();
 };
 
 #endif //_COMPANYMS_H

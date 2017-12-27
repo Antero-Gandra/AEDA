@@ -5,7 +5,7 @@
 #include "ExceptionHand.h"
 #include <ctime>
 #include <iostream>
-#include <vector>
+#include <algorithm>
 #include <wchar.h>
 #include <stdio.h>
 #include <string>
@@ -14,14 +14,6 @@
 Calendar CompanyMS::currentCalendar = Calendar(2017, 11, 14, 12, 0);
 using namespace std;
 
-int main()
-{
-	Company * company = new Company;
-	CompanyMS MS(company);
-	MS.run();
-
-	return 0;
-}
 
 CompanyMS::CompanyMS(Company * company) {
 	this->company = company;
@@ -50,21 +42,23 @@ void CompanyMS::run() {
 	} while (!std::cin.eof());
 	cin.clear();
 	updateFilesHandler();
+	if (cin.eof()) return;
 }
 
 void CompanyMS::mainMenu() {
 
 	string op;
 
-
-	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
+	mainTitle();
 
 	cout << "1. CONTESTANT" << endl;
 	cout << "2. JUDGE" << endl;
 	cout << "3. AUDITION" << endl;
-	cout << "Please Press ESC to Exit" << endl;
+	printInColour("4. SAVE\n", 6, true);
 
-	unsigned int option = optionHandler(1, 3);
+	cout << "Please Press ^Z to Exit" << endl;
+
+	unsigned int option = optionHandler(1, 4);
 	if (cin.eof()) return;
 
 	switch (option) {
@@ -87,28 +81,44 @@ void CompanyMS::mainMenu() {
 	} while (!std::cin.eof());
 	cin.clear();
 	break;
+	case 4: do {
+		clearScreen();
+		saveMenu();
+	} while (!std::cin.eof());
+	cin.clear();
+	break;
+	}
+}
+
+void CompanyMS::saveMenu() {
+	mainTitle();
+	cout << "\t\t::::::::: SAVE ::::::::: \n";
+	updateFilesHandler();
+	if (cin.eof()) return;
+	cout << "Please Press Ctrl^Z to go back to the Main Menu" << endl;
+	while (!cin.eof()) {
+		string option;
+		getline(cin, option);
 	}
 }
 
 void CompanyMS::contestantMenu()
 {
-
-	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
+	mainTitle();
 	cout << "\t\t::::::::: CONTESTANT ::::::::: \n";
 
 	cout << "1. Enroll a contestant" << endl;
 	cout << "2. Modify the info of a contestant" << endl;
 	cout << "3. Remove a contestant" << endl;
-	cout << "4. Remove a contestant's applicatons" << endl;
-	cout << "7. View all contestants" << endl;
-	cout << "8. View all applications" << endl;
-	cout << "9. View contestants of a specialty" << endl;
-	cout << "10. View contestants who won castings" << endl;
-	cout << "11. Search contestant by id" << endl;
-	cout << "12. Search contestant by name" << endl;
-	cout << "Please Press Ctrl^Z to Exit" << endl;
+	cout << "4. Remove a contestant's applications" << endl;
+	cout << "5. View contestants by id" << endl;
+	cout << "6. View contestants by name" << endl;
+	cout << "7. View contestants of a specialty" << endl;
+	cout << "8. Search contestant by id" << endl;
+	cout << "9. View all applications" << endl;
+	cout << "Please Press Ctrl^Z to go back to the Main Menu" << endl;
 
-	unsigned int option = optionHandler(1, 8);
+	unsigned int option = optionHandler(1, 9);
 	if (cin.eof()) return;
 
 	switch (option) {
@@ -133,25 +143,25 @@ void CompanyMS::contestantMenu()
 	break;
 	case 4: do {
 		clearScreen();
-		searchContestantByIdMenu();
+		removeContestantsApplicationsMenu();
 	} while (!std::cin.eof());
 	cin.clear();
 	break;
 	case 5: do {
 		clearScreen();
-		showContestantsMenu();
+		showContestantsByIdMenu();
 	} while (!std::cin.eof());
 	cin.clear();
 	break;
 	case 6: do {
 		clearScreen();
-
+		showContestantsByNameMenu();
 	} while (!std::cin.eof());
 	cin.clear();
 	break;
 	case 7: do {
 		clearScreen();
-		showContestantsMenu();
+		showContestantsOfSpecialtyMenu();
 
 	} while (!std::cin.eof());
 	cin.clear();
@@ -159,25 +169,32 @@ void CompanyMS::contestantMenu()
 
 	case 8: do {
 		clearScreen();
+		searchContestantByIdMenu();
+	} while (!std::cin.eof());
+	cin.clear();
+	break;
+	case 9: do {
+		clearScreen();
 		showApplicationsMenu();
 	} while (!std::cin.eof());
 	cin.clear();
 	break;
+
 	}
 }
 
 void CompanyMS::judgeMenu() {
 
-	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
+	mainTitle();
 	cout << "\t\t::::::::: JUDGE ::::::::: \n";
 
 	cout << "1. Employ a judge" << endl;
 	cout << "2. Modify the info of a current judge" << endl;
 	cout << "3. Fire a judge" << endl;
-	cout << "4. View all judges" << endl;
-	cout << "5. View judges of specialty" << endl;
-	cout << "6. Search judge by id" << endl;
-	cout << "7. Search judge by name" << endl;
+	cout << "4. View judges by id" << endl;
+	cout << "5. View judges by name" << endl;
+	cout << "6. View judges of specialty" << endl;
+	cout << "7. Search judge by id" << endl;
 	cout << "Please Press Ctrl^Z to go back to the Main Menu" << endl;
 
 	unsigned int option = optionHandler(1, 7);
@@ -205,24 +222,25 @@ void CompanyMS::judgeMenu() {
 	break;
 	case 4: do {
 		clearScreen();
-		showJudgesMenu();
+		showJudgesByIdMenu();
 	} while (!std::cin.eof());
 	cin.clear();
 	break;
 	case 5: do {
 		clearScreen();
-
+		showJudgesByNameMenu();
 	} while (!std::cin.eof());
 	cin.clear();
 	break;
 	case 6: do {
 		clearScreen();
-		searchJudgeByIdMenu();
+		showJudgesOfSpecialtyMenu();
 	} while (!std::cin.eof());
 	cin.clear();
 	break;
 	case 7: do {
 		clearScreen();
+		searchJudgeByIdMenu();
 	} while (!std::cin.eof());
 	cin.clear();
 	break;
@@ -231,21 +249,19 @@ void CompanyMS::judgeMenu() {
 
 void CompanyMS::auditionMenu() {
 
-	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
+	mainTitle();
 	cout << "\t\t::::::::: AUDITION ::::::::: \n";
 
 	cout << "1. Schedule an audition" << endl;
 	cout << "2. Schedule the maximum number of auditions possible at the moment" << endl;
 	cout << "3. Schedule the maximum number of auditions possible at the moment of a specialty" << endl;
-	cout << "4. Modify an audition" << endl;
-	cout << "5. Disassemble an audition" << endl;
-	cout << "6. Evaluate first fase of an audition" << endl;
-	cout << "7. Evaluate second fase of an audition" << endl;
-	cout << "8. Evaluate an audition" << endl;
-	cout << "9. Evaluate all auditions" << endl;
-	cout << "10. View all auditions" << endl;
+	cout << "4. Disassemble an audition" << endl;
+	cout << "5. Evaluate an audition" << endl;
+	cout << "6. Evaluate all auditions" << endl;
+	cout << "7. View all auditions" << endl;
+	cout << "Please Press Ctrl^Z to go back to the Main Menu" << endl;
 
-	unsigned int option = optionHandler(1, 10);
+	unsigned int option = optionHandler(1, 7);
 	if (cin.eof()) return;
 
 	switch (option) {
@@ -264,24 +280,25 @@ void CompanyMS::auditionMenu() {
 	break;
 	case 3: do {
 		clearScreen();
+		scheduleMaxAuditionsOfSpecialtyMenu();
 	} while (!std::cin.eof());
 	cin.clear();
 	break;
 	case 4: do {
 		clearScreen();
-		showAuditionsMenu();
+		disassembleAuditionMenu();
 	} while (!std::cin.eof());
 	cin.clear();
 	break;
 	case 5: do {
 		clearScreen();
-		showAuditionsMenu();
+		evaluateAuditionMenu();
 	} while (!std::cin.eof());
 	cin.clear();
 	break;
 	case 6: do {
 		clearScreen();
-		showAuditionsMenu();
+		evaluateAllAuditionsMenu();
 	} while (!std::cin.eof());
 	cin.clear();
 	break;
@@ -291,29 +308,11 @@ void CompanyMS::auditionMenu() {
 	} while (!std::cin.eof());
 	cin.clear();
 	break;
-	case 8: do {
-		clearScreen();
-		evaluateAuditionMenu();
-	} while (!std::cin.eof());
-	cin.clear();
-	break;
-	case 9: do {
-		clearScreen();
-		evaluateAllAuditions();
-	} while (!std::cin.eof());
-	cin.clear();
-	break;
-	case 10: do {
-		clearScreen();
-		showAuditionsMenu();
-	} while (!std::cin.eof());
-	cin.clear();
-	break;
 	}
 }
 
 void CompanyMS::enrollAContestantMenu() {
-	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
+	mainTitle();
 	cout << "\t\t::::::::: ENROLL A CONTESTANT ::::::::: \n";
 
 	cout << "First things first, is the candidate you want to enroll already in our database? (y/n)";
@@ -333,6 +332,8 @@ void CompanyMS::enrollAContestantMenu() {
 		unsigned int Id = contestantIdHandler();
 		if (cin.eof()) return;
 		company->addApplication(currentCalendar, Id);
+		updateFilesHandler();
+		if (cin.eof()) return;
 	}
 	else {
 		Contestant * contestant = NULL;
@@ -401,10 +402,9 @@ void CompanyMS::enrollAContestantMenu() {
 	}
 }
 void CompanyMS::modifyContestantMenu() {
-	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
+	mainTitle();
 	cout << "\t\t::::::::: MODIFY A CONTESTANT ::::::::: \n";
-	printInColour("Important Notes: \n", 3, false);
-	cout << "-> Changing a contestants's specialty means its applications will all be deleted from our database, but the contestants's participation records will be kept. \n" << endl;
+
 	bool repeated = true, answer;
 	bool changes = false;
 	cout << "Would you like to see the list of contestants? " << endl;
@@ -510,11 +510,14 @@ void CompanyMS::modifyContestantMenu() {
 				printInColour("new : \n", 5, false);
 				aux->show(); cout << endl;
 				answer = yesNoHandler();
+				if (cin.eof()) return;
+/* UPDATING CONTESTANT */
 				if (answer)
 				{
 					company->updateContestant(contestant, aux);
 					cout << "Contestant No. " << id << " has been updates successfuly!" << endl;
 					updateFilesHandler();
+					if (cin.eof()) return;
 				}
 				else repeated = false;
 			}
@@ -531,12 +534,13 @@ void CompanyMS::modifyContestantMenu() {
 	}
 }
 void CompanyMS::removeContestantMenu() {
-	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
+	mainTitle();
 	cout << "\t\t::::::::: REMOVE A CONTESTANT ::::::::: \n";
 	bool sure = false, answer;
 
 	cout << "Would you like to see the list of contestants? " << endl;
 	answer = yesNoHandler();
+
 	if (cin.eof()) return;
 	if (answer) {
 		cout << "List of contestants: " << endl;
@@ -561,6 +565,7 @@ void CompanyMS::removeContestantMenu() {
 			sure = true;
 			cout << "Contestant No. " << id << " has been removed  successfuly!" << endl;
 			updateFilesHandler();
+			if (cin.eof()) return;
 		}
 	}
 	cout << "Please Press Ctrl^Z to go back to the Contestants' Menu" << endl;
@@ -569,9 +574,9 @@ void CompanyMS::removeContestantMenu() {
 		getline(cin, option);
 	}
 }
-void CompanyMS::showContestantsMenu() {
-	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
-	cout << "\t\t::::::::: VIEW CONTESTESTANTS ::::::::: \n";
+void CompanyMS::showContestantsByIdMenu() {
+	mainTitle();
+	cout << "\t\t::::::::: VIEW CONTESTESTANTS BY ID ::::::::: \n";
 	bool answer;
 	cout << "Would you like to see the total list of contestants? " << endl;
 	answer = yesNoHandler();
@@ -600,15 +605,68 @@ void CompanyMS::showContestantsMenu() {
 		getline(cin, option);
 	}
 }
-void CompanyMS::showApplicationsMenu() {
-	vector<Application* > applications = company->getApplications();
-	Contestant * contestant;
-	for (size_t i = 0; i < applications.size(); i++) {
-		cout << "Candidature sent at " << applications[i]->date << " by:" << endl;
-		contestant = company->getContestantById(applications[i]->contestantId);
-		contestant->show();
+void CompanyMS::showContestantsByNameMenu() {
+	mainTitle();
+	cout << "\t\t::::::::: VIEW CONTESTESTANTS BY NAME ::::::::: \n";
+	bool answer;
+
+	showContestantsByName();
+	cout << "Please Press Ctrl^Z to go back to the Contestants' Menu" << endl;
+	while (!cin.eof()) {
+		string option;
+		getline(cin, option);
+	}
+}
+void CompanyMS::showContestantsOfSpecialtyMenu() {
+	mainTitle();
+	cout << "\t\t::::::::: VIEW CONTESTESTANTS OF SPECIALTY ::::::::: \n";
+
+	cout << "Please insert the specialty you would like to see contestants of." << endl;
+	string specialty = specialtyHandler();
+	if (cin.eof()) return;
+
+	cout << "Contestants:" << endl;
+	vector<Contestant*> contestants;
+	company->getContestantsOfSpecialty(specialty, contestants);
+	for (int i = 0; i < contestants.size(); i++) {
+		contestants[i]->show();
 		cout << endl;
 	}
+
+
+	cout << "Please Press Ctrl^Z to go back to the Contestants' Menu" << endl;
+	while (!cin.eof()) {
+		string option;
+		getline(cin, option);
+	}
+}
+void CompanyMS::removeContestantsApplicationsMenu() {
+	mainTitle();
+	cout << "\t\t::::::::: REMOVE CONTESTANT'S APPLICATIONS ::::::::: \n";
+
+	cout << "Please insert the id of the contestant you would like remove applications from." << endl;
+	unsigned int id = contestantIdHandler();
+	if (cin.eof()) return;
+	Contestant * contestant = company->getContestantById(id);
+
+	company->removeApplicationsOfContestant(contestant);
+	cout << "The applications have been successfully removed!";
+
+	updateFilesHandler();
+	if (cin.eof()) return;
+
+	cout << "Please Press Ctrl^Z to go back to the Contestants' Menu" << endl;
+	while (!cin.eof()) {
+		string option;
+		getline(cin, option);
+	}
+}
+void CompanyMS::showApplicationsMenu() {
+	mainTitle();
+	cout << "\t\t::::::::: VIEW APPLICATIONS ::::::::: \n";
+
+	showApplications();
+	
 	cout << "Please Press Ctrl^Z to go back to the Contestants' Menu" << endl;
 	while (!cin.eof()) {
 		string option;
@@ -616,7 +674,7 @@ void CompanyMS::showApplicationsMenu() {
 	}
 }
 void CompanyMS::searchContestantByIdMenu() {
-	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
+	mainTitle();
 	cout << "\t\t::::::::: SEARCH A CONTESTANT BY ID ::::::::: \n";
 
 	unsigned int id = contestantIdHandler();
@@ -633,7 +691,7 @@ void CompanyMS::searchContestantByIdMenu() {
 
 
 void CompanyMS::employJudgeMenu() {
-	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
+	mainTitle();
 	cout << "\t\t::::::::: EMPLOY A JUDGE ::::::::: \n";
 
 	Judge * judge = NULL;
@@ -653,7 +711,7 @@ void CompanyMS::employJudgeMenu() {
 		string address = stringHandler("address");
 		if (cin.eof()) return;
 		cout << "Please insert the judge's specialty." << endl;
-		string specialty = specialtyHandler();
+		string specialty = stringHandler("specialty");
 		if (cin.eof()) return;
 
 		judge = new Judge(0, name, address, mobile, dob, specialty, {});
@@ -689,7 +747,7 @@ void CompanyMS::employJudgeMenu() {
 	}
 }
 void CompanyMS::modifyJudgeMenu() {
-	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
+	mainTitle();
 	cout << "\t\t::::::::: MODIFY A JUDGE ::::::::: \n";
 
 	bool repeated = true, answer;
@@ -797,6 +855,7 @@ void CompanyMS::modifyJudgeMenu() {
 				printInColour("new : \n", 5, false);
 				aux->show(); cout << endl;
 				answer = yesNoHandler();
+				if (cin.eof()) return;
 				if (answer)
 				{
 					company->updateJudge(judge, aux);
@@ -818,7 +877,7 @@ void CompanyMS::modifyJudgeMenu() {
 	}
 }
 void CompanyMS::fireJudgeMenu() {
-	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
+	mainTitle();
 	cout << "\t\t::::::::: FIRE A JUDGE ::::::::: \n";
 	bool sure = false, answer;
 
@@ -858,8 +917,8 @@ void CompanyMS::fireJudgeMenu() {
 		getline(cin, option);
 	}
 }
-void CompanyMS::showJudgesMenu() {
-	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
+void CompanyMS::showJudgesByIdMenu() {
+	mainTitle();
 	cout << "\t\t::::::::: VIEW JUDGES ::::::::: \n";
 
 	bool answer;
@@ -890,8 +949,43 @@ void CompanyMS::showJudgesMenu() {
 	}
 
 }
+void CompanyMS::showJudgesByNameMenu() {
+	mainTitle();
+	cout << "\t\t::::::::: VIEW JUDGES BY NAME ::::::::: \n";
+	bool answer;
+
+	showJudgesByName();
+	cout << "Please Press Ctrl^Z to go back to the Judges' Menu" << endl;
+	while (!cin.eof()) {
+		string option;
+		getline(cin, option);
+	}
+}
+void CompanyMS::showJudgesOfSpecialtyMenu() {
+	mainTitle();
+	cout << "\t\t::::::::: VIEW JUDGES OF SPECIALTY ::::::::: \n";
+
+	cout << "Please insert the specialty you would like to see judges of." << endl;
+	string specialty = specialtyHandler();
+	if (cin.eof()) return;
+
+	cout << "Judges:" << endl;
+	vector<Judge*> judges;
+	company->getJudgesOfSpecialty(specialty, judges);
+	for (int i = 0; i < judges.size(); i++) {
+		judges[i]->show();
+		cout << endl;
+	}
+
+
+	cout << "Please Press Ctrl^Z to go back to the Judges' Menu" << endl;
+	while (!cin.eof()) {
+		string option;
+		getline(cin, option);
+	}
+}
 void CompanyMS::searchJudgeByIdMenu() {
-	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
+	mainTitle();
 	cout << "\t\t::::::::: SEARCH A JUDGE BY ID ::::::::: \n";
 
 	unsigned int id = judgeIdHandler();
@@ -906,7 +1000,7 @@ void CompanyMS::searchJudgeByIdMenu() {
 }
 
 void CompanyMS::scheduleAuditionMenu() {
-	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
+	mainTitle();
 	cout << "\t\t::::::::: SCHEDULE AUDITION ::::::::: \n";
 
 	cout << "Which is the art specialty you would like your audition to be about?";
@@ -914,38 +1008,28 @@ void CompanyMS::scheduleAuditionMenu() {
 	string specialty = specialtyHandler();
 	if (cin.eof()) return;
 
-	showApplicationsOfSpecialty(specialty);
+	company->scheduleAuditionOfSpecialty(specialty);
 
-	//Choosing judges
-	vector<Judge*> judges;
+	updateFilesHandler();
+	if (cin.eof()) return;
 
-	//Choosing candidates
-	unsigned int i = 0;
-	unsigned int id;
-	vector<Contestant*> contestants;
-	cout << company->getMaxNumOfContestantsPerAudition();
-	cout << "Please choose the candidates you would like to include in the audition (min = 6; max = 24)." << endl;
-	cout << "If you want to stop inserting candidates, please press 0" << endl;
-	while (i < company->getMaxNumOfContestantsPerAudition())
-	{
-		id = contestantIdHandler();
-		if (cin.eof()) return;
-		if (id == 0)
-			if (i >= 6) break;
-			else cout << "Ooops! It looks like you haven't completed yet the minimum of contestants required (6)." << endl;
-			contestants.push_back(company->getContestantById(id));
+	cout << "Please Press Ctrl^Z to go back to the Judges' Menu" << endl;
+	while (!cin.eof()) {
+		string option;
+		getline(cin, option);
 	}
-
-	cout << "You have included " << i << "contestants in the audition, which makes a total duration of ";
 
 }
 void CompanyMS::scheduleMaxAuditionsMenu() {
-	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
+	mainTitle();
 	cout << "\t\t::::::::: SCHEDULE MAXIMUM OF AUDITIONS ::::::::: \n";
 
 	company->scheduleMaxAuditions();
 
 	cout << "Your auditions have been scheduled successfuly!" << endl;
+
+	updateFilesHandler();
+	if (cin.eof()) return;
 
 	cout << "Please Press Ctrl^Z to go back to the Contestants' Menu" << endl;
 	while (!cin.eof()) {
@@ -954,7 +1038,7 @@ void CompanyMS::scheduleMaxAuditionsMenu() {
 	}
 }
 void CompanyMS::scheduleMaxAuditionsOfSpecialtyMenu() {
-	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
+	mainTitle();
 	cout << "\t\t::::::::: SCHEDULE MAXIMUM OF AUDITIONS OF SPECIALTY  ::::::::: \n";
 
 	cout << "Which is the art specialty you would like to schedule auditions for?";
@@ -963,6 +1047,9 @@ void CompanyMS::scheduleMaxAuditionsOfSpecialtyMenu() {
 
 	company->scheduleMaxAuditionsOfSpecialty(specialty);
 
+	updateFilesHandler();
+	if (cin.eof()) return;
+
 	cout << "Please Press Ctrl^Z to go back to the Contestants' Menu" << endl;
 	while (!cin.eof()) {
 		string option;
@@ -970,7 +1057,7 @@ void CompanyMS::scheduleMaxAuditionsOfSpecialtyMenu() {
 	}
 }
 void CompanyMS::evaluateAuditionMenu() {
-	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
+	mainTitle();
 	cout << "\t\t::::::::: EVALUATE AUDITION  ::::::::: \n";
 
 	unsigned int auditionId = auditionIdHandler();
@@ -989,11 +1076,8 @@ void CompanyMS::evaluateAuditionMenu() {
 		getline(cin, option);
 	}
 }
-void CompanyMS::evaluateFirstFaseMenu() {
-
-}
-void CompanyMS::evaluateAllAuditions() {
-	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
+void CompanyMS::evaluateAllAuditionsMenu() {
+	mainTitle();
 	cout << "\t\t::::::::: EVALUATE ALL AUDITIONS  ::::::::: \n";
 
 	company->gradeAllAuditions();
@@ -1009,15 +1093,53 @@ void CompanyMS::evaluateAllAuditions() {
 	}
 }
 void CompanyMS::showAuditionsMenu() {
-	cout << ":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n";
+	mainTitle();
 	cout << "\t\t::::::::: VIEW AUDITIONS  ::::::::: \n";
 
-	vector<Audition*> auditions = company->getAuditions();
-	for (size_t i = 0; i < auditions.size(); i++)
-	{
-		showAudition(auditions[i]->getId());
-	}
+	showAuditions();
+
 	cout << "Please Press Ctrl^Z to go back to the Contestants' Menu" << endl;
+	while (!cin.eof()) {
+		string option;
+		getline(cin, option);
+	}
+}
+void CompanyMS::disassembleAuditionMenu() {
+	mainTitle();
+	cout << "\t\t::::::::: DISASSEMBLE AN AUDITION ::::::::: \n";
+	bool sure = false, answer;
+
+	cout << "Would you like to see the list of auditions? " << endl;
+	answer = yesNoHandler();
+	if (cin.eof()) return;
+	if (answer) {
+		cout << "List of auditions: " << endl;
+		showAuditions();
+		cout << endl;
+	}
+	//Choose of id
+	while (!sure) {
+		cout << "Which auditions would you like to disassemble?" << endl;
+		unsigned int id = auditionIdHandler();
+		if (cin.eof()) return;
+		Audition * audition = company->getAuditionById(id);
+		string warning = "Are you sure you wish to remove audition No. " + to_string(id) + "?\n";
+		printInColour(warning, 3, false);
+		showAudition(id);
+		cout << endl;
+		answer = yesNoHandler();
+		if (cin.eof()) return;
+		if (answer)
+		{
+			//Removal of the contestant
+			company->removeAudition(audition);
+			sure = true;
+			cout << "Audition No. " << id << " has been removed  successfuly!" << endl;
+			updateFilesHandler();
+			if (cin.eof()) return;
+		}
+	}
+	cout << "Please Press Ctrl^Z to go back to the Auditions' Menu" << endl;
 	while (!cin.eof()) {
 		string option;
 		getline(cin, option);
@@ -1027,7 +1149,7 @@ void CompanyMS::showAuditionsMenu() {
 
 void CompanyMS::showContestants() {
 	unsigned int limInf = company->getContestants()[0]->getId();
-	unsigned int limSup = company->getContestants()[company->getContestants().size()]->getId();
+	unsigned int limSup = company->getContestants()[company->getContestants().size() - 1]->getId();
 	showPartialContestants(limInf, limSup);
 }
 void CompanyMS::showPartialContestants(unsigned int limInf, unsigned int limSup) {
@@ -1039,8 +1161,19 @@ void CompanyMS::showPartialContestants(unsigned int limInf, unsigned int limSup)
 	}
 
 	cout << endl << endl;
-	for (; contestants[index]->getId() <= limSup; index++) {
+	for (; contestants[index]->getId() < limSup; index++) {
 		contestants[index]->show();
+		cout << endl;
+	}
+	contestants[index]->show();
+	cout << endl;
+}
+
+void CompanyMS::showContestantsByName() {
+	vector<Contestant*> contestants = company->getContestants();
+	sort(contestants.begin(), contestants.end(), compareByName<Contestant>);
+	for (size_t i = 0; i < contestants.size(); i++) {
+		contestants[i]->show();
 		cout << endl;
 	}
 }
@@ -1050,8 +1183,8 @@ void CompanyMS::showApplications() {
 	Contestant* contestant;
 	for (unsigned int i = 0; i < applications.size(); i++)
 	{
-		cout << "Candidature sent at " << applications[i]->date << " by contestant No. " << applications[i]->contestantId << endl;
-		contestant = company->getContestantById(applications[i]->contestantId);
+		cout << "Application sent at " << applications[i]->getDate() << " by contestant No. " << applications[i]->getContestantId() << endl;
+		contestant = company->getContestantById(applications[i]->getContestantId());
 		contestant->show();
 		cout << endl;
 	}
@@ -1062,8 +1195,8 @@ void CompanyMS::showApplicationsOfSpecialty(string specialty) {
 	Contestant* contestant;
 	for (unsigned int i = 0; i < applications.size(); i++)
 	{
-		cout << "Candidature sent at " << applications[i]->date << " by contestant No. " << applications[i]->contestantId << endl;
-		contestant = company->getContestantById(applications[i]->contestantId);
+		cout << "Application sent at " << applications[i]->getDate() << " by contestant No. " << applications[i]->getContestantId() << endl;
+		contestant = company->getContestantById(applications[i]->getContestantId());
 		contestant->show();
 		cout << endl;
 	}
@@ -1071,8 +1204,8 @@ void CompanyMS::showApplicationsOfSpecialty(string specialty) {
 
 void CompanyMS::showJudges() {
 	unsigned int limInf = company->getJudges()[0]->getId();
-	unsigned int limSup = company->getJudges()[company->getJudges().size()]->getId();
-	showPartialContestants(limInf, limSup);
+	unsigned int limSup = company->getJudges()[company->getJudges().size() - 1]->getId();
+	showPartialJudges(limInf, limSup);
 }
 void CompanyMS::showPartialJudges(unsigned int limInf, unsigned int limSup) {
 	vector<Judge*> judges = company->getJudges();
@@ -1083,8 +1216,19 @@ void CompanyMS::showPartialJudges(unsigned int limInf, unsigned int limSup) {
 	}
 
 	cout << endl << endl;
-	for (; judges[index]->getId() <= limSup; index++) {
+	for (; judges[index]->getId() < limSup; index++) {
 		judges[index]->show();
+		cout << endl;
+	}
+	judges[index]->show();
+	cout << endl;
+}
+
+void CompanyMS::showJudgesByName() {
+	vector<Judge*> judges = company->getJudges();
+	sort(judges.begin(), judges.end(), compareByName<Judge>);
+	for (size_t i = 0; i < judges.size(); i++) {
+		judges[i]->show();
 		cout << endl;
 	}
 }
@@ -1112,8 +1256,8 @@ void CompanyMS::showAudition(unsigned int id) {
 	cout << "-> Other judges: " << endl;
 	cout << "   :: No. " << judge1Id << " " << judge1Name << endl;
 	cout << "   :: No. " << judge2Id << " " << judge2Name << endl;
-	if (audition->getFirstFase()->getJudge1().empty()) {
-		vector<unsigned int> contestants = audition->getFirstFase()->getContestants();
+	if (audition->getFirstPhase()->getJudge1().empty()) {
+		vector<unsigned int> contestants = audition->getFirstPhase()->getContestants();
 		cout << "-> Contestants: " << endl;
 		for (size_t i = 0; i < contestants.size(); i++)
 		{
@@ -1122,21 +1266,21 @@ void CompanyMS::showAudition(unsigned int id) {
 		}
 	}
 	else {
-		cout << " FIRST FASE : " << endl;
+		cout << " FIRST PHASE : " << endl;
 		cout << "    Contestant                         " << "    ChiefJudge   " << "    Judge1     " << "   Judge2    " << "   Final Grade   " << endl;
-		vector<unsigned int> contestants = audition->getFirstFase()->getContestants();
-		vector<unsigned int> chiefJudgeGrades = audition->getFirstFase()->getChiefJudge();
-		vector<unsigned int> judge1Grades = audition->getFirstFase()->getJudge1();
-		vector<unsigned int> judge2Grades = audition->getFirstFase()->getJudge2();
-		vector<double> finalGrades = audition->getFirstFase()->getFinalGrade();
+		vector<unsigned int> contestants = audition->getFirstPhase()->getContestants();
+		vector<unsigned int> chiefJudgeGrades = audition->getFirstPhase()->getChiefJudge();
+		vector<unsigned int> judge1Grades = audition->getFirstPhase()->getJudge1();
+		vector<unsigned int> judge2Grades = audition->getFirstPhase()->getJudge2();
+		vector<double> finalGrades = audition->getFirstPhase()->getFinalGrade();
 		for (size_t i = 0; i < contestants.size(); i++)
 		{
 			Contestant * contestant = company->getContestantById(contestants[i]);
 			cout << "   :: No. " << fixed << setw(3) << contestant->getId() << setw(25) << contestant->getName() << setw(10) << chiefJudgeGrades[i] << setw(15) << judge1Grades[i] << setw(15) << judge2Grades[i] << setw(20) << finalGrades[i] << endl;
 		}
 	}
-	if (audition->getSecondFase()->getJudge1().empty() && (!audition->getSecondFase()->getContestants().empty())) {
-		vector<unsigned int> contestants = audition->getSecondFase()->getContestants();
+	if (audition->getSecondPhase()->getJudge1().empty() && (!audition->getSecondPhase()->getContestants().empty())) {
+		vector<unsigned int> contestants = audition->getSecondPhase()->getContestants();
 		cout << "-> Contestants: " << endl;
 		for (size_t i = 0; i < contestants.size(); i++)
 		{
@@ -1144,20 +1288,27 @@ void CompanyMS::showAudition(unsigned int id) {
 			cout << "   :: No. " << contestant->getId() << " " << contestant->getName() << endl;
 		}
 	}
-	else if (!audition->getSecondFase()->getContestants().empty())
+	else if (!audition->getSecondPhase()->getContestants().empty())
 	{
-		cout << " SECOND FASE : " << endl;
+		cout << " SECOND PHASE : " << endl;
 		cout << "    Contestant                         " << "    ChiefJudge   " << "    Judge1     " << "   Judge2    " << "   Final Grade   " << endl;
-		vector<unsigned int> contestants = audition->getSecondFase()->getContestants();
-		vector<unsigned int> chiefJudgeGrades = audition->getSecondFase()->getChiefJudge();
-		vector<unsigned int> judge1Grades = audition->getSecondFase()->getJudge1();
-		vector<unsigned int> judge2Grades = audition->getSecondFase()->getJudge2();
-		vector<double> finalGrades = audition->getSecondFase()->getFinalGrade();
+		vector<unsigned int> contestants = audition->getSecondPhase()->getContestants();
+		vector<unsigned int> chiefJudgeGrades = audition->getSecondPhase()->getChiefJudge();
+		vector<unsigned int> judge1Grades = audition->getSecondPhase()->getJudge1();
+		vector<unsigned int> judge2Grades = audition->getSecondPhase()->getJudge2();
+		vector<double> finalGrades = audition->getSecondPhase()->getFinalGrade();
 		for (size_t i = 0; i < contestants.size(); i++)
 		{
 			Contestant * contestant = company->getContestantById(contestants[i]);
 			cout << "   :: No. " << fixed << setw(3) << contestant->getId() << setw(25) << contestant->getName() << setw(10) << chiefJudgeGrades[i] << setw(15) << judge1Grades[i] << setw(15) << judge2Grades[i] << setw(20) << finalGrades[i] << endl;
 		}
+	}
+}
+void CompanyMS::showAuditions() {
+	vector<Audition*> auditions = company->getAuditions();
+	for (size_t i = 0; i < auditions.size(); i++)
+	{
+		showAudition(auditions[i]->getId());
 	}
 }
 
@@ -1247,7 +1398,7 @@ bool CompanyMS::isValidAuditionId(string id) {
 	unsigned int Id = stoi(id);
 	try {
 		company->getAuditionById(Id);
-	}
+}
 	catch (AuditionIdNotFound) {
 		throw AuditionIdNotFound(Id);
 	}
@@ -1582,8 +1733,11 @@ void CompanyMS::updateFilesHandler() {
 
 void CompanyMS::printInColour(string text, unsigned int colour, bool dark) {
 	if (dark)
-		cout << "\033[0;" << (colour + 30) << "m" << text << "!\033[0m";
+		cout << "\033[0;" << (colour + 30) << "m" << text << "\033[0m";
 	else cout << "\033[1;" << (colour + 30) << "m" << text << "\033[1m";
 	cout << "\033[1;" << 27 << "m\033[0m";
 
+}
+void CompanyMS::mainTitle() {
+	printInColour(":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n", 7, false);
 }
