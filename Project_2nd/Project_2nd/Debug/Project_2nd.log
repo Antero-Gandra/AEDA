@@ -1,7 +1,8 @@
-﻿  UnavailableContestant.cpp
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  CompanyMS.cpp
-  Company.cpp
+﻿  CompanyMS.cpp
+c:\users\margarida silva\documents\github\aeda\project_2nd_files\companyms.cpp(23): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\margarida silva\documents\github\aeda\project_2nd_files\companyms.cpp(634): warning C4101: 'answer': unreferenced local variable
+c:\users\margarida silva\documents\github\aeda\project_2nd_files\companyms.cpp(654): warning C4018: '<': signed/unsigned mismatch
+c:\users\margarida silva\documents\github\aeda\project_2nd_files\companyms.cpp(978): warning C4101: 'answer': unreferenced local variable
+c:\users\margarida silva\documents\github\aeda\project_2nd_files\companyms.cpp(998): warning C4018: '<': signed/unsigned mismatch
   Project_2nd.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\Project_2nd\Debug\Project_2nd.exe
   Project_2nd.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\Project_2nd\Debug\Project_2nd.pdb (Partial PDB)

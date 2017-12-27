@@ -9,7 +9,6 @@
 #include "Company.h"
 
 class CompanyMS {
-	static Calendar currentCalendar;
 	Company * company;
 public:
 	//Constructor
@@ -57,6 +56,7 @@ public:
 	*/
 	void auditionMenu();
 
+	void goForwardInTimeMenu();
 
 	//CONTESTANTS MENUS
 
@@ -296,7 +296,7 @@ public:
 	* @brief Checks if the date of birth is a valid output
 	* @param dob a Calendar Object
 	*/
-	bool isValidDob(Calendar dob);
+	bool isValidCalendar(Calendar calendar);
 
 	/**
 	* @brief Validates if the input is a number
@@ -349,7 +349,7 @@ public:
 	* @brief Validates if the date of birth input is valid
 	* @return Calendar Object
 	*/
-	Calendar dobHandler();
+	Calendar calendarHandler();
 
 	/**
 	* @brief Validates if the input is a valid speciality

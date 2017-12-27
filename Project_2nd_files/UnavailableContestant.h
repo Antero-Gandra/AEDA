@@ -1,5 +1,5 @@
-#ifndef _UNAVAILABLE_CONTESTANT_H
-#define  _UNAVAILABLE_CONTESTANT_H
+#ifndef _UNAVAILABLECONTESTANT_H
+#define  _UNAVAILABLECONTESTANT_H
 
 #include "Contestant.h"
 #include <fstream>

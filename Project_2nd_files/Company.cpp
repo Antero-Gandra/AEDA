@@ -18,6 +18,7 @@ using namespace std;
 unsigned int Company::lastContestantId = 0;
 unsigned int Company::lastJudgeId = 0;
 unsigned int Company::lastAuditionId = 0;
+Calendar Company::currentCalendar = Calendar();
 
 // getMethods
 vector<Contestant*> Company::getContestants() const {
@@ -31,6 +32,12 @@ vector<Application*> Company::getApplications() const {
 }
 vector<Audition*> Company::getAuditions() const {
 	return auditions;
+}
+Calendar Company::getCurrentCalendar() const {
+	return currentCalendar;
+}
+void Company::setCurrentCalendar(Calendar calendar) {
+	this->currentCalendar = calendar;
 }
 
 Company::~Company() {
@@ -48,6 +55,51 @@ Company::~Company() {
 		delete auditions[i];
 	}
 }
+/* ------------------------------------ CALENDAR -----------------------------------*/
+bool Company::readCalendarFile(string fileName) const {
+	ifstream calendarFile(fileName + ".dat");
+	unsigned int year, month, day, hour, minute;
+
+	//in case of failure during the opening
+	if (calendarFile.fail())
+	{
+		return false;
+	}
+	calendarFile >> year;
+	calendarFile.ignore(std::numeric_limits<std::streamsize>::max(), '/');
+	calendarFile >> month;
+	calendarFile.ignore(std::numeric_limits<std::streamsize>::max(), '/');
+	calendarFile >> day;
+	calendarFile.ignore(std::numeric_limits<std::streamsize>::max(), '/');
+	calendarFile >> hour;
+	calendarFile.ignore(std::numeric_limits<std::streamsize>::max(), '/');
+	calendarFile >> minute;
+	calendarFile.ignore(std::numeric_limits<std::streamsize>::max(), ';');
+
+	currentCalendar.setYear(year);
+	currentCalendar.setMonth(month);
+	currentCalendar.setDay(day);
+	currentCalendar.setHour(hour);
+	currentCalendar.setMinute(minute);
+
+	calendarFile.close();
+
+	return true;
+}
+bool Company::writeCalendarFile(string fileName) const {
+	ofstream calendarFile(fileName + ".dat");
+
+	if (calendarFile.fail())
+	{
+		return false;
+	}
+	calendarFile << currentCalendar.full();
+
+	calendarFile.close();
+
+	return true;
+}
+
 /* ------------------------------------ CONTESTANT -----------------------------------*/
 Contestant * Company::getContestantById(unsigned int id) {
 	Contestant * contestant = new Contestant(id, "", "", 0, Calendar(), "", {});

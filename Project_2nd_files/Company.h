@@ -5,19 +5,34 @@
 #include <string>
 #include "Person.h"
 #include "Contestant.h"
+#include "UnavailableContestant.h"
+#include <unordered_set>
 #include "Judge.h"
 #include "Audition.h"
 #include "Application.h"
 #include "Calendar.h"
 
+struct hUContestantPtr {
+	int operator()(const UContestantPtr & uc1) const {
+		return uc1.uCont->getId();
+	}
+	bool operator()(const UContestantPtr & uc1, const UContestantPtr & uc2) const {
+		return (uc1.uCont->getId() == uc2.uCont->getId());
+	}
+};
+
+typedef std::unordered_set<UContestantPtr, hUContestantPtr, hUContestantPtr> tabHUCont;
+
 class Company {
 	std::vector<Contestant*> contestants;
 	std::vector<Application*> applications;
+	tabHUCont unavailable_contestants;
 	std::vector<Judge *> judges;
 	std::vector<Audition*> auditions;
 	static unsigned int lastContestantId;
 	static unsigned int lastJudgeId;
 	static unsigned int lastAuditionId;
+	static Calendar currentCalendar;
 	const Calendar startOfFunctions = Calendar(0, 0, 0, 8, 30);
 	const Calendar endOfFunctions = Calendar(0, 0, 0, 20, 30);
 	const Calendar durationOfPerformancesF1 = Calendar(0, 0, 0, 0, 15);
@@ -51,6 +66,14 @@ public:
 	* @return constant vector of Audition Object pointers
 	*/
 	std::vector<Audition*> getAuditions() const;
+
+	Calendar getCurrentCalendar() const;
+	void setCurrentCalendar(Calendar calendar);
+
+	/* ------------------------------------ CALENDAR -----------------------------------*/
+
+	bool readCalendarFile(std::string fileName) const;
+	bool writeCalendarFile(std::string fileName) const;
 
 	/* ------------------------------------ CONTESTANT -----------------------------------*/
 
