@@ -1,0 +1,6 @@
+﻿  Company.cpp
+c:\users\margarida silva\documents\github\aeda\project_2nd_files\company.cpp(297): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\margarida silva\documents\github\aeda\project_2nd_files\company.cpp(525): warning C4101: 'auditionId': unreferenced local variable
+c:\users\margarida silva\documents\github\aeda\project_2nd_files\company.cpp(582): warning C4018: '<': signed/unsigned mismatch
+  Project_2nd.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\Project_2nd\Debug\Project_2nd.exe
+  Project_2nd.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\Project_2nd\Debug\Project_2nd.pdb (Partial PDB)
