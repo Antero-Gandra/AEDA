@@ -109,13 +109,13 @@ UnavailableContestant::UnavailableContestant(string textLine) : Contestant(textL
 	getline(unavailabilityLine, aux_num, '/');
 	removeSpaces(aux_num);
 	istringstream year_n(aux_num);
-	year_num >> year;
+	year_n >> year;
 
 	//month
 	getline(unavailabilityLine, aux_num, '/');
 	removeSpaces(aux_num);
 	istringstream month_n(aux_num);
-	month_num >> month;
+	month_n >> month;
 
 	//day
 	getline(unavailabilityLine, aux_num, '/');
@@ -188,8 +188,13 @@ UnavailableContestant::UnavailableContestant(Contestant * contestant, Calendar u
 	this->unavailabilityBegin = unavailabilityBegin;
 	this->unavailabilityEnd = unavailabilityEnd;
 	this->reason = reason;
+	delete contestant;
 }
-
+void UnavailableContestant::show() {
+	Contestant::show();
+	cout << "-> Unavailable Period: " << unavailabilityBegin.date() << " at " << unavailabilityBegin.time() << " --- " << unavailabilityEnd.date() << " at " << unavailabilityEnd.time() << endl;
+	cout << "       Reason: " << reason;
+}
 ostream& operator<<(ostream& os, const UnavailableContestant & contestant) {
 
 	os << contestant.getId() << " ; " << contestant.getName() << " ; " << contestant.getDob().date() << " ; " << contestant.getMobile() << " ; " << contestant.getAddress() << " ; " << contestant.getSpecialty() << " ; ";
@@ -209,4 +214,7 @@ ostream& operator<<(ostream& os, const UnavailableContestant & contestant) {
 	os << contestant.reason << " ;";
 
 	return os;
+}
+Calendar UnavailableContestant::getUnavailabilityEnd() const {
+	return unavailabilityEnd;
 }

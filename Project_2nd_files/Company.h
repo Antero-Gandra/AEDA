@@ -26,7 +26,7 @@ typedef std::unordered_set<UContestantPtr, hContestantPtr, hContestantPtr> tabHU
 class Company {
 	std::vector<Contestant*> contestants;
 	std::vector<Application*> applications;
-	tabHUCont unavailable_contestants;
+	tabHUCont unavailableContestants;
 	std::vector<Judge *> judges;
 	std::vector<Audition*> auditions;
 	static unsigned int lastContestantId;
@@ -48,6 +48,8 @@ public:
 	* @return constant vector of Contestant Object pointers
 	*/
 	std::vector<Contestant*> getContestants() const;
+
+	tabHUCont getUnavailableContestants() const;
 
 	/**
 	* @brief Manages to access all judges ever hired
@@ -179,12 +181,16 @@ public:
 	*/
 	bool readContestantsFile(std::string fileName);
 
+	bool readUnavailableContestantsFile(std::string fileName);
+
 	/**
 	* @brief Writes the contestant information into a file
 	* @param fileName a string with the name of the file
 	* @return true if successfully writes all the information into the file, false otherwise
 	*/
 	bool writeContestantsFile(std::string fileName);
+
+	bool writeUnavailableContestantsFile(std::string fileName);
 
 	/**
 	* @brief Reads the application information from a file and calls the function that creates an application
@@ -199,6 +205,12 @@ public:
 	* @return true if successfully writes all the information into the file, false otherwise
 	*/
 	bool writeApplicationsFile(std::string fileName);
+
+	void setContestantUnavailable(Contestant * contestant, Calendar unavailabilityBegin, Calendar unavailabilityEnd, std::string reason);
+
+	void setContestantAvavailable(UContestantPtr contestant);
+	
+	void updateAvailabilityOfContestants();
 
 	/* -------------------------------------- JUDGE --------------------------------------*/
 	/**

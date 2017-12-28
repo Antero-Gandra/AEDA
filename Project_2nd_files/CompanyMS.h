@@ -87,6 +87,9 @@ public:
 	*/
 	void showContestantsByIdMenu();
 
+	void showAvailableContestantsMenu();
+
+	void showUnavailableContestantsMenu();
 	/**
 	* @brief Invokes a menu where it shows all contestants' information sorted by name
 	*/
@@ -196,7 +199,9 @@ public:
 	/**
 	* @brief Prints the information of all contestants on the database sorted by id
 	*/
-	void showContestants();
+	void showContestants(const std::vector<Contestant *> & contestants);
+
+	void showContestants(const tabHUCont & contestants);
 	
 	/**
 	* @brief Prints the information of all contestants on the database sorted by name
@@ -208,7 +213,9 @@ public:
 	* @param limInf an unsigned integer
 	* @param limSup an unsigned integer
 	*/
-	void showPartialContestants(unsigned int limInf, unsigned int limSup);
+	void showPartialContestants(const std::vector<Contestant *> & contestants, unsigned int limInf, unsigned int limSup);
+
+	void showPartialContestants(const tabHUCont & contestants, unsigned int limInf, unsigned int limSup);
 
 	/**
 	* @brief Prints the date that a contestant applied to an audition
