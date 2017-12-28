@@ -12,12 +12,13 @@
 #include "Calendar.h"
 
 class Contestant : public Person {
+protected:
 	unsigned int id;
 	std::vector<Participation*> participations;
 
 public:
 	/**
-	* @brief Contestant Contructor with their id, name, address, mobile phone number, date of birth, specialiy and list of participations by id
+	* @brief Contestant Contructor with their id, name, address, mobile phone number, date of birth, specialiy and list of participations by id. The availablity is initialized with a pair of true and a null pointer since there isn't unavailability.
 	* @param id an unsigined integer
 	* @param name a string
 	* @param address a string
@@ -56,6 +57,7 @@ public:
 	* @param participation a vector of Participation pointers
 	*/
 	void setParticipations(std::vector<Participation*> participation);
+
 	/**
 	* @brief Prints the Contestant's full information on the screen
 	*/

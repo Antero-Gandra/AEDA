@@ -80,6 +80,7 @@ public:
 	*/
 	void removeContestantMenu();
 
+	void addUnavailabilityPeriodMenu();
 	/**
 	* @brief Invokes a menu where the user can view all contestants' information or select 2 contestants id where it prints
 	*		 all contentant's information sorted by id between that range
@@ -350,6 +351,8 @@ public:
 	* @return Calendar Object
 	*/
 	Calendar calendarHandler();
+
+	Calendar fullCalendarHandler();
 
 	/**
 	* @brief Validates if the input is a valid speciality

@@ -12,7 +12,7 @@
 #include "Application.h"
 #include "Calendar.h"
 
-struct hUContestantPtr {
+struct hContestantPtr {
 	int operator()(const UContestantPtr & uc1) const {
 		return uc1.uCont->getId();
 	}
@@ -21,7 +21,7 @@ struct hUContestantPtr {
 	}
 };
 
-typedef std::unordered_set<UContestantPtr, hUContestantPtr, hUContestantPtr> tabHUCont;
+typedef std::unordered_set<UContestantPtr, hContestantPtr, hContestantPtr> tabHUCont;
 
 class Company {
 	std::vector<Contestant*> contestants;
@@ -70,7 +70,7 @@ public:
 	Calendar getCurrentCalendar() const;
 	void setCurrentCalendar(Calendar calendar);
 
-	/* ------------------------------------ CALENDAR -----------------------------------*/
+	/* ------------------------------------- CALENDAR ------------------------------------*/
 
 	bool readCalendarFile(std::string fileName) const;
 	bool writeCalendarFile(std::string fileName) const;

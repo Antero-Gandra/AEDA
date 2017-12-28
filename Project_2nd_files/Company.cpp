@@ -163,6 +163,7 @@ void Company::addNewContestant(Contestant * contestant) {
 }
 void Company::addContestant(Contestant * contestant) {
 	contestants.push_back(contestant);
+
 	sort(contestants.begin(), contestants.end(), compareById<Contestant>);
 }
 void Company::addApplication(Calendar calendar, unsigned int id) {
@@ -221,7 +222,7 @@ void Company::removeApplicationsOfContestant(Contestant * contestant) {
 
 		if (applications[i]->getContestantId() == contestant->getId())
 		{
-			applications.erase(applications.begin()+i);
+			applications.erase(applications.begin() + i);
 			removed = true;
 		}
 	}

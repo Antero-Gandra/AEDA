@@ -27,9 +27,6 @@
     <ClCompile Include="..\..\Project_2nd_files\SecondPhase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Project_2nd_files\UnavailableContestant.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Project_2nd_files\Util.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -63,6 +60,9 @@
     <ClCompile Include="..\..\Project_2nd_files\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Project_2nd_files\UnavailableContestant.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Project_2nd_files\Participation.h">
@@ -75,9 +75,6 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Project_2nd_files\SecondPhase.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Project_2nd_files\UnavailableContestant.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Project_2nd_files\Util.h">
@@ -110,5 +107,28 @@
     <ClInclude Include="..\..\Project_2nd_files\Judge.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Project_2nd_files\UnavailableContestant.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="auditions.dat">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="contestants.dat">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="currentCalendar.dat">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="judges.dat">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="applications.dat">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="unavailableContestants.dat">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

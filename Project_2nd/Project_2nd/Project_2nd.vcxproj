@@ -53,6 +53,14 @@
     <ClInclude Include="..\..\Project_2nd_files\UnavailableContestant.h" />
     <ClInclude Include="..\..\Project_2nd_files\Util.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="applications.dat" />
+    <None Include="auditions.dat" />
+    <None Include="contestants.dat" />
+    <None Include="currentCalendar.dat" />
+    <None Include="judges.dat" />
+    <None Include="unavailableContestants.dat" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{FF1FB536-FF0D-42FC-BF90-8AC17564F1E3}</ProjectGuid>

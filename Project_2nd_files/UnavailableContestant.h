@@ -6,12 +6,14 @@
 #include "Calendar.h"
 
 class UnavailableContestant : public Contestant {
-	Calendar unavailablePeriodBegin;
-	Calendar unavailbalePeriodEnd;
+	Calendar unavailabilityBegin;
+	Calendar unavailabilityEnd;
 	std::string reason;
 public:
-	UnavailableContestant(unsigned int id, std::string name, std::string address, unsigned int mobile, Calendar dob, std::string specialty, std::vector<Participation*> participation, Calendar unavailablePeriodBegin, Calendar unavailablePeriodEnd, std::string reason);
-	//No need for destructor since there is no memory allocated
+	UnavailableContestant(unsigned int id, std::string name, std::string address, unsigned int mobile, Calendar dob, std::string specialty, std::vector<Participation*> participation, Calendar unavailabilityBegin, Calendar unavailabilityEnd, std::string reason);
+	UnavailableContestant(std::string textLine);
+	UnavailableContestant(Contestant * contestant, Calendar unavailabilityBegin, Calendar unavailabilityEnd, std::string reason);
+	friend std::ostream& operator<<(std::ostream& os, const UnavailableContestant & contestant);
 };
 struct UContestantPtr {
 	UnavailableContestant * uCont;

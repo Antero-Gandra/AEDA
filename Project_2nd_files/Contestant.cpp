@@ -17,20 +17,13 @@ Contestant::Contestant(string textLine) {
 	istringstream contestantLine(textLine);
 
 	unsigned int id;
-	string name;
-	string address;
+	string name, address;
 	unsigned int mobile;
 	Calendar dob;
-	unsigned int year;
-	unsigned int month;
-	unsigned int day;
-	string prtcpations;
-	string prtcpation;
-	string aux_num;
+	unsigned int year, month, day, hour, minute;
+	string prtcpations, prtcpation, aux_num,  unavailability, calendarBegin, calendarEnd, reason;
 	vector<Participation*> participations;
-	unsigned int auditionId;
-	unsigned int place;
-	unsigned int chiefJudgeGrade;
+	unsigned int auditionId, place, chiefJudgeGrade;
 
 	//get id
 	getline(contestantLine, aux_num, ';');
@@ -120,10 +113,11 @@ Contestant::Contestant(unsigned int id, string name, string address, unsigned in
 	this->id = id;
 	this->participations = participations;
 }
-//Set Methods
+//Get Methods
 unsigned int Contestant::getId() const { return id; }
 vector<Participation*> Contestant::getParticipations() const { return participations; }
-//Get Methods
+
+//Set Methods
 void Contestant::setId(unsigned int id) { this->id = id; }
 void Contestant::setParticipations(vector<Participation*> participations) { this->participations = participations; };
 
@@ -152,6 +146,7 @@ ostream& operator<<(ostream& os, const Contestant& contestant) {
 		os << participations[i]->getChiedJudgeGrade() << ". ";
 	}
 	os << " ;";
+
 	return os;
 }
 

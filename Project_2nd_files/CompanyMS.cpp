@@ -132,11 +132,12 @@ void CompanyMS::contestantMenu()
 	cout << "2. Modify the info of a contestant" << endl;
 	cout << "3. Remove a contestant" << endl;
 	cout << "4. Remove a contestant's applications" << endl;
-	cout << "5. View contestants by id" << endl;
-	cout << "6. View contestants by name" << endl;
-	cout << "7. View contestants of a specialty" << endl;
-	cout << "8. Search contestant by id" << endl;
-	cout << "9. View all applications" << endl;
+	cout << "5. Add an unavailability period to a contestant" << endl;
+	cout << "6. View contestants by id" << endl;
+	cout << "7. View contestants by name" << endl;
+	cout << "8. View contestants of a specialty" << endl;
+	cout << "9. Search contestant by id" << endl;
+	cout << "10. View all applications" << endl;
 	cout << "Please Press Ctrl^Z to go back to the Main Menu" << endl;
 
 	unsigned int option = optionHandler(1, 9);
@@ -170,17 +171,23 @@ void CompanyMS::contestantMenu()
 	break;
 	case 5: do {
 		clearScreen();
-		showContestantsByIdMenu();
+		addUnavailabilityPeriodMenu();
 	} while (!std::cin.eof());
 	cin.clear();
 	break;
 	case 6: do {
 		clearScreen();
-		showContestantsByNameMenu();
+		showContestantsByIdMenu();
 	} while (!std::cin.eof());
 	cin.clear();
 	break;
 	case 7: do {
+		clearScreen();
+		showContestantsByNameMenu();
+	} while (!std::cin.eof());
+	cin.clear();
+	break;
+	case 8: do {
 		clearScreen();
 		showContestantsOfSpecialtyMenu();
 
@@ -188,13 +195,13 @@ void CompanyMS::contestantMenu()
 	cin.clear();
 	break;
 
-	case 8: do {
+	case 9: do {
 		clearScreen();
 		searchContestantByIdMenu();
 	} while (!std::cin.eof());
 	cin.clear();
 	break;
-	case 9: do {
+	case 10: do {
 		clearScreen();
 		showApplicationsMenu();
 	} while (!std::cin.eof());
@@ -695,6 +702,85 @@ void CompanyMS::showApplicationsMenu() {
 		string option;
 		getline(cin, option);
 	}
+}
+void CompanyMS::addUnavailabilityPeriodMenu() {
+	mainTitle();
+	cout << "\t\t::::::::: ADD UNAVAILABILITY PERIOD TO A CONTESTANT ::::::::: \n";
+
+	bool repeated = true, answer;
+
+	cout << "Would you like to see the list of contestants without unavailable period? " << endl;
+	answer = yesNoHandler();
+	if (cin.eof()) return;
+	if (answer) {
+		cout << "List of contestants: " << endl;
+		showContestants();
+		cout << endl;
+	}
+
+
+	//Choose of id
+	cout << "Which contestant would you like to add an unavailibility period to?" << endl;
+	unsigned int id = contestantIdHandler();
+	if (cin.eof()) return;
+
+	Contestant * contestant = company->getContestantById(id);
+	answer = false;
+	while (!answer) {
+		//show contestant
+		cout << endl;
+		contestant->show();
+		cout << endl;
+		//Unavailability Period Begining
+		cout << "Please insert the begining of the unavailability period." << endl;
+		Calendar unavailabilityBegin = fullCalendarHandler();
+		if (cin.eof()) return;
+
+
+		//Unavailability Period Ending
+		bool valid = false;
+		Calendar unavailabilityEnd;
+		while (!valid) {
+			cout << "Please insert the ending of the unavailability period." << endl;
+			unavailabilityEnd = fullCalendarHandler();
+			valid = true;
+			if (unavailabilityEnd == unavailabilityBegin) {
+				valid = false;
+				cout << "The end and begin of the period of unavailibility can coincide. Please insert another value.";
+			}
+		}
+		if (!(unavailabilityBegin < unavailabilityEnd))
+		{
+			Calendar aux = unavailabilityBegin;
+			unavailabilityBegin = unavailabilityEnd;
+			unavailabilityEnd = aux;
+		}
+
+		if (cin.eof()) return;
+
+		//Unavailability Reason
+		cout << "Please insert the reason for the unavailability period." << endl;
+		string reason = stringHandler("reason");
+		if (cin.eof()) return;
+
+		string warning = "Are you sure you wish to add the followin unavailability period to contestant No. " + to_string(id) + "? \n";
+		printInColour(warning, 3, false);
+		//show contestant
+		cout << endl;
+		contestant->show();
+		cout << endl;
+		//show unavailibility period
+		cout << unavailabilityBegin.date() + " " + unavailabilityBegin.time() + " until " + unavailabilityEnd.date() + " " + unavailabilityEnd.time() << endl;
+		answer = yesNoHandler();
+		if (cin.eof()) return;
+	}
+
+	cout << "Please Press Ctrl^Z to go back to the Contestants' Menu" << endl;
+	while (!cin.eof()) {
+		string option;
+		getline(cin, option);
+	}
+
 }
 void CompanyMS::searchContestantByIdMenu() {
 	mainTitle();
@@ -1691,6 +1777,69 @@ Calendar CompanyMS::calendarHandler() {
 	}
 	return Calendar(year, month, day, 0, 0);
 }
+Calendar CompanyMS::fullCalendarHandler() {
+	Calendar date = calendarHandler();
+	bool  valid = false;
+	string number;
+	unsigned int hour, minute;
+
+	//hour
+	while (!valid) {
+		cout << "hour:";
+		getline(cin, number);
+		if (cin.eof()) return Calendar();
+		try {
+			valid = isValidNumber(number);
+		}
+		catch (EmptyAnswer)
+		{
+			valid = false;
+			cout << "Your answer was empty. Note that it has to a number. Please retry to enter it." << endl;
+		}
+		catch (NotANumber)
+		{
+			valid = false;
+			cout << "Your answer has invalid characters. Note that it has to a number. Please retry to enter it." << endl;
+		}
+		if (cin.eof()) return Calendar();
+		int num = stoi(number);
+		if (num > 23 && num < 0) {
+			valid = false;
+			cout << "Your answer is out of range. Note that it has to a number between 0 and 23. Please retry to enter it." << endl;
+		}
+	}
+	hour = stoi(number);
+	valid = false;
+	//minute
+	while (!valid) {
+		cout << "minute:";
+		getline(cin, number);
+		if (cin.eof()) return Calendar();
+		try {
+			valid = isValidNumber(number);
+		}
+		catch (EmptyAnswer)
+		{
+			valid = false;
+			cout << "Your answer was empty. Note that it has to a number. Please retry to enter it." << endl;
+		}
+		catch (NotANumber)
+		{
+			valid = false;
+			cout << "Your answer has invalid characters. Note that it has to a number. Please retry to enter it." << endl;
+		}
+		if (cin.eof()) return Calendar();
+		int num = stoi(number);
+		if (num > 60 && num < 0) {
+			valid = false;
+			cout << "Your answer is out of range. Note that it has to a number between 0 and 59. Please retry to enter it." << endl;
+		}
+	}
+	minute = stoi(number);
+	date.setHour(hour);
+	date.setMinute(minute);
+	return date;
+}
 string CompanyMS::specialtyHandler() {
 	bool valid = false;
 	string specialty;
@@ -1759,7 +1908,7 @@ void CompanyMS::printInColour(string text, unsigned int colour, bool dark) {
 }
 void CompanyMS::mainTitle() {
 	string date = company->getCurrentCalendar().date();
-	printInColour(date, 7, false);
+	printInColour("                                                                       " + date + "       \n", 7, false);
+	printInColour (":::::::::::::::::::::::::::::::::::: CASTINGS TV :::::::::::::::::::::::::::::::::::" , 7, false);
 	cout << endl;
-	printInColour(":::::::::::::::::::::::::::::::::::: CASTINGS TV ::::::::::::::::::::::::::::::::::: \n", 7, false);
 }
