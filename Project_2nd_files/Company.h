@@ -3,36 +3,22 @@
 #define _COMPANY_H
 
 #include <string>
+#include <set>
 #include "Person.h"
 #include "Contestant.h"
-#include "UnavailableContestant.h"
-#include <unordered_set>
 #include "Judge.h"
 #include "Audition.h"
 #include "Application.h"
 #include "Calendar.h"
 
-struct hContestantPtr {
-	int operator()(const UContestantPtr & uc1) const {
-		return uc1.uCont->getId();
-	}
-	bool operator()(const UContestantPtr & uc1, const UContestantPtr & uc2) const {
-		return (uc1.uCont->getId() == uc2.uCont->getId());
-	}
-};
-
-typedef std::unordered_set<UContestantPtr, hContestantPtr, hContestantPtr> tabHUCont;
-
 class Company {
-	std::vector<Contestant*> contestants;
+	std::set<Contestant*> contestants;
 	std::vector<Application*> applications;
-	tabHUCont unavailableContestants;
 	std::vector<Judge *> judges;
 	std::vector<Audition*> auditions;
 	static unsigned int lastContestantId;
 	static unsigned int lastJudgeId;
 	static unsigned int lastAuditionId;
-	static Calendar currentCalendar;
 	const Calendar startOfFunctions = Calendar(0, 0, 0, 8, 30);
 	const Calendar endOfFunctions = Calendar(0, 0, 0, 20, 30);
 	const Calendar durationOfPerformancesF1 = Calendar(0, 0, 0, 0, 15);
@@ -41,15 +27,23 @@ class Company {
 	const Calendar durationOfPerformancesF2 = Calendar(0, 0, 0, 0, 30);
 	const Calendar breakBetweenPerfomancesF2 = Calendar(0, 0, 0, 0, 10);
 
+
+	struct bst
+	{
+		unsigned int data;
+		int leftIdx;
+		int rightIdx;
+	};
+
+
+
 public:
 	~Company();
 	/**
 	* @brief Manages to access all contestants ever applied
 	* @return constant vector of Contestant Object pointers
 	*/
-	std::vector<Contestant*> getContestants() const;
-
-	tabHUCont getUnavailableContestants() const;
+	std::set<Contestant*> getContestants() const;
 
 	/**
 	* @brief Manages to access all judges ever hired
@@ -68,14 +62,6 @@ public:
 	* @return constant vector of Audition Object pointers
 	*/
 	std::vector<Audition*> getAuditions() const;
-
-	Calendar getCurrentCalendar() const;
-	void setCurrentCalendar(Calendar calendar);
-
-	/* ------------------------------------- CALENDAR ------------------------------------*/
-
-	bool readCalendarFile(std::string fileName) const;
-	bool writeCalendarFile(std::string fileName) const;
 
 	/* ------------------------------------ CONTESTANT -----------------------------------*/
 
@@ -98,7 +84,7 @@ public:
 	* @param specialty a string
 	* @param contestants a reference vector of Contestant Object pointer
 	*/
-	void getContestantsOfSpecialty(std::string specialty, std::vector<Contestant*> & contestants);
+	void getContestantsOfSpecialty(std::string specialty, std::set<Contestant*> & contestants);
 
 	/**
 	* @brief Manages to get all applications of a specific specialty and save them to a reference vector of Application Object Pointers
@@ -112,7 +98,7 @@ public:
 	* @param specialty a string
 	* @param contestants a reference vector of Contestant Object pointer
 	*/
-	void generateContestantsOfSpecialty(std::string specialty, std::vector<Contestant*> & contestants);
+	void generateContestantsOfSpecialty(std::string specialty, std::set<Contestant*> & contestants);
 
 	/**
 	* @brief Manages to apply contestants to a reference vector of Application Object Pointers
@@ -181,16 +167,12 @@ public:
 	*/
 	bool readContestantsFile(std::string fileName);
 
-	bool readUnavailableContestantsFile(std::string fileName);
-
 	/**
 	* @brief Writes the contestant information into a file
 	* @param fileName a string with the name of the file
 	* @return true if successfully writes all the information into the file, false otherwise
 	*/
 	bool writeContestantsFile(std::string fileName);
-
-	bool writeUnavailableContestantsFile(std::string fileName);
 
 	/**
 	* @brief Reads the application information from a file and calls the function that creates an application
@@ -205,12 +187,6 @@ public:
 	* @return true if successfully writes all the information into the file, false otherwise
 	*/
 	bool writeApplicationsFile(std::string fileName);
-
-	void setContestantUnavailable(Contestant * contestant, Calendar unavailabilityBegin, Calendar unavailabilityEnd, std::string reason);
-
-	void setContestantAvavailable(UContestantPtr contestant);
-	
-	void updateAvailabilityOfContestants();
 
 	/* -------------------------------------- JUDGE --------------------------------------*/
 	/**

@@ -13,19 +13,21 @@
 #include "Util.h"
 #include "time.h"
 
+
 using namespace std;
 
 unsigned int Company::lastContestantId = 0;
 unsigned int Company::lastJudgeId = 0;
 unsigned int Company::lastAuditionId = 0;
-Calendar Company::currentCalendar = Calendar();
+
+
+
+
+
 
 // getMethods
-vector<Contestant*> Company::getContestants() const {
+set<Contestant*> Company::getContestants() const {
 	return contestants;
-}
-tabHUCont Company::getUnavailableContestants() const {
-	return unavailableContestants;
 }
 vector<Judge*> Company::getJudges() const {
 	return judges;
@@ -36,16 +38,9 @@ vector<Application*> Company::getApplications() const {
 vector<Audition*> Company::getAuditions() const {
 	return auditions;
 }
-Calendar Company::getCurrentCalendar() const {
-	return currentCalendar;
-}
-void Company::setCurrentCalendar(Calendar calendar) {
-	this->currentCalendar = calendar;
-}
-
 Company::~Company() {
-	for (int i = 0; i < contestants.size(); i++) {
-		delete contestants[i];
+	for (auto it = contestants.begin(); it != contestants.end(); it++) {
+		delete *it;
 	}
 
 	for (int i = 0; i < applications.size(); i++) {
@@ -58,71 +53,29 @@ Company::~Company() {
 		delete auditions[i];
 	}
 }
-/* ------------------------------------ CALENDAR -----------------------------------*/
-bool Company::readCalendarFile(string fileName) const {
-	ifstream calendarFile(fileName + ".dat");
-	unsigned int year, month, day, hour, minute;
-
-	//in case of failure during the opening
-	if (calendarFile.fail())
-	{
-		return false;
-	}
-	calendarFile >> year;
-	calendarFile.ignore(std::numeric_limits<std::streamsize>::max(), '/');
-	calendarFile >> month;
-	calendarFile.ignore(std::numeric_limits<std::streamsize>::max(), '/');
-	calendarFile >> day;
-	calendarFile.ignore(std::numeric_limits<std::streamsize>::max(), '/');
-	calendarFile >> hour;
-	calendarFile.ignore(std::numeric_limits<std::streamsize>::max(), '/');
-	calendarFile >> minute;
-	calendarFile.ignore(std::numeric_limits<std::streamsize>::max(), ';');
-
-	currentCalendar.setYear(year);
-	currentCalendar.setMonth(month);
-	currentCalendar.setDay(day);
-	currentCalendar.setHour(hour);
-	currentCalendar.setMinute(minute);
-
-	calendarFile.close();
-
-	return true;
-}
-bool Company::writeCalendarFile(string fileName) const {
-	ofstream calendarFile(fileName + ".dat");
-
-	if (calendarFile.fail())
-	{
-		return false;
-	}
-	calendarFile << currentCalendar.full();
-
-	calendarFile.close();
-
-	return true;
-}
-
 /* ------------------------------------ CONTESTANT -----------------------------------*/
 Contestant * Company::getContestantById(unsigned int id) {
 	Contestant * contestant = new Contestant(id, "", "", 0, Calendar(), "", {});
-	contestant = binarySearch<Contestant>(contestants, contestant);
+	//contestant = binarySearch<Contestant>(contestants, contestant);
 	if (contestant == NULL)
 		throw ContestantIdNotFound(id);
 	else return contestant;
 }
 unsigned int Company::getContestantByInfo(Contestant * contestant) {
-	for (size_t i = 0; i < contestants.size(); i++) {
-		if (*contestants[i] == *contestant)
-			return contestants[i]->getId();
+	for (auto it = contestants.begin(); it != contestants.end(); it++) {
+		if (**it == *contestant)
+			return (*it)->getId();
 	}
 	throw ContestantInfoNotFound();
 }
-void Company::getContestantsOfSpecialty(string specialty, vector<Contestant*> & contestants) {
-	for (size_t i = 0; i < this->contestants.size(); i++)
+void Company::getContestantsOfSpecialty(string specialty, set<Contestant*> & contestants) {
+	
+	
+	for (auto it = contestants.begin(); it != contestants.end(); it++)
+
 	{
-		if (this->contestants[i]->getSpecialty() == specialty)
-			contestants.push_back(this->contestants[i]);
+		(*it)->getSpecialty();
+
 	}
 }
 void Company::getApplicationsOfSpecialty(string specialty, vector<Application*> & applications) {
@@ -133,8 +86,8 @@ void Company::getApplicationsOfSpecialty(string specialty, vector<Application*> 
 			applications.push_back(this->applications[i]);
 	}
 }
-void Company::generateContestantsOfSpecialty(string specialty, vector<Contestant*> & contestants) {
-	vector<Contestant*> contestantsOfSpecialty;
+void Company::generateContestantsOfSpecialty(string specialty, set<Contestant*> & contestants) {
+	set<Contestant*> contestantsOfSpecialty;
 	getContestantsOfSpecialty(specialty, contestantsOfSpecialty);
 	unsigned int counter = 0;
 	unsigned int i;
@@ -142,8 +95,11 @@ void Company::generateContestantsOfSpecialty(string specialty, vector<Contestant
 	//Choosing contestants
 	while (counter < 24 && contestantsOfSpecialty.size() > 0) {
 		i = rand() % contestantsOfSpecialty.size(); //randomly
-		contestants.push_back(contestantsOfSpecialty[i]);
-		contestantsOfSpecialty.erase(contestantsOfSpecialty.begin() + i);
+		auto it = contestantsOfSpecialty.begin();
+		advance(it, i);
+		contestants.insert(*it);
+		contestantsOfSpecialty.erase(it);
+		//contestantsOfSpecialty.erase(contestantsOfSpecialty.begin() + i);
 		counter++;
 	}
 	sort(contestants.begin(), contestants.end());
@@ -165,8 +121,7 @@ void Company::addNewContestant(Contestant * contestant) {
 	addContestant(contestant);
 }
 void Company::addContestant(Contestant * contestant) {
-	contestants.push_back(contestant);
-
+	contestants.insert(contestant);
 	sort(contestants.begin(), contestants.end(), compareById<Contestant>);
 }
 void Company::addApplication(Calendar calendar, unsigned int id) {
@@ -185,7 +140,7 @@ void Company::updateContestant(Contestant * contestant, Contestant * modContesta
 
 }
 void Company::removeContestant(Contestant * contestant) {
-	for (auto it = contestants.begin(); it < contestants.end(); it++)
+	for (auto it = contestants.begin(); it != contestants.end(); it++)
 	{
 		if ((*it)->getId() == contestant->getId())
 		{
@@ -225,7 +180,7 @@ void Company::removeApplicationsOfContestant(Contestant * contestant) {
 
 		if (applications[i]->getContestantId() == contestant->getId())
 		{
-			applications.erase(applications.begin() + i);
+			applications.erase(applications.begin()+i);
 			removed = true;
 		}
 	}
@@ -244,42 +199,11 @@ bool Company::readContestantsFile(string fileName) {
 	while (!contestantsFile.eof()) /* adds elements to the Contestant* std::vector until the whole file is read */
 	{
 		getline(contestantsFile, textLine);
-		removeSpaces(textLine);
-		if (textLine == "")
-			break;
 		Contestant * contestant = new Contestant(textLine);
 		addContestant(contestant);
 		lastContestantId = contestant->getId();
 	}
 	contestantsFile.close();
-	return true;
-}
-bool Company::readUnavailableContestantsFile(std::string fileName) {
-	ifstream unavailableContestantsFile(fileName + ".dat");
-
-	string textLine;
-
-	//in case of failure during the opening
-	if (unavailableContestantsFile.fail())
-	{
-		return false;
-	}
-
-
-	while (!unavailableContestantsFile.eof()) /* adds elements to the Contestant* std::vector until the whole file is read */
-	{
-		getline(unavailableContestantsFile, textLine);
-		removeSpaces(textLine);
-		if (textLine == "")
-			break;
-		UnavailableContestant * contestant = new UnavailableContestant(textLine);
-		UContestantPtr p; p.uCont = contestant;
-		unavailableContestants.insert(p);
-
-		if (contestant->getId() > lastContestantId)
-			lastContestantId = contestant->getId();
-	}
-	unavailableContestantsFile.close();
 	return true;
 }
 bool Company::readApplicationsFile(string fileName) {
@@ -329,30 +253,15 @@ bool Company::readApplicationsFile(string fileName) {
 }
 bool Company::writeContestantsFile(string fileName) {
 	ofstream contestantsFile(fileName + ".dat");
-	unsigned int i = 0;
-	for (; i < contestants.size() - 1; i++) {
-		contestantsFile << (*contestants[i]) << "\n";
+	auto it = contestants.begin();
+	auto itEnd = contestants.begin();
+	advance(itEnd, contestants.size() - 1);
+	for (; it != itEnd; it++){
+		contestantsFile << (*it) << "\n";
 	}
-	contestantsFile << *contestants[i];
+	contestantsFile << (*it);
 
 	contestantsFile.close();
-
-	return true;
-}
-bool Company::writeUnavailableContestantsFile(string fileName) {
-	ofstream unavailableContestantsFile(fileName + ".dat");
-	unsigned int i = 0;
-	if (unavailableContestants.size() != 0) {
-		auto it = unavailableContestants.begin();
-		auto it2 = unavailableContestants.end();
-		it2--;
-		for (; it != it2; it++) {
-			unavailableContestantsFile << *((*it).uCont) << "\n";
-		}
-		unavailableContestantsFile << *((*it).uCont);
-	}
-
-	unavailableContestantsFile.close();
 
 	return true;
 }
@@ -367,34 +276,6 @@ bool Company::writeApplicationsFile(string fileName) {
 	contestantsFile.close();
 
 	return true;
-}
-void Company::setContestantUnavailable(Contestant * contestant, Calendar unavailabilityBegin, Calendar unavailabilityEnd, std::string reason) {
-	removeContestant(contestant);
-	UnavailableContestant * uc = new UnavailableContestant(contestant, unavailabilityBegin, unavailabilityEnd, reason);
-	UContestantPtr p;
-	p.uCont = uc;
-	unavailableContestants.insert(p);
-}
-void Company::setContestantAvavailable(UContestantPtr contestant) {
-	unavailableContestants.erase(contestant);
-	Contestant * n_contestant = new Contestant(contestant.uCont->getId(), contestant.uCont->getName(), contestant.uCont->getAddress(), contestant.uCont->getMobile(), contestant.uCont->getDob(), contestant.uCont->getSpecialty(), contestant.uCont->getParticipations());
-	addContestant(n_contestant);
-	delete contestant.uCont;
-}
-void Company::updateAvailabilityOfContestants() {
-	auto it = unavailableContestants.begin();
-	int size = unavailableContestants.size();
-	int i = 0;
-	while (i < size) {
-		if (it->uCont->getUnavailabilityEnd() < currentCalendar) {
-			setContestantAvavailable(*it);
-			it = unavailableContestants.begin();
-		}
-		else {
-			it++;
-		}
-		i++;
-	}
 }
 
 /* --------------------------------------- JUDGE --------------------------------------*/
