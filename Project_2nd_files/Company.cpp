@@ -375,7 +375,7 @@ void Company::setContestantUnavailable(Contestant * contestant, Calendar unavail
 	p.uCont = uc;
 	unavailableContestants.insert(p);
 }
-void Company::setContestantAvavailable(UContestantPtr contestant) {
+void Company::setContestantAvailable(UContestantPtr contestant) {
 	unavailableContestants.erase(contestant);
 	Contestant * n_contestant = new Contestant(contestant.uCont->getId(), contestant.uCont->getName(), contestant.uCont->getAddress(), contestant.uCont->getMobile(), contestant.uCont->getDob(), contestant.uCont->getSpecialty(), contestant.uCont->getParticipations());
 	addContestant(n_contestant);

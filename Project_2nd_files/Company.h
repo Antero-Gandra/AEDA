@@ -44,11 +44,15 @@ class Company {
 public:
 	~Company();
 	/**
-	* @brief Manages to access all contestants ever applied
+	* @brief Manages to access all contestants ever applied which are available
 	* @return constant vector of Contestant Object pointers
 	*/
 	std::vector<Contestant*> getContestants() const;
 
+	/**
+	* @brief Manages to access all contestants ever applied which are unavailable
+	* @return constant vector of Contestant Object pointers
+	*/
 	tabHUCont getUnavailableContestants() const;
 
 	/**
@@ -69,12 +73,32 @@ public:
 	*/
 	std::vector<Audition*> getAuditions() const;
 
+	/**
+	* @brief Manages to access the current day and time
+	* @return constant Calendar object with the current day and time
+	*/
 	Calendar getCurrentCalendar() const;
+
+	/**
+	* Changes the current calendar'v avlue
+	* @param calendar to be set, a Calendar object
+	*/
 	void setCurrentCalendar(Calendar calendar);
 
 	/* ------------------------------------- CALENDAR ------------------------------------*/
 
+	/**
+	* @brief Reads the current calendar information from a file
+	* @param fileName a string with the name of the file
+	* @return true if successfully reads all the file, false otherwise
+	*/
 	bool readCalendarFile(std::string fileName) const;
+
+	/**
+	* @brief Writes the unavailable contestant information into a file
+	* @param fileName a string with the name of the file
+	* @return true if successfully writes all the information into the file, false otherwise
+	*/
 	bool writeCalendarFile(std::string fileName) const;
 
 	/* ------------------------------------ CONTESTANT -----------------------------------*/
@@ -181,6 +205,12 @@ public:
 	*/
 	bool readContestantsFile(std::string fileName);
 
+	/**
+	* @brief Reads the unavailbale contestant information from a file and calls the function that creates an unavailbale contestant
+	* @param fileName a string with the name of the file
+	* @return true if successfully reads all the file, false otherwise
+	*/
+
 	bool readUnavailableContestantsFile(std::string fileName);
 
 	/**
@@ -190,6 +220,11 @@ public:
 	*/
 	bool writeContestantsFile(std::string fileName);
 
+	/**
+	* @brief Writes the unavailable contestant information into a file
+	* @param fileName a string with the name of the file
+	* @return true if successfully writes all the information into the file, false otherwise
+	*/
 	bool writeUnavailableContestantsFile(std::string fileName);
 
 	/**
@@ -206,10 +241,25 @@ public:
 	*/
 	bool writeApplicationsFile(std::string fileName);
 
+
+	/**
+	* @brief Removes a contestant from the constants's set, creates an Unavailable Contestant and places it on the hash table
+	* @ Contestant object pointer of the contestant to be removed
+	* @ Calendar object of the unavailable contestant's unavailability beginning
+	* @ Calendar object of the unavailable contestant's unavailability ending
+	* @ reason for the unavailability, a string
+	*/
 	void setContestantUnavailable(Contestant * contestant, Calendar unavailabilityBegin, Calendar unavailabilityEnd, std::string reason);
 
-	void setContestantAvavailable(UContestantPtr contestant);
+	/**
+	* @brief Removes an unavailable contestant from the unavailable constants's set, creates a contestant and places it on set
+	* @ Unavailable Contestant Struct with pointer to the unavailable contestant to be removed
+	*/
+
+	void setContestantAvailable(UContestantPtr contestant);
 	
+
+
 	void updateAvailabilityOfContestants();
 
 	/* -------------------------------------- JUDGE --------------------------------------*/
