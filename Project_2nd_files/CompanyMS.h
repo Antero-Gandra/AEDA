@@ -115,6 +115,8 @@ public:
 	*/
 	void showApplicationsMenu();
 
+	void reportWaiverMenu();
+
 
 	//JUDGES MENUS
 

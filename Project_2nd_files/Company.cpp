@@ -376,10 +376,12 @@ void Company::setContestantUnavailable(Contestant * contestant, Calendar unavail
 	unavailableContestants.insert(p);
 }
 void Company::setContestantAvailable(UContestantPtr contestant) {
-	unavailableContestants.erase(contestant);
+if (contestant.uCont->hasGivenUp()){
+		unavailableContestants.erase(contestant);
 	Contestant * n_contestant = new Contestant(contestant.uCont->getId(), contestant.uCont->getName(), contestant.uCont->getAddress(), contestant.uCont->getMobile(), contestant.uCont->getDob(), contestant.uCont->getSpecialty(), contestant.uCont->getParticipations());
 	addContestant(n_contestant);
 	delete contestant.uCont;
+}
 }
 void Company::updateAvailabilityOfContestants() {
 	auto it = unavailableContestants.begin();
@@ -387,7 +389,7 @@ void Company::updateAvailabilityOfContestants() {
 	int i = 0;
 	while (i < size) {
 		if (it->uCont->getUnavailabilityEnd() < currentCalendar) {
-			setContestantAvavailable(*it);
+			setContestantAvailable(*it);
 			it = unavailableContestants.begin();
 		}
 		else {

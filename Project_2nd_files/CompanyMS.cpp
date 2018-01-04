@@ -143,6 +143,7 @@ void CompanyMS::contestantMenu()
 	cout << "10. View unavailable contestants" << endl;
 	cout << "11. Search contestant by id" << endl;
 	cout << "12. View all applications" << endl;
+	cout << "6. Report a waiver" << endl;
 	cout << "Please Press Ctrl^Z to go back to the Main Menu" << endl;
 
 	unsigned int option = optionHandler(1, 12);
@@ -858,6 +859,10 @@ void CompanyMS::searchContestantByIdMenu() {
 		getline(cin, option);
 	}
 
+}
+void CompanyMS::reportWaiverMenu() {
+	mainTitle();
+	cout << "\t\t::::::::: ADD UNAVAILABILITY PERIOD TO A CONTESTANT ::::::::: \n";
 }
 
 

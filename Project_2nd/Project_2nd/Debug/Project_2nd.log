@@ -1,12 +1,11 @@
 ﻿  CompanyMS.cpp
 c:\users\margarida silva\documents\github\aeda\project_2nd_files\companyms.cpp(23): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\margarida silva\documents\github\aeda\project_2nd_files\companyms.cpp(675): warning C4101: 'answer': unreferenced local variable
-c:\users\margarida silva\documents\github\aeda\project_2nd_files\companyms.cpp(695): warning C4018: '<': signed/unsigned mismatch
-c:\users\margarida silva\documents\github\aeda\project_2nd_files\companyms.cpp(1126): warning C4101: 'answer': unreferenced local variable
-c:\users\margarida silva\documents\github\aeda\project_2nd_files\companyms.cpp(1146): warning C4018: '<': signed/unsigned mismatch
+c:\users\margarida silva\documents\github\aeda\project_2nd_files\companyms.cpp(676): warning C4101: 'answer': unreferenced local variable
+c:\users\margarida silva\documents\github\aeda\project_2nd_files\companyms.cpp(696): warning C4018: '<': signed/unsigned mismatch
+c:\users\margarida silva\documents\github\aeda\project_2nd_files\companyms.cpp(1131): warning C4101: 'answer': unreferenced local variable
+c:\users\margarida silva\documents\github\aeda\project_2nd_files\companyms.cpp(1151): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
   Skipping... (no relevant changes detected)
   main.cpp
-  Company.cpp
   Project_2nd.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\Project_2nd\Debug\Project_2nd.exe
   Project_2nd.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\Project_2nd\Debug\Project_2nd.pdb (Partial PDB)

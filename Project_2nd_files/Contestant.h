@@ -1,8 +1,3 @@
-/**
-* Project Untitled
-*/
-
-
 #ifndef _CONTESTANT_H
 #define _CONTESTANT_H
 

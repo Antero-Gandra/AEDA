@@ -9,11 +9,13 @@ class UnavailableContestant : public Contestant {
 	Calendar unavailabilityBegin;
 	Calendar unavailabilityEnd;
 	std::string reason;
+	bool givenUp;
 public:
 	Calendar getUnavailabilityEnd() const;
 	UnavailableContestant(unsigned int id, std::string name, std::string address, unsigned int mobile, Calendar dob, std::string specialty, std::vector<Participation*> participation, Calendar unavailabilityBegin, Calendar unavailabilityEnd, std::string reason);
 	UnavailableContestant(std::string textLine);
 	UnavailableContestant(Contestant * contestant, Calendar unavailabilityBegin, Calendar unavailabilityEnd, std::string reason);
+	bool hasGivenUp();
 	void show();
 	friend std::ostream& operator<<(std::ostream& os, const UnavailableContestant & contestant);
 };
