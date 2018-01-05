@@ -12,6 +12,7 @@
 #include "Audition.h"
 #include "Application.h"
 #include "Calendar.h"
+#include "Interview.h"
 
 struct hContestantPtr {
 	int operator()(const UContestantPtr & uc1) const {
@@ -35,6 +36,7 @@ typedef std::unordered_set<UContestantPtr, hContestantPtr, hContestantPtr> tabHU
 typedef std::set<ContestantPtr, ContestantPtrComp> BST;
 
 class Company {
+	priority_queue<ContestantPTR, vector<ContestantPTR>, ContestantPTRCompare> C = priority_queue<ContestantPTR, vector<ContestantPTR>, ContestantPTRCompare>(ContestantPTRCompare{ this });
 	BST contestants;
 	std::vector<Application*> applications;
 	tabHUCont unavailableContestants;
