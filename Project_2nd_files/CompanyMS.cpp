@@ -878,7 +878,7 @@ void CompanyMS::reportWaiverMenu() {
 	//Choose of id
 	while (repeated) {
 		cout << "Which contestant would you like to report as having to waiver?" << endl;
-		unsigned int id = contestantIdHandler();
+		unsigned int id = unavailableContestantIdHandler();
 		if (cin.eof()) return;
 
 		UnavailableContestant * contestant = company->getUnavailableContestantById(id);
@@ -1594,6 +1594,28 @@ bool CompanyMS::isValidContestantId(string id) {
 	}
 	return true;
 }
+bool CompanyMS::isValidUnavailableContestantId(std::string id) {
+	if (cin.eof()) {
+		return false;
+	}
+	removeSpaces(id);
+
+	if (id.length() == 0) throw EmptyAnswer();
+
+	for (size_t i = 0; i < id.length(); i++)
+	{
+		if (!isdigit(id[i]))
+			throw InvalidId();
+	}
+	unsigned int Id = stoi(id);
+	try {
+		company->getUnavailableContestantById(Id);
+	}
+	catch (UnavailableContestantIdNotFound) {
+		throw UnavailableContestantIdNotFound(Id);
+	}
+	return true;
+}
 bool CompanyMS::isValidJudgeId(string id) {
 	if (cin.eof()) {
 		return false;
@@ -1724,6 +1746,33 @@ bool CompanyMS::yesNoHandler() {
 	return false;
 }
 unsigned int CompanyMS::contestantIdHandler() {
+	string id;
+	bool valid = false;
+
+	while (!valid) {
+		cout << "Id:";
+		getline(cin, id);
+		if (cin.eof()) return 0;
+		try {
+			valid = isValidContestantId(id);
+		}
+		catch (EmptyAnswer)
+		{
+			valid = false;
+			cout << "Your answer was empty. Note that it has to be the ID (a number) and be part of the company's database. Please retry to enter it." << endl;
+		}
+		catch (InvalidId) {
+			valid = false;
+			cout << "Your answer has invalid characters. Note that it has to be the ID (a number) and be part of the company's database. Please retry to enter it." << endl;
+		}
+		catch (ContestantIdNotFound) {
+			valid = false;
+			cout << "It looks like the id you entered is not on our database. Note that it has to be the ID (a number) and be part of the company's database. Please retry to enter it." << endl;
+		}
+	}
+	return stoi(id);
+}
+unsigned int CompanyMS::unavailableContestantIdHandler() {
 	string id;
 	bool valid = false;
 

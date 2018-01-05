@@ -1,3 +1,23 @@
-﻿  UnavailableContestant.cpp
+﻿  ExceptionHand.cpp
+  CompanyMS.cpp
+c:\users\margarida silva\documents\github\aeda\project_2nd_files\companyms.cpp(23): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\margarida silva\documents\github\aeda\project_2nd_files\companyms.cpp(676): warning C4101: 'answer': unreferenced local variable
+c:\users\margarida silva\documents\github\aeda\project_2nd_files\companyms.cpp(696): warning C4018: '<': signed/unsigned mismatch
+c:\users\margarida silva\documents\github\aeda\project_2nd_files\companyms.cpp(1164): warning C4101: 'answer': unreferenced local variable
+c:\users\margarida silva\documents\github\aeda\project_2nd_files\companyms.cpp(1184): warning C4018: '<': signed/unsigned mismatch
+  Company.cpp
+c:\users\margarida silva\documents\github\aeda\project_2nd_files\company.cpp(47): warning C4018: '<': signed/unsigned mismatch
+c:\users\margarida silva\documents\github\aeda\project_2nd_files\company.cpp(51): warning C4018: '<': signed/unsigned mismatch
+c:\users\margarida silva\documents\github\aeda\project_2nd_files\company.cpp(54): warning C4018: '<': signed/unsigned mismatch
+c:\users\margarida silva\documents\github\aeda\project_2nd_files\company.cpp(57): warning C4018: '<': signed/unsigned mismatch
+c:\users\margarida silva\documents\github\aeda\project_2nd_files\company.cpp(229): warning C4018: '<': signed/unsigned mismatch
+c:\users\margarida silva\documents\github\aeda\project_2nd_files\company.cpp(453): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\margarida silva\documents\github\aeda\project_2nd_files\company.cpp(726): warning C4101: 'auditionId': unreferenced local variable
+c:\users\margarida silva\documents\github\aeda\project_2nd_files\company.cpp(762): warning C4101: 'auditionId': unreferenced local variable
+c:\users\margarida silva\documents\github\aeda\project_2nd_files\company.cpp(813): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  Compiling...
+  main.cpp
+  Generating Code...
   Project_2nd.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\Project_2nd\Debug\Project_2nd.exe
   Project_2nd.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\Project_2nd\Debug\Project_2nd.pdb (Partial PDB)

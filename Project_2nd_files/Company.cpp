@@ -117,8 +117,9 @@ UnavailableContestant * Company::getUnavailableContestantById(unsigned int id) {
 	u.uCont = uc;
 	auto it = unavailableContestants.find(u);
 	if (it == unavailableContestants.end())
-		return NULL;
-	else return it->uCont;
+		throw UnavailableContestantIdNotFound(id);
+	else 
+		return it->uCont;
 }
 unsigned int Company::getContestantByInfo(Contestant * contestant) {
 	for (size_t i = 0; i < contestants.size(); i++) {

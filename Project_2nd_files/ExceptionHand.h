@@ -18,6 +18,19 @@ public:
 	*/
 	unsigned int getId() const { return id; }
 };
+
+
+class UnavailableContestantIdNotFound {
+	unsigned int id;
+public:
+	UnavailableContestantIdNotFound(unsigned int id) { this->id = id; }
+
+	/**
+	* @brief Manages to get the id of the contestant that was not found
+	* @return unsigned integer id of the contestant not found
+	*/
+	unsigned int getId() const { return id; }
+};
 class JudgeInfoNotFound {
 };
 

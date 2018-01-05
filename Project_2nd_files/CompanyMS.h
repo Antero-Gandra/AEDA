@@ -280,6 +280,14 @@ public:
 	* @return true if it is valid by checking the database, false otherwise
 	*/
 	bool isValidContestantId(std::string id);
+
+
+	/**
+	* @brief Checks if the string inputed is a valid unavailable contestant id
+	* @param id a string
+	* @return true if it is valid by checking the database, false otherwise
+	*/
+	bool isValidUnavailableContestantId(std::string id);
 	
 	/**
 	* @brief Checks if the string inputed is a valid judge id
@@ -334,6 +342,12 @@ public:
 	* @return unsigned int
 	*/
 	unsigned int contestantIdHandler();
+
+	/**
+	* @brief Converts the string inputed of the unavailable contestant's id to unsigned integer
+	* @return unsigned int
+	*/
+	unsigned int unavailableContestantIdHandler();
 	
 	/**
 	* @brief Converts the string inputed of the judge's id to unsigned integer
