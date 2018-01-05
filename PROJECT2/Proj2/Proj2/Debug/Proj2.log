@@ -1,1 +1,16 @@
+<<<<<<< HEAD
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Platforms\Win32\PlatformToolsets\v141\Toolset.targets(34,5): error MSB8036: The Windows SDK version 8.1 was not found. Install the required version of Windows SDK or change the SDK version in the project property pages or by right-clicking the solution and selecting "Retarget solution".
+=======
+﻿  Company.cpp
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(49): warning C4018: '<': signed/unsigned mismatch
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(52): warning C4018: '<': signed/unsigned mismatch
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(55): warning C4018: '<': signed/unsigned mismatch
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(118): warning C4101: 'u': unreferenced local variable
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(229): warning C4018: '<': signed/unsigned mismatch
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(455): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(728): warning C4101: 'auditionId': unreferenced local variable
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(764): warning C4101: 'auditionId': unreferenced local variable
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(815): warning C4018: '<': signed/unsigned mismatch
+  Proj2.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\PROJECT2\Proj2\Debug\Proj2.exe
+  Proj2.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\PROJECT2\Proj2\Debug\Proj2.pdb (Partial PDB)
+>>>>>>> 9635d9ed4a18a80b8b1ed9802c9563bfa77c78dc
