@@ -12,6 +12,7 @@
 #include "Calendar.h"
 #include "Util.h"
 #include "time.h"
+#include "Interview.h"
 
 using namespace std;
 
@@ -836,6 +837,8 @@ void Company::gradeAudition(unsigned int auditionId) {
 		{
 			unsigned int id = contestantsNotQualified[j];
 			Contestant * contestant = getContestantById(id);
+			ContestantPTR c = { contestant };
+			this->C.push(c);
 			vector<Participation*> participations = contestant->getParticipations();
 			vector<unsigned int> allContestants = audition->getFirstPhase()->getContestants();
 			//searching the grade
@@ -846,6 +849,13 @@ void Company::gradeAudition(unsigned int auditionId) {
 			unsigned int chiefJudge = audition->getFirstPhase()->getChiefJudge()[l];
 			participations.push_back(new Participation(audition->getId(), 0, chiefJudge));
 			contestant->setParticipations(participations);
+		}
+
+		cout << "Hey: " << endl;
+		while (!C.empty()) {
+			ContestantPTR temp = C.top();
+			cout << temp.contestant << "    -     " << endl;
+			C.pop();
 		}
 
 		vector<unsigned int> contestantsOrdered = audition->gradeSecondPhase();

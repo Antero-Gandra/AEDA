@@ -60,6 +60,9 @@
     <ClInclude Include="..\..\files\Contestant.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\files\Interview.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\files\FirstPhase.cpp">
