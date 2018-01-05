@@ -1,114 +1,12 @@
-﻿  main.cpp
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(14): error C2143: syntax error: missing ';' before '*'
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(14): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(14): error C2238: unexpected token(s) preceding ';'
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(18): error C2143: syntax error: missing ';' before '*'
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(18): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(18): error C2238: unexpected token(s) preceding ';'
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(20): error C2065: 'Company': undeclared identifier
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(20): error C2146: syntax error: missing ';' before identifier 'temp'
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(20): error C2065: 'temp': undeclared identifier
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(20): error C2039: 'company': is not a member of 'ContestantPTRCompare'
-  c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(17): note: see declaration of 'ContestantPTRCompare'
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(25): error C2065: 'temp': undeclared identifier
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(25): error C2228: left of '.getAuditionById' must have class/struct/union
-  c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(25): note: type is 'unknown-type'
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(26): error C2065: 'temp': undeclared identifier
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(26): error C2228: left of '.getAuditionById' must have class/struct/union
-  c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(26): note: type is 'unknown-type'
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(27): error C3536: 'audition1': cannot be used before it is initialized
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(27): error C2227: left of '->getStart' must point to class/struct/union/generic type
-  c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(27): note: type is 'int'
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(28): error C3536: 'audition2': cannot be used before it is initialized
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(28): error C2227: left of '->getStart' must point to class/struct/union/generic type
-  c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(28): note: type is 'int'
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(29): error C3536: 'calendar1': cannot be used before it is initialized
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(29): error C3536: 'calendar2': cannot be used before it is initialized
-c:\users\pc\documents\github\proj-aeda\project2\files\company.h(39): error C2143: syntax error: missing ';' before '<'
-c:\users\pc\documents\github\proj-aeda\project2\files\company.h(39): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\pc\documents\github\proj-aeda\project2\files\company.h(39): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
-c:\users\pc\documents\github\proj-aeda\project2\files\company.h(39): error C2059: syntax error: ')'
-c:\users\pc\documents\github\proj-aeda\project2\files\company.h(39): error C2238: unexpected token(s) preceding ';'
-  CompanyMS.cpp
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(14): error C2143: syntax error: missing ';' before '*'
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(14): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(14): error C2238: unexpected token(s) preceding ';'
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(18): error C2143: syntax error: missing ';' before '*'
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(18): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(18): error C2238: unexpected token(s) preceding ';'
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(20): error C2065: 'Company': undeclared identifier
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(20): error C2146: syntax error: missing ';' before identifier 'temp'
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(20): error C2065: 'temp': undeclared identifier
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(20): error C2039: 'company': is not a member of 'ContestantPTRCompare'
-  c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(17): note: see declaration of 'ContestantPTRCompare'
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(25): error C2065: 'temp': undeclared identifier
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(25): error C2228: left of '.getAuditionById' must have class/struct/union
-  c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(25): note: type is 'unknown-type'
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(26): error C2065: 'temp': undeclared identifier
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(26): error C2228: left of '.getAuditionById' must have class/struct/union
-  c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(26): note: type is 'unknown-type'
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(27): error C3536: 'audition1': cannot be used before it is initialized
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(27): error C2227: left of '->getStart' must point to class/struct/union/generic type
-  c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(27): note: type is 'int'
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(28): error C3536: 'audition2': cannot be used before it is initialized
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(28): error C2227: left of '->getStart' must point to class/struct/union/generic type
-  c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(28): note: type is 'int'
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(29): error C3536: 'calendar1': cannot be used before it is initialized
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(29): error C3536: 'calendar2': cannot be used before it is initialized
-c:\users\pc\documents\github\proj-aeda\project2\files\company.h(39): error C2143: syntax error: missing ';' before '<'
-c:\users\pc\documents\github\proj-aeda\project2\files\company.h(39): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\pc\documents\github\proj-aeda\project2\files\company.h(39): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
-c:\users\pc\documents\github\proj-aeda\project2\files\company.h(39): error C2059: syntax error: ')'
-c:\users\pc\documents\github\proj-aeda\project2\files\company.h(39): error C2238: unexpected token(s) preceding ';'
-c:\users\pc\documents\github\proj-aeda\project2\files\companyms.cpp(23): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\pc\documents\github\proj-aeda\project2\files\companyms.cpp(1183): warning C4018: '<': signed/unsigned mismatch
-  Company.cpp
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(14): error C2143: syntax error: missing ';' before '*'
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(14): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(14): error C2238: unexpected token(s) preceding ';'
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(18): error C2143: syntax error: missing ';' before '*'
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(18): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(18): error C2238: unexpected token(s) preceding ';'
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(20): error C2065: 'Company': undeclared identifier
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(20): error C2146: syntax error: missing ';' before identifier 'temp'
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(20): error C2065: 'temp': undeclared identifier
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(20): error C2039: 'company': is not a member of 'ContestantPTRCompare'
-  c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(17): note: see declaration of 'ContestantPTRCompare'
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(25): error C2065: 'temp': undeclared identifier
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(25): error C2228: left of '.getAuditionById' must have class/struct/union
-  c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(25): note: type is 'unknown-type'
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(26): error C2065: 'temp': undeclared identifier
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(26): error C2228: left of '.getAuditionById' must have class/struct/union
-  c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(26): note: type is 'unknown-type'
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(27): error C3536: 'audition1': cannot be used before it is initialized
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(27): error C2227: left of '->getStart' must point to class/struct/union/generic type
-  c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(27): note: type is 'int'
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(28): error C3536: 'audition2': cannot be used before it is initialized
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(28): error C2227: left of '->getStart' must point to class/struct/union/generic type
-  c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(28): note: type is 'int'
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(29): error C3536: 'calendar1': cannot be used before it is initialized
-c:\users\pc\documents\github\proj-aeda\project2\files\interview.h(29): error C3536: 'calendar2': cannot be used before it is initialized
-c:\users\pc\documents\github\proj-aeda\project2\files\company.h(39): error C2143: syntax error: missing ';' before '<'
-c:\users\pc\documents\github\proj-aeda\project2\files\company.h(39): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\pc\documents\github\proj-aeda\project2\files\company.h(39): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
-c:\users\pc\documents\github\proj-aeda\project2\files\company.h(39): error C2059: syntax error: ')'
-c:\users\pc\documents\github\proj-aeda\project2\files\company.h(39): error C2238: unexpected token(s) preceding ';'
-c:\users\pc\documents\github\proj-aeda\project2\files\company.cpp(50): warning C4018: '<': signed/unsigned mismatch
-c:\users\pc\documents\github\proj-aeda\project2\files\company.cpp(53): warning C4018: '<': signed/unsigned mismatch
-c:\users\pc\documents\github\proj-aeda\project2\files\company.cpp(56): warning C4018: '<': signed/unsigned mismatch
-c:\users\pc\documents\github\proj-aeda\project2\files\company.cpp(230): warning C4018: '<': signed/unsigned mismatch
-c:\users\pc\documents\github\proj-aeda\project2\files\company.cpp(456): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\pc\documents\github\proj-aeda\project2\files\company.cpp(816): warning C4018: '<': signed/unsigned mismatch
-c:\users\pc\documents\github\proj-aeda\project2\files\company.cpp(841): error C2039: 'C': is not a member of 'Company'
-  c:\users\pc\documents\github\proj-aeda\project2\files\company.h(38): note: see declaration of 'Company'
-c:\users\pc\documents\github\proj-aeda\project2\files\company.cpp(841): error C2228: left of '.push' must have class/struct/union
-c:\users\pc\documents\github\proj-aeda\project2\files\company.cpp(855): error C2065: 'C': undeclared identifier
-c:\users\pc\documents\github\proj-aeda\project2\files\company.cpp(855): error C2228: left of '.empty' must have class/struct/union
-  c:\users\pc\documents\github\proj-aeda\project2\files\company.cpp(855): note: type is 'unknown-type'
-c:\users\pc\documents\github\proj-aeda\project2\files\company.cpp(856): error C2065: 'C': undeclared identifier
-c:\users\pc\documents\github\proj-aeda\project2\files\company.cpp(856): error C2228: left of '.top' must have class/struct/union
-  c:\users\pc\documents\github\proj-aeda\project2\files\company.cpp(856): note: type is 'unknown-type'
-c:\users\pc\documents\github\proj-aeda\project2\files\company.cpp(858): error C2065: 'C': undeclared identifier
-c:\users\pc\documents\github\proj-aeda\project2\files\company.cpp(858): error C2228: left of '.pop' must have class/struct/union
-  c:\users\pc\documents\github\proj-aeda\project2\files\company.cpp(858): note: type is 'unknown-type'
-  Generating Code...
+﻿  Company.cpp
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(49): warning C4018: '<': signed/unsigned mismatch
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(52): warning C4018: '<': signed/unsigned mismatch
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(55): warning C4018: '<': signed/unsigned mismatch
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(118): warning C4101: 'u': unreferenced local variable
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(229): warning C4018: '<': signed/unsigned mismatch
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(455): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(728): warning C4101: 'auditionId': unreferenced local variable
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(764): warning C4101: 'auditionId': unreferenced local variable
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(815): warning C4018: '<': signed/unsigned mismatch
+  Proj2.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\PROJECT2\Proj2\Debug\Proj2.exe
+  Proj2.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\PROJECT2\Proj2\Debug\Proj2.pdb (Partial PDB)
