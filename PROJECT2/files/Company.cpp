@@ -21,7 +21,7 @@ unsigned int Company::lastAuditionId = 0;
 Calendar Company::currentCalendar = Calendar();
 
 // getMethods
-vector<Contestant*> Company::getContestants() const {
+BST Company::getContestants() const {
 	return contestants;
 }
 tabHUCont Company::getUnavailableContestants() const {
@@ -44,9 +44,7 @@ void Company::setCurrentCalendar(Calendar calendar) {
 }
 
 Company::~Company() {
-	for (int i = 0; i < contestants.size(); i++) {
-		delete contestants[i];
-	}
+	//ContestantPtr Class has a destructor
 
 	for (int i = 0; i < applications.size(); i++) {
 		delete applications[i];
@@ -105,33 +103,37 @@ bool Company::writeCalendarFile(string fileName) const {
 
 /* ------------------------------------ CONTESTANT -----------------------------------*/
 Contestant * Company::getContestantById(unsigned int id) {
-	Contestant * contestant = new Contestant(id, "", "", 0, Calendar(), "", {});
-	contestant = binarySearch<Contestant>(contestants, contestant);
-	if (contestant == NULL)
-		throw ContestantIdNotFound(id);
-	else return contestant;
+	Contestant * contestant = new Contestant();
+	contestant->setId(id);
+	ContestantPtr p(contestant);
+	auto it = contestants.begin();
+	for (; it != contestants.end(); it++) {
+		if (it->cont->getId() == contestant->getId())
+			return it->cont;
+	}
+	throw ContestantIdNotFound(id);
 }
 UnavailableContestant * Company::getUnavailableContestantById(unsigned int id) {
 	UnavailableContestant * uc = new UnavailableContestant();
 	UContestantPtr u;
-	u.uCont = uc;
-	auto it = unavailableContestants.find(u);
-	if (it == unavailableContestants.end())
-		return NULL;
-	else return it->uCont;
+	for (auto it = unavailableContestants.begin(); it != unavailableContestants.end(); it++) {
+		if (it->uCont->getId() == id)
+		return it->uCont;
+	}
+	return NULL;
 }
 unsigned int Company::getContestantByInfo(Contestant * contestant) {
-	for (size_t i = 0; i < contestants.size(); i++) {
-		if (*contestants[i] == *contestant)
-			return contestants[i]->getId();
+	for (auto it = contestants.begin(); it != contestants.end(); it++) {
+		if (*((*it).cont) == *contestant)
+			return ((*it).cont)->getId();
 	}
 	throw ContestantInfoNotFound();
 }
 void Company::getContestantsOfSpecialty(string specialty, vector<Contestant*> & contestants) {
-	for (size_t i = 0; i < this->contestants.size(); i++)
+	for (auto it = this->contestants.begin(); it != this->contestants.end(); it++)
 	{
-		if (this->contestants[i]->getSpecialty() == specialty)
-			contestants.push_back(this->contestants[i]);
+		if (((*it).cont)->getSpecialty() == specialty)
+			contestants.push_back((*it).cont);
 	}
 }
 void Company::getApplicationsOfSpecialty(string specialty, vector<Application*> & applications) {
@@ -174,9 +176,8 @@ void Company::addNewContestant(Contestant * contestant) {
 	addContestant(contestant);
 }
 void Company::addContestant(Contestant * contestant) {
-	contestants.push_back(contestant);
-
-	sort(contestants.begin(), contestants.end(), compareById<Contestant>);
+	ContestantPtr p(contestant);
+	contestants.insert(p);
 }
 void Company::addApplication(Calendar calendar, unsigned int id) {
 	Application * application = new Application(calendar, id);
@@ -194,9 +195,9 @@ void Company::updateContestant(Contestant * contestant, Contestant * modContesta
 
 }
 void Company::removeContestant(Contestant * contestant) {
-	for (auto it = contestants.begin(); it < contestants.end(); it++)
+	for (auto it = contestants.begin(); it != contestants.end(); it++)
 	{
-		if ((*it)->getId() == contestant->getId())
+		if (((*it).cont)->getId() == contestant->getId())
 		{
 			contestants.erase(it);
 			return;
@@ -338,11 +339,13 @@ bool Company::readApplicationsFile(string fileName) {
 }
 bool Company::writeContestantsFile(string fileName) {
 	ofstream contestantsFile(fileName + ".dat");
-	unsigned int i = 0;
-	for (; i < contestants.size() - 1; i++) {
-		contestantsFile << (*contestants[i]) << "\n";
+	auto it = contestants.begin();
+	auto itEnd = contestants.begin();
+	advance(itEnd, contestants.size() - 1);
+	for (; it != itEnd; it++) {
+		contestantsFile << *((*it).cont) << "\n";
 	}
-	contestantsFile << *contestants[i];
+	contestantsFile << *((*it).cont);
 
 	contestantsFile.close();
 
@@ -385,12 +388,12 @@ void Company::setContestantUnavailable(Contestant * contestant, Calendar unavail
 	unavailableContestants.insert(p);
 }
 void Company::setContestantAvailable(UContestantPtr contestant) {
-if (contestant.uCont->hasGivenUp()){
+	if (!contestant.uCont->hasGivenUp()) {
 		unavailableContestants.erase(contestant);
-	Contestant * n_contestant = new Contestant(contestant.uCont->getId(), contestant.uCont->getName(), contestant.uCont->getAddress(), contestant.uCont->getMobile(), contestant.uCont->getDob(), contestant.uCont->getSpecialty(), contestant.uCont->getParticipations());
-	addContestant(n_contestant);
-	delete contestant.uCont;
-}
+		Contestant * n_contestant = new Contestant(contestant.uCont->getId(), contestant.uCont->getName(), contestant.uCont->getAddress(), contestant.uCont->getMobile(), contestant.uCont->getDob(), contestant.uCont->getSpecialty(), contestant.uCont->getParticipations());
+		addContestant(n_contestant);
+		delete contestant.uCont;
+	}
 }
 void Company::updateAvailabilityOfContestants() {
 	auto it = unavailableContestants.begin();

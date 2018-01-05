@@ -107,8 +107,13 @@
     <ClCompile Include="..\..\files\Contestant.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\files\ExceptionHand.cpp">
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="contestants.dat">
       <Filter>Source Files</Filter>
-    </ClCompile>
+    </None>
+    <None Include="currentCalendar.dat">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

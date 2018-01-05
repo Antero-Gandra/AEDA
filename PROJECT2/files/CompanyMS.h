@@ -201,9 +201,11 @@ public:
 	/**
 	* @brief Prints the information of all contestants on the database sorted by id
 	*/
-	void showContestants(const std::vector<Contestant *> & contestants);
+	void showContestants(const BST & contestants);
 
 	void showContestants(const tabHUCont & contestants);
+
+	void showContestantsOfSpecialty(const BST & contestants, std::string specialty);
 	
 	/**
 	* @brief Prints the information of all contestants on the database sorted by name
@@ -216,6 +218,8 @@ public:
 	* @param limSup an unsigned integer
 	*/
 	void showPartialContestants(const std::vector<Contestant *> & contestants, unsigned int limInf, unsigned int limSup);
+
+	void showPartialContestants(const BST & contestants, unsigned int limInf, unsigned int limSup);
 
 	void showPartialContestants(const tabHUCont & contestants, unsigned int limInf, unsigned int limSup);
 
@@ -280,6 +284,13 @@ public:
 	* @return true if it is valid by checking the database, false otherwise
 	*/
 	bool isValidContestantId(std::string id);
+
+	/**
+	* @brief Checks if the string inputed is a valid unavailable contestant id
+	* @param id a string
+	* @return true if it is valid by checking the database, false otherwise
+	*/
+	bool isValidUnavailableContestantId(std::string id);
 	
 	/**
 	* @brief Checks if the string inputed is a valid judge id
@@ -334,6 +345,12 @@ public:
 	* @return unsigned int
 	*/
 	unsigned int contestantIdHandler();
+
+	/**
+	* @brief Converts the string inputed of the unavailable contestant's id to unsigned integer
+	* @return unsigned int id
+	*/
+	unsigned int unavailableContestantIdHandler();
 	
 	/**
 	* @brief Converts the string inputed of the judge's id to unsigned integer

@@ -11,6 +11,7 @@
 
 
 int main() {
+
 	Company * company = new Company();
 	CompanyMS * managementSystem= new CompanyMS(company);
 	managementSystem->run();

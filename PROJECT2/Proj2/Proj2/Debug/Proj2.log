@@ -1,37 +1,12 @@
-﻿  Util.cpp
-  UnavailableContestant.cpp
-  SecondPhase.cpp
-  Phase.cpp
-c:\users\margarida silva\documents\github\aeda\project2\files\phase.cpp(143): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Person.cpp
-  Participation.cpp
-c:\users\margarida silva\documents\github\aeda\project2\files\participation.cpp(9): warning C4114: same type qualifier used more than once
-  main.cpp
-  Judge.cpp
-  FirstPhase.cpp
-  ExceptionHand.cpp
-  Contestant.cpp
-c:\users\margarida silva\documents\github\aeda\project2\files\contestant.cpp(32): warning C4101: 'minute': unreferenced local variable
-c:\users\margarida silva\documents\github\aeda\project2\files\contestant.cpp(32): warning C4101: 'hour': unreferenced local variable
-  CompanyMS.cpp
-c:\users\margarida silva\documents\github\aeda\project2\files\companyms.cpp(23): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\margarida silva\documents\github\aeda\project2\files\companyms.cpp(676): warning C4101: 'answer': unreferenced local variable
-c:\users\margarida silva\documents\github\aeda\project2\files\companyms.cpp(696): warning C4018: '<': signed/unsigned mismatch
-c:\users\margarida silva\documents\github\aeda\project2\files\companyms.cpp(1164): warning C4101: 'answer': unreferenced local variable
-c:\users\margarida silva\documents\github\aeda\project2\files\companyms.cpp(1184): warning C4018: '<': signed/unsigned mismatch
-  Company.cpp
-c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(47): warning C4018: '<': signed/unsigned mismatch
-c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(51): warning C4018: '<': signed/unsigned mismatch
-c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(54): warning C4018: '<': signed/unsigned mismatch
-c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(57): warning C4018: '<': signed/unsigned mismatch
-c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(228): warning C4018: '<': signed/unsigned mismatch
-c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(452): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(725): warning C4101: 'auditionId': unreferenced local variable
-c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(761): warning C4101: 'auditionId': unreferenced local variable
-c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(812): warning C4018: '<': signed/unsigned mismatch
-  Calendar.cpp
-  Audition.cpp
-  Application.cpp
-  Generating Code...
+﻿  Company.cpp
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(49): warning C4018: '<': signed/unsigned mismatch
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(52): warning C4018: '<': signed/unsigned mismatch
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(55): warning C4018: '<': signed/unsigned mismatch
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(118): warning C4101: 'u': unreferenced local variable
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(229): warning C4018: '<': signed/unsigned mismatch
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(455): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(728): warning C4101: 'auditionId': unreferenced local variable
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(764): warning C4101: 'auditionId': unreferenced local variable
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(815): warning C4018: '<': signed/unsigned mismatch
   Proj2.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\PROJECT2\Proj2\Debug\Proj2.exe
   Proj2.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\PROJECT2\Proj2\Debug\Proj2.pdb (Partial PDB)

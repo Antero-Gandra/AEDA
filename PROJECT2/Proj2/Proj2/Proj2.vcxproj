@@ -134,7 +134,6 @@
     <ClCompile Include="..\..\files\Company.cpp" />
     <ClCompile Include="..\..\files\CompanyMS.cpp" />
     <ClCompile Include="..\..\files\Contestant.cpp" />
-    <ClCompile Include="..\..\files\ExceptionHand.cpp" />
     <ClCompile Include="..\..\files\FirstPhase.cpp" />
     <ClCompile Include="..\..\files\Judge.cpp" />
     <ClCompile Include="..\..\files\main.cpp" />
@@ -144,6 +143,10 @@
     <ClCompile Include="..\..\files\SecondPhase.cpp" />
     <ClCompile Include="..\..\files\UnavailableContestant.cpp" />
     <ClCompile Include="..\..\files\Util.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="contestants.dat" />
+    <None Include="currentCalendar.dat" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

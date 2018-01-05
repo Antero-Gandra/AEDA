@@ -3,6 +3,7 @@
 #define _COMPANY_H
 
 #include <string>
+#include <set>
 #include "Person.h"
 #include "Contestant.h"
 #include "UnavailableContestant.h"
@@ -21,10 +22,20 @@ struct hContestantPtr {
 	}
 };
 
+struct ContestantPtrComp
+{
+	bool operator()(const ContestantPtr &a, const ContestantPtr &b) const
+	{
+		if (a.cont->getSpecialty() != a.cont->getSpecialty())
+			return a.cont->getSpecialty() < a.cont->getSpecialty();
+		else return b.cont->getDob() < a.cont->getDob();
+	}
+};
 typedef std::unordered_set<UContestantPtr, hContestantPtr, hContestantPtr> tabHUCont;
+typedef std::set<ContestantPtr, ContestantPtrComp> BST;
 
 class Company {
-	std::vector<Contestant*> contestants;
+	BST contestants;
 	std::vector<Application*> applications;
 	tabHUCont unavailableContestants;
 	std::vector<Judge *> judges;
@@ -47,7 +58,7 @@ public:
 	* @brief Manages to access all contestants ever applied which are available
 	* @return constant vector of Contestant Object pointers
 	*/
-	std::vector<Contestant*> getContestants() const;
+	BST getContestants() const;
 
 	/**
 	* @brief Manages to access all contestants ever applied which are unavailable

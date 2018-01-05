@@ -143,10 +143,10 @@ void CompanyMS::contestantMenu()
 	cout << "10. View unavailable contestants" << endl;
 	cout << "11. Search contestant by id" << endl;
 	cout << "12. View all applications" << endl;
-	cout << "6. Report a waiver" << endl;
+	cout << "13. Report a waiver" << endl;
 	cout << "Please Press Ctrl^Z to go back to the Main Menu" << endl;
 
-	unsigned int option = optionHandler(1, 12);
+	unsigned int option = optionHandler(1, 13);
 	if (cin.eof()) return;
 
 	switch (option) {
@@ -224,7 +224,12 @@ void CompanyMS::contestantMenu()
 	} while (!std::cin.eof());
 	cin.clear();
 	break;
-
+	case 13: do {
+		clearScreen();
+		reportWaiverMenu();
+	} while (!std::cin.eof());
+	cin.clear();
+	break;
 	}
 }
 
@@ -691,12 +696,7 @@ void CompanyMS::showContestantsOfSpecialtyMenu() {
 	if (cin.eof()) return;
 
 	cout << "Contestants:" << endl;
-	vector<Contestant*> contestants;
-	company->getContestantsOfSpecialty(specialty, contestants);
-	for (int i = 0; i < contestants.size(); i++) {
-		contestants[i]->show();
-		cout << endl;
-	}
+	showContestantsOfSpecialty(company->getContestants(), specialty);
 
 
 	cout << "Please Press Ctrl^Z to go back to the Contestants' Menu" << endl;
@@ -774,14 +774,13 @@ void CompanyMS::addUnavailabilityPeriodMenu() {
 		{
 			cout << "Please insert the begining of the unavailability period." << endl;
 			unavailabilityBegin = fullCalendarHandler();
+			if (cin.eof()) return;
 			valid = true;
 			if (unavailabilityBegin < company->getCurrentCalendar())
 			{
 				valid = false;
 				cout << "The calendar must be later than the current Calendar. \n";
 			}
-
-			if (cin.eof()) return;
 		}
 
 
@@ -791,6 +790,7 @@ void CompanyMS::addUnavailabilityPeriodMenu() {
 		while (!valid) {
 			cout << "Please insert the ending of the unavailability period." << endl;
 			unavailabilityEnd = fullCalendarHandler();
+			if (cin.eof()) return;
 			valid = true;
 			if (unavailabilityEnd < company->getCurrentCalendar())
 			{
@@ -833,10 +833,10 @@ void CompanyMS::addUnavailabilityPeriodMenu() {
 			updateFilesHandler();
 		}
 
-	
+
 	}
 
-	
+
 
 	cout << "Please Press Ctrl^Z to go back to the Contestants' Menu" << endl;
 	while (!cin.eof()) {
@@ -878,7 +878,7 @@ void CompanyMS::reportWaiverMenu() {
 	//Choose of id
 	while (repeated) {
 		cout << "Which contestant would you like to report as having to waiver?" << endl;
-		unsigned int id = contestantIdHandler();
+		unsigned int id = unavailableContestantIdHandler();
 		if (cin.eof()) return;
 
 		UnavailableContestant * contestant = company->getUnavailableContestantById(id);
@@ -897,7 +897,6 @@ void CompanyMS::reportWaiverMenu() {
 	}
 
 }
-
 
 void CompanyMS::employJudgeMenu() {
 	mainTitle();
@@ -1356,11 +1355,32 @@ void CompanyMS::disassembleAuditionMenu() {
 }
 
 
-void CompanyMS::showContestants(const vector<Contestant *> & contestants) {
-	if (contestants.size() != 0){
-	unsigned int limInf = (*(contestants.begin()))->getId();
-	unsigned int limSup = (*(contestants.end() - 1))->getId();
-	showPartialContestants(contestants, limInf, limSup);
+void CompanyMS::showContestantsOfSpecialty(const BST & contestants, std::string specialty) {
+	auto it = contestants.begin();
+	for (it = contestants.begin(); it != contestants.end() ; it++) {
+		if (it->cont->getSpecialty() == specialty)
+			break;
+	}
+	if (it == contestants.end()) return;
+	while (it != contestants.end()) {
+		if (it->cont->getSpecialty() == specialty) {
+			it->cont->show();
+			cout << endl;
+		}
+		it++;
+	}
+}
+
+void CompanyMS::showContestants(const BST & contestants) {
+	if (contestants.size() != 0) {
+		vector<Contestant *> conts;
+		for (auto it = contestants.begin(); it != contestants.end(); it++) {
+			conts.push_back(it->cont);
+		}
+		sort(conts.begin(), conts.end(), compareById<Contestant>);
+		unsigned int limInf = conts[0]->getId();
+		unsigned int limSup = conts[conts.size()-1]->getId();
+		showPartialContestants(conts, limInf, limSup);
 	}
 }
 void CompanyMS::showPartialContestants(const vector<Contestant *> & contestants, unsigned int limInf, unsigned int limSup) {
@@ -1379,6 +1399,16 @@ void CompanyMS::showPartialContestants(const vector<Contestant *> & contestants,
 	cout << endl;
 }
 
+void CompanyMS::showPartialContestants(const BST & contestants, unsigned int limInf, unsigned int limSup) {
+	if (contestants.size() != 0) {
+		vector<Contestant *> conts;
+		for (auto it = contestants.begin(); it != contestants.end(); it++) {
+			conts.push_back(it->cont);
+		}
+		sort(conts.begin(), conts.end(), compareById<Contestant>);
+		showPartialContestants(conts, limInf, limSup);
+	}
+}
 void CompanyMS::showContestants(const tabHUCont & contestants) {
 	if (contestants.size() != 0) {
 		unsigned int limInf = contestants.begin()->uCont->getId();
@@ -1404,10 +1434,14 @@ void CompanyMS::showPartialContestants(const tabHUCont & contestants, unsigned i
 	cout << endl;
 }
 void CompanyMS::showContestantsByName() {
-	vector<Contestant*> contestants = company->getContestants();
-	sort(contestants.begin(), contestants.end(), compareByName<Contestant>);
-	for (size_t i = 0; i < contestants.size(); i++) {
-		contestants[i]->show();
+	BST contestants = company->getContestants();
+	vector<Contestant *> conts;
+	for (auto it = contestants.begin(); it != contestants.end(); it++) {
+		conts.push_back(it->cont);
+	}
+	sort(conts.begin(), conts.end(), compareByName<Contestant>);
+	for (auto it = conts.begin(); it != conts.end(); it++) {
+		(*it)->show();
 		cout << endl;
 	}
 }
@@ -1418,7 +1452,8 @@ void CompanyMS::showApplications() {
 	for (unsigned int i = 0; i < applications.size(); i++)
 	{
 		cout << "Application sent at " << applications[i]->getDate() << " by contestant No. " << applications[i]->getContestantId() << endl;
-		contestant = company->getContestantById(applications[i]->getContestantId());
+		unsigned int id = applications[i]->getContestantId();
+		contestant = company->getContestantById(id);
 		contestant->show();
 		cout << endl;
 	}
@@ -1594,6 +1629,28 @@ bool CompanyMS::isValidContestantId(string id) {
 	}
 	return true;
 }
+bool CompanyMS::isValidUnavailableContestantId(string id) {
+	if (cin.eof()) {
+		return false;
+	}
+	removeSpaces(id);
+
+	if (id.length() == 0) throw EmptyAnswer();
+
+	for (size_t i = 0; i < id.length(); i++)
+	{
+		if (!isdigit(id[i]))
+			throw InvalidId();
+	}
+	unsigned int Id = stoi(id);
+	try {
+		company->getUnavailableContestantById(Id);
+	}
+	catch (UnavailableContestantIdNotFound) {
+		throw UnavailableContestantIdNotFound(Id);
+	}
+	return true;
+}
 bool CompanyMS::isValidJudgeId(string id) {
 	if (cin.eof()) {
 		return false;
@@ -1733,6 +1790,33 @@ unsigned int CompanyMS::contestantIdHandler() {
 		if (cin.eof()) return 0;
 		try {
 			valid = isValidContestantId(id);
+		}
+		catch (EmptyAnswer)
+		{
+			valid = false;
+			cout << "Your answer was empty. Note that it has to be the ID (a number) and be part of the company's database. Please retry to enter it." << endl;
+		}
+		catch (InvalidId) {
+			valid = false;
+			cout << "Your answer has invalid characters. Note that it has to be the ID (a number) and be part of the company's database. Please retry to enter it." << endl;
+		}
+		catch (ContestantIdNotFound) {
+			valid = false;
+			cout << "It looks like the id you entered is not on our database. Note that it has to be the ID (a number) and be part of the company's database. Please retry to enter it." << endl;
+		}
+	}
+	return stoi(id);
+}
+unsigned int CompanyMS::unavailableContestantIdHandler() {
+	string id;
+	bool valid = false;
+
+	while (!valid) {
+		cout << "Id:";
+		getline(cin, id);
+		if (cin.eof()) return 0;
+		try {
+			valid = isValidUnavailableContestantId(id);
 		}
 		catch (EmptyAnswer)
 		{
@@ -2036,6 +2120,6 @@ void CompanyMS::mainTitle() {
 	string date = company->getCurrentCalendar().date();
 	string time = company->getCurrentCalendar().time();
 	printInColour("                                                               " + date + "    " + time + "\n", 7, false);
-	printInColour (":::::::::::::::::::::::::::::::::::: CASTINGS TV :::::::::::::::::::::::::::::::::::" , 7, false);
+	printInColour(":::::::::::::::::::::::::::::::::::: CASTINGS TV :::::::::::::::::::::::::::::::::::", 7, false);
 	cout << endl;
 }

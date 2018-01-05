@@ -6,6 +6,7 @@
 #include "Participation.h"
 #include "Calendar.h"
 
+
 class Contestant : public Person {
 protected:
 	unsigned int id;
@@ -79,6 +80,17 @@ public:
 	* @return ostream reference of the information of the contestant in a specific format into a file
 	*/
 	friend std::ostream& operator<<(std::ostream& os, const Contestant & contestant);
+};
+
+
+class ContestantPtr {
+
+public:
+	ContestantPtr(Contestant * c) {
+		this->cont = c;
+	}
+	Contestant * cont;
+
 };
 
 #endif //_CONTESTANT_H
