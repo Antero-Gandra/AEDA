@@ -4,14 +4,18 @@
 
 #include <string>
 #include <set>
-#include "Person.h"
-#include "Contestant.h"
-#include "UnavailableContestant.h"
 #include <unordered_set>
+#include <string>
+#include <stack>
+#include <queue>
 #include "Judge.h"
 #include "Audition.h"
 #include "Application.h"
 #include "Calendar.h"
+#include "Person.h"
+#include "Contestant.h"
+#include "UnavailableContestant.h"
+
 
 struct hContestantPtr {
 	int operator()(const UContestantPtr & uc1) const {
@@ -31,10 +35,35 @@ struct ContestantPtrComp
 		else return b.cont->getDob() < a.cont->getDob();
 	}
 };
+
 typedef std::unordered_set<UContestantPtr, hContestantPtr, hContestantPtr> tabHUCont;
 typedef std::set<ContestantPtr, ContestantPtrComp> BST;
 
+/*
+struct ContestantInt {
+	Contestant *contestant;
+	Company *company;
+};
+
+struct ContestantPtrCompare {
+public:
+	bool operator()(const ContestantInt& c1, const ContestantInt& c2) const {
+		Company * company = c1.company;
+		auto participation1 = c1.contestant->getParticipations();
+		auto participation2 = c2.contestant->getParticipations();
+		auto auditionId1 = participation1[participation1.size()]->getAuditionId();
+		auto auditionId2 = participation2[participation2.size()]->getAuditionId();
+		auto audition1 = company->getAuditionById(auditionId1);
+		auto audition2 = company->getAuditionById(auditionId2);
+		auto calendar1 = audition1->getStart();
+		auto calendar2 = audition2->getStart();
+		return (calendar1 > calendar2) ? true : false;
+	}
+};
+*/
+
 class Company {
+	//std::priority_queue<ContestantInt, std::vector<ContestantInt>, ContestantPtrCompare> c;
 	BST contestants;
 	std::vector<Application*> applications;
 	tabHUCont unavailableContestants;

@@ -1412,9 +1412,13 @@ void CompanyMS::showPartialContestants(const BST & contestants, unsigned int lim
 void CompanyMS::showContestants(const tabHUCont & contestants) {
 	if (contestants.size() != 0) {
 		unsigned int limInf = contestants.begin()->uCont->getId();
-		auto it = contestants.end();
-		it--;
-		unsigned int limSup = it->uCont->getId();
+		auto it1 = contestants.begin();
+		auto it2 = contestants.begin();
+		while (it1 != contestants.end()) {
+			it2 = it1;
+			it1++;
+		}
+		unsigned int limSup = it2->uCont->getId();
 		showPartialContestants(contestants, limInf, limSup);
 	}
 }
