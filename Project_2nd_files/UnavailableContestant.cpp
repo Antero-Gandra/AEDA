@@ -6,6 +6,12 @@
 
 using namespace std;
 
+UnavailableContestant::UnavailableContestant() : Contestant() {
+	this->unavailabilityBegin = Calendar();
+	this->unavailabilityEnd = Calendar();
+	this->reason = "";
+	this->givenUp = false;
+}
 UnavailableContestant::UnavailableContestant(unsigned int id, std::string name, std::string address, unsigned int mobile, Calendar dob, std::string specialty, std::vector<Participation*> participation, Calendar unavailabilityBegin, Calendar unavailabilityEnd, string reason) : Contestant(id, name, address, mobile, dob, specialty, participation) {
 	this->unavailabilityBegin = unavailabilityBegin;
 	this->unavailabilityEnd = unavailabilityEnd;
@@ -175,9 +181,9 @@ UnavailableContestant::UnavailableContestant(string textLine) : Contestant(textL
 	getline(unavailabilityLine, reason, ';');
 	this->reason = reason;
 
-	string givenUp;
-	getline(unavailabilityLine, givenUp, ';');
-	this->givenUp = stoi(givenUp);
+	string gp;
+	getline(contestantLine, gp, ';');
+	this->givenUp = stoi(gp);
 
 
 	//set attributes
@@ -194,6 +200,10 @@ UnavailableContestant::UnavailableContestant(Contestant * contestant, Calendar u
 	this->unavailabilityEnd = unavailabilityEnd;
 	this->reason = reason;
 	delete contestant;
+}
+
+void UnavailableContestant::setGivenUp(bool givenUp) {
+	this->givenUp = givenUp;
 }
 void UnavailableContestant::show() {
 	Contestant::show();

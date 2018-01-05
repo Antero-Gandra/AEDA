@@ -862,7 +862,40 @@ void CompanyMS::searchContestantByIdMenu() {
 }
 void CompanyMS::reportWaiverMenu() {
 	mainTitle();
-	cout << "\t\t::::::::: ADD UNAVAILABILITY PERIOD TO A CONTESTANT ::::::::: \n";
+	cout << "\t\t::::::::: REPORT WAIVER FROM CONTESTANT ::::::::: \n";
+
+	bool repeated = true, answer;
+	bool changes = false;
+	cout << "Would you like to see the list of unavailable contestants? " << endl;
+	answer = yesNoHandler();
+	if (cin.eof()) return;
+	if (answer) {
+		cout << "List of contestants: " << endl;
+		showContestants(company->getUnavailableContestants());
+		cout << endl;
+	}
+
+	//Choose of id
+	while (repeated) {
+		cout << "Which contestant would you like to report as having to waiver?" << endl;
+		unsigned int id = contestantIdHandler();
+		if (cin.eof()) return;
+
+		UnavailableContestant * contestant = company->getUnavailableContestantById(id);
+		if (contestant->hasGivenUp())
+			cout << "The contestant you selected has already given up. Please insert another one." << endl;
+		else {
+			contestant->setGivenUp(true);
+			repeated = false;
+		}
+	}
+
+	cout << "Please Press Ctrl^Z to go back to the Contestants' Menu" << endl;
+	while (!cin.eof()) {
+		string option;
+		getline(cin, option);
+	}
+
 }
 
 

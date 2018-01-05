@@ -12,6 +12,7 @@ protected:
 	std::vector<Participation*> participations;
 
 public:
+	Contestant();
 	/**
 	* @brief Contestant Contructor with their id, name, address, mobile phone number, date of birth, specialiy and list of participations by id. The availablity is initialized with a pair of true and a null pointer since there isn't unavailability.
 	* @param id an unsigined integer

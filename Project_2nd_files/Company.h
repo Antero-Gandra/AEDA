@@ -111,6 +111,13 @@ public:
 	Contestant * getContestantById(unsigned int id);
 
 	/**
+	* @brief Manages to access an Unavailable Contestant by ID
+	* @param id an unsigned int
+	* @return Unavailable Contestant Object pointer
+	*/
+	UnavailableContestant * getUnavailableContestantById(unsigned int id);
+
+	/**
 	* @brief Manages to access a contestant's ID
 	* @param contestant a Contestant Object pointer
 	* @return unsigned integer's ID of the Contestant

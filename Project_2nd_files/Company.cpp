@@ -111,6 +111,15 @@ Contestant * Company::getContestantById(unsigned int id) {
 		throw ContestantIdNotFound(id);
 	else return contestant;
 }
+UnavailableContestant * Company::getUnavailableContestantById(unsigned int id) {
+	UnavailableContestant * uc = new UnavailableContestant();
+	UContestantPtr u;
+	u.uCont = uc;
+	auto it = unavailableContestants.find(u);
+	if (it == unavailableContestants.end())
+		return NULL;
+	else return it->uCont;
+}
 unsigned int Company::getContestantByInfo(Contestant * contestant) {
 	for (size_t i = 0; i < contestants.size(); i++) {
 		if (*contestants[i] == *contestant)

@@ -12,6 +12,15 @@
 using namespace std;
 
 //Constructors
+Contestant::Contestant() {
+	this->id = 0;
+	this->name = "";
+	this->address = "";
+	this->mobile = 0;
+	this->dob = Calendar();
+	this->specialty = "";
+	this->participations = {};
+}
 Contestant::Contestant(string textLine) {
 	const streamsize max = numeric_limits<streamsize>::max();
 	istringstream contestantLine(textLine);
