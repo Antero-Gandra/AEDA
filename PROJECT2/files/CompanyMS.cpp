@@ -144,9 +144,11 @@ void CompanyMS::contestantMenu()
 	cout << "11. Search contestant by id" << endl;
 	cout << "12. View all applications" << endl;
 	cout << "13. Report a waiver" << endl;
+	cout << "14. View contestants unordored" << endl;
+
 	cout << "Please Press Ctrl^Z to go back to the Main Menu" << endl;
 
-	unsigned int option = optionHandler(1, 13);
+	unsigned int option = optionHandler(1, 14);
 	if (cin.eof()) return;
 
 	switch (option) {
@@ -227,6 +229,12 @@ void CompanyMS::contestantMenu()
 	case 13: do {
 		clearScreen();
 		reportWaiverMenu();
+	} while (!std::cin.eof());
+	cin.clear();
+	break;
+	case 14: do {
+		clearScreen();
+		showContestantsUnordoredMenu();
 	} while (!std::cin.eof());
 	cin.clear();
 	break;
@@ -897,6 +905,18 @@ void CompanyMS::reportWaiverMenu() {
 	}
 
 }
+void CompanyMS::showContestantsUnordoredMenu() {
+	mainTitle();
+	cout << "\t\t::::::::: VIEW CONTESTESTANTS UNORDORED ::::::::: \n";
+	bool answer;
+
+	showContestantsUnordored();
+	cout << "Please Press Ctrl^Z to go back to the Contestants' Menu" << endl;
+	while (!cin.eof()) {
+		string option;
+		getline(cin, option);
+	}
+}
 
 void CompanyMS::employJudgeMenu() {
 	mainTitle();
@@ -1355,6 +1375,13 @@ void CompanyMS::disassembleAuditionMenu() {
 }
 
 
+void CompanyMS::showContestantsUnordored() {
+	BST contestants = company->getContestants();
+	for (auto it = contestants.begin(); it != contestants.end(); it++) {
+		 it->cont->show();
+		cout << endl;
+	}
+}
 void CompanyMS::showContestantsOfSpecialty(const BST & contestants, std::string specialty) {
 	auto it = contestants.begin();
 	for (it = contestants.begin(); it != contestants.end() ; it++) {

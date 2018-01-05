@@ -1,2 +1,16 @@
-﻿  Proj2.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\PROJECT2\Proj2\Debug\Proj2.exe
+﻿  Company.cpp
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(49): warning C4018: '<': signed/unsigned mismatch
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(52): warning C4018: '<': signed/unsigned mismatch
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(55): warning C4018: '<': signed/unsigned mismatch
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(118): warning C4101: 'u': unreferenced local variable
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(229): warning C4018: '<': signed/unsigned mismatch
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(455): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(728): warning C4101: 'auditionId': unreferenced local variable
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(764): warning C4101: 'auditionId': unreferenced local variable
+c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(815): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  main.cpp
+  CompanyMS.cpp
+  Proj2.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\PROJECT2\Proj2\Debug\Proj2.exe
   Proj2.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\PROJECT2\Proj2\Debug\Proj2.pdb (Partial PDB)

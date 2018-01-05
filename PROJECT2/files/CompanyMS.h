@@ -74,7 +74,7 @@ public:
 	*/
 	void modifyContestantMenu();
 
-
+	
 	/**
 	* @brief Invokes the menu where contestant from the database can be removed and intrinsically removing all their applications	
 	*/
@@ -88,6 +88,8 @@ public:
 	void showContestantsByIdMenu();
 
 	void showAvailableContestantsMenu();
+
+	void showContestantsUnordoredMenu();
 
 	void showUnavailableContestantsMenu();
 	/**
@@ -201,6 +203,10 @@ public:
 	/**
 	* @brief Prints the information of all contestants on the database sorted by id
 	*/
+
+
+	void showContestantsUnordored();
+
 	void showContestants(const BST & contestants);
 
 	void showContestants(const tabHUCont & contestants);

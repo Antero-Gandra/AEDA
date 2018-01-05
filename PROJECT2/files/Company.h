@@ -30,8 +30,8 @@ struct ContestantPtrComp
 {
 	bool operator()(const ContestantPtr &a, const ContestantPtr &b) const
 	{
-		if (a.cont->getSpecialty() != a.cont->getSpecialty())
-			return a.cont->getSpecialty() < a.cont->getSpecialty();
+		if (a.cont->getSpecialty() != b.cont->getSpecialty())
+			return(a.cont->getSpecialty() < b.cont->getSpecialty());
 		else return b.cont->getDob() < a.cont->getDob();
 	}
 };
