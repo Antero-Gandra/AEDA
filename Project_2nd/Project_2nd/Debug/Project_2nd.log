@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿  main.cpp
 c:\users\pc\documents\github\proj-aeda\project_2nd_files\company.h(452): error C2951: template declarations are only permitted at global, namespace, or class scope
 c:\users\pc\documents\github\proj-aeda\project_2nd_files\company.h(455): fatal error C1506: unrecoverable block scoping error
@@ -8,3 +9,8 @@ c:\users\pc\documents\github\proj-aeda\project_2nd_files\company.h(455): fatal e
 c:\users\pc\documents\github\proj-aeda\project_2nd_files\company.h(452): error C2951: template declarations are only permitted at global, namespace, or class scope
 c:\users\pc\documents\github\proj-aeda\project_2nd_files\company.h(455): fatal error C1506: unrecoverable block scoping error
   Generating Code...
+=======
+﻿  UnavailableContestant.cpp
+  Project_2nd.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\Project_2nd\Debug\Project_2nd.exe
+  Project_2nd.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\Project_2nd\Debug\Project_2nd.pdb (Partial PDB)
+>>>>>>> fe323e7d320ad4a1ad742f97a5ac40208f07077c

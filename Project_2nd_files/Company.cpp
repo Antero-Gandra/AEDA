@@ -28,6 +28,9 @@ Calendar Company::currentCalendar = Calendar();
 vector<Contestant*> Company::getContestants() const {
 	return contestants;
 }
+tabHUCont Company::getUnavailableContestants() const {
+	return unavailableContestants;
+}
 vector<Judge*> Company::getJudges() const {
 	return judges;
 }
@@ -115,6 +118,15 @@ Contestant * Company::getContestantById(unsigned int id) {
 	if (contestant == NULL)
 		throw ContestantIdNotFound(id);
 	else return contestant;
+}
+UnavailableContestant * Company::getUnavailableContestantById(unsigned int id) {
+	UnavailableContestant * uc = new UnavailableContestant();
+	UContestantPtr u;
+	u.uCont = uc;
+	auto it = unavailableContestants.find(u);
+	if (it == unavailableContestants.end())
+		return NULL;
+	else return it->uCont;
 }
 unsigned int Company::getContestantByInfo(Contestant * contestant) {
 	for (size_t i = 0; i < contestants.size(); i++) {
@@ -249,11 +261,42 @@ bool Company::readContestantsFile(string fileName) {
 	while (!contestantsFile.eof()) /* adds elements to the Contestant* std::vector until the whole file is read */
 	{
 		getline(contestantsFile, textLine);
+		removeSpaces(textLine);
+		if (textLine == "")
+			break;
 		Contestant * contestant = new Contestant(textLine);
 		addContestant(contestant);
 		lastContestantId = contestant->getId();
 	}
 	contestantsFile.close();
+	return true;
+}
+bool Company::readUnavailableContestantsFile(std::string fileName) {
+	ifstream unavailableContestantsFile(fileName + ".dat");
+
+	string textLine;
+
+	//in case of failure during the opening
+	if (unavailableContestantsFile.fail())
+	{
+		return false;
+	}
+
+
+	while (!unavailableContestantsFile.eof()) /* adds elements to the Contestant* std::vector until the whole file is read */
+	{
+		getline(unavailableContestantsFile, textLine);
+		removeSpaces(textLine);
+		if (textLine == "")
+			break;
+		UnavailableContestant * contestant = new UnavailableContestant(textLine);
+		UContestantPtr p; p.uCont = contestant;
+		unavailableContestants.insert(p);
+
+		if (contestant->getId() > lastContestantId)
+			lastContestantId = contestant->getId();
+	}
+	unavailableContestantsFile.close();
 	return true;
 }
 bool Company::readApplicationsFile(string fileName) {
@@ -313,6 +356,23 @@ bool Company::writeContestantsFile(string fileName) {
 
 	return true;
 }
+bool Company::writeUnavailableContestantsFile(string fileName) {
+	ofstream unavailableContestantsFile(fileName + ".dat");
+	unsigned int i = 0;
+	if (unavailableContestants.size() != 0) {
+		auto it = unavailableContestants.begin();
+		auto it2 = unavailableContestants.end();
+		it2--;
+		for (; it != it2; it++) {
+			unavailableContestantsFile << *((*it).uCont) << "\n";
+		}
+		unavailableContestantsFile << *((*it).uCont);
+	}
+
+	unavailableContestantsFile.close();
+
+	return true;
+}
 bool Company::writeApplicationsFile(string fileName) {
 	ofstream contestantsFile(fileName + ".dat");
 	unsigned int i = 0;
@@ -324,6 +384,36 @@ bool Company::writeApplicationsFile(string fileName) {
 	contestantsFile.close();
 
 	return true;
+}
+void Company::setContestantUnavailable(Contestant * contestant, Calendar unavailabilityBegin, Calendar unavailabilityEnd, std::string reason) {
+	removeContestant(contestant);
+	UnavailableContestant * uc = new UnavailableContestant(contestant, unavailabilityBegin, unavailabilityEnd, reason);
+	UContestantPtr p;
+	p.uCont = uc;
+	unavailableContestants.insert(p);
+}
+void Company::setContestantAvailable(UContestantPtr contestant) {
+if (contestant.uCont->hasGivenUp()){
+		unavailableContestants.erase(contestant);
+	Contestant * n_contestant = new Contestant(contestant.uCont->getId(), contestant.uCont->getName(), contestant.uCont->getAddress(), contestant.uCont->getMobile(), contestant.uCont->getDob(), contestant.uCont->getSpecialty(), contestant.uCont->getParticipations());
+	addContestant(n_contestant);
+	delete contestant.uCont;
+}
+}
+void Company::updateAvailabilityOfContestants() {
+	auto it = unavailableContestants.begin();
+	int size = unavailableContestants.size();
+	int i = 0;
+	while (i < size) {
+		if (it->uCont->getUnavailabilityEnd() < currentCalendar) {
+			setContestantAvailable(*it);
+			it = unavailableContestants.begin();
+		}
+		else {
+			it++;
+		}
+		i++;
+	}
 }
 
 /* --------------------------------------- JUDGE --------------------------------------*/

@@ -6,10 +6,17 @@
 
 using namespace std;
 
+UnavailableContestant::UnavailableContestant() : Contestant() {
+	this->unavailabilityBegin = Calendar();
+	this->unavailabilityEnd = Calendar();
+	this->reason = "";
+	this->givenUp = false;
+}
 UnavailableContestant::UnavailableContestant(unsigned int id, std::string name, std::string address, unsigned int mobile, Calendar dob, std::string specialty, std::vector<Participation*> participation, Calendar unavailabilityBegin, Calendar unavailabilityEnd, string reason) : Contestant(id, name, address, mobile, dob, specialty, participation) {
 	this->unavailabilityBegin = unavailabilityBegin;
 	this->unavailabilityEnd = unavailabilityEnd;
 	this->reason = reason;
+	this->givenUp = false;
 }
 UnavailableContestant::UnavailableContestant(string textLine) : Contestant(textLine){
 	const streamsize max = numeric_limits<streamsize>::max();
@@ -109,13 +116,13 @@ UnavailableContestant::UnavailableContestant(string textLine) : Contestant(textL
 	getline(unavailabilityLine, aux_num, '/');
 	removeSpaces(aux_num);
 	istringstream year_n(aux_num);
-	year_num >> year;
+	year_n >> year;
 
 	//month
 	getline(unavailabilityLine, aux_num, '/');
 	removeSpaces(aux_num);
 	istringstream month_n(aux_num);
-	month_num >> month;
+	month_n >> month;
 
 	//day
 	getline(unavailabilityLine, aux_num, '/');
@@ -174,6 +181,10 @@ UnavailableContestant::UnavailableContestant(string textLine) : Contestant(textL
 	getline(unavailabilityLine, reason, ';');
 	this->reason = reason;
 
+	string gp;
+	getline(contestantLine, gp, ';');
+	this->givenUp = stoi(gp);
+
 
 	//set attributes
 	this->id = id;
@@ -188,8 +199,19 @@ UnavailableContestant::UnavailableContestant(Contestant * contestant, Calendar u
 	this->unavailabilityBegin = unavailabilityBegin;
 	this->unavailabilityEnd = unavailabilityEnd;
 	this->reason = reason;
+	delete contestant;
 }
 
+void UnavailableContestant::setGivenUp(bool givenUp) {
+	this->givenUp = givenUp;
+}
+void UnavailableContestant::show() {
+	Contestant::show();
+	cout << "-> Unavailable Period: " << unavailabilityBegin.date() << " at " << unavailabilityBegin.time() << " --- " << unavailabilityEnd.date() << " at " << unavailabilityEnd.time() << endl;
+	cout << "       Reason: " << reason;
+	if (givenUp)
+		cout << "---THIS CONSTESTANT HAS GIVEN UP----";
+}
 ostream& operator<<(ostream& os, const UnavailableContestant & contestant) {
 
 	os << contestant.getId() << " ; " << contestant.getName() << " ; " << contestant.getDob().date() << " ; " << contestant.getMobile() << " ; " << contestant.getAddress() << " ; " << contestant.getSpecialty() << " ; ";
@@ -208,5 +230,13 @@ ostream& operator<<(ostream& os, const UnavailableContestant & contestant) {
 	os << contestant.unavailabilityEnd.full() << " ,";
 	os << contestant.reason << " ;";
 
+	os << contestant.givenUp << " ;";
+
 	return os;
+}
+Calendar UnavailableContestant::getUnavailabilityEnd() const {
+	return unavailabilityEnd;
+}
+bool UnavailableContestant::hasGivenUp() {
+	return this->givenUp;
 }

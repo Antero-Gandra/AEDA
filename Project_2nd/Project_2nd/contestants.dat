@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 1 ; Mary Jane ; 1998/11/20 ; 963032876 ; Madison Avenue Adrian ; dance ;  ;
+=======
+>>>>>>> fe323e7d320ad4a1ad742f97a5ac40208f07077c
 2 ; Kate Young ; 1973/2/3 ; 962830356 ; North Honey Creek Street Annandale ; theatre ;  ;
 3 ; Joanne Steffani ; 1962/10/15 ; 966348307 ; Coffee Avenue Springboro ; music ; 1 , 4 , 7.  ;
 4 ; Bruno Jones ; 1958/11/23 ; 962132855 ; Campfire St. Leland ; theatre ; 1 , 4 , 6.  ;
@@ -13,11 +16,19 @@
 13 ; Laquan James ; 2003/2/21 ; 962523443 ; Bank St. Avon Lake ; music ;  ;
 14 ; Maura Levis ; 2001/1/19 ; 934125572 ; James Street Lawndale ; music ;  ;
 15 ; Tony Lance ; 1997/3/18 ; 933127579 ; Edgemont St. Vicksburg ; music ;  ;
+<<<<<<< HEAD
 16 ; Carla Marquez ; 1998/6/3 ; 962152136 ; Blue Spring Drive Phoenix ; theatre ; 1 , 2 , 6. 1 , 2 , 6.  ;
 17 ; Donald Miller ; 1982/7/20 ; 912977489 ; Temple Circle North Canton ; theatre ; 1 , 1 , 6. 1 , 1 , 6.  ;
 18 ; Hillary Jones ; 1977/11/14 ; 922133445 ; Washington Ave. Marquette ; dance ;  ;
 19 ; Fabian Lagrange ; 1969/2/15 ; 989366422 ; Halifax Ave. Lakewood ; dance ;  ;
 20 ; Christen Watson ; 2000/2/18 ; 962427456 ; Bohemia Road Saint Petersburg ; theatre ; 1 , 0 , 6. 1 , 0 , 6.  ;
+=======
+16 ; Carla Marquez ; 1998/6/3 ; 962152136 ; Blue Spring Drive Phoenix ; theatre ;  ;
+17 ; Donald Miller ; 1982/7/20 ; 912977489 ; Temple Circle North Canton ; theatre ;  ;
+18 ; Hillary Jones ; 1977/11/14 ; 922133445 ; Washington Ave. Marquette ; dance ;  ;
+19 ; Fabian Lagrange ; 1969/2/15 ; 989366422 ; Halifax Ave. Lakewood ; dance ;  ;
+20 ; Christen Watson ; 2000/2/18 ; 962427456 ; Bohemia Road Saint Petersburg ; theatre ;  ;
+>>>>>>> fe323e7d320ad4a1ad742f97a5ac40208f07077c
 21 ; John Lemon ; 1999/1/24 ; 963220076 ; Canal Ave. Erlanger ; dance ;  ;
 22 ; Erica Stwewart ; 1997/12/27 ; 965324112 ; Parker Court Eastlake ; dance ;  ;
 23 ; Daisy Eye of the day ; 1987/2/1 ; 968925761 ; Franklin Ave. Lindenhurst ; music ;  ;
@@ -95,9 +106,15 @@
 95 ; Anisa Lieber   ; 1979/11/14 ; 950260770 ; Bright Route ; theatre ;  ;
 96 ; Sylvester Berggren   ; 1987/7/15 ; 967851164 ; Middle Way ; theatre ;  ;
 97 ; Kenisha Ivester   ; 1998/12/1 ; 943620963 ; Hanover Court ; dance ;  ;
+<<<<<<< HEAD
 98 ; Lilli Eley   ; 1998/5/4 ; 933929442 ; 3rd Street North ; theatre ; 1 , 4 , 6. 1 , 4 , 6.  ;
 99 ; Emory Sheridan   ; 1932/8/20 ; 933117256 ; Sapphire Row ; theatre ; 1 , 5 , 3. 1 , 5 , 3.  ;
 100 ; Chrystal Mohamed   ; 1994/7/13 ; 950506978 ; Museum Lane ; theatre ; 1 , 3 , 4. 1 , 3 , 4.  ;
+=======
+98 ; Lilli Eley   ; 1998/5/4 ; 933929442 ; 3rd Street North ; theatre ;  ;
+99 ; Emory Sheridan   ; 1932/8/20 ; 933117256 ; Sapphire Row ; theatre ;  ;
+100 ; Chrystal Mohamed   ; 1994/7/13 ; 950506978 ; Museum Lane ; theatre ;  ;
+>>>>>>> fe323e7d320ad4a1ad742f97a5ac40208f07077c
 101 ; Despina Primmer   ; 1956/4/17 ; 924415624 ; Church Street South ; dance ;  ;
 102 ; Jay Winfrey   ; 1998/11/28 ; 948658224 ; Cambridge Court ; theatre ;  ;
 103 ; Liliana Danaher   ; 1973/7/10 ; 926987414 ; Arch Route ; dance ;  ;
@@ -177,9 +194,12 @@
 177 ; Jacquelynn Schwindt   ; 1930/10/31 ; 930494225 ; Rowan Row ; theatre ;  ;
 178 ; Genoveva Angulo   ; 1951/1/7 ; 929639257 ; Dove Lane ; dance ;  ;
 179 ; Parthenia Meader   ; 1963/7/11 ; 938111074 ; Lilypad Avenue ; dance ;  ;
+<<<<<<< HEAD
 180 ; Maple Pender   ; 1942/5/12 ; 933749088 ; Granite Route ; music ; 3 , 4 , 3.  ;
 181 ; Dorotha Norsworthy   ; 1982/9/24 ; 926202554 ; Beachside Lane ; dance ;  ;
 182 ; Karin Kim   ; 1965/6/30 ; 943524505 ; Gem Lane ; music ; 3 , 3 , 7.  ;
+=======
+>>>>>>> fe323e7d320ad4a1ad742f97a5ac40208f07077c
 183 ; Latisha Porta   ; 1940/6/14 ; 968930543 ; Crystal Passage ; theatre ;  ;
 184 ; Talisha Melle   ; 1949/4/26 ; 929948974 ; Ranger Boulevard ; theatre ;  ;
 185 ; Denyse Hoyos   ; 1995/9/28 ; 924101271 ; 12th Street East ; theatre ;  ;
@@ -188,6 +208,7 @@
 188 ; Aleta Whitlow   ; 1990/1/12 ; 933913884 ; Parkside Boulevard ; theatre ;  ;
 189 ; Micheal Start   ; 1974/5/24 ; 950934377 ; Nova Route ; dance ;  ;
 190 ; Kori Leslie   ; 1983/5/24 ; 959777539 ; Ironwood Route ; dance ;  ;
+<<<<<<< HEAD
 191 ; Ettie Dannenberg   ; 1930/7/15 ; 943412293 ; Bright Lane ; music ; 3 , 0 , 2.  ;
 192 ; Oscar Paez   ; 1952/11/1 ; 964334411 ; Crescent Boulevard ; theatre ;  ;
 193 ; Jackie Lagarde   ; 1947/4/27 ; 948845681 ; Wharf Lane ; dance ;  ;
@@ -197,4 +218,12 @@
 197 ; Neida Cunniff   ; 1951/3/29 ; 922276662 ; Laurel Street ; dance ;  ;
 198 ; Venus Jarvie   ; 1943/8/31 ; 961849134 ; Clay Street ; theatre ;  ;
 199 ; Suzann Feuerstein   ; 1980/11/30 ; 926957271 ; Dawn Passage ; music ; 3 , 2 , 10.  ;
-200 ; Rodger Boyers   ; 1988/3/18 ; 935375025 ; Dawn Boulevard ; music ; 3 , 1 , 9.  ;
+=======
+191 ; Ettie Dannenberg   ; 1930/7/15 ; 943412293 ; Bright Lane ; music ;  ;
+192 ; Oscar Paez   ; 1952/11/1 ; 964334411 ; Crescent Boulevard ; theatre ;  ;
+193 ; Jackie Lagarde   ; 1947/4/27 ; 948845681 ; Wharf Lane ; dance ;  ;
+197 ; Neida Cunniff ; 1951/3/29 ; 922276662 ; Laurel Street ; dance ;  ;
+198 ; Venus Jarvie ; 1943/8/31 ; 961849134 ; Clay Street ; theatre ;  ;
+199 ; Suzann Feuerstein ; 1980/11/30 ; 926957271 ; Dawn Passage ; music ;  ;
+200 ; Rodger Boyers ; 1988/3/18 ; 935375025 ; Dawn Boulevard ; music ;  ;
+>>>>>>> fe323e7d320ad4a1ad742f97a5ac40208f07077c

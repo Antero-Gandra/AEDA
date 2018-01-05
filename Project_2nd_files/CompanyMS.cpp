@@ -94,7 +94,6 @@ void CompanyMS::goForwardInTimeMenu() {
 	bool validCalendar = false;
 	cout << "To which date would you like to go forward to?\n" << endl;
 	while (!validCalendar) {
-		calendar = calendarHandler();
 		if (cin.eof()) return;
 		if (calendar < company->getCurrentCalendar()) {
 			printInColour("Ooops!\n", 3, false);
@@ -136,11 +135,12 @@ void CompanyMS::contestantMenu()
 	cout << "6. View contestants by id" << endl;
 	cout << "7. View contestants by name" << endl;
 	cout << "8. View contestants of a specialty" << endl;
-	cout << "9. Search contestant by id" << endl;
-	cout << "10. View all applications" << endl;
 	cout << "Please Press Ctrl^Z to go back to the Main Menu" << endl;
 
+<<<<<<< HEAD
 	unsigned int option = optionHandler(1, 10);
+=======
+>>>>>>> fe323e7d320ad4a1ad742f97a5ac40208f07077c
 	if (cin.eof()) return;
 
 	switch (option) {
@@ -194,7 +194,6 @@ void CompanyMS::contestantMenu()
 	} while (!std::cin.eof());
 	cin.clear();
 	break;
-
 	case 9: do {
 		clearScreen();
 		searchContestantByIdMenu();
@@ -356,7 +355,6 @@ void CompanyMS::enrollAContestantMenu() {
 		if (cin.eof()) return;
 		if (answer) {
 			cout << "List of contestants: " << endl;
-			showContestants();
 			cout << endl;
 		}
 		unsigned int Id = contestantIdHandler();
@@ -442,7 +440,6 @@ void CompanyMS::modifyContestantMenu() {
 	if (cin.eof()) return;
 	if (answer) {
 		cout << "List of contestants: " << endl;
-		showContestants();
 		cout << endl;
 	}
 	//Choose of id
@@ -574,7 +571,6 @@ void CompanyMS::removeContestantMenu() {
 	if (cin.eof()) return;
 	if (answer) {
 		cout << "List of contestants: " << endl;
-		showContestants();
 		cout << endl;
 	}
 	//Choose of id
@@ -613,7 +609,6 @@ void CompanyMS::showContestantsByIdMenu() {
 	unsigned int aux;
 	if (cin.eof()) return;
 	if (answer)
-		showContestants();
 	else {
 		cout << "Please insert the id of the first contestant you would like to see." << endl;
 		unsigned int first_id = contestantIdHandler();
@@ -626,7 +621,6 @@ void CompanyMS::showContestantsByIdMenu() {
 			first_id = last_id;
 			last_id = aux;
 		}
-		showPartialContestants(first_id, last_id);
 	}
 
 	cout << "Please Press Ctrl^Z to go back to the Contestants' Menu" << endl;
@@ -714,7 +708,6 @@ void CompanyMS::addUnavailabilityPeriodMenu() {
 	if (cin.eof()) return;
 	if (answer) {
 		cout << "List of contestants: " << endl;
-		showContestants();
 		cout << endl;
 	}
 
@@ -732,21 +725,15 @@ void CompanyMS::addUnavailabilityPeriodMenu() {
 		contestant->show();
 		cout << endl;
 		//Unavailability Period Begining
-		cout << "Please insert the begining of the unavailability period." << endl;
-		Calendar unavailabilityBegin = fullCalendarHandler();
-		if (cin.eof()) return;
 
 
 		//Unavailability Period Ending
-		bool valid = false;
 		Calendar unavailabilityEnd;
 		while (!valid) {
 			cout << "Please insert the ending of the unavailability period." << endl;
 			unavailabilityEnd = fullCalendarHandler();
 			valid = true;
-			if (unavailabilityEnd == unavailabilityBegin) {
 				valid = false;
-				cout << "The end and begin of the period of unavailibility can coincide. Please insert another value.";
 			}
 		}
 		if (!(unavailabilityBegin < unavailabilityEnd))
@@ -763,14 +750,12 @@ void CompanyMS::addUnavailabilityPeriodMenu() {
 		string reason = stringHandler("reason");
 		if (cin.eof()) return;
 
-		string warning = "Are you sure you wish to add the followin unavailability period to contestant No. " + to_string(id) + "? \n";
 		printInColour(warning, 3, false);
 		//show contestant
 		cout << endl;
 		contestant->show();
 		cout << endl;
 		//show unavailibility period
-		cout << unavailabilityBegin.date() + " " + unavailabilityBegin.time() + " until " + unavailabilityEnd.date() + " " + unavailabilityEnd.time() << endl;
 		answer = yesNoHandler();
 		if (cin.eof()) return;
 	}
@@ -1122,7 +1107,6 @@ void CompanyMS::scheduleAuditionMenu() {
 	updateFilesHandler();
 	if (cin.eof()) return;
 
-	cout << "Please Press Ctrl^Z to go back to the Judges' Menu" << endl;
 	while (!cin.eof()) {
 		string option;
 		getline(cin, option);
@@ -1256,25 +1240,12 @@ void CompanyMS::disassembleAuditionMenu() {
 }
 
 
-void CompanyMS::showContestants() {
-	unsigned int limInf = company->getContestants()[0]->getId();
-	unsigned int limSup = company->getContestants()[company->getContestants().size() - 1]->getId();
-	showPartialContestants(limInf, limSup);
 }
-void CompanyMS::showPartialContestants(unsigned int limInf, unsigned int limSup) {
-	vector<Contestant *> contestants = company->getContestants();
-	unsigned int index = 0;
-	unsigned int i = limInf;
-	while (contestants[index]->getId() != limInf) {
-		index++;
 	}
 
 	cout << endl << endl;
-	for (; contestants[index]->getId() < limSup; index++) {
-		contestants[index]->show();
 		cout << endl;
 	}
-	contestants[index]->show();
 	cout << endl;
 }
 
@@ -1908,7 +1879,6 @@ void CompanyMS::printInColour(string text, unsigned int colour, bool dark) {
 }
 void CompanyMS::mainTitle() {
 	string date = company->getCurrentCalendar().date();
-	printInColour("                                                                       " + date + "       \n", 7, false);
 	printInColour (":::::::::::::::::::::::::::::::::::: CASTINGS TV :::::::::::::::::::::::::::::::::::" , 7, false);
 	cout << endl;
 }

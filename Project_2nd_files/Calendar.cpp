@@ -89,7 +89,7 @@ bool Calendar::operator<(const Calendar & calendar1) const
 	else if (day < calendar1.day) return true;
 	//equal year, month and day
 	else if (hour > calendar1.hour) return false;
-	else if (hour < calendar1.hour) return false;
+	else if (hour < calendar1.hour) return true;
 	//equal year, month, day and hour
 	else if (minute >= calendar1.hour) return false;
 	else return true;
@@ -116,7 +116,12 @@ string Calendar::date() const {
 }
 string Calendar::time() const {
 	ostringstream calendar;
-	calendar << hour << ':' << minute;
+	if (hour < 10)
+		calendar << "0";
+	calendar << hour << ':';
+	if (minute < 10)
+		calendar << "0";
+	calendar << minute;
 	return calendar.str();
 }
 string Calendar::full() const {

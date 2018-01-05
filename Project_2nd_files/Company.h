@@ -27,7 +27,6 @@ typedef std::unordered_set<UContestantPtr, hContestantPtr, hContestantPtr> tabHU
 class Company {
 	std::vector<Contestant*> contestants;
 	std::vector<Application*> applications;
-	tabHUCont unavailable_contestants;
 	std::vector<Judge *> judges;
 	std::vector<Audition*> auditions;
 	std::vector<SpecialtyInterview*> speInterviews;
@@ -48,7 +47,6 @@ class Company {
 public:
 	~Company();
 	/**
-	* @brief Manages to access all contestants ever applied
 	* @return constant vector of Contestant Object pointers
 	*/
 	std::vector<Contestant*> getContestants() const;
@@ -72,11 +70,14 @@ public:
 	std::vector<Audition*> getAuditions() const;
 
 	/**
+<<<<<<< HEAD
 	* @brief Manages to access all specialty interviews ever created
 	* @return constant vector of SpecialtyInterviews Object pointers
 	*/
 	std::vector<Audition*> getSpecialtyInterviews() const;
 
+=======
+>>>>>>> fe323e7d320ad4a1ad742f97a5ac40208f07077c
 	Calendar getCurrentCalendar() const;
 	void setCurrentCalendar(Calendar calendar);
 
