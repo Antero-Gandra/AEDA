@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <ctime>
 #include <cmath>
+#include <queue>
 #include "Company.h"
 #include "Contestant.h"
 #include "Judge.h"
@@ -18,8 +19,11 @@ using namespace std;
 unsigned int Company::lastContestantId = 0;
 unsigned int Company::lastJudgeId = 0;
 unsigned int Company::lastAuditionId = 0;
+unsigned int Company::lastSpecialtyInterviewId = 0;
+unsigned int Company::lastInterviewId = 0;
 Calendar Company::currentCalendar = Calendar();
 
+ 
 // getMethods
 vector<Contestant*> Company::getContestants() const {
 	return contestants;
@@ -35,6 +39,10 @@ vector<Audition*> Company::getAuditions() const {
 }
 Calendar Company::getCurrentCalendar() const {
 	return currentCalendar;
+}
+
+vector<SpecialtyInterview*> Company::getSpecialtyInterviews() const {
+	return specialtyInterviews;
 }
 void Company::setCurrentCalendar(Calendar calendar) {
 	this->currentCalendar = calendar;
@@ -484,6 +492,7 @@ Audition * Company::getAuditionById(unsigned int id) {
 	}
 	throw AuditionIdNotFound(id);
 }
+
 void Company::getAuditionsOfSpecialy(string specialty, vector<Audition*> & auditions) {
 	for (size_t i = 0; i < this->auditions.size(); i++)
 	{
@@ -491,6 +500,7 @@ void Company::getAuditionsOfSpecialy(string specialty, vector<Audition*> & audit
 			auditions.push_back(this->auditions[i]);
 	}
 }
+
 int Company::getAuditionOfDayOfSpecialty(Calendar date, std::string specialty) {
 	for (size_t i = 0; i < auditions.size(); i++)
 	{
@@ -578,6 +588,7 @@ void Company::removeAudition(Audition * audition) {
 		}
 	}
 }
+
 void Company::scheduleAudition(string specialty, Calendar beginning, vector<unsigned int> contestants, vector<unsigned int> judges, unsigned int chiefJudge) {
 	lastAuditionId++;
 	vector<Calendar> dateOfApplications;
@@ -783,6 +794,62 @@ void Company::gradeAudition(unsigned int auditionId) {
 			part.push_back(audition->getId());
 			judge->setParticipations(part);
 		}
+	}
+}
+
+/* -------------------------------------- INTERVIEWS ------------------------------------*/
+
+Interview * Company::getInterviewById(unsigned int id, vector<SpecialtyInterview> speInterviews) {
+	
+	HEAP_INTRVW interviewsCopy;
+	for (size_t i = 0; i < speInterviews.size(); i++) {
+
+		interviewsCopy = speInterviews[i]->getInterviews();
+		while (!interviewsCopy.empty()) {
+			Interview temp = interviewsCopy.top();
+			if (temp.getID() == id) {
+				return temp;
+			
+			}
+		}
+	}
+}
+
+SpecialtyInterview * Company::getInterviewsOfSpecialy(string specialty,  vector<SpecialtyInterview> speInterviews) {
+	
+	for (size_t i = 0; i < this->speInterviews.size(); i++) {
+
+		if (this->speInterviews[i]->getSpecialty() == specialty)
+			return this->speInterviews[i];
+	}
+}
+
+void Company::addInterview(std::string specialty, std::vector<int> interViewContestID, unsigned int, auditionID, std::vector<SpecialtyInterview> * speInterviews) {
+	
+	HEAP_INTRVW interviews;
+	HEAP_INTRVW interviewsCopy;
+	for (size_t i = 0; i < this->speInterviews.size(); i++) {
+
+		if (this->speInterviews[i]->getSpecialty() == specialty) {
+			for (size_t j = 0; j < interViewContestID.size(); j++) {
+
+				bool found = false;
+				interviews = this->speInterviews[i]->getInterviews();
+				interviewsCopy = interviews;
+				while (!interviewsCopy.empty()) {
+					Interview temp = interviewsCopy.top();
+					while (!found) {
+						if (temp.getContestantID == interViewContestID[j]) {
+							found = true;
+							interviews.pop();
+							interviews.push(Interview(temp.getID, interViewContestID[j], auditionID));
+						
+						}
+					}
+				}
+			}
+		}
+
 	}
 }
 

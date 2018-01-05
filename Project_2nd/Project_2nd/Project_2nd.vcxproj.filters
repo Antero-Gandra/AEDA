@@ -63,6 +63,9 @@
     <ClCompile Include="..\..\Project_2nd_files\UnavailableContestant.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Project_2nd_files\SpecialtyInterview.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Project_2nd_files\Participation.h">
@@ -109,6 +112,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Project_2nd_files\UnavailableContestant.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project_2nd_files\SpecialtyInterview.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

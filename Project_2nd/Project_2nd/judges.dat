@@ -1,8 +1,8 @@
 1 ; Neely Scholten   ; 1954/10/2 ; 934495771 ; 8th Street South ; theatre ;  ;
-2 ; Zena Angulo   ; 1975/11/15 ; 925101450 ; Clark Street ; dance ;  ;
-3 ; Bud Granier   ; 1960/3/5 ; 948050704 ; Vine Street ; dance ;  ;
+2 ; Zena Angulo   ; 1975/11/15 ; 925101450 ; Clark Street ; dance ; 1,  ;
+3 ; Bud Granier   ; 1960/3/5 ; 948050704 ; Vine Street ; dance ; 2,  ;
 4 ; Sunny Penniman   ; 1967/11/5 ; 927552436 ; Maple Street ; theatre ;  ;
-5 ; Antionette Pecoraro   ; 1948/8/27 ; 939277934 ; Bush Route ; music ;  ;
+5 ; Antionette Pecoraro   ; 1948/8/27 ; 939277934 ; Bush Route ; music ; 2,  ;
 6 ; Jeanelle Hickmon   ; 1970/1/14 ; 957802175 ; Cave Row ; music ;  ;
 7 ; Dacia Canaday   ; 1994/6/29 ; 969361556 ; Ironwood Avenue ; dance ;  ;
 8 ; Clyde Lent   ; 1934/4/22 ; 952634433 ; Parkside Row ; theatre ;  ;
@@ -14,7 +14,7 @@
 14 ; Raphael Driscoll   ; 1971/1/19 ; 948136289 ; College Avenue ; theatre ;  ;
 15 ; Belia Wiste   ; 1977/10/2 ; 939961849 ; Wetland Lane ; music ;  ;
 16 ; Jacelyn Goupil   ; 1942/8/10 ; 968336318 ; Bury Lane ; dance ;  ;
-17 ; Darron Mackiewicz   ; 1998/4/5 ; 952277983 ; Marble Street ; dance ;  ;
+17 ; Darron Mackiewicz   ; 1998/4/5 ; 952277983 ; Marble Street ; dance ; 3,  ;
 18 ; Janetta Right   ; 1988/1/7 ; 964866348 ; Arch Route ; music ;  ;
 19 ; Lesha Dann   ; 1952/6/21 ; 944411678 ; Union Avenue ; theatre ;  ;
 20 ; Brad Latour   ; 1991/10/16 ; 942006049 ; Pine Street ; theatre ;  ;
@@ -40,7 +40,7 @@
 40 ; Lanita Vantassel   ; 1995/6/27 ; 930570479 ; Storm Street ; dance ;  ;
 41 ; Inga Frances   ; 1979/10/21 ; 955495218 ; Ebon Avenue ; theatre ;  ;
 42 ; Raina Lavigne   ; 1933/2/14 ; 958997610 ; Lumber Lane ; dance ;  ;
-43 ; Lorie Haith   ; 1979/5/9 ; 962952008 ; Greenfield Avenue ; theatre ;  ;
+43 ; Lorie Haith   ; 1979/5/9 ; 962952008 ; Greenfield Avenue ; theatre ; 2,  ;
 44 ; Melisa Eichhorn   ; 1997/5/20 ; 939402683 ; North Lane ; theatre ;  ;
 45 ; Tari Raybon   ; 1985/5/30 ; 928644631 ; Acorn Way ; theatre ;  ;
 46 ; Basil Statler   ; 1986/1/5 ; 936961402 ; Windmill Way ; music ;  ;
@@ -54,7 +54,7 @@
 54 ; Wilford Hannah   ; 1930/2/8 ; 922108125 ; Amber Way ; theatre ;  ;
 55 ; Lecia Benefield   ; 1983/8/21 ; 935853078 ; Victory Avenue ; theatre ;  ;
 56 ; Randa Kueter   ; 1996/1/14 ; 947095096 ; Harbor Lane ; music ;  ;
-57 ; Estefana Bradshaw   ; 1944/3/26 ; 926104677 ; Cedar Lane ; dance ;  ;
+57 ; Estefana Bradshaw   ; 1944/3/26 ; 926104677 ; Cedar Lane ; dance ; 1,  ;
 58 ; Desirae Weise   ; 1988/2/14 ; 926594532 ; Beech Avenue ; theatre ;  ;
 59 ; Judie Stanfield   ; 1991/5/4 ; 946608869 ; Terrace Street ; theatre ;  ;
 60 ; Gwyneth Steckel   ; 1946/9/27 ; 969563950 ; Green Avenue ; music ;  ;
@@ -73,7 +73,7 @@
 73 ; Polly Betancourt   ; 1958/3/19 ; 941605171 ; Chestnut Avenue ; dance ;  ;
 74 ; Rich Holtzman   ; 1997/11/26 ; 946886182 ; Academy Street ; music ;  ;
 75 ; Joline Mcelhaney   ; 1961/2/12 ; 943131334 ; Seaview Boulevard ; music ;  ;
-76 ; Savannah Mcelwain   ; 1990/5/30 ; 930596445 ; College Street ; theatre ;  ;
+76 ; Savannah Mcelwain   ; 1990/5/30 ; 930596445 ; College Street ; theatre ; 1,  ;
 77 ; Levi Mccurdy   ; 2001/12/18 ; 923156839 ; Bloomfield Row ; theatre ;  ;
 78 ; Mariette Mcguinness   ; 1936/9/29 ; 934728852 ; Hart Avenue ; music ;  ;
 79 ; Tessa Aranda   ; 1993/7/2 ; 950112839 ; Hind Row ; dance ;  ;
@@ -85,9 +85,9 @@
 85 ; Selina Holmon   ; 1951/10/3 ; 935304117 ; Glenwood Avenue ; music ;  ;
 86 ; Jolyn Flint   ; 1930/11/2 ; 927614047 ; Cemetery Road ; music ;  ;
 87 ; Elida Gambino   ; 2000/11/5 ; 943615515 ; Ocean Lane ; dance ;  ;
-88 ; Gertie Dorsch   ; 1982/6/3 ; 936634252 ; Archer Passage ; dance ;  ;
+88 ; Gertie Dorsch   ; 1982/6/3 ; 936634252 ; Archer Passage ; dance ; 3,  ;
 89 ; Mara Hegwood   ; 1937/3/20 ; 944769519 ; Bush Way ; music ;  ;
-90 ; Nicki Hannold   ; 1958/11/13 ; 958522046 ; Garden Boulevard ; music ;  ;
+90 ; Nicki Hannold   ; 1958/11/13 ; 958522046 ; Garden Boulevard ; music ; 3,  ;
 91 ; Maple Cuff   ; 1934/10/7 ; 933112774 ; Beaver Boulevard ; dance ;  ;
 92 ; Winnie Koopman   ; 1980/11/24 ; 922855936 ; Centre Lane ; music ;  ;
 93 ; Rossana Kissee   ; 1951/12/8 ; 957482371 ; Chapel Way ; theatre ;  ;

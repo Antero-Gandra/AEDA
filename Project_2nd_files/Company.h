@@ -11,6 +11,7 @@
 #include "Audition.h"
 #include "Application.h"
 #include "Calendar.h"
+#include "SpecialtyInterview.h"
 
 struct hContestantPtr {
 	int operator()(const UContestantPtr & uc1) const {
@@ -29,9 +30,12 @@ class Company {
 	tabHUCont unavailable_contestants;
 	std::vector<Judge *> judges;
 	std::vector<Audition*> auditions;
+	std::vector<SpecialtyInterview*> speInterviews;
+
 	static unsigned int lastContestantId;
 	static unsigned int lastJudgeId;
 	static unsigned int lastAuditionId;
+	static unsigned int lastSpecialtyInterviewId;
 	static Calendar currentCalendar;
 	const Calendar startOfFunctions = Calendar(0, 0, 0, 8, 30);
 	const Calendar endOfFunctions = Calendar(0, 0, 0, 20, 30);
@@ -66,6 +70,12 @@ public:
 	* @return constant vector of Audition Object pointers
 	*/
 	std::vector<Audition*> getAuditions() const;
+
+	/**
+	* @brief Manages to access all specialty interviews ever created
+	* @return constant vector of SpecialtyInterviews Object pointers
+	*/
+	std::vector<Audition*> getSpecialtyInterviews() const;
 
 	Calendar getCurrentCalendar() const;
 	void setCurrentCalendar(Calendar calendar);
@@ -363,7 +373,7 @@ public:
 	* @param specialty a string
 	*/
 	void scheduleMaxAuditionsOfSpecialty(std::string specialty);
-	
+
 	/**
 	* @brief Schedule an audition of a specific specialty
 	* @param specialty a string
@@ -374,7 +384,7 @@ public:
 	* @brief Schedules multiple auditions that validates the prerequisite of the limit of contestants per audition
 	*/
 	void scheduleMaxAuditions();
-	
+
 	/**
 	* @brief Removes an audition from the database
 	* @param audition an Audition Object Pointer
@@ -407,13 +417,32 @@ public:
 	* @brief Grades all auditions, updating the participation of contestants who managed to get to Second Phase and those who didn't
 	*/
 	void gradeAllAuditions();
-	
+
 	/**
 	* @brief Grades a specified audition, updating the participation of contestants who managed to get to Second Phase and those who didn't
 	* @param auditionID an unsigned integer
 	*/
 	void gradeAudition(unsigned int auditionId);
-};
+
+	/* -------------------------------------- INTERVIEWS -----------------------------------*/
+	/**
+	* @brief Manages to access an Interview by ID
+	* @param id an unsigned int
+	* @return SpecialtyInterview Object pointer
+	*/
+	Interview * getInterviewById(unsigned int id, vector<SpecialtyInterview> speInterviews) {
+
+	/**
+	* @brief Manages to add to the SpecialtyInterview vector all the interviews of a specified specialy
+	* @param specialty a string
+	* @param speInterviews a vector of Spec ialtyInterview Object
+	* @param interviews a priority_queue of Interview Object Pointer
+	*/
+	SpecialtyInterview * getInterviewsOfSpecialy(std::string specialty, std::vector<SpecialtyInterview> speInterviews, HEAP_INTRVW* interviews);
+
+	void addInterview(std::string specialty, std::vector<int> interViewContestID);
+}
+;
 
 /**
 * @brief Compares two templates from object Comperable to check which one is greater or lesser

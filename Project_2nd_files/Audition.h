@@ -27,6 +27,7 @@ public:
 	* @param speciality a string
 	* @param judgesID a vector of unsigned integers
 	* @param chiefJudge an unsigned integer
+	* @param contestantas a vector of an unsigned integers
 	*/
 	Audition(unsigned int id, Calendar start, Calendar end, std::string specialty, std::vector<unsigned int> judgesId, unsigned int chiefJudgeId, std::vector<unsigned int> contestants);
 	

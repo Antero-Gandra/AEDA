@@ -140,7 +140,7 @@ void CompanyMS::contestantMenu()
 	cout << "10. View all applications" << endl;
 	cout << "Please Press Ctrl^Z to go back to the Main Menu" << endl;
 
-	unsigned int option = optionHandler(1, 9);
+	unsigned int option = optionHandler(1, 10);
 	if (cin.eof()) return;
 
 	switch (option) {

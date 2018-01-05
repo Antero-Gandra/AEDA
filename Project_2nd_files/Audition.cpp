@@ -21,6 +21,7 @@ Audition::Audition(unsigned int id, Calendar start, Calendar end, std::string sp
 	this->chiefJudgeId = chiefJudgeId;
 	this->firstPhase = new FirstPhase(id, {}, {}, {}, {}, contestants);
 	this->secondPhase = new SecondPhase(id, {}, {}, {}, {}, {});
+	addInterview(specialty, contestants);
 }
 Audition::Audition(string textline) {
 
