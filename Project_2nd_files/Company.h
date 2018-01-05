@@ -27,6 +27,7 @@ typedef std::unordered_set<UContestantPtr, hContestantPtr, hContestantPtr> tabHU
 class Company {
 	std::vector<Contestant*> contestants;
 	std::vector<Application*> applications;
+	tabHUCont unavailableContestants;
 	std::vector<Judge *> judges;
 	std::vector<Audition*> auditions;
 	std::vector<SpecialtyInterview*> speInterviews;
@@ -47,9 +48,16 @@ class Company {
 public:
 	~Company();
 	/**
+	* @brief Manages to access all contestants ever applied which are available
 	* @return constant vector of Contestant Object pointers
 	*/
 	std::vector<Contestant*> getContestants() const;
+
+	/**
+	* @brief Manages to access all contestants ever applied which are unavailable
+	* @return constant vector of Contestant Object pointers
+	*/
+	tabHUCont getUnavailableContestants() const;
 
 	/**
 	* @brief Manages to access all judges ever hired
@@ -77,13 +85,32 @@ public:
 	std::vector<Audition*> getSpecialtyInterviews() const;
 
 =======
+	* @brief Manages to access the current day and time
+	* @return constant Calendar object with the current day and time
+	*/
 >>>>>>> fe323e7d320ad4a1ad742f97a5ac40208f07077c
 	Calendar getCurrentCalendar() const;
+
+	/**
+	* Changes the current calendar'v avlue
+	* @param calendar to be set, a Calendar object
+	*/
 	void setCurrentCalendar(Calendar calendar);
 
 	/* ------------------------------------- CALENDAR ------------------------------------*/
 
+	/**
+	* @brief Reads the current calendar information from a file
+	* @param fileName a string with the name of the file
+	* @return true if successfully reads all the file, false otherwise
+	*/
 	bool readCalendarFile(std::string fileName) const;
+
+	/**
+	* @brief Writes the unavailable contestant information into a file
+	* @param fileName a string with the name of the file
+	* @return true if successfully writes all the information into the file, false otherwise
+	*/
 	bool writeCalendarFile(std::string fileName) const;
 
 	/* ------------------------------------ CONTESTANT -----------------------------------*/
@@ -94,6 +121,13 @@ public:
 	* @return Contestant Object pointer
 	*/
 	Contestant * getContestantById(unsigned int id);
+
+	/**
+	* @brief Manages to access an Unavailable Contestant by ID
+	* @param id an unsigned int
+	* @return Unavailable Contestant Object pointer
+	*/
+	UnavailableContestant * getUnavailableContestantById(unsigned int id);
 
 	/**
 	* @brief Manages to access a contestant's ID
@@ -191,11 +225,26 @@ public:
 	bool readContestantsFile(std::string fileName);
 
 	/**
+	* @brief Reads the unavailbale contestant information from a file and calls the function that creates an unavailbale contestant
+	* @param fileName a string with the name of the file
+	* @return true if successfully reads all the file, false otherwise
+	*/
+
+	bool readUnavailableContestantsFile(std::string fileName);
+
+	/**
 	* @brief Writes the contestant information into a file
 	* @param fileName a string with the name of the file
 	* @return true if successfully writes all the information into the file, false otherwise
 	*/
 	bool writeContestantsFile(std::string fileName);
+
+	/**
+	* @brief Writes the unavailable contestant information into a file
+	* @param fileName a string with the name of the file
+	* @return true if successfully writes all the information into the file, false otherwise
+	*/
+	bool writeUnavailableContestantsFile(std::string fileName);
 
 	/**
 	* @brief Reads the application information from a file and calls the function that creates an application
@@ -210,6 +259,27 @@ public:
 	* @return true if successfully writes all the information into the file, false otherwise
 	*/
 	bool writeApplicationsFile(std::string fileName);
+
+
+	/**
+	* @brief Removes a contestant from the constants's set, creates an Unavailable Contestant and places it on the hash table
+	* @ Contestant object pointer of the contestant to be removed
+	* @ Calendar object of the unavailable contestant's unavailability beginning
+	* @ Calendar object of the unavailable contestant's unavailability ending
+	* @ reason for the unavailability, a string
+	*/
+	void setContestantUnavailable(Contestant * contestant, Calendar unavailabilityBegin, Calendar unavailabilityEnd, std::string reason);
+
+	/**
+	* @brief Removes an unavailable contestant from the unavailable constants's set, creates a contestant and places it on set
+	* @ Unavailable Contestant Struct with pointer to the unavailable contestant to be removed
+	*/
+
+	void setContestantAvailable(UContestantPtr contestant);
+	
+
+
+	void updateAvailabilityOfContestants();
 
 	/* -------------------------------------- JUDGE --------------------------------------*/
 	/**
