@@ -4,11 +4,12 @@
 
 #include <cstdlib>
 #include <vector>
-
+#include <set>
 #include "Calendar.h"
 #include "Company.h"
 
 class CompanyMS {
+	static Calendar currentCalendar;
 	Company * company;
 public:
 	//Constructor
@@ -56,7 +57,6 @@ public:
 	*/
 	void auditionMenu();
 
-	void goForwardInTimeMenu();
 
 	//CONTESTANTS MENUS
 
@@ -80,16 +80,12 @@ public:
 	*/
 	void removeContestantMenu();
 
-	void addUnavailabilityPeriodMenu();
 	/**
 	* @brief Invokes a menu where the user can view all contestants' information or select 2 contestants id where it prints
 	*		 all contentant's information sorted by id between that range
 	*/
 	void showContestantsByIdMenu();
 
-	void showAvailableContestantsMenu();
-
-	void showUnavailableContestantsMenu();
 	/**
 	* @brief Invokes a menu where it shows all contestants' information sorted by name
 	*/
@@ -114,8 +110,6 @@ public:
 	* @brief Invokes the menu where it shows the applications from all candidates
 	*/
 	void showApplicationsMenu();
-
-	void reportWaiverMenu();
 
 
 	//JUDGES MENUS
@@ -201,9 +195,7 @@ public:
 	/**
 	* @brief Prints the information of all contestants on the database sorted by id
 	*/
-	void showContestants(const std::vector<Contestant *> & contestants);
-
-	void showContestants(const tabHUCont & contestants);
+	void showContestants();
 	
 	/**
 	* @brief Prints the information of all contestants on the database sorted by name
@@ -215,10 +207,7 @@ public:
 	* @param limInf an unsigned integer
 	* @param limSup an unsigned integer
 	*/
-	void showPartialContestants(const std::vector<Contestant *> & contestants, unsigned int limInf, unsigned int limSup);
-
-	void showPartialContestants(const tabHUCont & contestants, unsigned int limInf, unsigned int limSup);
-
+	void showPartialContestants(set<Contestant*>::iterator limInf, set<Contestant*>::iterator limSup);
 	/**
 	* @brief Prints the date that a contestant applied to an audition
 	*/
@@ -306,7 +295,7 @@ public:
 	* @brief Checks if the date of birth is a valid output
 	* @param dob a Calendar Object
 	*/
-	bool isValidCalendar(Calendar calendar);
+	bool isValidDob(Calendar dob);
 
 	/**
 	* @brief Validates if the input is a number
@@ -359,9 +348,7 @@ public:
 	* @brief Validates if the date of birth input is valid
 	* @return Calendar Object
 	*/
-	Calendar calendarHandler();
-
-	Calendar fullCalendarHandler();
+	Calendar dobHandler();
 
 	/**
 	* @brief Validates if the input is a valid speciality
