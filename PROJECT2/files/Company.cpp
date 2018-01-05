@@ -56,7 +56,7 @@ Company::~Company() {
 		delete auditions[i];
 	}
 }
-/* ------------------------------------ CALENDAR -----------------------------------*/
+/* ------------------------------------- CALENDAR ------------------------------------*/
 bool Company::readCalendarFile(string fileName) const {
 	ifstream calendarFile(fileName + ".dat");
 	unsigned int year, month, day, hour, minute;
