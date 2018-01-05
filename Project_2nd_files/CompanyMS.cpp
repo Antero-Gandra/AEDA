@@ -338,8 +338,6 @@ void CompanyMS::auditionMenu() {
 	}
 }
 
-
-
 void CompanyMS::enrollAContestantMenu() {
 	mainTitle();
 	cout << "\t\t::::::::: ENROLL A CONTESTANT ::::::::: \n";
