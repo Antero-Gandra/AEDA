@@ -1,16 +1,31 @@
-﻿  Company.cpp
-c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(49): warning C4018: '<': signed/unsigned mismatch
-c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(52): warning C4018: '<': signed/unsigned mismatch
-c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(55): warning C4018: '<': signed/unsigned mismatch
-c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(118): warning C4101: 'u': unreferenced local variable
-c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(229): warning C4018: '<': signed/unsigned mismatch
-c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(455): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(728): warning C4101: 'auditionId': unreferenced local variable
-c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(764): warning C4101: 'auditionId': unreferenced local variable
-c:\users\margarida silva\documents\github\aeda\project2\files\company.cpp(815): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  main.cpp
+﻿  main.cpp
+c1xx : fatal error C1083: Cannot open source file: '..\..\files\main.cpp': No such file or directory
+  Util.cpp
+c1xx : fatal error C1083: Cannot open source file: '..\..\files\Util.cpp': No such file or directory
+  UnavailableContestant.cpp
+c1xx : fatal error C1083: Cannot open source file: '..\..\files\UnavailableContestant.cpp': No such file or directory
+  SecondPhase.cpp
+c1xx : fatal error C1083: Cannot open source file: '..\..\files\SecondPhase.cpp': No such file or directory
+  Phase.cpp
+c1xx : fatal error C1083: Cannot open source file: '..\..\files\Phase.cpp': No such file or directory
+  Person.cpp
+c1xx : fatal error C1083: Cannot open source file: '..\..\files\Person.cpp': No such file or directory
+  Participation.cpp
+c1xx : fatal error C1083: Cannot open source file: '..\..\files\Participation.cpp': No such file or directory
+  Judge.cpp
+c1xx : fatal error C1083: Cannot open source file: '..\..\files\Judge.cpp': No such file or directory
+  FirstPhase.cpp
+c1xx : fatal error C1083: Cannot open source file: '..\..\files\FirstPhase.cpp': No such file or directory
+  Contestant.cpp
+c1xx : fatal error C1083: Cannot open source file: '..\..\files\Contestant.cpp': No such file or directory
   CompanyMS.cpp
-  Proj2.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\PROJECT2\Proj2\Debug\Proj2.exe
-  Proj2.vcxproj -> C:\Users\Margarida Silva\Documents\GitHub\AEDA\PROJECT2\Proj2\Debug\Proj2.pdb (Partial PDB)
+c1xx : fatal error C1083: Cannot open source file: '..\..\files\CompanyMS.cpp': No such file or directory
+  Company.cpp
+c1xx : fatal error C1083: Cannot open source file: '..\..\files\Company.cpp': No such file or directory
+  Calendar.cpp
+c1xx : fatal error C1083: Cannot open source file: '..\..\files\Calendar.cpp': No such file or directory
+  Audition.cpp
+c1xx : fatal error C1083: Cannot open source file: '..\..\files\Audition.cpp': No such file or directory
+  Application.cpp
+c1xx : fatal error C1083: Cannot open source file: '..\..\files\Application.cpp': No such file or directory
+  Generating Code...
